@@ -1,0 +1,79 @@
+---
+import { getProducts, getProductsByKategoria, formatAr } from '../lib/products';
+import type { Product } from '../lib/products';
+
+interface Props {
+  kategoria?: Product['kategoria'];
+  limit?: number;
+}
+
+const { kategoria, limit = 3 } = Astro.props;
+
+const all = kategoria
+  ? await getProductsByKategoria(kategoria)
+  : await getProducts();
+
+const products = all.slice(0, limit);
+---
+
+<aside class="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+  <!-- Fejléc -->
+  <div class="bg-primary px-5 py-4">
+    <h2 class="font-sans font-bold text-white text-base">Ajánlott termékeink</h2>
+  </div>
+
+  <!-- Termékek -->
+  <ul class="divide-y divide-gray-100">
+    {products.map((product) => (
+      <li>
+        <a
+          href={`/${product.kategoria}/${product.slug}`}
+          class="flex gap-3 px-4 py-3 hover:bg-gray-50 transition-colors group"
+        >
+          <div class="h-16 w-20 shrink-0 overflow-hidden rounded-md bg-gray-100">
+            <img
+              src={product.kep}
+              alt={product.nev}
+              loading="lazy"
+              decoding="async"
+              width="80"
+              height="64"
+              class="h-full w-full object-cover"
+              data-fallback="/images/placeholder.webp"
+            />
+          </div>
+          <div class="flex flex-col justify-center min-w-0">
+            <p class="truncate text-sm font-semibold text-gray-900 group-hover:text-primary transition-colors leading-snug">
+              {product.nev}
+            </p>
+            <p class="mt-0.5 text-xs font-bold text-primary">{formatAr(product)}</p>
+            <p class="mt-0.5 text-xs text-gray-400">{product.meret_m2} m² · {product.szobak} szoba</p>
+          </div>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <!-- Összes termék link -->
+  <div class="border-t border-gray-100 px-5 py-3">
+    <a
+      href={kategoria ? `/${kategoria}` : '/konnyuszerkezetes'}
+      class="block w-full rounded-lg bg-primary/10 px-4 py-2 text-center text-sm font-semibold text-primary hover:bg-primary/20 transition-colors"
+    >
+      Összes termék →
+    </a>
+  </div>
+
+  <!-- Hitelezhetőség badge -->
+  <div class="border-t border-gray-100 bg-accent/5 px-5 py-3">
+    <div class="flex items-center gap-2">
+      <svg class="h-5 w-5 shrink-0 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+      <p class="text-xs text-gray-600 font-medium">
+        <span class="text-accent font-bold">Részletre is elérhető</span> — rugalmas finanszírozás
+      </p>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,268 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  schema?: object;
+  noindex?: boolean;
+  updatedDate?: Date;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = 'https://gyors-haz.hu/images/og-default.webp',
+  schema,
+  noindex = false,
+  updatedDate,
+} = Astro.props;
+
+const siteUrl = 'https://gyors-haz.hu';
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
+const titleTrunc = title.length > 60 ? title.slice(0, 57) + '...' : title;
+const descTrunc = description.length > 160 ? description.slice(0, 157) + '...' : description;
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Gyors Ház',
+  url: siteUrl,
+  telephone: '+36 70 777 8372',
+  email: 'info@instantotthonok.com',
+};
+
+const navLinks = [
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Modulházak', href: '/modulhaz' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Részletre →', href: '/haz-reszletre' },
+];
+---
+
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1A3C5E" />
+
+    <title>{titleTrunc}</title>
+    <meta name="description" content={descTrunc} />
+
+    {noindex
+      ? <meta name="robots" content="noindex,nofollow" />
+      : <meta name="robots" content="index,follow" />
+    }
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={titleTrunc} />
+    <meta property="og:description" content={descTrunc} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="hu_HU" />
+    <meta property="og:site_name" content="Gyors Ház" />
+    <meta property="og:url" content={canonicalUrl} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={titleTrunc} />
+    <meta name="twitter:description" content={descTrunc} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD: Organization -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+
+    <!-- JSON-LD: Extra schema -->
+    {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  </head>
+
+  <body class="font-body bg-white text-gray-800 antialiased">
+    <!-- ── Header ── -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <!-- Logo -->
+          <a href="/" class="flex items-center gap-2 shrink-0" aria-label="Gyors Ház főoldal">
+            <span
+              class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-white font-sans font-bold text-sm"
+            >GH</span>
+            <span class="font-sans font-bold text-lg text-primary leading-none">Gyors Ház</span>
+          </a>
+
+          <!-- Desktop nav -->
+          <nav class="hidden md:flex items-center gap-6" aria-label="Főnavigáció">
+            {navLinks.map((link) => (
+              <a
+                href={link.href}
+                class="text-sm font-medium text-gray-600 hover:text-primary transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="/kapcsolat"
+              class="ml-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-dark transition-colors"
+            >
+              Ajánlatot kérek
+            </a>
+          </nav>
+
+          <!-- Mobile hamburger -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden p-2 rounded-md text-gray-600 hover:text-primary hover:bg-gray-100"
+            aria-label="Menü megnyitása"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg id="icon-open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="icon-close" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+        <nav class="flex flex-col px-4 py-3 gap-1" aria-label="Mobil navigáció">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="/kapcsolat"
+            class="mt-2 rounded-lg bg-accent px-4 py-2 text-center text-sm font-semibold text-white hover:bg-accent-dark transition-colors"
+          >
+            Ajánlatot kérek
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ── Main content ── -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer class="bg-primary-dark text-white mt-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- Logo + leírás -->
+          <div class="lg:col-span-1">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-white font-sans font-bold text-sm">GH</span>
+              <span class="font-sans font-bold text-lg leading-none">Gyors Ház</span>
+            </div>
+            <p class="text-sm text-gray-300 leading-relaxed">
+              Minőségi könnyűszerkezetes, moduláris és konténerházak megfizethető áron. Gyors telepítés, hosszú élettartam.
+            </p>
+            {updatedDate && (
+              <p class="mt-3 text-xs text-gray-400">
+                Frissítve: {updatedDate.toLocaleDateString('hu-HU', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+            )}
+          </div>
+
+          <!-- Termékek -->
+          <div>
+            <h3 class="font-sans font-semibold text-sm uppercase tracking-wider text-gray-400 mb-3">Termékek</h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li><a href="/konnyuszerkezetes" class="hover:text-accent transition-colors">Könnyűszerkezetes házak</a></li>
+              <li><a href="/modulhaz" class="hover:text-accent transition-colors">Modulházak</a></li>
+              <li><a href="/kontenerhaz" class="hover:text-accent transition-colors">Konténerházak</a></li>
+              <li><a href="/haz-reszletre" class="hover:text-accent transition-colors">Részletre vásárlás</a></li>
+            </ul>
+          </div>
+
+          <!-- Kapcsolat -->
+          <div>
+            <h3 class="font-sans font-semibold text-sm uppercase tracking-wider text-gray-400 mb-3">Kapcsolat</h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li>
+                <a href="tel:+36707778372" class="hover:text-accent transition-colors">+36 70 777 8372</a>
+              </li>
+              <li>
+                <a href="mailto:info@instantotthonok.com" class="hover:text-accent transition-colors">info@instantotthonok.com</a>
+              </li>
+              <li>
+                <a href="/helyszin/szeged" class="hover:text-accent transition-colors">Bemutatóterem</a>
+              </li>
+              <li>
+                <a href="/kapcsolat" class="hover:text-accent transition-colors">Ajánlatot kérek</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Infó -->
+          <div>
+            <h3 class="font-sans font-semibold text-sm uppercase tracking-wider text-gray-400 mb-3">Információk</h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li><a href="/blog" class="hover:text-accent transition-colors">Blog</a></li>
+              <li><a href="/impresszum" class="hover:text-accent transition-colors">Rólunk / Impresszum</a></li>
+              <li><a href="/adatvedelmi-tajekoztato" class="hover:text-accent transition-colors">Adatvédelmi tájékoztató</a></li>
+              <li><a href="/aszf" class="hover:text-accent transition-colors">ÁSZF</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-10 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
+          <p>&copy; {new Date().getFullYear()} Gyors Ház. Minden jog fenntartva.</p>
+          <div class="flex gap-4">
+            <a href="/adatvedelmi-tajekoztato" class="hover:text-accent transition-colors">Adatvédelem</a>
+            <a href="/aszf" class="hover:text-accent transition-colors">ÁSZF</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Image fallback -->
+    <script is:inline>
+      document.addEventListener('error', function(e) {
+        var t = e.target;
+        if (t && t.tagName === 'IMG' && t.dataset.fallback && t.src !== t.dataset.fallback) {
+          t.src = t.dataset.fallback;
+        }
+      }, true);
+    </script>
+
+    <!-- Hamburger JS -->
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+
+      btn?.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu?.classList.toggle('hidden');
+        iconOpen?.classList.toggle('hidden');
+        iconClose?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

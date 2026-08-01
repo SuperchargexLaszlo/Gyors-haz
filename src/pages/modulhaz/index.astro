@@ -1,0 +1,217 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('modulhaz');
+
+const title = 'Modulházak 27–137 m² Készlet | Ár és Típusok | gyors-haz.hu';
+const description =
+  'Modulházkészletek 11.800 EUR-tól. 27–137 m², előre gyártott elemek, gyors összeszerlés. Hitelezhetőek. Kérjen ajánlatot!';
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Modulházak',
+  description,
+  numberOfItems: products.length,
+  itemListElement: products.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: p.nev,
+    url: `https://gyors-haz.hu/modulhaz/${p.slug}`,
+  })),
+};
+
+const faqs = [
+  {
+    q: 'Mi a különbség a modulház és a könnyűszerkezetes ház között?',
+    a: 'A modulház gyárilag előkészített, komplett egységekből áll — a falak, a tető és a belső terek modulárisan illeszkednek egymáshoz. A könnyűszerkezetes ház ezzel szemben helyszínen összeszerlelt, egyedi tervek alapján. A modulház előnye a még gyorsabb telepítés és a kiváló gyári minőség, míg a könnyűszerkezetes ház rugalmasabb alaprajzi lehetőségeket kínál.',
+  },
+  {
+    q: 'Hitelezhetőek a modulházak?',
+    a: 'Igen. Bankfüggetlen tanácsadóval segítünk a személyi kölcsön és jelzáloghitel lehetőségek feltérképezésében. Több pénzintézetnél is elérhető finanszírozás modulházakra, különösen ha tartós telepítésről van szó. Vegye fel velünk a kapcsolatot a részletekért.',
+  },
+  {
+    q: 'Mennyi idő alatt szerelik össze a modulházat?',
+    a: 'A gyártási idő 3–5 hét, a helyszíni összeszerlés mindössze 3–7 nap, az alap és a közművek előkészítésétől függően. Ez jóval gyorsabb a hagyományos építésnél, és az időjárástól sem függ annyira a minőség.',
+  },
+  {
+    q: 'Mit tartalmaz a modulházkészlet ára?',
+    a: 'Az ár tartalmazza: külső és belső falak (10 cm hungarocell szigetelés), horganyzott acélváz, bejárati és beltéri ajtók, 3 rétegű üveg ablakok, teljes tető (cserepes lemez, 35° dőlés, szigetelés), eresz és csatorna, gipszkarton, elektromos és vízvezeték-készlet, zuhanytálca, mosdó, monoblokkos WC, 280 cm belmagasság.',
+  },
+  {
+    q: 'Szükséges-e alapozás a modulháznál?',
+    a: 'Igen, minden modulháznál szükséges helyszíni alapozás, amely nem szerepel a készlet árában. Az alapozás típusa (talpgerenda, pontszerű alapok, lemezalap) a talajviszonyoktól és a helyi előírásoktól függ. Ajánlunk megbízható helyi kivitelezőket.',
+  },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Modulházak' },
+];
+
+const updatedDate = new Date('2026-01-01');
+
+const productsWithSize = products.map((p) => ({
+  product: p,
+  size: p.meret_m2 <= 20 ? 'tiny' : p.meret_m2 <= 45 ? 'small' : p.meret_m2 <= 80 ? 'medium' : 'large',
+}));
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  schema={itemListSchema}
+  updatedDate={updatedDate}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <!-- H1 + bevezető -->
+    <section class="py-8 lg:py-12">
+      <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+        Modulházak
+      </h1>
+
+      <div class="prose prose-lg max-w-3xl text-gray-600 space-y-4">
+        <p>
+          Az <strong>MD házépítő készlet</strong> alapú modulház a leggyorsabb út a saját otthon felé — a gyárilag
+          előre gyártott elemeket mindössze néhány nap alatt szerelik össze a helyszínen.
+          Kínálatunkban 27 m²-től 137 m²-ig találja meg az igényeinek megfelelő típust, <strong>11.800 EUR-tól</strong>.
+        </p>
+        <p>
+          Az <strong>előre gyártott</strong> modulházelemek gyári körülmények között készülnek, ami egyenletes minőséget
+          és pontosabb illeszkedést garantál a hagyományos helyszíni építéssel szemben. A horganyzott acélváz tartós,
+          korrózióálló vázat biztosít, amelyre a 10 cm hungarocell szigetelés réteg kerül.
+        </p>
+        <p>
+          A <strong>gyors összeszerlés</strong> révén a modulház a helyszíni munkálatok megkezdésétől számítva 1–2
+          héten belül lakható állapotba kerülhet — feltéve, hogy az alapozás és a közművek előzetesen elkészültek.
+          Minden egységünk tartalmazza a teljes elektromos és vízvezeték-készletet, a 3 rétegű üveg ablakokat és a
+          280 cm-es belmagasságot biztosító szerkezetet.
+        </p>
+        <p>
+          Termékeink hitelezhetőek. Bankfüggetlen tanácsadóval segítünk megtalálni a legjobb finanszírozási megoldást.
+          Külföldi összehasonlításhoz tekintse meg a{' '}
+          <a
+            href="https://www.ticabhouse.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary font-medium hover:text-primary-dark underline underline-offset-2"
+          >Ticab House kínálatát</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Szűrő -->
+    <div class="flex flex-wrap gap-2 mb-8" id="filter-bar" role="group" aria-label="Méret szerinti szűrő">
+      <button
+        data-filter="osszes"
+        class="filter-btn rounded-full border-2 border-primary bg-primary px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+      >
+        Összes
+      </button>
+      <button
+        data-filter="tiny"
+        class="filter-btn rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+      >
+        Tiny House (–20 m²)
+      </button>
+      <button
+        data-filter="small"
+        class="filter-btn rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+      >
+        Kis méret (21–45 m²)
+      </button>
+      <button
+        data-filter="medium"
+        class="filter-btn rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+      >
+        Közepes (46–80 m²)
+      </button>
+      <button
+        data-filter="large"
+        class="filter-btn rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+      >
+        Nagy (80+ m²)
+      </button>
+    </div>
+
+    <!-- Termékrács -->
+    <div
+      id="product-grid"
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-16"
+    >
+      {productsWithSize.map(({ product, size }) => (
+        <div class="product-item" data-m2={product.meret_m2} data-size={size}>
+          <ProductCard product={product} />
+        </div>
+      ))}
+    </div>
+
+    <!-- Belső linkek -->
+    <section class="mb-16 rounded-2xl bg-gray-50 p-8">
+      <h2 class="font-sans font-bold text-xl text-gray-900 mb-4">Kapcsolódó kategóriák</h2>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="/konnyuszerkezetes"
+          class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          → Könnyűszerkezetes házak 22–126 m²
+        </a>
+        <a
+          href="/kontenerhaz"
+          class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          → Konténerházak
+        </a>
+        <a
+          href="/reszletre"
+          class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          → Részletre vásárlás — hitelezési lehetőségek
+        </a>
+        <a
+          href="/helyszin"
+          class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          → Bemutatóterem megtekintése
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <FaqSection faqs={faqs} title="Modulházak — gyakori kérdések" />
+  </div>
+
+  <script is:inline>
+    (function () {
+      var btns = document.querySelectorAll('.filter-btn');
+      var items = document.querySelectorAll('.product-item');
+
+      function setActive(btn) {
+        btns.forEach(function (b) {
+          b.classList.remove('bg-primary', 'text-white');
+          b.classList.add('text-primary');
+        });
+        btn.classList.add('bg-primary', 'text-white');
+        btn.classList.remove('text-primary');
+      }
+
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.getAttribute('data-filter');
+          setActive(btn);
+          items.forEach(function (item) {
+            var size = item.getAttribute('data-size');
+            var show = filter === 'osszes' || size === filter;
+            item.style.display = show ? '' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+</BaseLayout>

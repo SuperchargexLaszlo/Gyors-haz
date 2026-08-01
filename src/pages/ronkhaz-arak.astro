@@ -1,0 +1,118 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Rönkház? – Nálunk Nincs, Ezt Kínáljuk Helyette';
+const description =
+  'Rönkházat keres? A Gyors Ház jelenleg nem kínál rönkházat – bemutatjuk, milyen gyárilag előre gyártott alternatíváink vannak: könnyűszerkezetes ház, modulház, konténerház.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'modulhaz-amsterdam', 'kontenerhaz-nordic-premium'];
+
+const faqs = [
+  {
+    q: 'Árul a Gyors Ház rönkházat?',
+    a: 'Nem, jelenlegi kínálatunk könnyűszerkezetes házakra, modulházakra és konténerházakra korlátozódik – rönkházat (fa gerendaházat) nem kínálunk.',
+  },
+  {
+    q: 'Van fa hangulatú alternatívájuk?',
+    a: 'Igen, a Nordic Premium konténerház skandináv stílusú fa homlokzatburkolattal készül, ami közelebb áll a rönkház esztétikájához, mint az acélvázas modellek.',
+  },
+  {
+    q: 'Hova érdemes fordulni, ha kifejezetten rönkházat keres?',
+    a: 'Érdemes rönkházépítésre szakosodott gyártót vagy kivitelezőt keresni, mivel ez eltérő technológia és szakterület a mi kínálatunkhoz képest.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Mobilház árak', href: '/mobilhaz-arak' },
+  { label: 'Fa könnyűszerkezetes ház', href: '/fa-konnyuszerkezetes-haz-arak' },
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Rönkház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="altalanos"
+  tags={['rönkház', 'fa ház', 'alternatíva']}
+  summary="A Gyors Ház jelenleg nem kínál rönkházat (fa gerendaházat) – kínálatunk könnyűszerkezetes házakra, modulházakra és konténerházakra korlátozódik. Aki fa hangulatot keres, a Nordic Premium konténerházunk skandináv stílusú fa homlokzatával közelebb áll ehhez az esztétikához."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos elöljáróban tisztázni: a Gyors Ház jelenleg nem kínál rönkházat. Ha erre a technológiára van
+    szüksége, érdemes rönkházépítésre szakosodott gyártót keresni. Ebben a cikkben bemutatjuk, milyen
+    gyárilag előre gyártott alternatíváink vannak.
+  </p>
+
+  <h2>Mit kínálunk helyette?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Típus</th><th>Mérettartomány</th><th>Kezdőár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház</td><td>22–126 m²</td><td>16.000 EUR + ÁFA</td></tr>
+        <tr><td>Modulház</td><td>15–122 m²</td><td>ár kérésre</td></tr>
+        <tr><td>Konténerház</td><td>55–90 m²</td><td>12.790.000 Ft + ÁFA</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott alternatívák</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Van fa hangulatú megoldásunk?</h2>
+
+  <p>
+    Ha a rönkház iránti érdeklődés mögött a fa esztétikája áll, érdemes megnézni a Nordic Premium
+    konténerházunkat: skandináv stílusú fa homlokzatburkolattal, 280 cm belmagassággal és háromrétegű
+    üvegezésű ablakokkal készül – ez a modellünk áll legközelebb a rönkház hangulatához, bár szerkezeti
+    technológiája (acél ST37 váz) eltér a hagyományos gerendaháztól.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Nézze meg alternatíváinkat</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott tanácsot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

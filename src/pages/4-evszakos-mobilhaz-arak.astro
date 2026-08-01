@@ -1,0 +1,212 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = '4 Évszakos Mobilház Árak 2026 – 16.000 EUR-tól';
+const description =
+  '4 évszakos, téliesített mobilház (könnyűszerkezetes ház) árak 2026-ban: 16.000 EUR-tól 43.000 EUR-ig. Mit jelent a négy évszakos kivitel, és mennyibe kerül?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Mit jelent a 4 évszakos mobilház kifejezés?',
+    a: 'Olyan gyárilag szigetelt könnyűszerkezetes házat jelöl, amely fűtéssel egész évben, télen is lakható. Nálunk ez nem külön extra – minden modellünk gyárilag 10 cm hungarocell szigeteléssel és 3 rétegű üvegezésű ablakokkal készül.',
+  },
+  {
+    q: 'Mennyivel drágább a 4 évszakos kivitel egy nyári háznál?',
+    a: 'Nálunk nincs külön "nyári" változat – minden modellünk gyárilag szigetelt, 4 évszakos kivitelben készül. Az árkülönbség a modellek mérete és felszereltsége alapján alakul, nem a szigetelés miatt.',
+  },
+  {
+    q: 'Kell-e fűtési rendszert külön vásárolni?',
+    a: 'Igen, a fűtési rendszer nem része az alapárnak. A helyszíni igények alapján egyedileg választjuk ki (elektromos, hőszivattyús vagy más megoldás).',
+  },
+  {
+    q: 'Milyen alapozás szükséges 4 évszakos használathoz?',
+    a: 'Minden könnyűszerkezetes házunkhoz szükséges alapozás – ennek munkadíja jellemzően kb. 1.400.000 Ft + ÁFA, a talaj adottságaitól és az alapozás típusától (pontalapos, lemezalap) függően.',
+  },
+  {
+    q: 'Hitelre is megvehető a 4 évszakos mobilház?',
+    a: 'Igen, bankfüggetlen tanácsadónk segítségével személyi kölcsön, babaváró hitel vagy más konstrukció keretében is finanszírozható. Részletek a részletre vásárlás oldalunkon.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Könnyűszerkezetes ház szerkezeti rajz', href: '/konnyuszerkezetes-haz-szerkezeti-rajz' },
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: '4 Évszakos Mobilház Árak' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['mobilház', '4 évszakos', 'könnyűszerkezetes', 'árak']}
+  summary="A 4 évszakos, téliesített mobilházak (könnyűszerkezetes házak) ára 2026-ban 16.000 EUR-tól (22 m²) 43.000 EUR-ig (126 m²) terjed. Minden modell gyárilag 10 cm hungarocell szigeteléssel és 3 rétegű üvegezésű ablakokkal készül – ez nem külön extra, hanem alapfelszereltség."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A "4 évszakos mobilház" kifejezés nálunk a könnyűszerkezetes házak modellsorát takarja – ezek gyárilag
+    szigetelt, egész éves használatra tervezett otthonok, nem a régi, hidegben lakhatatlan lakókocsik.
+    Ebben a cikkben megnézzük, mennyibe kerülnek, és mit jelent pontosan a négy évszakos kivitel.
+  </p>
+
+  <h2>Mennyibe kerül egy 4 évszakos mobilház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Modell</th>
+          <th>Alapterület</th>
+          <th>Szobák</th>
+          <th>Ár (+ ÁFA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház 22m²</td><td>22 m²</td><td>1</td><td>16.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 32m²</td><td>32 m²</td><td>1</td><td>18.600 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 35m²</td><td>35 m²</td><td>1</td><td>20.300 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 52m²</td><td>52 m²</td><td>2</td><td>22.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 62m²</td><td>62 m²</td><td>2</td><td>23.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 78m²</td><td>78 m²</td><td>3</td><td>31.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 86m²</td><td>86 m²</td><td>3</td><td>32.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 87m²</td><td>87 m²</td><td>3</td><td>34.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 96m²</td><td>96 m²</td><td>3</td><td>35.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 126m²</td><td>126 m²</td><td>4</td><td>43.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Az árak + ÁFA értendők, és a gyárilag szigetelt, 4 évszakos alapkivitelre vonatkoznak.</p>
+
+  <h2>Ajánlott modellek</h2>
+
+  <p>A legkeresettebb, kis- és középcsaládoknak való méretek:</p>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit jelent a négy évszakos kivitel?</h2>
+
+  <p>
+    Minden modellünk azonos szerkezeti alapon készül: horganyzott acélváz, 10 cm hungarocell szigetelés a
+    falakon, a padlón és a tetőn, háromrétegű üvegezésű ablakok, és 280 cm belmagasság. Ez a rétegrend
+    gyárilag, a szállítmány részeként érkezik – nem utólag beépítendő extra.
+  </p>
+
+  <p>
+    A fűtési rendszer ugyanakkor nem része az alapárnak: ezt a helyszíni igények alapján egyedileg
+    választjuk ki és ajánljuk. A jó szigetelés csökkenti a fűtési igényt, de a fűtőtest vagy hőszivattyú
+    kiválasztása külön lépés marad.
+  </p>
+
+  <h2>4 évszakos könnyűszerkezetes ház vagy konténerház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Szempont</th>
+          <th>Könnyűszerkezetes</th>
+          <th>Konténerház</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Kezdőár</td>
+          <td>16.000 EUR (22 m²)</td>
+          <td>12.790.000 Ft (55 m²)</td>
+        </tr>
+        <tr>
+          <td>Falszerkezet</td>
+          <td>Horganyzott acélváz, 10 cm hungarocell</td>
+          <td>Acél ST37 váz, szigetelt panelek</td>
+        </tr>
+        <tr>
+          <td>Testreszabhatóság</td>
+          <td>Rugalmasabb, egyedi igény szerint alakítható</td>
+          <td>Modellek közül választható</td>
+        </tr>
+        <tr>
+          <td>Mozgathatóság</td>
+          <td>Korlátozott</td>
+          <td>Igen, darukkal</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Bővebben a <a href="/teliesitett-kontenerhaz-arak">téliesített konténerházak árairól</a> önálló
+    cikkünkben olvashat.
+  </p>
+
+  <h2>Kinek ajánljuk?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>egész éves, állandó lakhatásra keres megfizethető megoldást</li>
+    <li>rugalmas alaprajzot és testreszabhatóságot szeretne</li>
+    <li>nagyobb alapterületre van szüksége (a kínálatunk 126 m²-ig terjed)</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>a lehető leggyorsabb telepítést szeretné – a konténerház ebben jellemzően gyorsabb</li>
+    <li>mozgatható, később áthelyezhető megoldást keres</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a 4 évszakos mobilházról" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Érdekli egy 4 évszakos mobilház?
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek személyre szabott mobilház ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

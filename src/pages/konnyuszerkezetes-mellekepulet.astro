@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Melléképület – Kerti Ház, Tároló, Vendégház';
+const description =
+  'Könnyűszerkezetes melléképület: kerti ház, tároló vagy vendégház céljára a legkisebb modelljeink jó választás lehetnek. Áraink és lehetőségeink.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'konnyuszerkezetes-haz-32m2', 'konnyuszerkezetes-haz-35m2'];
+
+const faqs = [
+  {
+    q: 'Van dedikált melléképület-termékük?',
+    a: 'Nincs önálló melléképület-kategóriánk, de a legkisebb lakóépület-modelljeink (22-35 m²) kerti háznak, tárolónak vagy vendégháznak is kiváló választás.',
+  },
+  {
+    q: 'Kell-e engedély egy kerti melléképülethez?',
+    a: 'Ez a méret, a rendeltetés és a helyi HÉSZ függvénye – érdemes a helyi önkormányzattal előzetesen egyeztetni.',
+  },
+  {
+    q: 'Lakhat is valaki a melléképületben?',
+    a: 'Igen, a modelljeink gyárilag szigetelt, négy évszakos kivitelben készülnek, így megfelelő fűtéssel egész évben használhatók vendégházként vagy önálló kis otthonként is.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes garázs', href: '/konnyuszerkezetes-garazs' },
+  { label: 'Kis könnyűszerkezetes házak', href: '/kis-konnyuszerkezetes-hazak' },
+  { label: 'Könnyűszerkezetes műhely', href: '/konnyuszerkezetes-muhely' },
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Melléképület' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['melléképület', 'kerti ház', 'könnyűszerkezetes']}
+  summary="Nincs önálló melléképület-termékünk, de a legkisebb lakóépület-modelljeink (22-35 m²) kerti háznak, tárolónak vagy vendégháznak is kiváló választás – gyárilag szigetelt, négy évszakos kivitelben."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos elöljáróban tisztázni: nincs dedikált melléképület-termékünk. A legkisebb lakóépület-modelljeink
+    ugyanakkor kiválóan alkalmasak kerti háznak, tárolónak vagy vendégháznak.
+  </p>
+
+  <h2>Legkisebb modelljeink méretei</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>22 m²-es modell</td><td>22 m²</td><td>16.000 EUR</td></tr>
+        <tr><td>32 m²-es modell</td><td>32 m²</td><td>18.600 EUR</td></tr>
+        <tr><td>35 m²-es modell</td><td>35 m²</td><td>20.300 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott, melléképületnek is alkalmas modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mire jó egy kis könnyűszerkezetes melléképület?</h2>
+
+  <p>
+    A 22-35 m²-es modelljeink gyárilag szigetelt, négy évszakos kivitelben készülnek, ezért kerti
+    vendégházként, tárolóként vagy akár önálló kis otthonként is megfelelő fűtéssel egész évben
+    használhatók. Az alaprajz egyedi igény szerint is alakítható.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Melléképületet tervez?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek egyedi ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

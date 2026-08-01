@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Teteje – Szerkezet és Kivitel';
+const description =
+  'Könnyűszerkezetes ház tetőszerkezete: 35°-os döntött tető, cserepes lemez fedés, gyári szigetelés. Mit tartalmaz az ár?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Milyen tetőszerkezettel készülnek a modellek?',
+    a: '35°-os döntött tetővel, cserepes lemez fedéssel, gyárilag beépített hőszigeteléssel.',
+  },
+  {
+    q: 'Van lapostetős opció?',
+    a: 'Jelenlegi modelljeink döntött tetővel készülnek. Erről bővebben a lapostetőről szóló cikkünkben olvashat.',
+  },
+  {
+    q: 'A tető szigetelése az árban van?',
+    a: 'Igen, a tetőszerkezet 10 cm hungarocell szigeteléssel készül, ez a szállítmány része.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes lapostető', href: '/konnyuszerkezetes-laposteto' },
+  { label: 'Könnyűszerkezetes fal', href: '/konnyuszerkezetes-fal' },
+  { label: 'Könnyűszerkezetes ház szigetelése', href: '/konnyuszerkezetes-haz-szigetelese' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Teteje' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['tető', 'tetőszerkezet', 'könnyűszerkezetes']}
+  summary="Minden könnyűszerkezetes modellünk 35°-os döntött tetővel, cserepes lemez fedéssel és gyári hőszigeteléssel készül. Ez a szállítmány része, nem utólagos extra."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A tetőszerkezet határozza meg a csapadékelvezetést és a hőszigetelés hatékonyságát is. Ebben a
+    cikkben bemutatjuk, milyen tetővel készülnek a modelljeink.
+  </p>
+
+  <h2>Mennyibe kerül egy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Milyen a tetőszerkezet?</h2>
+
+  <p>
+    Minden modellünk 35°-os döntött tetővel, cserepes lemez fedéssel készül, gyárilag beépített 10 cm
+    hungarocell hőszigeteléssel. A döntött kivitel hatékonyan elvezeti a csapadékot, és hosszú távon
+    kevesebb karbantartást igényel.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kérdése van a tetőszerkezetről?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek szakmai tájékoztatást és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

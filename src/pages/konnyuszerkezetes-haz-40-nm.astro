@@ -1,0 +1,198 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház 40 Nm – Legközelebbi Modelljeink';
+const description =
+  '40 m² körüli könnyűszerkezetes ház ára 2026-ban: a legközelebbi modellünk 35 m², 20.300 EUR + ÁFA. Szobaszám, terasz, mit tartalmaz az ár.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-32m2', 'konnyuszerkezetes-haz-35m2', 'konnyuszerkezetes-haz-52m2'];
+
+const faqs = [
+  {
+    q: 'Van pontosan 40 m²-es modelljük?',
+    a: 'A legközelebbi méreteink a 35 m²-es (20.300 EUR) és az 52 m²-es (22.000 EUR) modell. Pontosan 40 m²-re egyedi konfigurációról ajánlatkéréskor egyeztethetünk.',
+  },
+  {
+    q: 'Hány szoba fér el 40 m² körül?',
+    a: 'A 35 m²-es modellünkben 1 szoba, a nagyobb, 52 m²-es modellben már 2 szoba és konyha is elfér.',
+  },
+  {
+    q: 'Jó választás egy 40 m² körüli ház nyaralónak?',
+    a: 'Igen, ez a mérettartomány kifejezetten népszerű nyaralóként vagy egy-két fős háztartás első otthonaként.',
+  },
+  {
+    q: 'Elég-e egy 35 m²-es ház állandó lakhatásra?',
+    a: 'Igen, a 35 m²-es modellünk állandó lakhatásra alkalmas, 4 évszakos ház. Egy főnek vagy párnak kényelmes. Gyermekes családnak hosszabb távon a nagyobb, 52 m²-es modell javasolt.',
+  },
+  {
+    q: 'Lehet-e bővíteni egy 35 m²-es könnyűszerkezetes házat?',
+    a: 'A könnyűszerkezetes ház utólagos bővítése lehetséges, de statikai tervezést igényel. Érdemes már tervezéskor gondolni a jövőbeli bővítés lehetőségére.',
+  },
+  {
+    q: 'Melyik modell épül gyorsabban, a 35 m²-es vagy az 52 m²-es?',
+    a: 'Mindkét modell kivitelezési ideje hasonló: az alapozástól számítva 6–8 hét. A kisebb ház (35 m²) esetén a szerelési idő néhány nappal rövidebb lehet.',
+  },
+  {
+    q: 'Milyen telekre alkalmas egy 35–52 m²-es könnyűszerkezetes ház?',
+    a: 'Az OTÉK és a helyi HÉSZ előírásaitól függ. Általában 300–400 m²-es telek elegendő, de kisebb, 250 m²-es telkeken is megvalósítható, ha a beépítési arány és az előírások engedik.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '50 m² könnyűszerkezetes ház', href: '/50m2-konnyuszerkezetes-haz' },
+  { label: 'Kis könnyűszerkezetes házak', href: '/kis-konnyuszerkezetes-hazak' },
+  { label: '80 m² könnyűszerkezetes ház', href: '/80-m2-konnyuszerkezetes-haz' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház 40 Nm' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['40 nm', 'könnyűszerkezetes ház', 'árak']}
+  summary="A 40 m² körüli igényhez legközelebb a 35 m²-es (20.300 EUR) és az 52 m²-es (22.000 EUR) modellünk áll. Mindkettő gyárilag szigetelt, négy évszakos kivitelben készül."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A 40 m² körüli alapterület kompakt, praktikus megoldás egy-két fős háztartásnak vagy nyaralónak.
+    Bemutatjuk a hozzá legközelebb álló modelljeinket.
+  </p>
+
+  <h2>Mennyibe kerül egy 40 m² körüli könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Szobák</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>32 m²-es modell</td><td>32 m²</td><td>1</td><td>18.600 EUR</td></tr>
+        <tr><td>35 m²-es modell</td><td>35 m²</td><td>1</td><td>20.300 EUR</td></tr>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>2</td><td>22.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit kínál a 35 m²-es modell?</h2>
+
+  <p>
+    A 35 m²-es modellünk 1 szobát, konyhát, fürdőszobát és 8 m²-es fedett teraszt kínál. Az ár
+    tartalmazza a horganyzott acélváz szerkezetet, a 10 cm hungarocell szigetelést, a háromrétegű
+    üvegezésű nyílászárókat és a belső gipszkarton burkolatot. Egyedülállóknak, fiatal pároknak, vagy
+    azoknak ajánlott, akik kisebb alapterületen, de minőségi kivitelben gondolkoznak – hétvégi
+    nyaralónak, Airbnb szállásnak, vagy első önálló otthonnak egyaránt tökéletes.
+  </p>
+
+  <h2>Mit kínál az 52 m²-es modell?</h2>
+
+  <p>
+    Az 52 m²-es modellünk 2 szobát, konyhát, fürdőszobát és 10 m²-es fedett teraszt kínál – 17 m²
+    extra alapterületért mindössze 1.700 EUR-val (kb. 680.000 Ft) kell többet fizetni a 35 m²-es
+    modellhez képest, ami kifejezetten kedvező ár-érték arány. A kétszobás elrendezés lényegesen
+    rugalmasabb: a második szoba lehet gyerekszoba, vendégszoba, home office vagy tároló. Ha pár
+    vásárolja, és gyereket terveznek, az 52 m²-es modell jobb hosszú távú befektetés.
+  </p>
+
+  <h2>35 m² vs 52 m² – részletes összehasonlítás</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Szempont</th><th>35 m²-es modell</th><th>52 m²-es modell</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Nm-ár</td><td>~580 EUR/m²</td><td>~423 EUR/m²</td></tr>
+        <tr><td>Ideális létszám</td><td>1–2 fő</td><td>2–3 fő</td></tr>
+        <tr><td>Telek szükséglet</td><td>250–400 m²</td><td>300–500 m²</td></tr>
+        <tr><td>Fűtési költség (havi, télen)</td><td>~12.000–18.000 Ft</td><td>~15.000–22.000 Ft</td></tr>
+        <tr><td>Alapozás költsége</td><td>~1,4 M Ft</td><td>~1,4 M Ft</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Melyiket válasszam?</h2>
+
+  <p><strong>Válaszd a 35 m²-es modellt, ha:</strong></p>
+  <ul>
+    <li>egyedülálló vagy, vagy páros lakhatásban gondolkozol</li>
+    <li>a budget szűkös és a minimalizmus vonz</li>
+    <li>elsősorban nyaralóként, Airbnb szállásként vagy ideiglenes otthonként tervezed</li>
+    <li>a telek kisebb (250–350 m²)</li>
+    <li>nem tervezel gyereket rövidtávon</li>
+  </ul>
+
+  <p><strong>Válaszd az 52 m²-es modellt, ha:</strong></p>
+  <ul>
+    <li>párban éltek és gyermeket terveztek</li>
+    <li>kell egy extra szoba (home office, vendégszoba)</li>
+    <li>hosszabb távon gondolkodsz és rugalmasabb elrendezést szeretnél</li>
+  </ul>
+
+  <h2>Egyéb modellek a 35–52 m² közötti tartományban</h2>
+
+  <p>
+    Ha egyik fenti modell sem tökéletes, érdemes megnézni a
+    <a href="/konnyuszerkezetes/konnyuszerkezetes-haz-32m2">32 m²-es modellünket</a> (18.600 EUR) – ha a
+    35 m² is sok, ez a leggazdaságosabb egyszobás opció –, vagy a
+    <a href="/konnyuszerkezetes/konnyuszerkezetes-haz-62m2">62 m²-es modellünket</a> (23.000 EUR), ha a
+    3 szoba elengedhetetlen.
+  </p>
+
+  <h2>Finanszírozás</h2>
+
+  <p>
+    Mindkét modell hitelre is megvásárolható. A 35 m²-es modellnél kb. 5–6 millió Ft hitelre van szükség
+    30% önerővel, az 52 m²-esnél kb. 6–7 millió Ft. Részletes kalkulációért látogasd meg a
+    <a href="/haz-reszletre">részletre vásárlás oldalunkat</a> vagy hívd bankfüggetlen tanácsadónkat.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli egy 40 m² körüli ház?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

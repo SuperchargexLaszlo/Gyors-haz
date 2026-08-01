@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Köszönjük megkeresését! | gyors-haz.hu"
+  description="Köszönjük! Visszahívjuk 24 órán belül."
+  noindex={true}
+>
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <!-- Ikon -->
+    <div class="mb-8 flex justify-center">
+      <div class="flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+        <svg class="h-10 w-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+    </div>
+
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl text-gray-900 mb-4">
+      Köszönjük megkeresését!
+    </h1>
+    <p class="text-xl text-gray-600 mb-3">
+      Visszahívjuk <strong>24 órán belül</strong>.
+    </p>
+    <p class="text-gray-500 mb-10 max-w-md mx-auto">
+      Munkatársunk felveszi Önnel a kapcsolatot és személyre szabott ajánlatot készít.
+      Ha sürgős, hívjon minket közvetlenül:
+      <a href="tel:+36707778372" class="font-semibold text-primary hover:underline">+36 70 777 8372</a>
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="/"
+        class="rounded-xl border-2 border-primary px-8 py-3 font-sans font-semibold text-primary hover:bg-primary hover:text-white transition-colors"
+      >
+        ← Vissza a főoldalra
+      </a>
+      <a
+        href="/modulhaz"
+        class="rounded-xl bg-accent px-8 py-3 font-sans font-bold text-white hover:bg-accent-dark transition-colors"
+      >
+        Nézze meg modulházainkat →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

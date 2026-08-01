@@ -1,0 +1,185 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Mobilház Építési Engedély 2026 – Kell-e Engedély a Mobilházhoz?';
+const description =
+  'Kell-e építési engedély mobilházhoz 2026-ban? Könnyűszerkezetes, modulház és konténerház engedélyeztetési szabályai egy helyen, egyszerűen elmagyarázva.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'kontenerhaz-manhattan', 'modulhaz-amsterdam'];
+
+const faqs = [
+  {
+    q: 'Kell-e építési engedély egy mobilházhoz?',
+    a: 'Ez a méret, a rendeltetés és a helyi építési szabályzat (HÉSZ) függvénye. Sok esetben egyszerűsített bejelentési eljárás is elegendő, de ehhez is szükséges tervezői dokumentáció. A pontos szabályokat mindig a helyi önkormányzatnál érdemes ellenőrizni.',
+  },
+  {
+    q: 'Mi a különbség az egyszerűsített bejelentés és a teljes engedélyezés között?',
+    a: 'Az egyszerűsített bejelentés gyorsabb és kevesebb dokumentációt igényel, jellemzően kisebb alapterületű épületeknél alkalmazható. A teljes építési engedélyezési eljárás nagyobb vagy összetettebb épületeknél szükséges, és hosszabb átfutási idővel jár.',
+  },
+  {
+    q: 'Segít a Gyors Ház az engedélyeztetésben?',
+    a: 'Igen, a tervezési-engedélyeztetési folyamathoz ajánlani tudunk tervező partnert, aki segít a szükséges dokumentáció összeállításában. A pontos folyamatot ajánlatkéréskor egyeztetjük.',
+  },
+  {
+    q: 'Ugyanazok a szabályok vonatkoznak a könnyűszerkezetes házra, modulházra és konténerházra?',
+    a: 'Az alapelvek hasonlóak – a méret és a rendeltetés számít, nem elsősorban az építési technológia –, de a gyárilag gyártott, dokumentált épületeknél (CE jelölés, műszaki dokumentáció) az engedélyeztetés jellemzően egyszerűbb, mint egy egyedi, házilag épített megoldásnál.',
+  },
+  {
+    q: 'Mennyi ideig tart az engedélyeztetési folyamat?',
+    a: 'Ez ügytípusonként és önkormányzatonként eltérő. Az egyszerűsített bejelentés jellemzően gyorsabb, mint a teljes engedélyezési eljárás. A pontos átfutási időről a helyi önkormányzat vagy a tervező partnerünk ad tájékoztatást.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Konténerház építési engedély', href: '/blog/kontenerhoz-epitesi-engedely' },
+  { label: 'Konténerház alapozás', href: '/kontenerhaz-alapozas' },
+  { label: 'Könnyűszerkezetes házak', href: '/konnyuszerkezetes' },
+  { label: 'Modulházak', href: '/modulhaz' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Mobilház Építési Engedély' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="altalanos"
+  tags={['mobilház', 'építési engedély', 'HÉSZ', 'bejelentés']}
+  summary="A mobilház gyűjtőfogalom: könnyűszerkezetes, modulház és konténerház egyaránt ide tartozik. Az engedélyeztetés nem elsősorban a technológiától, hanem a méret és a rendeltetés (állandó lakás vs. ideiglenes) alapján alakul. Sok esetben egyszerűsített bejelentés is elég, de tervezői dokumentáció mindig szükséges."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A "mobilház" gyűjtőfogalom: könnyűszerkezetes ház, modulház és konténerház is ide tartozik nálunk.
+    Mindegyik gyárilag előre gyártott, gyorsan telepíthető megoldás – de az engedélyeztetés kérdése
+    mindegyiknél felmerül. Ebben a cikkben összefoglaljuk, mire érdemes figyelni vásárlás előtt.
+  </p>
+
+  <h2>Mennyibe kerül egy mobilház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Típus</th>
+          <th>Mérettartomány</th>
+          <th>Kezdőár</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Könnyűszerkezetes ház</td>
+          <td>22–126 m²</td>
+          <td>16.000 EUR + ÁFA</td>
+        </tr>
+        <tr>
+          <td>Modulház</td>
+          <td>15–122 m²</td>
+          <td>ár kérésre</td>
+        </tr>
+        <tr>
+          <td>Konténerház</td>
+          <td>55–90 m²</td>
+          <td>12.790.000 Ft + ÁFA</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott belépő modellek</h2>
+
+  <p>
+    Mindhárom kategóriából egy belépő szintű modellt emelünk ki, hogy lásd, milyen alapterületről és
+    árkategóriáról van szó:
+  </p>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Kell-e építési engedély mobilházhoz?</h2>
+
+  <p>
+    Az engedélyeztetés nem elsősorban az építési technológiától (könnyűszerkezetes, modulház vagy
+    konténerház), hanem az alapterülettől, a rendeltetéstől (állandó lakhatás vagy ideiglenes használat)
+    és a helyi építési szabályzattól (HÉSZ) függ. Bizonyos méret alatt egyszerűsített bejelentési eljárás
+    is elegendő lehet, de ehhez is szükséges tervezői dokumentáció. A pontos, telket érintő szabályokat
+    mindig érdemes a helyi önkormányzattal előzetesen egyeztetni.
+  </p>
+
+  <p>
+    A gyárilag gyártott, dokumentált épületeknél (műszaki dokumentáció, gyártói tanúsítvány) az
+    engedélyeztetés jellemzően egyszerűbb, mint egy egyedi, házilag épített megoldásnál, ahol ezeket a
+    dokumentumokat külön kell pótolni. A konténerház engedélyeztetéséről részletes, önálló cikket is
+    írtunk – ott a HÉSZ-szabályok és a bejelentési határok is bővebben szerepelnek.
+  </p>
+
+  <h2>Kinek ajánljuk, és kinek nem?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>gyors, dokumentált, könnyen engedélyeztethető megoldást keres</li>
+    <li>kerti vendégházat, irodát vagy kisebb alapterületű lakóépületet tervez</li>
+    <li>fontos a gyártói garancia és a hivatalos műszaki dokumentáció</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>
+      a telek helyi szabályozása (HÉSZ) egyáltalán nem teszi lehetővé az adott típusú épület elhelyezését –
+      ezt mindig előzetesen tisztázni kell
+    </li>
+    <li>
+      engedélyeztetés nélkül, "gyorsan" szeretne építeni – ez jogi kockázatot jelent, függetlenül az
+      építési technológiától
+    </li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések az engedélyeztetésről" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Segítünk az engedélyeztetésben is
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek segítséget az engedélyeztetéshez és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

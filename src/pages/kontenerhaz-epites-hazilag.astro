@@ -1,0 +1,157 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Konténerház Építés Házilag – Lehetséges, Vagy Jobb a Kész Megoldás?';
+const description =
+  'Konténerház házilag építve: mit lehet magad megcsinálni, mit nem, és mennyit spórolhatsz vele? Rövid áttekintés – és mennyibe kerül helyette egy kész, gyári konténerház?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['kontenerhaz-manhattan', 'kontenerhaz-manhattan-l', 'kontenerhaz-beverly'];
+
+const faqs = [
+  {
+    q: 'Lehet-e konténerházat teljesen házilag megépíteni?',
+    a: 'Részben igen, de a statikai, elektromos, gáztechnikai és hőszigetelési munkákat mindenképp szakemberre kell bízni – ezek jogszabály szerint is képesítéshez kötöttek. A DIY rész jellemzően a festésre, burkolásra és kertrendezésre korlátozódik.',
+  },
+  {
+    q: 'Mennyit lehet spórolni házilag végzett munkákkal?',
+    a: 'Reálisan néhány százezer forintot festéssel, padlóburkolással és tereprendezéssel – ez a teljes konténerház árához képest néhány százalékos megtakarítást jelent. A szerkezeti és gépészeti munkákon nem érdemes spórolni.',
+  },
+  {
+    q: 'Van garancia egy házilag épített konténerre?',
+    a: 'Nincs, vagy csak korlátozottan. Egy gyárilag gyártott, kész konténerházra viszont gyártói garanciát kap – ez a kész megoldás egyik legfontosabb előnye.',
+  },
+  {
+    q: 'Miért éri meg inkább kész konténerházat venni?',
+    a: 'A gyári gyártás garanciát, dokumentált minőséget, gyorsabb telepítést (1–3 nap) és egyszerűbb engedélyeztetést és finanszírozást biztosít, szemben a hónapokig tartó, egyedi házilagos kivitelezéssel.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Konténerház házilag – részletes útmutató', href: '/blog/kontenerhaz-epites-hazilag' },
+  { label: 'Konténerház építési engedély', href: '/blog/kontenerhoz-epitesi-engedely' },
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: 'Konténerház Építés Házilag' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['építés házilag', 'konténerház', 'DIY']}
+  summary="Konténerház részben házilag is építhető – a festés, burkolás és kertrendezés magunk is elvégezhető, de a statikai, elektromos, gáz és hőszigetelési munkákat szakemberre kell bízni. A megtakarítás így néhány százalékos, miközben a gyári garanciáról és a gyorsabb telepítésről lemond az ember."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A "házilag épített konténerház" gondolata sokakat vonz a feltételezett megtakarítás miatt. Ebben a
+    cikkben röviden összefoglaljuk, mi valósítható meg valóban házilag, és mennyibe kerül helyette egy
+    kész, gyári konténerház. A teljes, részletes útmutatót a
+    <a href="/blog/kontenerhaz-epites-hazilag">kapcsolódó cikkünkben</a> olvashatja el.
+  </p>
+
+  <h2>Mennyibe kerül egy kész, gyári konténerház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Modell</th>
+          <th>Alapterület</th>
+          <th>Ár (+ ÁFA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Manhattan</td><td>55 m²</td><td>12.790.000 Ft</td></tr>
+        <tr><td>Manhattan L</td><td>69,3 m²</td><td>13.790.000 Ft</td></tr>
+        <tr><td>Beverly</td><td>55 m²</td><td>15.090.000 Ft</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit lehet házilag megcsinálni, és mit nem?</h2>
+
+  <p>
+    Házilag jellemzően a belső festés, a padlóburkolás, a kertrendezés és a bútorozás végezhető el
+    kockázat nélkül. Az elektromos hálózat kiépítése, a gázbekötés, a statikai szerkezet módosítása és a
+    hőszigetelés/párazárás kivitelezése ugyanakkor szakembert igényel – ezek rosszul elvégezve
+    balesetveszélyesek, és nem is kerülnek biztosításba.
+  </p>
+
+  <p>
+    A reálisan elérhető megtakarítás – festéssel, burkolással, kertrendezéssel – néhány százezer forint,
+    ami a teljes konténerház árához képest néhány százalékos csökkenést jelent. A szerkezeti és gépészeti
+    munkákon spórolni hosszú távon drágábban kerülhet vissza, hibás kivitelezés esetén.
+  </p>
+
+  <h2>Kinek ajánljuk a házilagos megoldást, és kinek a készet?</h2>
+
+  <p>Házilagos munka jó választás, ha:</p>
+  <ul>
+    <li>csak a festést, burkolást vagy kertrendezést szeretné magának elvégezni egy kész szerkezeten</li>
+    <li>van ideje és gyakorlata az egyszerűbb kivitelezői munkákhoz</li>
+  </ul>
+
+  <p>A kész, gyári konténerház jobb választás, ha:</p>
+  <ul>
+    <li>fontos a gyártói garancia és a dokumentált minőség</li>
+    <li>gyors, kiszámítható telepítést szeretne (1–3 nap)</li>
+    <li>banki finanszírozást vesz igénybe – erre kész, dokumentált épületre könnyebb hitelt kapni</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Kész, garanciás konténerházat keres?
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek ajánlatot egy kész konténerházra
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { getProductsByKategoria } from '../lib/products';
+import { getCollection } from 'astro:content';
+
+const ksz = await getProductsByKategoria('konnyuszerkezetes');
+const mod = await getProductsByKategoria('modulhaz');
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Oldaltérkép' },
+];
+---
+
+<BaseLayout
+  title="Oldaltérkép | gyors-haz.hu"
+  description="A gyors-haz.hu összes oldalának listája — kategóriák, termékek, blog cikkek és információs oldalak."
+>
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <h1 class="font-sans font-extrabold text-3xl text-gray-900 mb-10">Oldaltérkép</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Termékeink -->
+      <section>
+        <h2 class="font-sans font-bold text-lg text-primary mb-4 pb-2 border-b-2 border-primary/20">
+          Termékeink
+        </h2>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/konnyuszerkezetes" class="font-semibold text-gray-800 hover:text-primary transition-colors">Könnyűszerkezetes házak (összes)</a></li>
+          {ksz.map((p) => (
+            <li class="pl-3">
+              <a href={`/konnyuszerkezetes/${p.slug}`} class="text-gray-600 hover:text-primary transition-colors">
+                → {p.nev}
+              </a>
+            </li>
+          ))}
+
+          <li class="pt-2"><a href="/modulhaz" class="font-semibold text-gray-800 hover:text-primary transition-colors">Modulházak (összes)</a></li>
+          {mod.map((p) => (
+            <li class="pl-3">
+              <a href={`/modulhaz/${p.slug}`} class="text-gray-600 hover:text-primary transition-colors">
+                → {p.nev}
+              </a>
+            </li>
+          ))}
+
+          <li class="pt-2"><a href="/kontenerhaz" class="font-semibold text-gray-800 hover:text-primary transition-colors">Konténerházak</a></li>
+        </ul>
+      </section>
+
+      <!-- Blog -->
+      <section>
+        <h2 class="font-sans font-bold text-lg text-primary mb-4 pb-2 border-b-2 border-primary/20">
+          Blog
+        </h2>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/blog" class="font-semibold text-gray-800 hover:text-primary transition-colors">Blog főoldal</a></li>
+          {posts.map((post) => (
+            <li class="pl-3">
+              <a href={`/blog/${post.id}`} class="text-gray-600 hover:text-primary transition-colors">
+                → {post.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Információk -->
+      <section>
+        <h2 class="font-sans font-bold text-lg text-primary mb-4 pb-2 border-b-2 border-primary/20">
+          Információk
+        </h2>
+        <ul class="space-y-2 text-sm">
+          {[
+            { href: '/', label: 'Főoldal' },
+            { href: '/haz-reszletre', label: 'Ház részletre és hitelre' },
+            { href: '/hitelezhetoseg', label: 'Hitelezhetőség' },
+            { href: '/konnyuszerkezetes/40-nm', label: 'Könnyűszerkezetes ház 40 m² körül' },
+            { href: '/helyszin/budapest', label: 'Budapest' },
+            { href: '/helyszin/debrecen', label: 'Debrecen' },
+            { href: '/helyszin/gyor', label: 'Győr' },
+            { href: '/helyszin/kecskemet', label: 'Kecskemét' },
+            { href: '/helyszin/szeged', label: 'Szeged' },
+            { href: '/kapcsolat', label: 'Kapcsolat / Ajánlatkérés' },
+            { href: '/impresszum', label: 'Impresszum' },
+            { href: '/adatvedelmi-tajekoztato', label: 'Adatvédelmi tájékoztató' },
+            { href: '/aszf', label: 'ÁSZF' },
+          ].map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-600 hover:text-primary transition-colors">
+                → {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,139 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Kulcsrakész Könnyűszerkezetes Ház – Mit Jelent, és Mit Tartalmaz?';
+const description =
+  'Kulcsrakész könnyűszerkezetes ház 2026-ban: mit jelent pontosan a "kulcsrakész" kifejezés, mit tartalmaz az ár, és mit nem? Áttekintés modellekkel.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Mit jelent a kulcsrakész kivitel?',
+    a: 'Azt, hogy a ház szerkezete, nyílászárói, belső burkolata és alapvető gépészete (elektromos, vízvezeték) készen áll a beköltözésre – nem csak a falak és a tető.',
+  },
+  {
+    q: 'Mit NEM tartalmaz a kulcsrakész ár?',
+    a: 'Az alapozást, a közüzemi bekötéseket és a telek előkészítését – ezeket helyi kivitelezővel koordináljuk az igény szerint.',
+  },
+  {
+    q: 'Mennyibe kerül egy kulcsrakész könnyűszerkezetes ház?',
+    a: 'Modelljeink 16.000 EUR-tól (22 m²) 43.000 EUR-ig (126 m²) terjednek, mérettől és felszereltségtől függően.',
+  },
+  {
+    q: 'Mi a különbség a kulcsrakész és a szerkezetkész kivitel között?',
+    a: 'A szerkezetkész kivitel csak a tartószerkezetet és a külső burkolatot jelenti, a belső munkák nélkül. Nálunk minden modell kulcsrakész kivitelben készül.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Gyorsház', href: '/gyorshaz-konnyuszerkezetes-haz' },
+  { label: 'Könnyűszerkezetes ház építés', href: '/konnyuszerkezetes-haz-epites' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Kulcsrakész Könnyűszerkezetes Ház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['kulcsrakész', 'könnyűszerkezetes', 'árak']}
+  summary="A kulcsrakész kivitel azt jelenti, hogy a ház szerkezete, nyílászárói, belső burkolata és alapvető gépészete készen áll a beköltözésre. Minden modellünk kulcsrakész kivitelben készül, 16.000 EUR-tól 43.000 EUR-ig."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A "kulcsrakész" kifejezést sokan hallják, de nem mindig világos, pontosan mit takar. Ebben a cikkben
+    elmagyarázzuk, mi tartozik bele, és mit kell hozzá még megrendelni.
+  </p>
+
+  <h2>Mennyibe kerül egy kulcsrakész könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Közepes modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>Nagyobb modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>Legnagyobb modell</td><td>126 m²</td><td>43.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit jelent pontosan a kulcsrakész kivitel?</h2>
+
+  <p>
+    A kulcsrakész kivitel azt jelenti, hogy a ház szerkezete (horganyzott acélváz, 10 cm hungarocell
+    szigetelés), a nyílászárók, a belső gipszkarton burkolat, valamint az elektromos és vízvezeték
+    rendszer is a szállítmány része – nem csak a nyers szerkezet.
+  </p>
+
+  <p>
+    Amit ugyanakkor nem tartalmaz: az alapozás, a közüzemi hálózatra való rákötés és a telek
+    előkészítése. Ezeket helyi kivitelezővel koordináljuk, az igény szerint.
+  </p>
+
+  <h2>Kinek ajánljuk?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>egy lépésben, minimális saját kivitelezői koordinációval szeretne beköltözhető otthont</li>
+    <li>fontos szempont a kiszámítható, előre ismert ár</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>szeretne saját maga is beavatkozni a belső munkákba a költségek csökkentése érdekében</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli egy kulcsrakész otthon?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

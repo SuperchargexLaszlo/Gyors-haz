@@ -1,0 +1,126 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Építése – A Folyamat Lépésről Lépésre';
+const description =
+  'Könnyűszerkezetes ház építésének folyamata: tervezéstől a beköltözésig. Mennyi idő alatt készül el, és milyen lépések várnak Önre?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Milyen lépésekből áll a folyamat?',
+    a: 'Ajánlatkérés és modellválasztás, tervdokumentáció és engedélyeztetés, alapozás, gyártás és szállítás, majd a helyszíni összeszerelés és átadás.',
+  },
+  {
+    q: 'Mennyi idő alatt épül fel egy könnyűszerkezetes ház?',
+    a: 'A helyszíni telepítés jellemzően kb. 1 hetet vesz igénybe. A teljes folyamat, az alapozással és a közüzemi bekötésekkel együtt, 6-8 hét körül alakul.',
+  },
+  {
+    q: 'Mikor kezdődhet az alapozás?',
+    a: 'Az engedélyeztetési eljárás (vagy egyszerűsített bejelentés) lezárása után, a gyártással párhuzamosan.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes ház építése házilag', href: '/konnyuszerkezetes-haz-epitese-hazilag' },
+  { label: 'Könnyűszerkezetes ház építési engedély', href: '/konnyuszerkezetes-haz-epitesi-engedely' },
+  { label: 'Könnyűszerkezetes ház alapozása', href: '/konnyuszerkezetes-haz-alapozasa' },
+  { label: 'Gyorsház', href: '/gyorshaz-konnyuszerkezetes-haz' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Építése' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['építés', 'folyamat', 'könnyűszerkezetes']}
+  summary="A könnyűszerkezetes ház építésének folyamata: modellválasztás, engedélyeztetés, alapozás, gyári gyártás, majd kb. 1 hetes helyszíni telepítés. A teljes folyamat 6-8 hét körül alakul."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Sokan kíváncsiak, pontosan milyen lépéseken megy keresztül egy könnyűszerkezetes ház a
+    megrendeléstől a beköltözésig. Ebben a cikkben összefoglaljuk a folyamatot.
+  </p>
+
+  <h2>Mennyibe kerül egy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Az építés folyamata lépésről lépésre</h2>
+
+  <ol>
+    <li>Modellválasztás és ajánlatkérés</li>
+    <li>Tervdokumentáció elkészítése, engedélyeztetés (vagy egyszerűsített bejelentés)</li>
+    <li>Alapozás a telken</li>
+    <li>Gyári gyártás</li>
+    <li>Szállítás és helyszíni összeszerelés (kb. 1 hét)</li>
+    <li>Közüzemi bekötések, hatósági szemle</li>
+    <li>Átadás-átvétel</li>
+  </ol>
+
+  <p>
+    A teljes folyamat – az alapozástól a kulcsátadásig – jellemzően 6-8 hét körül alakul, ami töredéke a
+    hagyományos téglaépítés idejének.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Elindítaná a folyamatot?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

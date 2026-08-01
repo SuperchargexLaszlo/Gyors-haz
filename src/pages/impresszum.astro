@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Impresszum' },
+];
+---
+
+<BaseLayout
+  title="Impresszum | gyors-haz.hu"
+  description="A gyors-haz.hu weboldal impresszuma — üzemeltető, tárhelyszolgáltató és elérhetőségi adatok."
+  noindex={false}
+>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <h1 class="font-sans font-extrabold text-3xl text-gray-900 mb-8">Impresszum</h1>
+
+    <div class="prose prose-lg max-w-none space-y-8 text-gray-700">
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">Weboldal üzemeltetője</h2>
+        <dl class="space-y-2 text-sm">
+          {[
+            { k: 'Cégnév', v: 'Instant Otthonok Kft. (placeholder)' },
+            { k: 'Székhely', v: 'XXXX Budapest, Példa utca 1. (placeholder)' },
+            { k: 'Adószám', v: '00000000-0-00 (placeholder)' },
+            { k: 'Cégjegyzékszám', v: 'Cg. 00-00-000000 (placeholder)' },
+            { k: 'E-mail', v: 'info@instantotthonok.com' },
+            { k: 'Telefon', v: '+36 70 777 8372' },
+            { k: 'Weboldal', v: 'https://gyors-haz.hu' },
+          ].map((row) => (
+            <div class="flex gap-2">
+              <dt class="w-44 shrink-0 font-medium text-gray-500">{row.k}:</dt>
+              <dd class="text-gray-800">{row.v}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">Tárhelyszolgáltató</h2>
+        <dl class="space-y-2 text-sm">
+          {[
+            { k: 'Cégnév', v: 'Netlify, Inc.' },
+            { k: 'Székhely', v: '44 Montgomery Street, Suite 300, San Francisco, California 94104, USA' },
+            { k: 'Weboldal', v: 'https://www.netlify.com' },
+          ].map((row) => (
+            <div class="flex gap-2">
+              <dt class="w-44 shrink-0 font-medium text-gray-500">{row.k}:</dt>
+              <dd class="text-gray-800">{row.v}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">Szerzői jogok</h2>
+        <p class="text-sm text-gray-600">
+          A weboldalon megjelenő tartalmak (szövegek, képek, grafikai elemek) szerzői jogi védelem alatt állnak.
+          Engedély nélküli felhasználásuk tilos. © {new Date().getFullYear()} Gyors Ház. Minden jog fenntartva.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">Felelősség kizárása</h2>
+        <p class="text-sm text-gray-600">
+          A weboldalon közzétett árak és termékadatok tájékoztató jellegűek és előzetes értesítés nélkül
+          megváltoztathatók. Az aktuális árakért és részletekért kérjen személyre szabott ajánlatot.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

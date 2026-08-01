@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getProducts } from '../../lib/products';
+
+interface CityConfig {
+  nev: string;
+  megye: string;
+  regex: string;
+  szoveg: string;
+}
+
+const cities: Record<string, CityConfig> = {
+  szeged: {
+    nev: 'Szeged',
+    megye: 'Csongrád-Csanád',
+    regex: 'Szegeden',
+    szoveg: `Szeged és a Dél-Alföld egyik legdinamikusabban fejlődő városa — és egyre több szegedi lakó dönt a hagyományos építéssel szemben a gyors, energiahatékony könnyűszerkezetes megoldások mellett. A Csongrád-Csanád megyei régióban vállaljuk a szállítást és a helyszíni összeszerlést. Szegeden és környékén saját alvállalkozói hálózatunkkal dolgozunk, akik ismerik a helyi talajviszonyokat, az engedélyezési eljárásokat és a közüzemi csatlakozási feltételeket. Ingyenes helyszíni felmérést végzünk — felvesszük a kapcsolatot az önkormányzattal és segítünk az egyszerűsített bejelentési eljárásban is.`,
+  },
+  kecskemet: {
+    nev: 'Kecskemét',
+    megye: 'Bács-Kiskun',
+    regex: 'Kecskeméten',
+    szoveg: `Kecskemét és Bács-Kiskun megye területén teljes körű kiszállítást és összeszerlést vállalunk. A Duna–Tisza közén egyre népszerűbbek a könnyűszerkezetes és modulházak — különösen tanyás, mezőgazdasági területeken, ahol a gyors felépítés és az alacsony alapozási igény komoly előny. Kecskeméten és a környező településeken ismerős partnereinkkel dolgozunk, akik segítenek a helyi adottságokhoz igazodó alapozási megoldás kiválasztásában. Helyszíni felmérés, szállítás és összeszerlés egy kézből.`,
+  },
+  gyor: {
+    nev: 'Győr',
+    megye: 'Győr-Moson-Sopron',
+    regex: 'Győrben',
+    szoveg: `Győr és az Észak-Dunántúl régiójában gyors, megbízható kiszállítást és összeszerlést kínálunk. A Győr-Moson-Sopron megyei épületek telepítésekor a helyi iparterületek és lakóövezetek specifikációit pontosan ismerjük. Győrben és a vonzáskörzetben tapasztalt alvállalkozóink végzik a helyszíni munkákat — beleértve az alapozást, a közüzemi csatlakozást és a helyi építési hatósággal való egyeztetést. A nyugat-magyarországi logisztikának köszönhetően a szállítási idő jellemzően rövidebb, mint az ország más részein.`,
+  },
+  debrecen: {
+    nev: 'Debrecen',
+    megye: 'Hajdú-Bihar',
+    regex: 'Debrecenben',
+    szoveg: `Debrecen és Hajdú-Bihar megye területén teljes körű szolgáltatással állunk rendelkezésre. Kelet-Magyarország legnagyobb városában egyre több vevőnk választ könnyűszerkezetes vagy modulházat — részben az alacsonyabb árak, részben a gyors átadási idő miatt. Debrecenben és a környező Hajdúságban saját partnereket ajánlunk az alapozáshoz és a közüzemi csatlakozáshoz. A helyi engedélyezési eljárásokban tapasztalt irodánk segít az egyszerűsített bejelentési dokumentáció elkészítésében.`,
+  },
+  budapest: {
+    nev: 'Budapest',
+    megye: 'Budapest',
+    regex: 'Budapesten',
+    szoveg: `Budapest agglomerációjában és a főváros külső kerületeiben is elérhető a kiszállítás és összeszerlés. A fővárosi és Pest megyei területeken egyre keresettebb a könnyűszerkezetes és modulházmegoldás — különösen az agglomerációs övezet falvaiban, ahol a telekárak alacsonyabbak és az építési lehetőségek szabadabbak. Budapesti partnereink és helyi alvállalkozóink gyorsan reagálnak, ismerik a fővárosi kerületek és a Pest megyei önkormányzatok eltérő építési szabályait. Ingyenes helyszíni felmérést vállalunk a Budapest vonzáskörzetében is.`,
+  },
+};
+
+export function getStaticPaths() {
+  const cityKeys = ['szeged', 'kecskemet', 'gyor', 'debrecen', 'budapest'];
+  return cityKeys.map((city) => ({ params: { city } }));
+}
+
+const { city } = Astro.params;
+const config = cities[city];
+
+if (!config) {
+  return Astro.redirect('/404');
+}
+
+const allProducts = await getProducts();
+const products = allProducts.slice(0, 6);
+
+const title = `Könnyűszerkezetes Ház ${config.nev} – Helyi Árak | gyors-haz.hu`;
+const description = `Könnyűszerkezetes és modulházak ${config.regex}. Helyszíni felmérés, szállítás a régióban. 16.000 EUR-tól. Ajánlatot kérek!`;
+const updatedDate = new Date('2026-01-01');
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Gyors Ház',
+  url: 'https://gyors-haz.hu',
+  telephone: '+36 70 777 8372',
+  email: 'info@instantotthonok.com',
+  areaServed: [
+    { '@type': 'City', name: config.nev },
+    { '@type': 'AdministrativeArea', name: config.megye },
+  ],
+  description: `Könnyűszerkezetes és modulházak szállítása és összeszerlése ${config.regex} és a ${config.megye} megyei régióban.`,
+};
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Helyszínek', href: '/helyszin' },
+  { label: config.nev },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  schema={localBusinessSchema}
+  updatedDate={updatedDate}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <section class="py-8 lg:py-12">
+      <div class="mb-2 text-sm font-medium text-accent uppercase tracking-wider">
+        {config.megye} megye
+      </div>
+      <h1 class="font-sans font-extrabold text-3xl sm:text-4xl text-gray-900 leading-tight mb-6">
+        Könnyűszerkezetes és modulházak {config.regex}
+      </h1>
+
+      <p class="text-lg text-gray-600 max-w-3xl leading-relaxed mb-10">
+        {config.szoveg}
+      </p>
+
+      <!-- Helyi előnyök -->
+      <div class="mb-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {[
+          { ikon: '📍', cim: 'Helyszíni felmérés', szoveg: `Ingyenes helyszíni felmérés ${config.regex} és környékén.` },
+          { ikon: '🚚', cim: 'Szállítás a régióban', szoveg: `Teljes kiszállítás és összeszerlés ${config.megye} megyében.` },
+          { ikon: '📋', cim: 'Engedélyezési segítség', szoveg: 'Egyszerűsített bejelentési dokumentáció elkészítése.' },
+        ].map((item) => (
+          <div class="rounded-xl bg-primary/5 p-5">
+            <div class="text-2xl mb-2">{item.ikon}</div>
+            <h3 class="font-sans font-bold text-gray-900 mb-1">{item.cim}</h3>
+            <p class="text-sm text-gray-600">{item.szoveg}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Termékek -->
+      <section class="mb-12">
+        <h2 class="font-sans font-bold text-2xl text-gray-900 mb-6">
+          Elérhető termékeink {config.regex}
+        </h2>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {products.map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
+        <div class="mt-6 flex flex-wrap gap-4">
+          <a href="/konnyuszerkezetes" class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors shadow-sm">
+            Összes könnyűszerkezetes ház →
+          </a>
+          <a href="/modulhaz" class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors shadow-sm">
+            Összes modulház →
+          </a>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="rounded-2xl bg-primary p-8 text-center text-white">
+        <h2 class="font-sans font-bold text-2xl mb-3">
+          Helyszíni felmérést kérek {config.regex}
+        </h2>
+        <p class="mb-6 opacity-90 max-w-lg mx-auto">
+          Vegye fel velünk a kapcsolatot és egyeztetünk egy ingyenes helyszíni felmérési időpontot.
+        </p>
+        <a
+          href="/ajanlatot-kerek"
+          class="inline-block rounded-xl bg-accent px-8 py-3.5 font-sans font-bold text-white hover:bg-accent-dark transition-colors shadow"
+        >
+          Ajánlatot kérek →
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

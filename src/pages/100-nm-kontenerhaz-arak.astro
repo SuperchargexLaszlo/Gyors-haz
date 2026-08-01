@@ -1,0 +1,118 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = '100 Nm Konténerház Ára – Legnagyobb Modelljeink';
+const description =
+  '100 m² körüli konténerház ára 2026-ban: legnagyobb modellünk a 90 m²-es Beverly L, 16.090.000 Ft + ÁFA. Szobaszám, terasz, mit tartalmaz az ár.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['kontenerhaz-beverly-l', 'kontenerhaz-manhattan-l', 'kontenerhaz-nordic-premium'];
+
+const faqs = [
+  {
+    q: 'Van pontosan 100 m²-es konténerházuk?',
+    a: 'Nincs, a legnagyobb modellünk a Beverly L, 90 m² alapterülettel (bruttó 89,6 m²). Ennél nagyobb, egyedi igényről ajánlatkéréskor egyeztethetünk.',
+  },
+  {
+    q: 'Hány szoba fér el a Beverly L modellben?',
+    a: '3 hálószoba és tágas nappali, rugalmasan variálható belső falakkal.',
+  },
+  {
+    q: 'Ha 100 m²-nél nagyobbra van szükségem, mi a megoldás?',
+    a: 'Érdemes megnézni a modulház kínálatunkat is, ahol akár 122 m²-es modell is elérhető.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Konténerház méretek', href: '/kontenerhaz-meretek' },
+  { label: 'Luxus mobilház', href: '/luxus-mobilhaz' },
+  { label: 'Konténerház árak – korábbi cikkünk', href: '/blog/kontenerhoz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: '100 Nm Konténerház Árak' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['100 nm', 'konténerház', 'árak']}
+  summary="A legközelebbi, 100 m² körüli modellünk a Beverly L, 90 m² alapterülettel, 16.090.000 Ft + ÁFA áron, 3 hálószobával. Pontosan 100 m²-es egyedi konfigurációról ajánlatkéréskor egyeztethetünk."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A 100 m² körüli konténerház iránti igény egyre gyakoribb, elsősorban nagycsaládosok részéről.
+    Bemutatjuk, melyik modellünk közelíti meg legjobban ezt a méretet.
+  </p>
+
+  <h2>Mennyibe kerül a legnagyobb konténerházunk?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Szobák</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Manhattan L</td><td>69,3 m²</td><td>2</td><td>13.790.000 Ft</td></tr>
+        <tr><td>Nordic Premium</td><td>68 m² + 9 m² terasz</td><td>3</td><td>25.500.000 Ft</td></tr>
+        <tr><td>Beverly L</td><td>90 m²</td><td>3</td><td>16.090.000 Ft</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit kínál a Beverly L?</h2>
+
+  <p>
+    A Beverly L a legnagyobb konténerház modellünk: 90 m² alapterületen (bruttó 89,6 m²) három
+    hálószobát, tágas nappalit és rugalmasan variálható belső falakat kínál. Ha ennél is nagyobb
+    alapterületre van szüksége, érdemes megnézni a modulház kínálatunkat, ahol 122 m²-es modell is
+    elérhető.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli a legnagyobb konténerházunk?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

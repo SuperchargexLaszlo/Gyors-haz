@@ -1,0 +1,156 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Ki Építhet Könnyűszerkezetes Házat? – Kinek Ajánljuk?';
+const description =
+  'Ki építtethet könnyűszerkezetes házat, és kinek ajánljuk? Első lakásvásárlóknak, családoknak, nyaraló-tulajdonosoknak – áttekintés 2026-ra.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Ki építtethet könnyűszerkezetes házat?',
+    a: 'Bárki, aki saját vagy jogszerűen használt telekkel rendelkezik, és a helyi építési szabályzat (HÉSZ) engedi az adott épülettípus elhelyezését. A pontos feltételeket mindig érdemes a helyi önkormányzattal előzetesen egyeztetni.',
+  },
+  {
+    q: 'Kell-e szakértelem a könnyűszerkezetes ház megrendeléséhez?',
+    a: 'Nem, a gyártás és az összeszerelés szakembereink feladata. Önnek elsősorban a telket, az engedélyeztetést és az alapozást kell rendeznie – ebben is segítünk tájékoztatással.',
+  },
+  {
+    q: 'Első lakásvásárlóként is jó választás a könnyűszerkezetes ház?',
+    a: 'Igen, a belépő szintű modelljeink (16.000 EUR-tól) megfizethető alternatívát jelentenek a hagyományos téglaépítéshez képest, gyorsabb kivitelezéssel.',
+  },
+  {
+    q: 'Építtethet-e nyugdíjas vagy kisebb háztartás könnyűszerkezetes házat?',
+    a: 'Igen, a kisebb, kompaktabb modelljeink (22–35 m²) kifejezetten egy-két fős háztartásoknak vagy nyaralóként is jó választást jelentenek.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+  { label: '80 m² könnyűszerkezetes ház', href: '/80-m2-konnyuszerkezetes-haz' },
+  { label: 'Könnyűszerkezetes ház részletre', href: '/blog/konnyuszerkezetes-haz-reszletre' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Ki Építhet Könnyűszerkezetes Házat' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['könnyűszerkezetes', 'kinek ajánljuk', 'első lakás']}
+  summary="Könnyűszerkezetes házat bárki építtethet, akinek van jogszerűen használható telke, és a helyi HÉSZ engedi az épülettípust. A modellsor 22 m²-től 126 m²-ig terjed, így egy-két fős háztartástól a nagycsaládig sokféle igényhez illeszkedik."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Sokan bizonytalanok abban, hogy egyáltalán ki építtethet könnyűszerkezetes házat – kell-e hozzá
+    különleges engedély, szaktudás vagy nagy telek. Ebben a cikkben áttekintjük, kinek jó választás ez a
+    technológia, és kinek nem feltétlenül.
+  </p>
+
+  <h2>Mennyibe kerül egy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Méretkategória</th>
+          <th>Példa modell</th>
+          <th>Ár (+ ÁFA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Belépő (22–35 m²)</td><td>22 m²</td><td>16.000 EUR-tól</td></tr>
+        <tr><td>Közepes (52–78 m²)</td><td>52 m²</td><td>22.000 EUR-tól</td></tr>
+        <tr><td>Nagy (96–126 m²)</td><td>126 m²</td><td>43.000 EUR-ig</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Ki építtethet könnyűszerkezetes házat?</h2>
+
+  <p>
+    Alapvetően bárki, akinek saját vagy jogszerűen használható telke van, és a helyi építési szabályzat
+    (HÉSZ) engedi az adott épülettípus elhelyezését. Nincs szükség építőipari szakképzettségre vagy
+    előzetes tapasztalatra – a gyártás és az összeszerelés a mi feladatunk, Önnek elsősorban a telket, az
+    engedélyeztetést és az alapozást kell rendeznie.
+  </p>
+
+  <p>
+    A modellsor 22 m²-től 126 m²-ig terjed, ezért gyakorlatilag bármilyen háztartásméretre van megoldás:
+    az egy-két fős háztartástól kezdve a nagycsaládig.
+  </p>
+
+  <h2>Kinek ajánljuk, és kinek nem?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>első lakásvásárlóként megfizethető, gyorsan felépíthető otthont keres</li>
+    <li>nyaralót vagy kerti vendégházat szeretne, kisebb alapterületen</li>
+    <li>nagycsaládosként nagyobb, akár 126 m²-es otthonra van szüksége</li>
+    <li>fontos szempont a rövid kivitelezési idő a hagyományos téglaépítéshez képest</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>a telek HÉSZ-besorolása nem teszi lehetővé az épülettípus elhelyezését</li>
+    <li>egyedi, teljesen szabadon tervezett architektúrát szeretne – ekkor egyedi tervezésű megoldás lehet a jobb út</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Megnézné, melyik modell illik az Ön helyzetéhez?
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek személyre szabott tanácsot és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

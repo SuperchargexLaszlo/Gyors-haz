@@ -1,0 +1,118 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Konténerház Belülről – Mit Tartalmaz a Belső Kivitel?';
+const description =
+  'Milyen egy konténerház belülről? Belmagasság, burkolat, fürdőszoba, konyha – modellenként bemutatjuk, mit kap a vevő.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['kontenerhaz-manhattan', 'kontenerhaz-beverly', 'kontenerhaz-nordic-premium'];
+
+const faqs = [
+  {
+    q: 'Van belső burkolat a konténerházban?',
+    a: 'A Nordic Premium modellnél igen, gyárilag beépített, festésre előkészített gipszkarton burkolattal. A Manhattan és Beverly modelleknél a belső gipszkartonozás külön tétel.',
+  },
+  {
+    q: 'Van konyha a konténerházban?',
+    a: 'A Nordic Premium modellnél igen. A Manhattan és Beverly modellek konyha nélkül készülnek alapkivitelben.',
+  },
+  {
+    q: 'Milyen a fürdőszoba felszereltsége?',
+    a: 'Minden modellnél komplett fürdőszoba jár: zuhanytálca vagy kád, mosdó és WC.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Konténerház szigetelés', href: '/kontenerhaz-szigeteles' },
+  { label: 'Konténerház méretek', href: '/kontenerhaz-meretek' },
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Konténerház árak – korábbi cikkünk', href: '/blog/kontenerhoz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: 'Konténerház Belülről' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['belső kivitel', 'konténerház', 'burkolat']}
+  summary="A konténerházak belső kivitele modellenként eltér: a Manhattan és Beverly modellek belmagassága 255 cm, komplett fürdőszobával, a Nordic Premium 280 cm belmagassággal, gyári gipszkarton burkolattal és konyhával készül."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Sokan kíváncsiak, milyen egy konténerház belülről – ebben a cikkben modellenként bemutatjuk a
+    belső kivitel jellemzőit.
+  </p>
+
+  <h2>Mennyibe kerül egy konténerház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Belmagasság</th><th>Konyha</th><th>Belső burkolat</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Manhattan</td><td>255 cm</td><td>Nem tartalmazza</td><td>Külön tétel</td></tr>
+        <tr><td>Beverly</td><td>255 cm</td><td>Nem tartalmazza</td><td>Külön tétel</td></tr>
+        <tr><td>Nordic Premium</td><td>280 cm</td><td>Tartalmazza</td><td>Gyárilag beépített</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit tartalmaz a belső kivitel?</h2>
+
+  <p>
+    Minden modellnél komplett fürdőszoba jár (zuhanytálca vagy kád, mosdó, WC) és alapvető elektromos
+    hálózat (aljzatok, kapcsolók). A Nordic Premium modell ezen felül gyárilag beépített, festésre
+    előkészített gipszkarton burkolattal és konyhával is rendelkezik – a Manhattan és Beverly
+    modelleknél ezek külön tételként rendelhetők.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Nézze meg élőben is a bemutatóudvarunkban</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek időpontot a bemutatóudvarba
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

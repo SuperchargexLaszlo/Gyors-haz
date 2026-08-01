@@ -1,0 +1,219 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Árak 2026 – 16.000 EUR-tól 43.000 EUR-ig';
+const description =
+  'Könnyűszerkezetes ház árak 2026-ban: 16.000 EUR-tól (22 m²) 43.000 EUR-ig (126 m²). Teljes modellsor, méretek, mit tartalmaz az ár.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Mennyibe kerül a legolcsóbb könnyűszerkezetes ház?',
+    a: 'A 22 m²-es belépő modellünk 16.000 EUR + ÁFA áron kapható.',
+  },
+  {
+    q: 'Mennyibe kerül a legnagyobb modell?',
+    a: 'A 126 m²-es, 4 szobás modellünk 43.000 EUR + ÁFA áron érhető el.',
+  },
+  {
+    q: 'Mit tartalmaz az ár?',
+    a: 'A horganyzott acélváz szerkezetet, 10 cm hungarocell szigetelést, háromrétegű üvegezésű nyílászárókat, belső gipszkarton burkolatot, elektromos és vízvezeték rendszert, valamint a szállítást 100 km-en belül.',
+  },
+  {
+    q: 'Mit nem tartalmaz az ár?',
+    a: 'Az alapozást, a telek előkészítését és a közüzemi bekötéseket – ezeket helyi kivitelezővel koordináljuk.',
+  },
+  {
+    q: 'Mennyi az alku lehetősége a könnyűszerkezetes ház árán?',
+    a: 'A gyárilag előre gyártott termékek ára többnyire listaáras, de bizonyos csomagkombinációk, opciók és a szállítási feltételek esetén lehet tárgyalni. Érdemes ajánlatot kérni a kapcsolat oldalunkon.',
+  },
+  {
+    q: 'Milyen garanciát kap az épületre?',
+    a: 'A szerkezeti garanciára 10 év vonatkozik. A nyílászárókra és a gépészeti elemekre 2–5 év garanciát vállalunk a gyártó feltételei szerint.',
+  },
+  {
+    q: 'Mennyibe kerül összesen, alapozással és szállítással?',
+    a: 'Egy 52 m²-es (22.000 EUR + ÁFA) modellnél hozzáadva az alapozást (~1.400.000 Ft + ÁFA) és a szállítást (100 km-en belül ingyenes), az összköltség kb. 10,2–10,6 millió Ft + ÁFA között mozog.',
+  },
+  {
+    q: 'Mi a különbség a 86 m²-es és a 87 m²-es modell között?',
+    a: 'A két modell közel azonos alapterületű, de az alaprajzi elrendezésük eltér. Az árkülönbség (32.000 vs. 34.000 EUR) a különböző belső elosztásból és kivitelből ered. Érdemes mindkét alaprajzot megnézni, mielőtt döntesz.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Acélvázas könnyűszerkezetes ház árak', href: '/acelvazas-konnyuszerkezetes-haz-arak' },
+  { label: '80 m² könnyűszerkezetes ház', href: '/80-m2-konnyuszerkezetes-haz' },
+  { label: 'Könnyűszerkezetes ház 40 nm', href: '/konnyuszerkezetes-haz-40-nm' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Árak' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['könnyűszerkezetes', 'árak', '2026']}
+  summary="A könnyűszerkezetes házaink ára 2026-ban 16.000 EUR-tól (22 m²) 43.000 EUR-ig (126 m²) terjed. Minden modell horganyzott acélvázra épül, gyárilag szigetelve, kulcsrakész kivitelben."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Az alábbiakban a teljes könnyűszerkezetes modellsor árait mutatjuk be, mérettől és felszereltségtől
+    függően.
+  </p>
+
+  <h2>Könnyűszerkezetes ház árak – teljes táblázat</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Szobák</th><th>Ár (+ ÁFA)</th><th>Nm-ár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>22 m²-es modell</td><td>22 m²</td><td>1</td><td>16.000 EUR</td><td>~727 EUR/m²</td></tr>
+        <tr><td>32 m²-es modell</td><td>32 m²</td><td>1</td><td>18.600 EUR</td><td>~581 EUR/m²</td></tr>
+        <tr><td>35 m²-es modell</td><td>35 m²</td><td>1</td><td>20.300 EUR</td><td>~580 EUR/m²</td></tr>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>2</td><td>22.000 EUR</td><td>~423 EUR/m²</td></tr>
+        <tr><td>62 m²-es modell</td><td>62 m²</td><td>2</td><td>23.000 EUR</td><td>~371 EUR/m²</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>3</td><td>31.000 EUR</td><td>~397 EUR/m²</td></tr>
+        <tr><td>86 m²-es modell</td><td>86 m²</td><td>3</td><td>32.000 EUR</td><td>~372 EUR/m²</td></tr>
+        <tr><td>87 m²-es modell</td><td>87 m²</td><td>3</td><td>34.000 EUR</td><td>~391 EUR/m²</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>3</td><td>35.000 EUR</td><td>~365 EUR/m²</td></tr>
+        <tr><td>126 m²-es modell</td><td>126 m²</td><td>4</td><td>43.000 EUR</td><td>~341 EUR/m²</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Négyzetméterár összehasonlítás</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Megoldás</th><th>Nm-ár (Ft-ban, kb.)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház (KSZ)</td><td>140.000–290.000 Ft/m²</td></tr>
+        <tr><td>Téglaház (kivitelezési ár)</td><td>450.000–700.000 Ft/m²</td></tr>
+        <tr><td>Konténerház</td><td>190.000–380.000 Ft/m²</td></tr>
+        <tr><td>Használt lakás (Budapest agglomeráció)</td><td>400.000–700.000 Ft/m²</td></tr>
+        <tr><td>Modulház (Ticab)</td><td>350.000–600.000 Ft/m²</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    A könnyűszerkezetes ház tehát a leggazdaságosabb négyzetméterenkénti árral rendelkezik, miközben
+    kulcsrakész, 4 évszakos, állandó lakhatásra alkalmas otthont kínál.
+  </p>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit tartalmaz és mit nem tartalmaz az ár?</h2>
+
+  <p>Az ár tartalmazza:</p>
+  <ul>
+    <li>Horganyzott acélváz szerkezetet</li>
+    <li>10 cm hungarocell szigetelést falban, padlóban és tetőben</li>
+    <li>Háromrétegű üvegezésű nyílászárókat</li>
+    <li>Belső gipszkarton burkolatot</li>
+    <li>Elektromos és vízvezeték rendszert</li>
+    <li>Szállítást 100 km-en belül</li>
+  </ul>
+
+  <p>Az ár nem tartalmazza:</p>
+  <ul>
+    <li>Az alapozást (kb. 1.400.000 Ft + ÁFA munkadíj, talajadottságtól függően)</li>
+    <li>A szállítást 100 km felett (kilométerdíj számítódik)</li>
+    <li>A tervdokumentációt, ha hatósági engedélyezési eljárás szükséges (kb. 2.370.000 Ft + ÁFA)</li>
+    <li>A közüzemi csatlakozást (villany, víz, szennyvíz – helyszíntől függően 500.000–2.000.000 Ft)</li>
+    <li>A teraszt, kerítést, kerti utat és egyéb terep-rendezést</li>
+    <li>A klímaberendezést (kb. 150.000–350.000 Ft)</li>
+  </ul>
+
+  <h2>Miért érdemes könnyűszerkezetes házat választani?</h2>
+
+  <p>
+    <strong>Gyorsaság:</strong> az alapozástól számítva 6–8 héten belül lakható az épület. Hagyományos
+    téglaháznál ez 12–24 hónap.
+  </p>
+
+  <p>
+    <strong>Kiszámítható ár:</strong> a gyárilag előre gyártott elemek miatt az ár nem változik a gyártás
+    közben. Nincs meglepetés, nincs utólagos pótmunka.
+  </p>
+
+  <p>
+    <strong>Energiahatékonyság:</strong> a 10 cm-es hungarocell szigetelés és a háromrétegű ablakok
+    esetén az épület energiavesztesége minimális. Jó energetikai besorolás (BB, esetleg AA) érhető el.
+  </p>
+
+  <p>
+    <strong>Tartósság:</strong> a galvanizált acélváz és a minőségi szendvicspanel évtizedekre szóló
+    tartósságot biztosít. A gyártó 10 éves szerkezeti garanciát vállal.
+  </p>
+
+  <h2>Hitelre is megvehető?</h2>
+
+  <p>
+    Igen, bankfüggetlen tanácsadónkon keresztül személyi kölcsön, CSOK Plusz, babaváró hitel vagy
+    zöldhitel formájában is finanszírozható. Bővebb információ a
+    <a href="/haz-reszletre">részletre vásárlás oldalunkon</a>.
+  </p>
+
+  <h2>Kinek melyik modell ajánlott?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>egy-két fős háztartásként a 22-35 m²-es modellek illenek Önhöz</li>
+    <li>családosként az 52-96 m²-es modellek nyújtanak elegendő teret</li>
+    <li>nagycsaládosként a 126 m²-es modell a legjobb választás</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli egy könnyűszerkezetes ház?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

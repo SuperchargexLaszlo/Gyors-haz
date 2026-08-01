@@ -1,0 +1,134 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = '50 m² Könnyűszerkezetes Ház Ára 2026 – 22.000 EUR-tól';
+const description =
+  '50 m² körüli könnyűszerkezetes ház ára 2026-ban: a legközelebbi modellünk 52 m², 22.000 EUR + ÁFA. Szobaszám, terasz, mit tartalmaz az ár.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-35m2', 'konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-62m2'];
+
+const faqs = [
+  {
+    q: 'Van pontosan 50 m²-es modelljük?',
+    a: 'A legközelebbi méretünk az 52 m²-es modell, amely 22.000 EUR + ÁFA áron kapható. Ha pontosan 50 m²-re van szüksége, egyedi konfigurációról ajánlatkéréskor egyeztethetünk.',
+  },
+  {
+    q: 'Hány szoba fér el 50 m² körül?',
+    a: 'Az 52 m²-es modellünkben 2 szoba, konyha és fürdőszoba fér el, 10 m²-es terasszal.',
+  },
+  {
+    q: 'Kell-e engedély egy 50 m² körüli könnyűszerkezetes házhoz?',
+    a: 'A 300 m² alatti lakóépületeknél jellemzően egyszerűsített bejelentési eljárás elegendő, de a helyi HÉSZ előírásait mindig egyeztetni kell az önkormányzattal.',
+  },
+  {
+    q: 'Hitelre is megvehető?',
+    a: 'Igen, bankfüggetlen tanácsadónk segít megtalálni a legkedvezőbb finanszírozási konstrukciót.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Kis könnyűszerkezetes házak', href: '/kis-konnyuszerkezetes-hazak' },
+  { label: '80 m² könnyűszerkezetes ház', href: '/80-m2-konnyuszerkezetes-haz' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: '50 m² Könnyűszerkezetes Ház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['50 m2', 'könnyűszerkezetes ház', 'árak']}
+  summary="A legközelebbi modellünk az 52 m²-es könnyűszerkezetes ház, 22.000 EUR + ÁFA áron, 2 szobával, konyhával és 10 m²-es terasszal. Pontosan 50 m²-es egyedi konfigurációról ajánlatkéréskor egyeztethetünk."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Az 50 m² körüli alapterület kompakt, mégis teljes értékű otthont jelent egy-két fős háztartás vagy
+    kisebb család számára. Nézzük meg, milyen modellünk közelíti meg legjobban ezt a méretet.
+  </p>
+
+  <h2>Mennyibe kerül egy 50 m² körüli könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Szobák</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>35 m²-es modell</td><td>35 m²</td><td>1</td><td>20.300 EUR</td></tr>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>2</td><td>22.000 EUR</td></tr>
+        <tr><td>62 m²-es modell</td><td>62 m²</td><td>2</td><td>23.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit kínál az 52 m²-es modell?</h2>
+
+  <p>
+    A legközelebbi modellünk 52 m² alapterületen 2 szobát, konyhát, fürdőszobát és 10 m²-es fedett
+    teraszt kínál. Az ár tartalmazza a horganyzott acélváz szerkezetet, a 10 cm hungarocell szigetelést,
+    a háromrétegű üvegezésű nyílászárókat és a belső gipszkarton burkolatot.
+  </p>
+
+  <h2>Kinek ajánljuk?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>egy-két fős háztartásként kompakt, önálló otthont keres</li>
+    <li>nyaralóként vagy kerti vendégházként szeretné használni</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>3+ fős családként nagyobb alapterületre van szüksége – ekkor a 78 m²-es vagy nagyobb modelljeink illenek jobban</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli egy 50 m² körüli ház?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

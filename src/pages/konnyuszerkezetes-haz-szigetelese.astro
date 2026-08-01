@@ -1,0 +1,135 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Szigetelése – Rétegrend Belül és Kívül';
+const description =
+  'Könnyűszerkezetes ház szigetelése: fal, tető és padló rétegrendje, belső és külső oldal. Mit tartalmaz gyárilag az ár, és mire figyeljen vásárlás előtt?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Milyen vastag a könnyűszerkezetes ház szigetelése?',
+    a: '10 cm hungarocell szigetelés van a falakban, a padlóban és a tetőben egyaránt – ez gyárilag, a szállítmány részeként épül be.',
+  },
+  {
+    q: 'Van különbség a belső és külső szigetelés között?',
+    a: 'A szigetelés a fal rétegrendjének része (nem külön belső/külső réteg), a belső oldalt gipszkarton burkolat zárja, ami festésre vagy csempézésre kész.',
+  },
+  {
+    q: 'Elég a 10 cm hungarocell a téli használathoz?',
+    a: 'Igen, ez a vastagság, kiegészülve a háromrétegű üvegezésű nyílászárókkal, a gyárilag téliesített, négy évszakos kivitel alapja.',
+  },
+  {
+    q: 'Utólag bővíthető a szigetelés?',
+    a: 'Igen, külső dryvit vagy belső gipszkartonozás formájában kiegészíthető – ennek munkadíja jellemzően kb. 10.000 Ft/m² + anyag.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes fal', href: '/konnyuszerkezetes-fal' },
+  { label: 'Könnyűszerkezetes födém', href: '/konnyuszerkezetes-fodem' },
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Teljes bekerülési költség – konténerház', href: '/teliesitett-kontenerhaz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Szigetelése' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['szigetelés', 'rétegrend', 'könnyűszerkezetes']}
+  summary="A könnyűszerkezetes házaink fala, teteje és padlója gyárilag 10 cm hungarocell szigeteléssel készül, háromrétegű üvegezésű nyílászárókkal kiegészítve. Ez alapfelszereltség, nem külön extra – ez teszi lehetővé a négy évszakos használatot."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A szigetelés minősége határozza meg, hogy egy könnyűszerkezetes ház valóban négy évszakosan
+    használható-e. Ebben a cikkben összefoglaljuk, mit tartalmaz gyárilag a szigetelés, és mire
+    érdemes figyelni.
+  </p>
+
+  <h2>Mennyibe kerül egy jól szigetelt könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit tartalmaz a szigetelés belül és kívül?</h2>
+
+  <p>
+    A fal, a tető és a padló rétegrendjében egyaránt 10 cm hungarocell szigetelés van, amelyet belül
+    gipszkarton burkolat zár le. A nyílászárók háromrétegű üvegezésűek. Ez a rétegrend gyárilag, a
+    szállítmány részeként épül be – nem utólag hozzáadandó extra.
+  </p>
+
+  <p>
+    Ha valaki a szigetelést tovább szeretné növelni (pl. külső dryvit réteggel), ez utólagos, egyedi
+    tétel, amelynek munkadíja jellemzően kb. 10.000 Ft/m² + anyag.
+  </p>
+
+  <h2>Kinek fontos ez a téma?</h2>
+
+  <p>Érdemes elolvasni, ha:</p>
+  <ul>
+    <li>egész éves, téli használatra tervezi a házat</li>
+    <li>szeretné pontosan tudni, mi tartozik a gyári alapkivitelbe</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a szigetelésről" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kérdése van a szigetelésről?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek szakmai tájékoztatást és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

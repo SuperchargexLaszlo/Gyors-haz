@@ -1,0 +1,126 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Hitel – Finanszírozási Lehetőségek 2026';
+const description =
+  'Könnyűszerkezetes ház hitelre: milyen finanszírozási konstrukciók érhetők el 2026-ban? Példaszámítás, önerő, törlesztőrészlet.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Lehet-e könnyűszerkezetes házat hitelre venni?',
+    a: 'Igen, bankfüggetlen tanácsadónk segítségével személyi kölcsön, babaváró hitel, CSOK vagy más konstrukció keretében is finanszírozható.',
+  },
+  {
+    q: 'Mekkora önerő szükséges?',
+    a: 'Ez konstrukciónként eltérő, jellemzően kb. 30% önerővel érdemes számolni – de a pontos feltételekről bankfüggetlen tanácsadónk ad tájékoztatást.',
+  },
+  {
+    q: 'Mennyi lehet a havi törlesztő egy 22.000 EUR-os háznál?',
+    a: '30% önerővel (~2,6 millió Ft), 15 éves futamidőn a havi törlesztő nagyjából 50.000–70.000 Ft körül alakulhat a piaci kamatoktól függően.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes ház részletre', href: '/blog/konnyuszerkezetes-haz-reszletre' },
+  { label: 'Mobilház árak', href: '/mobilhaz-arak' },
+  { label: 'Részletre vásárlás', href: '/haz-reszletre' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Hitel' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['hitel', 'finanszírozás', 'könnyűszerkezetes']}
+  summary="Könnyűszerkezetes ház hitelre is megvásárolható: bankfüggetlen tanácsadónk segít megtalálni a legkedvezőbb konstrukciót (személyi kölcsön, babaváró, CSOK). Egy 22.000 EUR-os háznál 30% önerővel a havi törlesztő 50.000–70.000 Ft körül alakulhat."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A könnyűszerkezetes ház vételára hitelből is finanszírozható. Ebben a cikkben bemutatjuk a
+    lehetőségeket és egy hozzávetőleges példaszámítást.
+  </p>
+
+  <h2>Mennyibe kerül egy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Milyen finanszírozási lehetőségek vannak?</h2>
+
+  <p>
+    Bankfüggetlen tanácsadónk segít megtalálni a legkedvezőbb konstrukciót: személyi kölcsön, babaváró
+    hitel, CSOK vagy más lehetőség is szóba jöhet. Egy 22.000 EUR-os (52 m²-es) ház esetén 30% önerővel
+    (~2,6 millió Ft), 15 éves futamidőn a havi törlesztő nagyjából 50.000–70.000 Ft körül alakulhat a
+    jelenlegi piaci kamatokkal – ez sok esetben kevesebb, mint egy hasonló méretű lakás bérleti díja.
+  </p>
+
+  <h2>Kinek ajánljuk a hiteles konstrukciót?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>rendelkezik legalább 30%-os önerővel</li>
+    <li>stabil, hosszú távú jövedelemmel tervezhet</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a finanszírozásról" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Megnézné a finanszírozási lehetőségeket?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek finanszírozási tanácsadást és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

@@ -1,0 +1,126 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Mobilház Szerkezete – Könnyűszerkezetes, Modulház, Konténerház';
+const description =
+  'A mobilház szerkezete kategóriánként eltérő: könnyűszerkezetes acélváz, modulház szendvicspanel, konténerház acél ST37 váz. Összehasonlítjuk a három típust.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'kontenerhaz-manhattan', 'modulhaz-amsterdam'];
+
+const faqs = [
+  {
+    q: 'Milyen szerkezetből épül a könnyűszerkezetes ház?',
+    a: 'Horganyzott acélvázra, 10 cm hungarocell szigeteléssel és belső gipszkarton burkolattal.',
+  },
+  {
+    q: 'Milyen szerkezetből épül a konténerház?',
+    a: 'Acél ST37 vázszerkezetre, polisztirol szigeteléssel (a Nordic Premium modellnél vastagabb szigeteléssel és belső gipszkartonnal).',
+  },
+  {
+    q: 'Milyen szerkezetből épül a modulház?',
+    a: 'Moduláris acélváz szerkezetre és hőszigetelt szendvicspanel falakra és tetőre.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Acélvázas könnyűszerkezetes ház árak', href: '/acelvazas-konnyuszerkezetes-haz-arak' },
+  { label: 'Könnyűszerkezetes fal', href: '/konnyuszerkezetes-fal' },
+  { label: 'Modulház árak', href: '/modulhaz-arak' },
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Mobilház Szerkezete' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="altalanos"
+  tags={['mobilház', 'szerkezet', 'acélváz', 'szendvicspanel']}
+  summary="A mobilház gyűjtőfogalom három, szerkezetileg eltérő technológiát takar: a könnyűszerkezetes ház horganyzott acélvázra és hungarocell szigetelésre épül, a modulház szendvicspanel falakra, a konténerház pedig acél ST37 vázszerkezetre."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A "mobilház" gyűjtőfogalom alatt három, szerkezetileg eltérő technológia húzódik meg nálunk.
+    Bemutatjuk, miben különböznek.
+  </p>
+
+  <h2>Mennyibe kerül egy mobilház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Típus</th><th>Mérettartomány</th><th>Kezdőár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház</td><td>22–126 m²</td><td>16.000 EUR + ÁFA</td></tr>
+        <tr><td>Modulház</td><td>15–122 m²</td><td>ár kérésre</td></tr>
+        <tr><td>Konténerház</td><td>55–90 m²</td><td>12.790.000 Ft + ÁFA</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek típusonként</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>A három szerkezeti technológia</h2>
+
+  <p>
+    A <strong>könnyűszerkezetes ház</strong> horganyzott acélvázra épül, 10 cm hungarocell szigeteléssel
+    a falban, a padlóban és a tetőben, belső gipszkarton burkolattal és háromrétegű üvegezésű
+    nyílászárókkal.
+  </p>
+
+  <p>
+    A <strong>modulház</strong> moduláris acélváz szerkezetre és hőszigetelt szendvicspanel falakra és
+    tetőre épül – ez teszi lehetővé a gyári, teljesen befejezett modulok helyszíni összeszerelését.
+  </p>
+
+  <p>
+    A <strong>konténerház</strong> acél ST37 vázszerkezetre épül, polisztirol szigeteléssel; a prémium
+    Nordic Premium modellnél ez kiegészül vastagabb szigeteléssel és belső gipszkartonozással.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a szerkezetről" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Melyik szerkezet illik az Ön igényéhez?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott tanácsot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

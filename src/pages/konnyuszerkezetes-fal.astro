@@ -1,0 +1,140 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Fal – Felépítés és Rétegrend';
+const description =
+  'Könnyűszerkezetes fal felépítése és rétegrendje: horganyzott acélváz, hungarocell szigetelés, gipszkarton burkolat. Építhető-e házilag?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Miből épül fel egy könnyűszerkezetes fal?',
+    a: 'Horganyzott acélváz szerkezetből, 10 cm hungarocell szigetelésből és belső gipszkarton burkolatból. A nyílászárók háromrétegű üvegezésűek.',
+  },
+  {
+    q: 'Építhető házilag egy könnyűszerkezetes fal?',
+    a: 'A gyári szerkezet összeszerelése szakértelmet igényel, ezért ezt nem javasoljuk házilagos kivitelezésre. A belső festés és a burkolás egyes elemei viszont házilag is elvégezhetők.',
+  },
+  {
+    q: 'Milyen vastag a fal szigetelése?',
+    a: 'A falakban 10 cm hungarocell szigetelés van, ami gyárilag, a szerkezet részeként épül be.',
+  },
+  {
+    q: 'Milyen belmagasságot biztosít a fal szerkezete?',
+    a: '280 cm belmagasságot, ami az árkategóriában ritkán elérhető, tágas belső teret ad.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes födém', href: '/konnyuszerkezetes-fodem' },
+  { label: 'Acélvázas könnyűszerkezetes ház árak', href: '/acelvazas-konnyuszerkezetes-haz-arak' },
+  { label: 'Könnyűszerkezetes ház szigetelése', href: '/konnyuszerkezetes-haz-szigetelese' },
+  { label: 'Könnyűszerkezetes ház építés', href: '/konnyuszerkezetes-haz-epites' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Fal' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['fal', 'rétegrend', 'könnyűszerkezetes']}
+  summary="A könnyűszerkezetes fal horganyzott acélváz szerkezetre, 10 cm hungarocell szigetelésre és belső gipszkarton burkolatra épül, háromrétegű üvegezésű nyílászárókkal és 280 cm belmagassággal. A szerkezet összeszerelése szakértelmet igényel."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A könnyűszerkezetes fal felépítése határozza meg a ház tartósságát, szigetelését és belső komfortját.
+    Ebben a cikkben bemutatjuk, miből épül fel, és mit lehet, illetve nem lehet rajta házilag módosítani.
+  </p>
+
+  <h2>Mennyibe kerül egy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>A könnyűszerkezetes fal rétegrendje</h2>
+
+  <p>
+    A fal alapja a horganyzott acélváz, amely nem korhad és nem rothad. Erre épül a 10 cm hungarocell
+    szigetelés, majd belül a gipszkarton burkolat, amely azonnal festésre vagy csempézésre kész. A
+    nyílászárók háromrétegű üvegezésűek, a belmagasság minden modellnél 280 cm.
+  </p>
+
+  <p>
+    A gyári szerkezet összeszerelése szakértelmet igényel, ezért ezt nem javasoljuk házilagos
+    kivitelezésre. A belső festés, a burkolás egyes elemei és a bútorozás viszont házilag is elvégezhető –
+    hasonlóan ahhoz, ahogy ezt a konténerházaknál is összefoglaltuk.
+  </p>
+
+  <h2>Kinek fontos ez a téma?</h2>
+
+  <p>Érdemes elolvasni, ha:</p>
+  <ul>
+    <li>szakmai részletekre kíváncsi vásárlás előtt</li>
+    <li>tervező mérnökkel egyeztet a dokumentációról</li>
+  </ul>
+
+  <p>Kevésbé releváns, ha:</p>
+  <ul>
+    <li>elsősorban az árakra és a méretekre kíváncsi – ehhez a könnyűszerkezetes ház árak cikkünk illik jobban</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kérdése van a szerkezetről?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek szakmai tájékoztatást és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

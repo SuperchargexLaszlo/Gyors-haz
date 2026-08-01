@@ -1,0 +1,160 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Konténerház 60 Nm – Manhattan L és Nordic Premium';
+const description =
+  'Konténerház 60 nm körül: Manhattan L (69,3 m², 13,79M Ft) és Nordic Premium (68 m² + terasz, 25,5M Ft) összehasonlítása, rövid áttekintés.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['kontenerhaz-manhattan-l', 'kontenerhaz-nordic-premium', 'kontenerhaz-beverly'];
+
+const faqs = [
+  {
+    q: 'Mennyibe kerül egy 60 nm körüli konténerház?',
+    a: 'A Manhattan L 13.790.000 Ft + ÁFA, a Nordic Premium 25.500.000 Ft + ÁFA.',
+  },
+  {
+    q: 'Mi a különbség a két modell között?',
+    a: 'A Manhattan L belépő szintű, acél homlokzattal, 255 cm belmagassággal. A Nordic Premium prémium kivitelű, fa homlokzattal, 280 cm belmagassággal, 3 rétegű ablakokkal és belső gipszkartonnal.',
+  },
+  {
+    q: 'Kell-e engedély egy 60 nm körüli konténerházhoz?',
+    a: 'A legtöbb esetben egyszerűsített bejelentési eljárás elegendő, mivel a 300 m² alatti lakóépületek ide tartoznak. Bővebben a konténerház építési engedélyről szóló cikkünkben olvashat.',
+  },
+  {
+    q: 'Mi a különbség a nettó és bruttó alapterület között?',
+    a: 'A bruttó alapterület a külső falak kerületén belüli teljes terület – ez a Manhattan L esetén 69,3 m². A nettó alapterület a belső falak között ténylegesen használható tér, ami 37,6 m². A falak vastagsága, a szerkezeti elemek és a szigetelés foglalják el a különbséget. Ez jellemző minden konténerháznál.',
+  },
+  {
+    q: 'Mennyi idő alatt szállítják ki a konténerházat?',
+    a: 'A megrendeléstől a kulcsátadásig – a gyártással, szállítással, alapozással és helyszíni összeszereléssel együtt – jellemzően 4–6 hét telik el, de ez egyedi igény és a telek adottságai szerint eltérhet.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: '70 nm konténerház', href: '/70-nm-kontenerhaz' },
+  { label: 'Konténerház alapozás', href: '/kontenerhaz-alapozas' },
+  { label: 'Konténerház építési engedély', href: '/blog/kontenerhoz-epitesi-engedely' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: 'Konténerház 60 Nm' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['60 nm', 'konténerház', 'Manhattan', 'Nordic']}
+  summary="A 60 nm körüli konténerházaknál két modell jön szóba: a Manhattan L (69,3 m², 13.790.000 Ft) belépő szintű, gazdaságos megoldás, a Nordic Premium (68 m² + 9 m² terasz, 25.500.000 Ft) pedig prémium kivitelű, vastagabb szigeteléssel."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A 60 nm körüli alapterület az az édes pont, ahol az ár és a lakhatóság egyensúlya a legjobb – egy
+    2-3 fős család kényelmesen elfér, a fenntartási költségek pedig jóval alacsonyabbak, mint egy nagyobb
+    otthonnál. Nálunk két modell jön szóba ebben a mérettartományban.
+  </p>
+
+  <h2>Mennyibe kerül egy 60 nm körüli konténerház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Belmagasság</th><th>Gipszkarton</th><th>Homlokzat</th><th>Terasz</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Manhattan L</td><td>69,3 m² (bruttó)</td><td>255 cm</td><td>Nem tartalmaz</td><td>Acél</td><td>2 m² fedett</td><td>13.790.000 Ft</td></tr>
+        <tr><td>Nordic Premium</td><td>68 m² (bruttó)</td><td>280 cm</td><td>Tartalmaz</td><td>Fa (skandináv)</td><td>9 m² fedett</td><td>25.500.000 Ft</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Manhattan L – 69 m²-es konténerház</h2>
+
+  <p>
+    A Manhattan L bruttó 69,3 m²-es, nettó 37,6 m²-es alapterülettel rendelkezik. Az L alakú elrendezés
+    lehetővé teszi, hogy a lakótér és a kiszolgálóterek (fürdőszoba, előtér) ne egymás rovására jöjjenek
+    létre. Az ár tartalmazza az acélváz szerkezetet és homlokzatburkolatot, a szállítást 100 km-en belül,
+    a helyszíni összeszerelést, a padlószigetelést, a 2 méteres fedett teraszt, az elektromos hálózatot
+    és a fürdőszobát. Nem tartalmazza az alapozást (kb. 1.400.000 Ft + ÁFA munkadíj), a belső gipszkarton
+    burkolatot és a külső dryvit vakolatot. Belmagassága 255 cm.
+  </p>
+
+  <h2>Nordic Premium – 68 m² + 9 m² terasz</h2>
+
+  <p>
+    Ha a dizájn és a minőség az elsődleges szempont, a Nordic Premium más kategóriát képvisel: skandináv
+    stílusú fahomlokzat, 280 cm-es belmagasság és háromrétegű ablakok. Az ár tartalmazza a fa
+    homlokzatburkolatot, a háromrétegű hőszigetelt ablakokat, a belső gipszkarton burkolatot (ez a
+    Manhattan L árában nem szerepel), a 9 m²-es fedett teraszt, a teljes elektromos és vízvezeték
+    rendszert, valamint a berendezett fürdőszobát.
+  </p>
+
+  <h2>Melyiket válasszam?</h2>
+
+  <p>
+    Ha a budget az elsődleges szempont, és az extra munkálatokat (gipszkarton, dryvit) helyi
+    kivitelezőkkel oldanád meg, a Manhattan L kiváló ár-érték arányú választás. Ha prémium minőséget,
+    hosszú távú energiahatékonyságot és kész, visszafogottan elegáns megjelenést keresel, a Nordic
+    Premium az a beruházás, amely hosszabb távon is megőrzi az értékét. A döntésnél érdemes figyelembe
+    venni a telek méretét és a helyszín éghajlatát – a Nordic vastagabb szigetelése hidegebb vidéken
+    különösen előnyös.
+  </p>
+
+  <h2>Engedélyezés és alapozás 60 nm körül</h2>
+
+  <p>
+    A 60-70 nm-es konténerházakhoz Magyarországon általában egyszerűsített bejelentési eljárás
+    szükséges, ami jóval gyorsabb és olcsóbb a teljes építési engedélynél – a pontos feltételek
+    helységenként eltérhetnek, ezért a helyi építéshatóságnál mindig érdemes előzetesen egyeztetni.
+    Az alapozás költsége kb. 1.400.000 Ft + ÁFA munkadíj, amit a ház megrendelésével párhuzamosan
+    célszerű elvégeztetni, hogy az elkészült szerkezet azonnal a helyére kerülhessen. Részletek a
+    <a href="/kontenerhaz-alapozas">konténerház alapozás</a> cikkünkben.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli egy 60 nm körüli konténerház?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

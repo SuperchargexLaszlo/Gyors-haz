@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /koszonet/
+Sitemap: https://gyors-haz.hu/sitemap-index.xml

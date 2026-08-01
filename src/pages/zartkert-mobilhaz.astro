@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Mobilház Zártkertben – Mire Figyeljen?';
+const description =
+  'Elhelyezhető-e mobilház zártkerti telken? A zártkert speciális besorolása miatt a szabályok eltérhetnek a belterületi lakóingatlanokétól – amit tudni érdemes.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'konnyuszerkezetes-haz-35m2', 'kontenerhaz-manhattan'];
+
+const faqs = [
+  {
+    q: 'Lehet mobilházat zártkertbe helyezni?',
+    a: 'Ez a telek pontos besorolásától és a helyi HÉSZ előírásaitól függ – a zártkerti ingatlanok gyakran eltérő szabályok alá esnek, mint a belterületi lakótelkek. Mindig érdemes előzetesen egyeztetni a helyi önkormányzattal.',
+  },
+  {
+    q: 'Lakhat is valaki állandó jelleggel egy zártkerti mobilházban?',
+    a: 'Ez a telek besorolásától függ, és nem minden zártkerti telek alkalmas állandó lakhatásra – ezt a HÉSZ és az ingatlan-nyilvántartási adatok alapján kell tisztázni, vásárlás/telepítés előtt.',
+  },
+  {
+    q: 'Kell-e engedély zártkerti telepítéshez?',
+    a: 'Igen, a bejelentési vagy engedélyezési kötelezettség zártkertben is fennáll – a pontos eljárást a telek besorolása határozza meg.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+  { label: 'Mobilház engedély nélkül', href: '/mobilhaz-engedely-nelkul' },
+  { label: 'Konténerház építési engedély – részletes útmutató', href: '/blog/kontenerhoz-epitesi-engedely' },
+  { label: 'Kis könnyűszerkezetes házak', href: '/kis-konnyuszerkezetes-hazak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Mobilház Zártkertben' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="altalanos"
+  tags={['zártkert', 'engedély', 'mobilház']}
+  summary="A zártkerti telkek gyakran eltérő szabályok alá esnek, mint a belterületi lakótelkek – nem minden zártkerti ingatlan alkalmas állandó lakhatásra. A pontos besorolást és a HÉSZ előírásait mindig a helyi önkormányzatnál kell ellenőrizni."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A zártkert speciális ingatlan-besorolás Magyarországon, amely eltérő szabályokkal járhat egy
+    mobilház elhelyezésénél. Ebben a cikkben összefoglaljuk, mire érdemes figyelni.
+  </p>
+
+  <h2>Mennyibe kerül egy mobilház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Típus</th><th>Mérettartomány</th><th>Kezdőár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház</td><td>22–126 m²</td><td>16.000 EUR + ÁFA</td></tr>
+        <tr><td>Konténerház</td><td>55–90 m²</td><td>12.790.000 Ft + ÁFA</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott, kompakt modellek zártkerti használatra</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mire figyeljen zártkerti telepítésnél?</h2>
+
+  <p>
+    A zártkerti ingatlanok besorolása (pl. mezőgazdasági, kertes) eltérhet a belterületi lakótelkekétől,
+    és nem minden zártkerti telek alkalmas állandó lakhatásra. A pontos szabályokat – beleértve azt is,
+    hogy szükséges-e átminősítés, és milyen bejelentési vagy engedélyezési eljárás vonatkozik a telekre
+    – mindig a helyi önkormányzatnál vagy a Lechner Tudásközpont térképein érdemes ellenőrizni, vásárlás
+    vagy telepítés előtt.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Zártkerti telepítést tervez?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek egyedi tájékoztatást és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

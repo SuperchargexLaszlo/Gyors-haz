@@ -1,0 +1,200 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = '80 M2 Könnyűszerkezetes Ház Ára 2026 – 31.000 EUR-tól';
+const description =
+  '80 m² körüli könnyűszerkezetes ház ára 2026-ban: 78 m² (31.000 EUR) és 86 m² (32.000 EUR) modellek. Alaprajz, szobaszám, mit tartalmaz az ár.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-86m2', 'konnyuszerkezetes-haz-87m2'];
+
+const faqs = [
+  {
+    q: 'Mennyibe kerül egy 80 m²-es könnyűszerkezetes ház?',
+    a: 'A legközelebbi modelljeink a 78 m²-es (31.000 EUR + ÁFA) és a 86 m²-es (32.000 EUR + ÁFA). Mindkettő tartalmazza a teljes szerkezetet, nyílászárókat, belső burkolatot és az alapvető gépészetet.',
+  },
+  {
+    q: 'Hány szoba fér el 80 m²-en?',
+    a: 'A 78 m²-es modellünkben 3 szoba, a 86 m²-esben szintén 3 szoba van, mindkettő konyhával és fürdőszobával.',
+  },
+  {
+    q: 'Kell-e engedély egy 80 m² körüli könnyűszerkezetes házhoz?',
+    a: 'A 300 m² alatti lakóépületeknél jellemzően egyszerűsített bejelentési eljárás elegendő, de a helyi HÉSZ előírásait mindig egyeztetni kell az önkormányzattal.',
+  },
+  {
+    q: 'Hitelre is megvehető egy 80 m²-es könnyűszerkezetes ház?',
+    a: 'Igen, bankfüggetlen tanácsadónk segít megtalálni a legkedvezőbb finanszírozási konstrukciót. Részletek a részletre vásárlás oldalunkon.',
+  },
+  {
+    q: 'Milyen gyorsan épül fel egy 80 m²-es könnyűszerkezetes ház?',
+    a: 'A gyártás és szállítás után a helyszíni telepítés kb. 1 hét. A teljes folyamat – a megrendeléstől a beköltözésig – az alapozással és a közüzemi bekötésekkel együtt általában 4-6 hónap.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Könnyűszerkezetes ház alapozása', href: '/konnyuszerkezetes-haz-alapozasa' },
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: '80 M2 Könnyűszerkezetes Ház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['80 m2', 'könnyűszerkezetes ház', 'modellek', 'árak']}
+  summary="A 80 m² körüli könnyűszerkezetes házaink – a 78 m²-es (31.000 EUR) és a 86 m²-es (32.000 EUR) modell – mindkettő 3 szobás, konyhával és fürdőszobával, és teljes egészében gyárilag szigetelt, 4 évszakos kivitelben készül."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A 80 m² körüli alapterület sok 3-4 fős család számára az optimális méret: elegendő tér mindenkinek,
+    de nem aránytalanul nagy a fenntartási költség. Nézzük meg, milyen modellek jönnek szóba ebben a
+    mérettartományban.
+  </p>
+
+  <h2>Mennyibe kerül egy 80 m² körüli könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Modell</th>
+          <th>Alapterület</th>
+          <th>Szobák</th>
+          <th>Terasz</th>
+          <th>Ár (+ ÁFA)</th>
+          <th>Nm-ár</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>3</td><td>14 m²</td><td>31.000 EUR</td><td>~397 EUR/m²</td></tr>
+        <tr><td>86 m²-es modell</td><td>86 m²</td><td>3</td><td>16 m²</td><td>32.000 EUR</td><td>~372 EUR/m²</td></tr>
+        <tr><td>87 m²-es modell</td><td>87 m²</td><td>3</td><td>16 m²</td><td>34.000 EUR</td><td>~391 EUR/m²</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Látható, hogy a 86 m²-es modell négyzetméterára alacsonyabb a 78 m²-esnél – a nagyobb ház olcsóbb
+    egységáron jön ki, ami a legtöbb könnyűszerkezetes háznál megfigyelhető összefüggés.
+  </p>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>78 m²-es és 86 m²-es modellünk részletesen</h2>
+
+  <p>
+    A <a href="/konnyuszerkezetes/konnyuszerkezetes-haz-78m2">78 m²-es modellünk</a> kiegyensúlyozott
+    alaprajzon kínál teljes lakhatóságot: 3 szoba, nappali-étkező-konyha egység, fürdőszoba és egy 14
+    m²-es fedett terasz – ami nyáron tulajdonképpen egy plusz szobát jelent a szabadban. Ideális azok
+    számára, akik maximális alapterületet szeretnének elfogadható áron.
+  </p>
+
+  <p>
+    A <a href="/konnyuszerkezetes/konnyuszerkezetes-haz-86m2">86 m²-es modellünk</a> valamivel nagyobb
+    alapterületen kínál ugyanannyi, 3 szobás elrendezést, 16 m²-es terasszal – ez döntő különbség lehet,
+    ha az egyik szobát dolgozószobának szánnád, vagy ha egyszerűen több mozgásteret szeretnél ugyanannyi
+    helyiségben. A négyzetméterenkénti árkülönbség a két modell között minimális, így a 86 m²-es
+    voltaképpen az egyik legjobb ár-alapterület arányú modellünk.
+  </p>
+
+  <h2>Miért jó méret a 80 m² egy kiscsaládnak?</h2>
+
+  <p>
+    Egy 3-4 fős család számára a 80 m² körüli alapterület jellemzően kényelmes teret ad: két-három
+    hálószoba, egy nappali-étkező-konyha tér és egy fürdőszoba mind elfér, a fenntartási költségek
+    (fűtés, takarítás) mégsem nőnek meg aránytalanul egy nagyobb házhoz képest.
+  </p>
+
+  <h2>Mit tartalmaz az ár?</h2>
+
+  <p>
+    Mindhárom modell ára tartalmazza a horganyzott acélváz szerkezetet, a 10 cm hungarocell szigetelést,
+    a háromrétegű üvegezésű nyílászárókat, a belső gipszkarton burkolatot, az elektromos és vízvezeték
+    rendszert, valamint a szállítást 100 km-en belül. Az alapozás és a közüzemi bekötések nem részei az
+    alapárnak.
+  </p>
+
+  <h2>Hitelre is megvehető</h2>
+
+  <p>
+    A 31-32 ezer eurós vételár hitelből is megvalósítható. Bankfüggetlen tanácsadónk több hitelintézet
+    ajánlatát vizsgálja meg párhuzamosan, hogy a számodra legelőnyösebb konstrukciót találja meg – legyen
+    szó személyi kölcsönről, CSOK-ról vagy lakáshitelről.
+  </p>
+
+  <p>
+    Egy hozzávetőleges kalkuláció: 31.000 EUR (~11,3M Ft) esetén 30%-os önerővel (kb. 3,4M Ft) a havi
+    törlesztő 20 éves futamidőnél nagyjából 50-60 ezer forint körül alakulhat a jelenlegi piaci
+    kamatokkal. Ez sok esetben kevesebb, mint egy bérelt lakás havi díja ugyanabban a méretkategóriában.
+    Részletek a <a href="/haz-reszletre">részletre vásárlás</a> oldalon.
+  </p>
+
+  <h2>Kinek ajánljuk?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>3-4 fős családként keres önálló, teljes értékű otthont</li>
+    <li>fontos a jó ár-alapterület arány</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>ennél nagyobb, 4+ szobás elrendezésre van szüksége – ekkor a 96 m²-es vagy 126 m²-es modelljeink illenek jobban</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a 80 m²-es könnyűszerkezetes házról" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Érdekli egy 80 m² körüli könnyűszerkezetes ház?
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

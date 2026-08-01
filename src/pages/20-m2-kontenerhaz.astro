@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = '20 M2 Konténerház? – Ezt Kínáljuk Helyette';
+const description =
+  'Nincs 20 m²-es konténerházunk – a legkisebb modellünk 55 m². Ha kompaktabb megoldást keres, könnyűszerkezetes kis házainkat ajánljuk.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'konnyuszerkezetes-haz-32m2', 'kontenerhaz-manhattan'];
+
+const faqs = [
+  {
+    q: 'Van 20 m²-es konténerházuk?',
+    a: 'Nincs, a legkisebb konténerház modellünk 55 m² (Manhattan). Ennél kompaktabb megoldásra a könnyűszerkezetes 22 m²-es modellünket ajánljuk.',
+  },
+  {
+    q: 'Miért nincs kisebb konténerház?',
+    a: 'Az Instant Otthonok konténerház-modellsorunk 55 m²-től indul – ez a gyártási technológia és a szabvány modellek jellemzője nálunk.',
+  },
+  {
+    q: 'Mi a legkompaktabb megoldásunk összesen?',
+    a: 'A 22 m²-es könnyűszerkezetes házunk, 16.000 EUR + ÁFA áron.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Kis könnyűszerkezetes házak', href: '/kis-konnyuszerkezetes-hazak' },
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Konténerház méretek', href: '/kontenerhaz-meretek' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: '20 M2 Konténerház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['20 m2', 'konténerház', 'kis méret']}
+  summary="Nincs 20 m²-es konténerházunk – a legkisebb modellünk 55 m² (Manhattan). Ha kifejezetten kompakt, 20-22 m² körüli megoldást keres, a könnyűszerkezetes kis házaink jobban illenek az igényéhez."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos elöljáróban tisztázni: nincs 20 m²-es konténerházunk. A konténerház modellsorunk 55 m²-től
+    indul – ha kompaktabb megoldást keres, bemutatjuk, mi illik jobban az igényéhez.
+  </p>
+
+  <h2>Konténerház vs kompakt könnyűszerkezetes ház</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Típus</th><th>Legkisebb elérhető méret</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Konténerház</td><td>55 m² (Manhattan)</td><td>12.790.000 Ft</td></tr>
+        <tr><td>Könnyűszerkezetes ház</td><td>22 m²</td><td>16.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott, kompakt alternatívák</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Miért nincs 20 m²-es konténerház?</h2>
+
+  <p>
+    Az Instant Otthonok konténerház-modellsorunk 55 m²-től indul – ez a gyártási technológia és a
+    szabvány modellek kialakításának jellemzője. Ha kifejezetten 20 m² körüli, kompakt megoldást
+    keres, a könnyűszerkezetes 22 m²-es modellünk sokkal közelebb áll az igényéhez, és ugyanolyan
+    gyárilag szigetelt, négy évszakos kivitelben készül.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Segítünk megtalálni a megfelelő méretet</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott tanácsot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

@@ -1,0 +1,118 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Emeletes Konténerház – Mi a Jelenlegi Kínálatunk?';
+const description =
+  'Emeletes konténerházat keres? Jelenlegi modelljeink egyszintesek, akár 90 m²-ig. Bemutatjuk a legnagyobb alapterületű alternatíváinkat.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['kontenerhaz-beverly-l', 'kontenerhaz-nordic-premium', 'modulhaz-happy-wife'];
+
+const faqs = [
+  {
+    q: 'Van emeletes konténerházuk?',
+    a: 'Jelenlegi katalógus-modelljeink egyszintesek, 55–90 m² közötti alapterülettel. Emeletes kivitel egyedi tervezést igényelne.',
+  },
+  {
+    q: 'Hogyan érhető el nagyobb alapterület emeletes kivitel nélkül?',
+    a: 'A Beverly L modellünk 90 m²-en egyszinten is tágas teret kínál, vagy érdemes megnézni a 122 m²-es Happy Wife modulházunkat.',
+  },
+  {
+    q: 'Tervezhető egyedileg emeletes konténerház?',
+    a: 'Egyedi tervezésű, emeletes kivitelről ajánlatkéréskor, egyedi felmérés alapján tudunk tájékoztatást adni.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Konténerház méretek', href: '/kontenerhaz-meretek' },
+  { label: 'Luxus mobilház', href: '/luxus-mobilhaz' },
+  { label: 'Teljes bekerülési költség', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: 'Emeletes Konténerház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['emeletes ház', 'konténerház']}
+  summary="Jelenlegi konténerház modelljeink egyszintesek, 55 m²-től 90 m²-ig. Ha nagyobb alapterületre van szüksége emeletes kivitel nélkül, a Beverly L modellünk vagy a 122 m²-es Happy Wife modulház jelenthet megoldást."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos elöljáróban tisztázni: jelenlegi konténerház-katalógus modelljeink egyszintesek. Bemutatjuk,
+    milyen alternatívákkal érhető el nagyobb alapterület emeletes kivitel nélkül.
+  </p>
+
+  <h2>Legnagyobb egyszintes modelljeink</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Szobák</th><th>Ár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Beverly L</td><td>90 m²</td><td>3</td><td>16.090.000 Ft</td></tr>
+        <tr><td>Nordic Premium</td><td>68 m² + 9 m² terasz</td><td>3</td><td>25.500.000 Ft</td></tr>
+        <tr><td>Happy Wife (modulház)</td><td>122 m²</td><td>4</td><td>egyedi ajánlat</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott, nagyobb alapterületű modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mi a helyzet az emeletes kivitellel?</h2>
+
+  <p>
+    Jelenlegi konténerház-modelljeink egyszintesek – ez a gyártási technológia és a szabvány
+    alaprajzok jellemzője. Ha kifejezetten emeletes kivitelre van szüksége, ez egyedi tervezést és
+    felmérést igényelne. Sok esetben a Beverly L (90 m²) egyszintes elrendezése is elegendő teret ad,
+    vagy a modulház kínálatunk (akár 122 m²-ig) jelenthet alternatívát.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Nagy alapterületre van szüksége?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

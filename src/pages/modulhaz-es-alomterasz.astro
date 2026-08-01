@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Modulház és Álomterasz – Melyik Modellnél Mekkora?';
+const description =
+  'Modulház fedett terasszal: melyik Ticab modellnél mekkora a terasz? Bemutatjuk a legnagyobb teraszos modelljeinket.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['modulhaz-alessandria', 'modulhaz-marseille', 'modulhaz-barcelona'];
+
+const faqs = [
+  {
+    q: 'Minden modulházhoz jár terasz?',
+    a: 'Igen, minden Ticab modulházunk fedett terasszal készül, 3 m²-től 22 m²-ig, mérettől függően.',
+  },
+  {
+    q: 'Melyik modellnél a legnagyobb a terasz?',
+    a: 'Az Alessandria modellnél 22 m² a fedett terasz, ez a legnagyobb kínálatunkban.',
+  },
+  {
+    q: 'Bővíthető a terasz utólag?',
+    a: 'A terasz mérete és kialakítása a konfiguráció része – erről ajánlatkéréskor, a konkrét modell alapján egyeztetünk.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Modulház árak', href: '/modulhaz-arak' },
+  { label: 'Luxus mobilház', href: '/luxus-mobilhaz' },
+  { label: 'Modern mobilház árak', href: '/modern-mobilhaz-arak' },
+  { label: 'Könnyűszerkezetes terasz beépítés', href: '/konnyuszerkezetes-terasz-beepites' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Modulházak', href: '/modulhaz' },
+  { label: 'Modulház és Álomterasz' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="modulhaz"
+  tags={['terasz', 'modulház', 'Ticab']}
+  summary="Minden Ticab modulházunk fedett terasszal készül, 3 m²-től 22 m²-ig. A legnagyobb teraszos modellünk az Alessandria, 22 m²-es fedett terasszal."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A fedett terasz a modulházak egyik kedvelt jellemzője – szinte plusz szobaként funkcionál nyáron.
+    Bemutatjuk, melyik modellnél mekkora terasz jár.
+  </p>
+
+  <h2>Terasz méretek a legnagyobb modelleknél</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Terasz</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Barcelona</td><td>90 m²</td><td>18 m²</td></tr>
+        <tr><td>Marseille</td><td>95 m²</td><td>20 m²</td></tr>
+        <tr><td>Alessandria</td><td>110 m²</td><td>22 m²</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott, nagy teraszos modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Miért fontos a fedett terasz?</h2>
+
+  <p>
+    A fedett terasz nyáron gyakorlatilag plusz szobát jelent: ebédlő, pihenőhely vagy akár szabadtéri
+    dolgozósarok is kialakítható rajta. A pontos méret és kialakítás a választott modell konfigurációjának
+    része – erről ajánlatkéréskor egyeztetünk.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes modulház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="modulhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli egy nagy teraszos modulház?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

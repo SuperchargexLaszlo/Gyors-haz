@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Az oldal nem található | gyors-haz.hu"
+  description="A keresett oldal nem található. Menjen vissza a főoldalra vagy böngésszen termékeink között."
+  noindex={true}
+>
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <!-- 404 szám -->
+    <p class="font-sans font-extrabold text-8xl text-primary/20 leading-none mb-4" aria-hidden="true">
+      404
+    </p>
+
+    <h1 class="font-sans font-extrabold text-2xl sm:text-3xl text-gray-900 mb-4">
+      Az oldal nem található
+    </h1>
+    <p class="text-gray-600 mb-10 max-w-md mx-auto">
+      A keresett URL nem létezik, vagy az oldal áthelyezésre került.
+      Nézze meg az alábbi linkeket, vagy lépjen vissza a főoldalra.
+    </p>
+
+    <!-- Linkek -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-sm mx-auto mb-10">
+      {[
+        { href: '/', label: 'Főoldal' },
+        { href: '/konnyuszerkezetes', label: 'Könnyűszerkezetes házak' },
+        { href: '/modulhaz', label: 'Modulházak' },
+        { href: '/kontenerhaz', label: 'Konténerházak' },
+        { href: '/blog', label: 'Blog' },
+        { href: '/kapcsolat', label: 'Kapcsolat' },
+      ].map((link) => (
+        <a
+          href={link.href}
+          class="rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <a
+      href="/"
+      class="inline-block rounded-xl bg-primary px-8 py-3.5 font-sans font-bold text-white hover:bg-primary-dark transition-colors"
+    >
+      ← Vissza a főoldalra
+    </a>
+  </div>
+</BaseLayout>

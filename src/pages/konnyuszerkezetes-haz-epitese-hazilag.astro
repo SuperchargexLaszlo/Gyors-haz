@@ -1,0 +1,137 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Építése Házilag – Lehetséges, Vagy Jobb a Kész Megoldás?';
+const description =
+  'Könnyűszerkezetes ház házilag: mit lehet magad megcsinálni, mit nem, és mennyit spórolhatsz vele? Mennyibe kerül helyette egy kész, gyári megoldás?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2'];
+
+const faqs = [
+  {
+    q: 'Lehet-e könnyűszerkezetes házat teljesen házilag megépíteni?',
+    a: 'Részben igen, de a szerkezeti, elektromos, gáztechnikai és hőszigetelési munkákat szakemberre kell bízni – ezek jogszabály szerint is képesítéshez kötöttek. A DIY rész jellemzően a festésre, burkolásra és kertrendezésre korlátozódik.',
+  },
+  {
+    q: 'Mennyit lehet spórolni házilag végzett munkákkal?',
+    a: 'Reálisan néhány százezer forintot festéssel, padlóburkolással és tereprendezéssel – a szerkezeti és gépészeti munkákon nem érdemes spórolni.',
+  },
+  {
+    q: 'Van garancia egy házilag épített szerkezetre?',
+    a: 'Nincs, vagy csak korlátozottan. Egy gyárilag gyártott, kész könnyűszerkezetes házra gyártói garanciát kap.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Konténerház építés házilag', href: '/kontenerhaz-epites-hazilag' },
+  { label: 'Könnyűszerkezetes fal', href: '/konnyuszerkezetes-fal' },
+  { label: 'Könnyűszerkezetes ház építés', href: '/konnyuszerkezetes-haz-epites' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Építése Házilag' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['építés házilag', 'DIY', 'könnyűszerkezetes']}
+  summary="Könnyűszerkezetes ház részben házilag is építhető – a festés, burkolás és kertrendezés magunk is elvégezhető, de a szerkezeti, elektromos, gáz és hőszigetelési munkákat szakemberre kell bízni. A megtakarítás így néhány százalékos."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A "házilag épített könnyűszerkezetes ház" gondolata sokakat vonz a feltételezett megtakarítás miatt.
+    Röviden összefoglaljuk, mi valósítható meg valóban házilag, és mennyibe kerül helyette egy kész,
+    gyári megoldás.
+  </p>
+
+  <h2>Mennyibe kerül egy kész, gyári könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>22 m²-es modell</td><td>22 m²</td><td>16.000 EUR</td></tr>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit lehet házilag megcsinálni, és mit nem?</h2>
+
+  <p>
+    Házilag jellemzően a belső festés, a padlóburkolás, a kertrendezés és a bútorozás végezhető el
+    kockázat nélkül. Az elektromos hálózat kiépítése, a gázbekötés, a szerkezeti elemek módosítása és a
+    hőszigetelés kivitelezése ugyanakkor szakembert igényel – ezek rosszul elvégezve
+    balesetveszélyesek, és nem is kerülnek biztosításba.
+  </p>
+
+  <p>
+    A reálisan elérhető megtakarítás – festéssel, burkolással, kertrendezéssel – néhány százezer forint,
+    ami a teljes ár néhány százalékát jelenti. A szerkezeti munkákon spórolni hosszú távon drágábban
+    kerülhet vissza.
+  </p>
+
+  <h2>Kinek ajánljuk a házilagos megoldást, és kinek a készet?</h2>
+
+  <p>Házilagos munka jó választás, ha:</p>
+  <ul>
+    <li>csak a festést, burkolást vagy kertrendezést szeretné magának elvégezni</li>
+  </ul>
+
+  <p>A kész, gyári megoldás jobb választás, ha:</p>
+  <ul>
+    <li>fontos a gyártói garancia és a gyors, kiszámítható telepítés</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kész, garanciás megoldást keres?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek ajánlatot egy kész házra
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

@@ -1,0 +1,137 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Gyorsház – Könnyűszerkezetes Ház Gyors Kivitelezéssel';
+const description =
+  'Gyorsház, azaz gyorsan felépíthető könnyűszerkezetes ház: mennyi idő alatt készül el, mennyibe kerül, és miért gyorsabb a hagyományos építkezésnél?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Mi az a gyorsház?',
+    a: 'A "gyorsház" gyűjtőfogalom a gyárilag előre gyártott, gyorsan telepíthető otthonokra – nálunk ez a könnyűszerkezetes házak modellsorát jelenti.',
+  },
+  {
+    q: 'Mennyi idő alatt épül fel egy gyorsház?',
+    a: 'A helyszíni telepítés jellemzően kb. 1 hetet vesz igénybe. A teljes folyamat – az alapozással és közüzemi bekötésekkel együtt – 6-8 hét körül alakul.',
+  },
+  {
+    q: 'Miért gyorsabb, mint a hagyományos építkezés?',
+    a: 'A szerkezet gyárilag, kontrollált körülmények között készül, ezért a helyszíni munka a szereléshez és a befejező munkákhoz korlátozódik, nem a teljes építkezéshez.',
+  },
+  {
+    q: 'Mennyibe kerül egy gyorsház?',
+    a: 'Modelljeink 16.000 EUR-tól (22 m²) 43.000 EUR-ig (126 m²) terjednek.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Kulcsrakész könnyűszerkezetes ház', href: '/kulcsrakesz-konnyuszerkezetes-haz' },
+  { label: 'Könnyűszerkezetes ház építés', href: '/konnyuszerkezetes-haz-epites' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Gyorsház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['gyorsház', 'könnyűszerkezetes', 'gyors kivitelezés']}
+  summary="A gyorsház nálunk a könnyűszerkezetes házak modellsorát jelenti: gyárilag előre gyártott szerkezet, kb. 1 hetes helyszíni telepítéssel, 6-8 hetes teljes átfutási idővel. Az árak 16.000 EUR-tól 43.000 EUR-ig terjednek."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A "gyorsház" kifejezés a gyorsan, gyárilag előre gyártott elemekből telepíthető otthonokat jelöli.
+    Nálunk ez a könnyűszerkezetes házak modellsorát takarja – ebben a cikkben bemutatjuk, mennyi idő
+    alatt készülnek el, és mennyibe kerülnek.
+  </p>
+
+  <h2>Mennyibe kerül egy gyorsház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Belépő modell</td><td>22 m²</td><td>16.000 EUR</td></tr>
+        <tr><td>Közepes modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>Nagy modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Miért gyorsabb egy gyorsház?</h2>
+
+  <p>
+    A hagyományos, tégla-beton építkezéssel szemben a könnyűszerkezetes ház szerkezete gyárilag,
+    kontrollált körülmények között készül. A helyszíni munka így a szereléshez és a befejező munkákhoz
+    korlátozódik – ez jelentősen csökkenti a kiszolgáltatottságot az időjárásnak és a helyszíni
+    kivitelezési hibáknak. A helyszíni telepítés jellemzően kb. 1 hetet vesz igénybe, a teljes folyamat
+    (alapozással, közüzemi bekötésekkel együtt) 6-8 hét körül alakul.
+  </p>
+
+  <h2>Kinek ajánljuk?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>fontos szempont a gyors, kiszámítható átadási idő</li>
+    <li>szeretné elkerülni a hosszú, sokszereplős hagyományos építkezést</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>teljesen egyedi, szabadon tervezett architektúrát szeretne</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a gyorsházról" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli egy gyorsan felépíthető otthon?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

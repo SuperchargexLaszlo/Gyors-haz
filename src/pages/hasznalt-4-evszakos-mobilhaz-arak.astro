@@ -1,0 +1,193 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Használt 4 Évszakos Mobilház Árak – Megéri, Vagy Jobb Az Új?';
+const description =
+  'Használt 4 évszakos mobilház árak és kockázatok: mire figyeljen, ha használt egységet néz? És mennyibe kerül helyette egy új, gyári garanciás mobilház?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'konnyuszerkezetes-haz-32m2', 'konnyuszerkezetes-haz-52m2'];
+
+const faqs = [
+  {
+    q: 'Árul a Gyors Ház használt mobilházat?',
+    a: 'Nem, kizárólag új, gyárilag gyártott könnyűszerkezetes házakat, modulházakat és konténerházakat kínálunk, gyártói garanciával. Használt egységek adásvételét nem közvetítjük.',
+  },
+  {
+    q: 'Mennyivel olcsóbb egy használt mobilház az újnál?',
+    a: 'A hazai piacon egy jól karbantartott, 5–10 éves ház 30–50%-kal olcsóbb lehet egy hasonló új háznál. Ez azonban nagyban függ az adott egység állapotától.',
+  },
+  {
+    q: 'Mire érdemes figyelni használt mobilház vásárlásakor?',
+    a: 'Érdemes szakemberrel megvizsgáltatni a szigetelést, a szerkezetet és a nyílászárókat, mivel ezeken a gyártói garancia már nem érvényes, és a rejtett hibák utólag drágán javíthatók.',
+  },
+  {
+    q: 'Miért éri meg inkább újat venni?',
+    a: 'Az új házaknál 2–5 év gyártói garanciával számolhat, a szerkezet és a szigetelés állapota ismert, és a finanszírozás (hitel) is jellemzően egyszerűbb egy dokumentált, új épületnél.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Acélvázas könnyűszerkezetes ház árak', href: '/acelvazas-konnyuszerkezetes-haz-arak' },
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+  { label: 'Mobilház árak', href: '/mobilhaz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Használt 4 Évszakos Mobilház Árak' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['használt mobilház', '4 évszakos', 'mobilház árak']}
+  summary="A Gyors Ház kizárólag új, gyári garanciás mobilházakat (könnyűszerkezetes házakat, modulházakat és konténerházakat) kínál – használt egységek adásvételét nem közvetítjük. A hazai használt piac viszonylag fejletlen, egy jól karbantartott, 5–10 éves ház 30–50%-kal olcsóbb lehet az újnál, de gyártói garancia nélkül."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos elöljáróban tisztázni: a Gyors Ház kizárólag <strong>új</strong>, gyárilag gyártott
+    könnyűszerkezetes házakat, modulházakat és konténerházakat kínál, gyártói garanciával – használt
+    egységek adásvételét nem közvetítjük. Mivel sokan keresnek rá a "használt mobilház" kifejezésre,
+    összefoglaljuk, mire számíthat ezen a piacon, és mennyibe kerül helyette egy új, garanciás megoldás.
+  </p>
+
+  <h2>Mennyibe kerül egy új 4 évszakos mobilház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Modell</th>
+          <th>Alapterület</th>
+          <th>Ár (+ ÁFA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház 22m²</td><td>22 m²</td><td>16.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 32m²</td><td>32 m²</td><td>18.600 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 52m²</td><td>52 m²</td><td>22.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott új modellek</h2>
+
+  <p>Ha az új, gyári garanciás megoldás mellett dönt, ezek a belépő szintű modelljeink:</p>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mennyit érhet egy használt 4 évszakos mobilház?</h2>
+
+  <p>
+    A hazai használt mobilház piac viszonylag fejletlen, ezért óvatosan kell eljárni ebben a
+    kategóriában. Egy jól karbantartott, 5–10 éves könnyűszerkezetes ház 30–50%-kal olcsóbb lehet egy
+    hasonló új háznál – de ez erősen függ az adott egység állapotától, és nem minden esetben áll
+    rendelkezésre megbízható, ellenőrizhető adat az árazásról.
+  </p>
+
+  <p>
+    Mivel a Gyors Ház kizárólag új termékeket értékesít, konkrét használt piaci árat nem tudunk megadni –
+    ha használt egységet fontolgat, mindenképp kérjen szakértői véleményt a szigetelésről, a szerkezetről
+    és a nyílászárókról vásárlás előtt.
+  </p>
+
+  <h2>Új vagy használt – mit érdemes mérlegelni?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Szempont</th>
+          <th>Új mobilház</th>
+          <th>Használt mobilház</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ár</td>
+          <td>Ismert, listaár</td>
+          <td>Jellemzően 30–50%-kal alacsonyabb, de egyedi</td>
+        </tr>
+        <tr>
+          <td>Garancia</td>
+          <td>2–5 év gyártói garancia</td>
+          <td>Jellemzően nincs</td>
+        </tr>
+        <tr>
+          <td>Állapot</td>
+          <td>Ismert, dokumentált</td>
+          <td>Szakértői ellenőrzés szükséges</td>
+        </tr>
+        <tr>
+          <td>Finanszírozás</td>
+          <td>Jellemzően egyszerűbb</td>
+          <td>Bonyolultabb lehet</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Kinek melyik lehet jobb választás?</h2>
+
+  <p>Az új mobilház jó választás, ha:</p>
+  <ul>
+    <li>fontos a gyártói garancia és az ismert, dokumentált állapot</li>
+    <li>egyszerűbb finanszírozást (hitelt) szeretne igénybe venni</li>
+  </ul>
+
+  <p>A használt piac érdekelheti, ha:</p>
+  <ul>
+    <li>alacsonyabb kezdeti költséggel szeretne indulni, és vállalja a szakértői ellenőrzés költségét és a garancia hiányát</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Nézze meg, mennyibe kerülne egy új, garanciás mobilház
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek ajánlatot egy új mobilházra
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

@@ -1,0 +1,119 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Csarnok – Ezt Kínáljuk Helyette';
+const description =
+  'Könnyűszerkezetes csarnokot keres? A Gyors Ház lakóépületekre – könnyűszerkezetes, modul- és konténerházakra – specializálódott, ipari csarnokot nem kínálunk.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-96m2', 'konnyuszerkezetes-haz-126m2', 'kontenerhaz-beverly-l'];
+
+const faqs = [
+  {
+    q: 'Épít a Gyors Ház ipari csarnokot?',
+    a: 'Nem, kínálatunk lakóépületekre – könnyűszerkezetes házakra, modulházakra és konténerházakra – korlátozódik. Ipari csarnok építését nem vállaljuk.',
+  },
+  {
+    q: 'Van nagy alapterületű megoldásuk?',
+    a: 'Igen, a 126 m²-es könnyűszerkezetes házunk vagy a 90 m²-es Beverly L konténerház a legnagyobb lakóépület-megoldásaink.',
+  },
+  {
+    q: 'Hova érdemes fordulni csarnoképítésért?',
+    a: 'Csarnoképítésre szakosodott kivitelezőt érdemes keresni, mivel ez más tervezési és engedélyeztetési kategória, mint a lakóépületek.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+  { label: 'Könnyűszerkezetes melléképület', href: '/konnyuszerkezetes-mellekepulet' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: 'Könnyűszerkezetes házak', href: '/konnyuszerkezetes' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Csarnok' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['csarnok', 'könnyűszerkezetes', 'ipari épület']}
+  summary="A Gyors Ház lakóépületekre – könnyűszerkezetes házakra, modulházakra és konténerházakra – specializálódott, ipari csarnok építését nem kínáljuk. Legnagyobb lakóépület-megoldásaink 126 m²-ig (könnyűszerkezetes) és 90 m²-ig (konténerház) terjednek."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos elöljáróban tisztázni: a Gyors Ház kínálata lakóépületekre – könnyűszerkezetes házakra,
+    modulházakra és konténerházakra – korlátozódik, ipari csarnok építését nem vállaljuk. Ha nagyobb
+    alapterületű lakóépület vagy melléképület érdekli, bemutatjuk a legnagyobb megoldásainkat.
+  </p>
+
+  <h2>Legnagyobb lakóépület-megoldásaink</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Típus</th><th>Legnagyobb elérhető méret</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház</td><td>126 m²</td><td>43.000 EUR</td></tr>
+        <tr><td>Konténerház (Beverly L)</td><td>90 m²</td><td>16.090.000 Ft</td></tr>
+        <tr><td>Modulház (Happy Wife)</td><td>122 m²</td><td>egyedi ajánlat</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott, nagyobb alapterületű modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Miért nem kínálunk csarnokot?</h2>
+
+  <p>
+    Az ipari csarnok építése más tervezési, statikai és engedélyeztetési szabályok alá esik, mint a
+    lakóépületek – ezért ez nem tartozik a szakterületünkbe. Ha nagyobb, akár többfunkciós épületre van
+    szüksége lakhatási célra, a 126 m²-es könnyűszerkezetes vagy a 122 m²-es modulház modelljeink
+    jelenthetnek megoldást.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Nagyobb lakóépületet keres?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

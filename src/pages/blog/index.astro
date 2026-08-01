@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductSidebar from '../../components/ProductSidebar.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+
+const title = 'Blog – Könnyűszerkezetes és Modulház Tippek | gyors-haz.hu';
+const description =
+  'Építési tippek, engedélyezési útmutatók és hitelezési tanácsok könnyűszerkezetes, modulház és konténerház témában. Friss cikkek a Gyors Ház blogjából.';
+
+const categories = [
+  { value: 'osszes', label: 'Összes' },
+  { value: 'konnyuszerkezetes', label: 'Könnyűszerkezetes' },
+  { value: 'modulhaz', label: 'Modulház' },
+  { value: 'kontenerhoz', label: 'Konténerház' },
+  { value: 'altalanos', label: 'Általános' },
+];
+
+const categoryLabel: Record<string, string> = {
+  konnyuszerkezetes: 'Könnyűszerkezetes',
+  modulhaz: 'Modulház',
+  kontenerhoz: 'Konténerház',
+  altalanos: 'Általános',
+};
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Blog' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl text-gray-900 mb-3">Blog</h1>
+    <p class="text-lg text-gray-600 mb-8 max-w-2xl">
+      Építési tippek, engedélyezési útmutatók és hitelezési tanácsok könnyűszerkezetes és modulházhoz.
+    </p>
+
+    <div class="lg:grid lg:grid-cols-3 lg:gap-12">
+      <!-- Blog lista -->
+      <div class="lg:col-span-2">
+        <!-- Kategória szűrő -->
+        <div class="flex flex-wrap gap-2 mb-8" role="group" aria-label="Kategória szűrő">
+          {categories.map((cat) => (
+            <button
+              data-cat={cat.value}
+              class:list={[
+                'cat-btn rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors',
+                cat.value === 'osszes'
+                  ? 'border-primary bg-primary text-white'
+                  : 'border-primary text-primary hover:bg-primary hover:text-white',
+              ]}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {allPosts.length === 0 ? (
+          <div class="rounded-xl bg-gray-50 p-10 text-center text-gray-500">
+            <p class="text-lg font-medium mb-2">Hamarosan érkeznek a cikkek!</p>
+            <p class="text-sm">Addig is nézze meg termékeinket.</p>
+            <a href="/konnyuszerkezetes" class="mt-4 inline-block text-primary font-semibold hover:underline">
+              Könnyűszerkezetes házak →
+            </a>
+          </div>
+        ) : (
+          <div id="posts-grid" class="space-y-6">
+            {allPosts.map((post) => (
+              <article
+                class="post-card group rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col sm:flex-row"
+                data-category={post.data.category}
+              >
+                {post.data.featuredImage && (
+                  <div class="sm:w-48 sm:shrink-0 aspect-[4/3] sm:aspect-auto overflow-hidden bg-gray-100">
+                    <img
+                      src={post.data.featuredImage}
+                      alt={post.data.title}
+                      loading="lazy"
+                      decoding="async"
+                      width="192"
+                      height="144"
+                      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      data-fallback="/images/placeholder.webp"
+                    />
+                  </div>
+                )}
+                <div class="flex flex-col justify-between p-5 flex-1">
+                  <div>
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                        {categoryLabel[post.data.category] ?? post.data.category}
+                      </span>
+                      <time
+                        datetime={post.data.pubDate.toISOString()}
+                        class="text-xs text-gray-400"
+                      >
+                        {post.data.pubDate.toLocaleDateString('hu-HU', { year: 'numeric', month: 'long', day: 'numeric' })}
+                      </time>
+                    </div>
+                    <h2 class="font-sans font-bold text-lg text-gray-900 leading-snug mb-2 group-hover:text-primary transition-colors">
+                      <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                    </h2>
+                    <p class="text-sm text-gray-600 line-clamp-2">{post.data.description}</p>
+                  </div>
+                  <div class="mt-4">
+                    <a
+                      href={`/blog/${post.id}`}
+                      class="text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
+                    >
+                      Elolvasom →
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="mt-10 lg:mt-0">
+        <div class="sticky top-24">
+          <ProductSidebar limit={3} />
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var btns = document.querySelectorAll('.cat-btn');
+      var cards = document.querySelectorAll('.post-card');
+
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var cat = btn.getAttribute('data-cat');
+          btns.forEach(function (b) {
+            b.classList.remove('bg-primary', 'text-white');
+            b.classList.add('text-primary');
+          });
+          btn.classList.add('bg-primary', 'text-white');
+          btn.classList.remove('text-primary');
+
+          cards.forEach(function (card) {
+            var cardCat = card.getAttribute('data-category');
+            card.style.display = (cat === 'osszes' || cardCat === cat) ? '' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+</BaseLayout>

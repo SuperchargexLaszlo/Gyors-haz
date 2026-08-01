@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Műhely – Lehetőségeink és Áraink';
+const description =
+  'Könnyűszerkezetes műhely: nincs önálló műhely-termékünk, de a kisebb-közepes lakóépület-modelljeink műhelyként is átalakíthatók. Áraink és lehetőségeink.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-32m2', 'konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-62m2'];
+
+const faqs = [
+  {
+    q: 'Van dedikált műhely-termékük?',
+    a: 'Nincs önálló műhely-kategóriánk, de a kisebb-közepes modelljeink (32-62 m²) egyedi igény szerint műhelyként is kialakíthatók.',
+  },
+  {
+    q: 'Milyen villanyszerelést kap egy műhelyhez?',
+    a: 'Az alapvető elektromos készlet (aljzatok, kapcsolók, biztosítékok) minden modellünk árában benne van, de nagyobb teljesítményigényű gépekhez egyedi villanyszerelési igényről ajánlatkéréskor egyeztetünk.',
+  },
+  {
+    q: 'Kell-e engedély egy műhelyhez?',
+    a: 'Ez a méret, a rendeltetés és a helyi HÉSZ függvénye – érdemes a helyi önkormányzattal előzetesen egyeztetni.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes garázs', href: '/konnyuszerkezetes-garazs' },
+  { label: 'Könnyűszerkezetes melléképület', href: '/konnyuszerkezetes-mellekepulet' },
+  { label: 'Könnyűszerkezetes ház villanyszerelése', href: '/konnyuszerkezetes-haz-villanyszereles' },
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Műhely' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['műhely', 'könnyűszerkezetes', 'melléképület']}
+  summary="Nincs önálló könnyűszerkezetes műhely-termékünk, de a kisebb-közepes lakóépület-modelljeink (32-62 m²) egyedi igény szerint műhelyként is kialakíthatók. Az alapvető elektromos készlet minden modellben benne van."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos elöljáróban tisztázni: nincs dedikált műhely-termékünk. A kisebb-közepes lakóépület-modelljeink
+    ugyanakkor egyedi igény szerint műhelyként is szóba jöhetnek.
+  </p>
+
+  <h2>Modelljeink méretei</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>32 m²-es modell</td><td>32 m²</td><td>18.600 EUR</td></tr>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>62 m²-es modell</td><td>62 m²</td><td>23.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott, műhelynek is alkalmas modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mire van szükség egy egyedi műhely-konfigurációhoz?</h2>
+
+  <p>
+    A modelljeink alaprajza egyedi igény szerint alakítható műhely funkcióra. Az alapvető elektromos
+    készlet minden modellünk árában benne van, de nagyobb teljesítményigényű gépekhez (pl. ipari
+    gépekhez) egyedi villanyszerelési igényről ajánlatkéréskor egyeztetünk.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Műhelyt tervez?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek egyedi ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

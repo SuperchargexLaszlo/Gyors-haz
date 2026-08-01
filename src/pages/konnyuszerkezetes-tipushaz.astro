@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Típusház – Kész Modellek 16.000 EUR-tól';
+const description =
+  'Könnyűszerkezetes típusházak: kész, előre tervezett modellek 22-126 m² között, 16.000 EUR-tól. Gyors, kiszámítható választás egyedi tervezés helyett.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-35m2', 'konnyuszerkezetes-haz-62m2', 'konnyuszerkezetes-haz-87m2'];
+
+const faqs = [
+  {
+    q: 'Mi az a típusház?',
+    a: 'A típusház előre megtervezett, szabvány alaprajzú modell – nem egyedi tervezés, hanem kész, bevált konfiguráció, ami gyorsabb és kiszámíthatóbb.',
+  },
+  {
+    q: 'Módosítható egy típusház alaprajza?',
+    a: 'Kisebb módosítások (pl. válaszfalak áthelyezése) egyeztethetők, de a típusházak lényege pont a szabvány, gyorsan gyártható konfiguráció.',
+  },
+  {
+    q: 'Hány típusházuk van?',
+    a: 'Tíz különböző méretű típusházunk van, 22 m²-től 126 m²-ig.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Kulcsrakész könnyűszerkezetes ház', href: '/kulcsrakesz-konnyuszerkezetes-haz' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+  { label: 'Könnyűszerkezetes ház szerkezeti rajz', href: '/konnyuszerkezetes-haz-szerkezeti-rajz' },
+  { label: 'Gyorsház', href: '/gyorshaz-konnyuszerkezetes-haz' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Típusház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['típusház', 'könnyűszerkezetes', 'szabvány modell']}
+  summary="A típusházak előre megtervezett, szabvány alaprajzú modellek, amelyek gyorsabb és kiszámíthatóbb választást jelentenek az egyedi tervezéshez képest. Tíz típusházunk van 22 m²-től 126 m²-ig, 16.000 EUR-tól."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A típusház kifejezés az előre megtervezett, bevált alaprajzú modelleket jelöli – ezek a gyorsaság és
+    a kiszámíthatóság miatt népszerűek. Bemutatjuk a teljes típusház-választékunkat.
+  </p>
+
+  <h2>Típusházak és áraik</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>35 m²-es modell</td><td>35 m²</td><td>20.300 EUR</td></tr>
+        <tr><td>62 m²-es modell</td><td>62 m²</td><td>23.000 EUR</td></tr>
+        <tr><td>87 m²-es modell</td><td>87 m²</td><td>34.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Miért jó választás egy típusház?</h2>
+
+  <p>
+    A típusházak szabvány, előre bevizsgált alaprajzon alapulnak, ami gyorsabb gyártást és kiszámíthatóbb
+    árat jelent, mint egy teljesen egyedi tervezésű ház. Kisebb módosítások (pl. válaszfal-áthelyezés)
+    egyeztethetők, de a nagyobb, egyedi átalakítás már egyedi tervezést igényel.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Válasszon típusházat kínálatunkból</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

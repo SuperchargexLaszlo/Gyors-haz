@@ -1,0 +1,197 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('kontenerhoz');
+
+const title = 'Konténerházak és Mobilházak – Árak és Típusok | gyors-haz.hu';
+const description =
+  'Előre gyártott konténerházak és mobilházak 11.800 EUR-tól. 27–137 m², MD házépítő rendszer, gyors összeszerlés. Hitelezhetőek!';
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Konténerházak és mobilházak',
+  description,
+  numberOfItems: products.length,
+  itemListElement: products.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: p.nev,
+    url: `https://gyors-haz.hu/kontenerhaz/${p.slug}`,
+  })),
+};
+
+const faqs = [
+  {
+    q: 'Mi az MD házépítő rendszer?',
+    a: 'Az MD (Modular Design) házépítő rendszer előre gyártott, szabványosított elemekből álló konténerház-technológia. A gyárban készített panelek és szerkezeti elemek helyszínen kerülnek összerakásra, hasonlóan egy nagy Lego-készlethez. Ez gyorsabb, pontosabb és kevesebb helyszíni munkát igénylő megoldás a hagyományos téglaépítésnél.',
+  },
+  {
+    q: 'Mi a különbség a konténerház és a modulház között?',
+    a: 'A konténerház szó szerinti vagy konténer-alapú acélszerkezetre épül, amelyet ISO szabványos méretekre terveznek. A Hebo/MD rendszer ezt tovább fejleszti: az acélváz megtartja a konténer stabilitását, de rugalmasabb alaprajzi lehetőségeket kínál, és otthonszerűbb kialakítást tesz lehetővé.',
+  },
+  {
+    q: 'Hitelezhetőek a konténerházak?',
+    a: 'Igen. Bankfüggetlen tanácsadóval segítünk a személyi kölcsön és jelzáloghitel lehetőségek feltérképezésében. A tartós telepítéssel rendelkező, hatóságilag bejegyzett konténerház jelzáloghitellel is finanszírozható. Vegye fel velünk a kapcsolatot a részletekért.',
+  },
+  {
+    q: 'Mennyi idő alatt szerelik össze a konténerházat?',
+    a: 'A gyártási idő 3–5 hét, a helyszíni összeszerlés mindössze 3–7 nap, az alap és a közművek előkészítésétől függően. Ez messze gyorsabb a hagyományos építésnél.',
+  },
+  {
+    q: 'Szükséges-e engedély a konténerházhoz?',
+    a: '300 m² alatti lakóépületnél egyszerűsített bejelentési eljárás alkalmazható. A konténerház jogszabályilag azonos elbírálás alá esik, mint bármely más könnyűszerkezetes épület — az engedélyezési kötelezettséget a méret, helyszín és rendeltetés határozza meg, nem a technológia.',
+  },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak' },
+];
+
+const updatedDate = new Date('2026-01-01');
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  schema={itemListSchema}
+  updatedDate={updatedDate}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <!-- H1 + bevezető -->
+    <section class="py-8 lg:py-12">
+      <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+        Konténerházak és mobilházak
+      </h1>
+
+      <div class="prose prose-lg max-w-3xl text-gray-600 space-y-4">
+        <p>
+          Az <strong>MD házépítő rendszer</strong> alapú konténerházak a legmodernebb előregyártott
+          technológiát képviselik — szabványos acélvázra épülő, gyárban előkészített elemrendszer,
+          amelyet a helyszínen szerelik össze mindössze néhány nap alatt.
+          Kínálatunkban 27 m²-től 137 m²-ig találja meg az igényeinek megfelelő típust,
+          <strong>11.800 EUR-tól</strong>.
+        </p>
+        <p>
+          A <strong>Hebo modulrendszer</strong> konténer alapú acélváza ISO-szabványos stabilitást
+          biztosít: a ház szükség esetén daruval emelhető és szállítható. A 3–4 mm falvastagságú
+          zárt szelvényű acélprofilok korrózióvédett bevonatot kapnak, élettartamuk megfelelő
+          karbantartással 50 év felett van.
+        </p>
+        <p>
+          Minden egységünk tartalmazza a teljes elektromos és vízvezeték-készletet,
+          a 3 rétegű üveg ablakokat és a 280 cm-es belmagasságot biztosító szerkezetet.
+          Termékeink hitelezhetőek — bankfüggetlen tanácsadóval segítünk megtalálni
+          a legjobb finanszírozási megoldást.
+        </p>
+      </div>
+    </section>
+
+    <!-- Szűrő -->
+    <div class="flex flex-wrap gap-2 mb-8" id="filter-bar" role="group" aria-label="Méret szerinti szűrő">
+      <button
+        data-filter="osszes"
+        class="filter-btn rounded-full border-2 border-primary bg-primary px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+      >
+        Összes
+      </button>
+      <button
+        data-filter="small"
+        class="filter-btn rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+      >
+        –50 m²
+      </button>
+      <button
+        data-filter="medium"
+        class="filter-btn rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+      >
+        51–80 m²
+      </button>
+      <button
+        data-filter="large"
+        class="filter-btn rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+      >
+        80+ m²
+      </button>
+    </div>
+
+    <!-- Termékrács -->
+    <div
+      id="product-grid"
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-16"
+    >
+      {products.map((product) => (
+        <div class="product-item" data-m2={product.meret_m2}>
+          <ProductCard product={product} />
+        </div>
+      ))}
+    </div>
+
+    <!-- Belső linkek -->
+    <section class="mb-16 rounded-2xl bg-gray-50 p-8">
+      <h2 class="font-sans font-bold text-xl text-gray-900 mb-4">Kapcsolódó kategóriák</h2>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="/konnyuszerkezetes"
+          class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          → Könnyűszerkezetes házak 22–126 m²
+        </a>
+        <a
+          href="/modulhaz"
+          class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          → Ticab modulházak
+        </a>
+        <a
+          href="/haz-reszletre"
+          class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          → Részletre vásárlás — hitelezési lehetőségek
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <FaqSection faqs={faqs} title="Konténerházak — gyakori kérdések" />
+  </div>
+
+  <script is:inline>
+    (function () {
+      var btns = document.querySelectorAll('.filter-btn');
+      var items = document.querySelectorAll('.product-item');
+
+      function setActive(btn) {
+        btns.forEach(function (b) {
+          b.classList.remove('bg-primary', 'text-white');
+          b.classList.add('text-primary');
+        });
+        btn.classList.add('bg-primary', 'text-white');
+        btn.classList.remove('text-primary');
+      }
+
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.getAttribute('data-filter');
+          setActive(btn);
+          items.forEach(function (item) {
+            var m2 = parseInt(item.getAttribute('data-m2') || '0', 10);
+            var show =
+              filter === 'osszes' ||
+              (filter === 'small' && m2 <= 50) ||
+              (filter === 'medium' && m2 >= 51 && m2 <= 80) ||
+              (filter === 'large' && m2 > 80);
+            item.style.display = show ? '' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+</BaseLayout>

@@ -1,0 +1,213 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('konnyuszerkezetes');
+
+const title = 'Könnyűszerkezetes Házak 22–126 m² | Ár és Típusok | gyors-haz.hu';
+const description =
+  'Könnyűszerkezetes házak 16.000 EUR-tól. 22–126 m², 3 rétegű ablakok, 280 cm belmagasság. Hitelezhetőek, bankfüggetlen tanácsadóval. Kérjen ajánlatot!';
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Könnyűszerkezetes házak',
+  description,
+  numberOfItems: products.length,
+  itemListElement: products.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: p.nev,
+    url: `https://gyors-haz.hu/konnyuszerkezetes/${p.slug}`,
+  })),
+};
+
+const faqs = [
+  {
+    q: 'Mennyi idő alatt épül fel egy könnyűszerkezetes ház?',
+    a: 'A gyártás 4–6 hetet vesz igénybe, a helyszíni összeszerlés pedig 1–2 hét. A teljes folyamat — az alapozástól a kulcsrakész átadásig — általában 2–3 hónapot vesz igénybe, az engedélyeztetéstől és az alapozás összetettségétől függően.',
+  },
+  {
+    q: 'Hitelezhetőek a könnyűszerkezetes házak?',
+    a: 'Igen, bankfüggetlen tanácsadóval segítünk a finanszírozásban. Több banknál is elérhetőek személyi kölcsön és jelzáloghitel konstrukciók, amelyek fedezhetik a ház árát. Vegye fel velünk a kapcsolatot a részletekért.',
+  },
+  {
+    q: 'Mit tartalmaz az ár?',
+    a: 'Az ár tartalmazza: külső falak (10 cm hungarocell szigetelés), válaszfalak, horganyzott acélváz, bejárati ajtó, beltéri ajtók, 3 rétegű üveg ablakok, tető (cserepes lemez, szigetelés, 35° dőlés), eresz és csatorna, belső gipszkarton, elektromos készlet, vízvezeték készlet, zuhanytálca, mosdó, monoblokkos WC, 280 cm belmagasság.',
+  },
+  {
+    q: 'Mi az, ami nem szerepel az árban?',
+    a: 'Az árban nem szerepel: tervezés és engedélyeztetés, szállítás, helyszíni alapozás, aljzatszigetelés, burkolás (padló, csempe), külső dryvit szigetelés, fűtési rendszer. Ezeket helyi kivitelezőkkel koordináljuk, vagy ajánlunk megbízható partnereket.',
+  },
+  {
+    q: 'Mekkora belmagassága van a házaknak?',
+    a: 'Minden könnyűszerkezetes házunkban 280 cm a belmagasság, ami a hagyományos téglaépítésű lakásoknál megszokott 250–260 cm-nél jóval tágas érzetet nyújt. Ez a magasság lehetővé teszi a kényelmes bútorválasztást és a levegős lakókörnyezetet.',
+  },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes házak' },
+];
+
+const updatedDate = new Date('2026-01-01');
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  schema={itemListSchema}
+  updatedDate={updatedDate}
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <!-- H1 + bevezető -->
+    <section class="py-8 lg:py-12">
+      <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+        Könnyűszerkezetes házak
+      </h1>
+
+      <div class="prose prose-lg max-w-3xl text-gray-600 space-y-4">
+        <p>
+          A <strong>könnyűszerkezetes ház</strong> napjaink egyik legnépszerűbb építési megoldása — alacsonyabb költséggel,
+          rövidebb építési idővel és kiváló energiahatékonysággal valósítható meg, mint a hagyományos téglaépítés.
+          Kínálatunkban 22 m²-től 126 m²-ig találja meg az igényeinek megfelelő típust, <strong>16.000 EUR-tól</strong>.
+        </p>
+        <p>
+          A <strong>szendvicspanel ház</strong> szerkezete horganyzott acélvázból és 10 cm hungarocell szigetelésből áll,
+          amelyet kívülről és belülről egyaránt bevonat véd. Ez a technológia kiváló hő- és hangszigetelést biztosít,
+          miközben a falvastagság minimális — így a hasznos alapterület maximális marad.
+        </p>
+        <p>
+          Az <strong>előre gyártott ház</strong> elemei gyárilag készülnek el, majd a helyszínen szerelik össze — ez
+          garantálja az egyenletes minőséget és a gyors kivitelezést. Minden egységünk tartalmazza a 3 rétegű üveg
+          ablakokat, a 35°-os cserepes lemeztető teljes rendszerét, a beépített elektromos és vízvezeték-készletet,
+          valamint a mosdót és WC-t.
+        </p>
+        <p>
+          A 280 cm-es belmagasság tágas, otthonos légkört teremt. Termékeink hitelezhetőek — bankfüggetlen tanácsadóval
+          segítünk a legjobb finanszírozási megoldás megtalálásában. Külföldi összehasonlításképpen érdemes megtekinteni a
+          <a
+            href="https://www.ticabhouse.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary font-medium hover:text-primary-dark underline underline-offset-2"
+          >Ticab House kínálatát</a> is, ahol hasonló technológiájú épületek szerepelnek.
+        </p>
+      </div>
+    </section>
+
+    <!-- Szűrő -->
+    <div class="flex flex-wrap gap-2 mb-8" id="filter-bar" role="group" aria-label="Méret szerinti szűrő">
+      <button
+        data-filter="osszes"
+        class="filter-btn rounded-full border-2 border-primary bg-primary px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+      >
+        Összes
+      </button>
+      <button
+        data-filter="small"
+        class="filter-btn rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+      >
+        –50 m²
+      </button>
+      <button
+        data-filter="medium"
+        class="filter-btn rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+      >
+        51–80 m²
+      </button>
+      <button
+        data-filter="large"
+        class="filter-btn rounded-full border-2 border-primary px-5 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+      >
+        80+ m²
+      </button>
+    </div>
+
+    <!-- Termékrács -->
+    <div
+      id="product-grid"
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-16"
+    >
+      {products.map((product) => (
+        <div
+          class="product-item"
+          data-m2={product.meret_m2}
+        >
+          <ProductCard product={product} />
+        </div>
+      ))}
+    </div>
+
+    <!-- Belső linkek -->
+    <section class="mb-16 rounded-2xl bg-gray-50 p-8">
+      <h2 class="font-sans font-bold text-xl text-gray-900 mb-4">Kapcsolódó kategóriák</h2>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="/modulhaz"
+          class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          → Modulházak 27–137 m²
+        </a>
+        <a
+          href="/kontenerhaz"
+          class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          → Konténerházak
+        </a>
+        <a
+          href="/reszletre"
+          class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          → Részletre vásárlás — hitelezési lehetőségek
+        </a>
+        <a
+          href="/helyszin"
+          class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
+        >
+          → Bemutatóterem megtekintése
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <FaqSection faqs={faqs} title="Könnyűszerkezetes házak — gyakori kérdések" />
+  </div>
+
+  <script is:inline>
+    (function () {
+      var btns = document.querySelectorAll('.filter-btn');
+      var items = document.querySelectorAll('.product-item');
+
+      function setActive(btn) {
+        btns.forEach(function (b) {
+          b.classList.remove('bg-primary', 'text-white');
+          b.classList.add('text-primary');
+        });
+        btn.classList.add('bg-primary', 'text-white');
+        btn.classList.remove('text-primary');
+      }
+
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.getAttribute('data-filter');
+          setActive(btn);
+          items.forEach(function (item) {
+            var m2 = parseInt(item.getAttribute('data-m2') || '0', 10);
+            var show =
+              filter === 'osszes' ||
+              (filter === 'small' && m2 <= 50) ||
+              (filter === 'medium' && m2 >= 51 && m2 <= 80) ||
+              (filter === 'large' && m2 > 80);
+            item.style.display = show ? '' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+</BaseLayout>

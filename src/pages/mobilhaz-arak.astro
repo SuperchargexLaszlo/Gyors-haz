@@ -1,0 +1,185 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Mobilház Árak 2026 – Könnyűszerkezetes, Modulház, Konténerház';
+const description =
+  'Mobilház árak 2026-ban: könnyűszerkezetes ház 16.000 EUR-tól, konténerház 12,79 millió Ft-tól, modulház ár kérésre. Teljes áttekintés kategóriánként.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'kontenerhaz-manhattan', 'modulhaz-amsterdam'];
+
+const faqs = [
+  {
+    q: 'Mi az a mobilház?',
+    a: 'Gyűjtőfogalom: minden gyárilag előre gyártott, telepíthető lakóépületet jelöl, amely nem hagyományos tégla-beton technológiával készül. Ide tartozik a könnyűszerkezetes ház, a modulház és a konténerház is.',
+  },
+  {
+    q: 'Melyik mobilház-típus a legolcsóbb?',
+    a: 'A könnyűszerkezetes ház a legkedvezőbb belépő árú, 16.000 EUR-tól (22 m²).',
+  },
+  {
+    q: 'Miért nincs fix ára a modulháznak?',
+    a: 'A modulházak ára egyedi konfiguráció, alaprajz és felszereltség alapján alakul, ezért ajánlatkéréskor adunk pontos árat.',
+  },
+  {
+    q: 'Hitelre is megvehető a mobilház?',
+    a: 'Igen, bankfüggetlen tanácsadónk segít megtalálni a legkedvezőbb finanszírozási konstrukciót, típustól függetlenül.',
+  },
+  {
+    q: 'Milyen extra költségekkel kell számolni az alapáron felül?',
+    a: 'Az alapozás kb. 1.400.000 Ft + ÁFA munkadíj, 100 km felett szállítási pótdíj számolható fel, szükség esetén az engedélyeztetés és a tervdokumentáció (kb. 2.370.000 Ft + ÁFA) is külön tétel.',
+  },
+  {
+    q: 'Mi a különbség az új és használt mobilház ára között?',
+    a: 'Egy jó állapotú, 5–10 éves mobilház 30–50%-kal olcsóbb lehet az újnál, de gyártói garanciát csak új háznál kap a vevő – használt egységnél mindenképp érdemes szakembert bevonni az ellenőrzésbe.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Modulház árak', href: '/modulhaz-arak' },
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Konténerház 60 nm', href: '/kontenerhaz-60-nm' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Mobilház Árak' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="altalanos"
+  tags={['mobilház', 'árak', '2026']}
+  summary="A mobilház árak 2026-ban típusonként eltérnek: könnyűszerkezetes ház 16.000 EUR-tól, konténerház 12.790.000 Ft-tól, modulház egyedi ajánlat alapján. A választás az igényeitől, a telkétől és a büdzsétől függ."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A mobilház gyűjtőfogalom: könnyűszerkezetes ház, modulház és konténerház is ide tartozik nálunk.
+    Ebben a cikkben áttekintjük a három kategória árait 2026-ban.
+  </p>
+
+  <h2>Mobilház árak típusonként</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Típus</th><th>Mérettartomány</th><th>Kezdőár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház</td><td>22–126 m²</td><td>16.000 EUR + ÁFA</td></tr>
+        <tr><td>Modulház</td><td>15–122 m²</td><td>ár kérésre</td></tr>
+        <tr><td>Konténerház</td><td>55–90 m²</td><td>12.790.000 Ft + ÁFA</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek típusonként</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mi befolyásolja a mobilház árát?</h2>
+
+  <p>
+    <strong>Méret és alapterület:</strong> nagyobb ház = magasabb ár, de a négyzetméterenkénti költség
+    csökken a méret növekedésével. Egy 22 m²-es ház négyzetméterköltsége magasabb, mint egy 96 m²-esé.
+  </p>
+
+  <p>
+    <strong>Kivitelezési technológia:</strong> a könnyűszerkezetes házak általában a leggazdaságosabbak,
+    a modulházak és a prémium konténerházak drágábbak, de különlegesebb designt kínálnak.
+  </p>
+
+  <p>
+    <strong>Extrák és kiegészítők:</strong> klímaberendezés, napelem, terasz, extra fürdőszoba – mindezek
+    növelik az árat. Érdemes pontosan meghatározni, mi szerepel az alapárban.
+  </p>
+
+  <p>
+    <strong>Alapozás:</strong> minden mobilháznál szükséges valamilyen alap. Ez kb. 1.400.000 Ft + ÁFA
+    munkadíj, de talajtól és területtől függően változhat.
+  </p>
+
+  <p>
+    <strong>Szállítás és telepítés:</strong> a helyszín távolsága befolyásolja a szállítási költséget.
+    100 km-en belül általában ingyenes a szállítás, azon túl pótdíj számolható fel.
+  </p>
+
+  <h2>Mobilház vs hagyományos ház – ár összehasonlítás</h2>
+
+  <p>
+    Egy hagyományos téglaház Magyarországon 2026-ban négyzetméterenként 450.000–700.000 Ft-ba kerül
+    kivitelezési munkával együtt. Egy 80 m²-es téglaház így 36–56 millió Ft is lehet.
+  </p>
+
+  <p>
+    Ugyanekkora könnyűszerkezetes ház (78 m², 31.000 EUR) kb. 12,4 millió Ft-ba kerül a szerkezet
+    szempontjából, és az alapozással, szállítással együtt is 15–16 millió Ft körül marad. Az
+    időmegtakarítás is jelentős: míg egy téglaházat legalább 12–18 hónap felépíteni, egy
+    könnyűszerkezetes ház 6–8 héten belül lakható.
+  </p>
+
+  <h2>Hitelre is megvehető a mobilház?</h2>
+
+  <p>
+    Igen! Mobilházat hitelre is meg lehet vásárolni, bár a finanszírozás némileg eltér a hagyományos
+    ingatlanokétól. Bankfüggetlen tanácsadónk segít megtalálni a legkedvezőbb konstrukciót. Részletek a
+    <a href="/haz-reszletre">részletre vásárlás oldalunkon</a> találhatók.
+  </p>
+
+  <p>
+    Például egy 22.000 EUR-os könnyűszerkezetes ház esetén 30% önerővel (~2,6 millió Ft), 15 éves
+    futamidőn a havi törlesztő 50.000–70.000 Ft körül alakulhat – ez sok esetben kedvezőbb, mint egy
+    hasonló méretű lakás bérlése.
+  </p>
+
+  <h2>Új vs használt mobilház árak</h2>
+
+  <p>
+    Magyarországon a használt mobilház piac viszonylag fejletlen, és a "mobilház" kategóriában óvatosan
+    kell eljárni. A könnyűszerkezetes és konténerházak esetén az újkori, gyári garancia és a jótállás
+    fontos szempont. Egy jól karbantartott, 5–10 éves könnyűszerkezetes ház 30–50%-kal olcsóbb lehet az
+    újnál, de érdemes szakemberrel megvizsgáltatni a szigetelést, a szerkezetet és a nyílászárókat. Új
+    házaknál 2–5 év gyártói garanciával számolhatsz, ami hosszú távon biztonságot jelent.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli egy mobilház?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

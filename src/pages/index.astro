@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { getProductsByKategoria, formatAr } from '../lib/products';
+
+const ksz = (await getProductsByKategoria('konnyuszerkezetes')).slice(0, 4);
+const mod = (await getProductsByKategoria('modulhaz')).slice(0, 4);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Gyors Ház – Könnyűszerkezetes és Modulházak',
+  description: 'Hitelre vehető könnyűszerkezetes és modulházak 16.000 EUR-tól. Gyors átadás, bankfüggetlen hitelezés.',
+  url: 'https://gyors-haz.hu',
+};
+---
+
+<BaseLayout
+  title="Gyors Ház – Könnyűszerkezetes és Modulházak 16.000 EUR-tól"
+  description="Hitelre vehető könnyűszerkezetes és modulházak 16.000 EUR-tól. Gyors átadás 5–8 hét alatt. Bankfüggetlen hitelezési tanácsadó."
+  schema={schema}
+>
+
+  <!-- Hero -->
+  <section class="bg-primary text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="uppercase tracking-wider text-accent font-semibold text-sm mb-4">Hitelezhető · Gyors átadás · Bankfüggetlen tanácsadó</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-8xl font-extrabold leading-tight mb-6">
+        Könnyűszerkezetes ház<br class="hidden sm:block" />
+        <span class="text-accent">16.000 EUR-tól</span>
+      </h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+        Prefabrikált szendvicspanel házak 22–126 m²-ig. Átadás 5–8 héten belül,
+        bankfüggetlen hitelezési tanácsadóval.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/konnyuszerkezetes" class="bg-accent hover:bg-accent-dark text-white font-bold px-8 py-3 rounded-lg transition-colors duration-200">
+          Házak megtekintése
+        </a>
+        <a href="/hitelezhetoseg" class="border-2 border-white text-white hover:bg-white hover:text-primary font-bold px-8 py-3 rounded-lg transition-colors duration-200">
+          Hitelezhetőség ellenőrzése
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP sáv -->
+  <section class="bg-gray-50 py-12 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-3xl font-extrabold text-primary">16.000 EUR-tól</div>
+          <div class="text-sm text-gray-600 mt-1">Induló ár ÁFÁ-val</div>
+        </div>
+        <div>
+          <div class="text-3xl font-extrabold text-primary">5–8 hét</div>
+          <div class="text-sm text-gray-600 mt-1">Átadási idő</div>
+        </div>
+        <div>
+          <div class="text-3xl font-extrabold text-primary">10 típus</div>
+          <div class="text-sm text-gray-600 mt-1">22–126 m² között</div>
+        </div>
+        <div>
+          <div class="text-3xl font-extrabold text-primary">Hitelre is</div>
+          <div class="text-sm text-gray-600 mt-1">Bankfüggetlen tanácsadóval</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Könnyűszerkezetes termékek -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-10">
+        <div>
+          <h2 class="text-3xl font-extrabold text-gray-900">Könnyűszerkezetes házak</h2>
+          <p class="text-gray-600 mt-1">Szendvicspanel szerkezet, 10 cm EPS szigetelés</p>
+        </div>
+        <a href="/konnyuszerkezetes" class="hidden sm:block text-primary font-semibold hover:underline">
+          Összes megtekintése →
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {ksz.map((p) => <ProductCard product={p} />)}
+      </div>
+      <div class="mt-8 text-center sm:hidden">
+        <a href="/konnyuszerkezetes" class="text-primary font-semibold hover:underline">Összes könnyűszerkezetes ház →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modulházak -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-10">
+        <div>
+          <h2 class="text-3xl font-extrabold text-gray-900">Modulházak</h2>
+          <p class="text-gray-600 mt-1">Konténer alapú, könnyen bővíthető moduláris rendszer</p>
+        </div>
+        <a href="/modulhaz" class="hidden sm:block text-primary font-semibold hover:underline">
+          Összes megtekintése →
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {mod.map((p) => <ProductCard product={p} />)}
+      </div>
+      <div class="mt-8 text-center sm:hidden">
+        <a href="/modulhaz" class="text-primary font-semibold hover:underline">Összes modulház →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hitelezés CTA -->
+  <section class="bg-primary text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-extrabold mb-4">Vásároljon részletre, bankfüggetlen tanácsadóval</h2>
+      <p class="text-gray-300 text-lg mb-8">
+        Ingyenes hitelezhetőség-ellenőrzés. Összehasonlítjuk az összes bank ajánlatát,
+        és megtaláljuk az Önnek legjobb megoldást.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/hitelezhetoseg" class="bg-accent hover:bg-accent-dark text-white font-bold px-8 py-3 rounded-lg transition-colors duration-200">
+          Ingyenes ellenőrzés →
+        </a>
+        <a href="/haz-reszletre" class="border-2 border-white text-white hover:bg-white hover:text-primary font-bold px-8 py-3 rounded-lg transition-colors duration-200">
+          Részletre vásárlás útmutatója
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Előnyök -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12">Miért válasszon minket?</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Gyors átadás</h3>
+          <p class="text-gray-600 text-sm">5–8 héten belül kulcsrakész, szemben a hagyományos építés 6–12 hónapjával.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Hitelre is vehető</h3>
+          <p class="text-gray-600 text-sm">Bankfüggetlen tanácsadó segít megtalálni a legjobb hitelt — extra díj nélkül.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Gyári minőség</h3>
+          <p class="text-gray-600 text-sm">Minden ház gyárilag készül, ISO-szabványos szerkezettel és korrózióvédett acélvázával.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Energiahatékony</h3>
+          <p class="text-gray-600 text-sm">U = 0,28 W/(m²·K) falérték — BB energetikai osztály, alacsony fűtési számla.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog CTA -->
+  <section class="bg-gray-50 py-12 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Tudjon meg többet a szendvicspanel házakról</h2>
+      <div class="flex flex-wrap justify-center gap-4 mt-6">
+        <a href="/blog/szendvicspanel-haz-szerkezete" class="bg-white border border-gray-200 rounded-lg px-5 py-3 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors duration-200 shadow-sm">
+          Ház szerkezete és szigetelés →
+        </a>
+        <a href="/blog/szendvicspanel-haz-epitesi-engedely" class="bg-white border border-gray-200 rounded-lg px-5 py-3 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors duration-200 shadow-sm">
+          Építési engedély útmutató →
+        </a>
+        <a href="/blog/konnyuszerkezetes-haz-reszletre" class="bg-white border border-gray-200 rounded-lg px-5 py-3 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors duration-200 shadow-sm">
+          Ház részletre 2026 →
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

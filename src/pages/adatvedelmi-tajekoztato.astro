@@ -1,0 +1,122 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Adatvédelmi tájékoztató' },
+];
+
+const updatedDate = new Date('2026-01-01');
+---
+
+<BaseLayout
+  title="Adatvédelmi Tájékoztató | gyors-haz.hu"
+  description="A gyors-haz.hu adatvédelmi tájékoztatója — GDPR-kompatibilis magyar nyelvű nyilatkozat az adatkezelésről."
+  noindex={false}
+  updatedDate={updatedDate}
+>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <h1 class="font-sans font-extrabold text-3xl text-gray-900 mb-2">Adatvédelmi tájékoztató</h1>
+    <p class="text-sm text-gray-400 mb-8">
+      Hatályos: 2025. január 1. | Utoljára frissítve: 2025. január 1.
+    </p>
+
+    <div class="prose prose-lg max-w-none text-gray-700 space-y-8">
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">1. Adatkezelő adatai</h2>
+        <dl class="space-y-2 text-sm not-prose">
+          {[
+            { k: 'Adatkezelő neve', v: 'Instant Otthonok Kft. (placeholder)' },
+            { k: 'Székhely', v: 'XXXX Budapest, Példa utca 1. (placeholder)' },
+            { k: 'E-mail', v: 'info@instantotthonok.com' },
+            { k: 'Telefon', v: '+36 70 777 8372' },
+            { k: 'Weboldal', v: 'https://gyors-haz.hu' },
+          ].map((row) => (
+            <div class="flex gap-2">
+              <dt class="w-52 shrink-0 font-medium text-gray-500">{row.k}:</dt>
+              <dd class="text-gray-800">{row.v}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">2. Kezelt személyes adatok és céljaik</h2>
+
+        <h3 class="font-sans font-semibold text-base text-gray-800 mb-2">2.1 Kapcsolatfelvételi és ajánlatkérési űrlap</h3>
+        <p class="text-sm text-gray-600 mb-3">
+          Az ajánlatkérési és kapcsolatfelvételi űrlapokon az alábbi adatokat kezeljük:
+        </p>
+        <ul class="text-sm text-gray-600 list-disc list-inside space-y-1 mb-3">
+          <li>Teljes név</li>
+          <li>Telefonszám</li>
+          <li>E-mail cím</li>
+          <li>Az érdeklő háztípus és méret</li>
+          <li>Üzenet tartalma</li>
+        </ul>
+        <p class="text-sm text-gray-600 mb-2">
+          <strong>Adatkezelés célja:</strong> ajánlatkérés megválaszolása, visszahívás megszervezése, kapcsolattartás.<br/>
+          <strong>Jogalap:</strong> az érintett hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont).<br/>
+          <strong>Megőrzési idő:</strong> az utolsó kapcsolatfelvételtől számított 2 év, vagy törlési kérelem esetén haladéktalanul.
+        </p>
+
+        <h3 class="font-sans font-semibold text-base text-gray-800 mb-2 mt-5">2.2 Netlify Forms</h3>
+        <p class="text-sm text-gray-600">
+          Az űrlapok adatait a Netlify, Inc. (USA) kezeli adatfeldolgozóként a GDPR Standard Contractual Clauses alapján.
+          A Netlify adatvédelmi tájékoztatója: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">netlify.com/privacy</a>.
+        </p>
+
+        <h3 class="font-sans font-semibold text-base text-gray-800 mb-2 mt-5">2.3 Konténerház értesítő feliratkozás</h3>
+        <p class="text-sm text-gray-600">
+          A /kontenerhaz oldalon elérhető értesítő-feliratkozási lista során nevet és e-mail címet kezelünk kizárólag
+          az értesítés kiküldéséig. <strong>Jogalap:</strong> hozzájárulás.
+        </p>
+
+        <h3 class="font-sans font-semibold text-base text-gray-800 mb-2 mt-5">2.4 Google Analytics (tervezett)</h3>
+        <p class="text-sm text-gray-600">
+          A weboldal a jövőben Google Analytics 4 mérést alkalmazhat anonimizált látogatottsági statisztika céljából.
+          Az IP-cím anonimizálása bekapcsolt állapotban lesz. Ha Google Analytics kerül bevezetésre,
+          ezt a tájékoztatót frissítjük. <strong>Jogalap:</strong> hozzájárulás (cookie-sáv).
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">3. Az érintett jogai</h2>
+        <p class="text-sm text-gray-600 mb-3">A GDPR alapján Ön jogosult:</p>
+        <ul class="text-sm text-gray-600 list-disc list-inside space-y-1">
+          <li><strong>Hozzáférési jog:</strong> tájékoztatást kérhet a kezelt adatairól</li>
+          <li><strong>Helyesbítési jog:</strong> pontatlan adatai kijavítását kérheti</li>
+          <li><strong>Törlési jog:</strong> kérheti adatai törlését ("elfeledtetéshez való jog")</li>
+          <li><strong>Adathordozhatóság:</strong> kérheti adatai géppel olvasható formátumban történő kiadását</li>
+          <li><strong>Tiltakozási jog:</strong> tiltakozhat az adatkezelés ellen</li>
+          <li><strong>Hozzájárulás visszavonása:</strong> hozzájárulásán alapuló adatkezelésnél bármikor visszavonható</li>
+        </ul>
+        <p class="text-sm text-gray-600 mt-3">
+          Jogai érvényesítéséhez írjon az <a href="mailto:info@instantotthonok.com" class="text-primary hover:underline">info@instantotthonok.com</a>
+          címre. Panasszal a <strong>Nemzeti Adatvédelmi és Információszabadság Hatósághoz</strong> (naih.hu) fordulhat.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">4. Adatbiztonság</h2>
+        <p class="text-sm text-gray-600">
+          A weboldal HTTPS protokollon keresztül érhető el. Az adatokat a Netlify biztonságos infrastruktúráján
+          tároljuk. Belső adathozzáférés csak az ajánlatkérések megválaszolásához szükséges mértékben történik.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">5. Tájékoztató módosítása</h2>
+        <p class="text-sm text-gray-600">
+          Fenntartjuk a jogot a tájékoztató módosítására. Lényeges változás esetén az oldalon feltüntetjük
+          a módosítás dátumát. Az aktuális verzió mindig ezen az oldalon érhető el.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

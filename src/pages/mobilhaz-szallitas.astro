@@ -1,0 +1,116 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Mobilház Szállítás – Díjak és Feltételek 2026';
+const description =
+  'Mobilház szállítása: mennyibe kerül, és milyen feltételekkel történik? 100 km-en belül díjmentes szállítás könnyűszerkezetes, modul- és konténerháznál.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'kontenerhaz-manhattan', 'modulhaz-amsterdam'];
+
+const faqs = [
+  {
+    q: 'Mennyibe kerül a szállítás?',
+    a: '100 km-en belül díjmentes minden kategóriánál (könnyűszerkezetes, modulház, konténerház). 100 km felett pótdíj számítható fel, amelyet ajánlatkéréskor adunk meg.',
+  },
+  {
+    q: 'Ki végzi a szállítást?',
+    a: 'A szállítást és a helyszíni összeszerelést saját, illetve partnerkivitelezőink végzik, a gyártástól a telepítésig.',
+  },
+  {
+    q: 'Mennyi idő alatt érkezik meg a ház a megrendelés után?',
+    a: 'Ez modellenként eltérő – a konténerházak a leggyorsabbak (a gyártás után 1–3 nap a telepítés), a modulházaknál a gyártás és szállítás összesen 8–16 hetet vehet igénybe.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+  { label: 'Mobilház szerkezete', href: '/mobilhaz-szerkezete' },
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Modulház árak', href: '/modulhaz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Mobilház Szállítás' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="altalanos"
+  tags={['mobilház', 'szállítás', 'telepítés']}
+  summary="A mobilház (könnyűszerkezetes, modulház, konténerház) szállítása 100 km-en belül díjmentes minden kategóriánál. 100 km felett pótdíj számítható fel, ennek pontos összegét ajánlatkéréskor adjuk meg."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A szállítási költség és a szállítási idő gyakran meghatározó szempont a döntésben. Ebben a cikkben
+    összefoglaljuk, mire számíthat, típustól függetlenül.
+  </p>
+
+  <h2>Mennyibe kerül a szállítás?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Típus</th><th>Szállítás 100 km-en belül</th><th>Szállítás 100 km felett</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház</td><td>Díjmentes</td><td>Pótdíj, ajánlatkéréskor egyeztetve</td></tr>
+        <tr><td>Konténerház</td><td>Díjmentes</td><td>Pótdíj, ajánlatkéréskor egyeztetve</td></tr>
+        <tr><td>Modulház</td><td>Egyedi ajánlat alapján</td><td>Egyedi ajánlat alapján</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mennyi ideig tart a szállítás?</h2>
+
+  <p>
+    A konténerházak a leggyorsabbak: a gyártás után 1–3 nap alatt telepíthetők. A könnyűszerkezetes
+    házak helyszíni telepítése kb. 1 hetet vesz igénybe. A modulházaknál a gyártási idő 8–16 hét, ebbe
+    a szállítás és a helyszíni összeszerelés is beletartozik.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a szállításról" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kérdése van a szállításról?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek szállítási tájékoztatást és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

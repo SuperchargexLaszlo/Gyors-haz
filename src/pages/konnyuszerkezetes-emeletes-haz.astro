@@ -1,0 +1,132 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Emeletes Könnyűszerkezetes Ház – Mi a Jelenlegi Kínálatunk?';
+const description =
+  'Emeletes könnyűszerkezetes házat keres? Jelenlegi modelljeink egyszintesek, akár 126 m²-ig. Elmagyarázzuk, mit kínálunk, és mire számíthat egy emeletes igénynél.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-96m2', 'konnyuszerkezetes-haz-126m2', 'modulhaz-happy-wife'];
+
+const faqs = [
+  {
+    q: 'Van emeletes könnyűszerkezetes házuk?',
+    a: 'Jelenlegi katalógus-modelljeink egyszintesek, 22-126 m² közötti alapterülettel. Emeletes kivitel egyedi tervezést igényelne.',
+  },
+  {
+    q: 'Hogyan lehet nagyobb alapterületet elérni emeletes kivitel nélkül?',
+    a: 'A 126 m²-es könnyűszerkezetes modellünk vagy a 122 m²-es Happy Wife modulház egyszinten is jelentős alapterületet kínál.',
+  },
+  {
+    q: 'Tervezhető egyedileg emeletes könnyűszerkezetes ház?',
+    a: 'Egyedi tervezésű, emeletes kivitelről ajánlatkéréskor, egyedi felmérés alapján tudunk tájékoztatást adni.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Luxus mobilház', href: '/luxus-mobilhaz' },
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Könnyűszerkezetes ház bővítés', href: '/konnyuszerkezetes-haz-bovites' },
+  { label: 'Könnyűszerkezetes házak', href: '/konnyuszerkezetes' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Emeletes Könnyűszerkezetes Ház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['emeletes ház', 'könnyűszerkezetes']}
+  summary="Jelenlegi könnyűszerkezetes modelljeink egyszintesek, 22 m²-től 126 m²-ig. Ha nagyobb alapterületre van szüksége emeletes kivitel nélkül, a legnagyobb modelljeink vagy a modulház kínálatunk jelenthet megoldást."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos elöljáróban tisztázni: jelenlegi katalógus-modelljeink egyszintesek. Ebben a cikkben bemutatjuk,
+    milyen alternatívákkal érhető el nagyobb alapterület emeletes kivitel nélkül, illetve mire számíthat,
+    ha kifejezetten emeletes megoldást szeretne.
+  </p>
+
+  <h2>Legnagyobb egyszintes modelljeink</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Szobák</th><th>Ár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház 96m²</td><td>96 m²</td><td>3</td><td>35.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 126m²</td><td>126 m²</td><td>4</td><td>43.000 EUR</td></tr>
+        <tr><td>Happy Wife (modulház)</td><td>122 m²</td><td>4</td><td>egyedi ajánlat</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott, nagyobb alapterületű modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mi a helyzet az emeletes kivitellel?</h2>
+
+  <p>
+    Jelenlegi modelljeink egyszintesek – ez a gyártási technológia és a szabvány alaprajzok
+    jellemzője. Ha kifejezetten emeletes kivitelre van szüksége, ez egyedi tervezést és felmérést
+    igényelne, amiről ajánlatkéréskor tudunk tájékoztatást adni. Sok esetben a nagyobb alapterületű,
+    egyszintes modelljeink (96-126 m²) is megoldást jelenthetnek emeletes kivitel nélkül.
+  </p>
+
+  <h2>Kinek ajánljuk?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>elfogadható az egyszintes elrendezés nagyobb alapterületen</li>
+    <li>fontos a gyors, szabvány modellek közüli választás</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>ragaszkodik az emeletes kivitelhez – ehhez egyedi tervezés szükséges</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Nagy alapterületre van szüksége?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

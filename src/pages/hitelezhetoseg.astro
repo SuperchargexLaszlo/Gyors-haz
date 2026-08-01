@@ -1,0 +1,149 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqSection from '../components/FaqSection.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const title = 'Hitelezhetőek a Modulházak és Könnyűszerkezetes Házak | gyors-haz.hu';
+const description =
+  'Hogyan vehetők modulházak és könnyűszerkezetes házak hitelre? Bankfüggetlen tanácsadó, hitelfeltételek, dokumentumok, a folyamat lépései. Ingyenes tanácsadás!';
+
+const faqs = [
+  {
+    q: 'Mire van szükség a hitelhez?',
+    a: 'Szükséges: érvényes személyazonosító okmány, lakcímkártya, jövedelemigazolás (munkáltatói igazolás, NAV jövedelemigazolás vagy vállalkozói mérleg), a telek tulajdoni lapja, és az építési/bejelentési engedély.',
+  },
+  {
+    q: 'Mekkora havi törlesztőre számítsak?',
+    a: 'Egy 16.000 EUR-os háznál (kb. 6,5 millió Ft), 20% önerő és 7 éves futamidő esetén a havi törlesztő hozzávetőleg 80–100.000 Ft lehet, a kamat mértékétől függően. Bankfüggetlen tanácsadónk pontos számítást készít az aktuális piaci ajánlatok alapján.',
+  },
+  {
+    q: 'Jelzáloghitel vagy személyi kölcsön jobb?',
+    a: 'Jelzáloghitelnél alacsonyabb a kamat, de szükséges ingatlan fedezet és hosszabb az ügyintézési idő. Személyi kölcsönnél gyorsabb a folyamat, de magasabb a THM. A legjobb megoldást mindig egyéni helyzet alapján kell meghatározni — ebben segít bankfüggetlen tanácsadónk.',
+  },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Hitelezhetőség' },
+];
+
+const updatedDate = new Date('2026-01-01');
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  url: 'https://gyors-haz.hu/hitelezhetoseg',
+  inLanguage: 'hu',
+};
+---
+
+<BaseLayout title={title} description={description} schema={webPageSchema} updatedDate={updatedDate}>
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <article class="py-8 lg:py-12 prose prose-lg max-w-none">
+      <h1 class="font-sans font-extrabold text-3xl sm:text-4xl text-gray-900 not-prose mb-6">
+        Hitelezhetőek a modulházak és könnyűszerkezetes házak
+      </h1>
+
+      <!-- H2: Miért érdemes hitelre venni? -->
+      <h2 class="font-sans font-bold text-2xl text-gray-900 not-prose mt-10 mb-4">
+        Miért érdemes hitelre venni?
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        A könnyűszerkezetes és modulházak ára jelentősen alacsonyabb, mint a hagyományos téglaépítésé — ám
+        egy 16.000–40.000 EUR-os vásárlás is komoly tőkét igényelhet. A hitelre vásárlás lehetővé teszi,
+        hogy az önerőként rendelkezésre álló összeg után azonnal megkezdődjön a gyártás, és a többi rész
+        havi törlesztőrészletekben legyen megfizethető.
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        Az alacsonyabb vételár miatt a törlesztőrészletek is kisebbek — egy 20.000 EUR-os háznál (kb. 8 millió Ft)
+        5 éves futamidőn a havi törlesztő jellemzően 150–180.000 Ft körül alakul, ami sok háztartásban
+        könnyedén beépíthető a havi kiadások közé.
+      </p>
+
+      <!-- H2: Hogyan működik a finanszírozás? -->
+      <h2 class="font-sans font-bold text-2xl text-gray-900 not-prose mt-10 mb-4">
+        Hogyan működik a finanszírozás?
+      </h2>
+
+      <ol class="space-y-4 not-prose mb-6">
+        {[
+          { n: '1', cim: 'Igényfelmérés', leiras: 'Bankfüggetlen tanácsadónk felmérje a pénzügyi helyzetet: jövedelem, önerő, preferált futamidő.' },
+          { n: '2', cim: 'Ajánlatok összehasonlítása', leiras: 'A piacon elérhető összes releváns hitelajánlatot összehasonlítjuk — THM, törlesztő, feltételek alapján.' },
+          { n: '3', cim: 'Dokumentumok összegyűjtése', leiras: 'Jövedelemigazolás, telek tulajdoni lapja, bejelentési/engedélydokumentumok elkészítése.' },
+          { n: '4', cim: 'Hitelkérelem benyújtása', leiras: 'A legkedvezőbb banknál benyújtjuk a hitelkérelmet — átlagos elbírálási idő 5–10 munkanap.' },
+          { n: '5', cim: 'Szerződéskötés és gyártás', leiras: 'A hitel jóváhagyása után megkötjük az adásvételi szerződést és megkezdődik a gyártás.' },
+        ].map((step) => (
+          <li class="flex gap-4 items-start">
+            <span class="flex-shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white font-bold text-sm">{step.n}</span>
+            <div>
+              <strong class="font-sans font-semibold text-gray-900">{step.cim}</strong>
+              <p class="text-gray-600 text-sm mt-0.5">{step.leiras}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <!-- H2: Mire van szükség? -->
+      <h2 class="font-sans font-bold text-2xl text-gray-900 not-prose mt-10 mb-4">
+        Mire van szükség?
+      </h2>
+      <div class="not-prose grid sm:grid-cols-2 gap-4 mb-8">
+        {[
+          'Érvényes személyi igazolvány és lakcímkártya',
+          'Jövedelemigazolás (munkáltatói, NAV vagy vállalkozói)',
+          'A telek tulajdoni lapja (30 napnál nem régebbi)',
+          'Építési engedély vagy egyszerűsített bejelentés visszaigazolása',
+          'Bankszámlakivonat (utolsó 3–6 hónap)',
+          'Adóigazolás köztartozás-mentességről',
+        ].map((doc) => (
+          <div class="flex items-start gap-2 rounded-lg bg-gray-50 px-4 py-3 text-sm text-gray-700">
+            <span class="text-primary font-bold mt-0.5 shrink-0">✓</span>
+            <span>{doc}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- H2: Bankfüggetlen tanácsadó -->
+      <h2 class="font-sans font-bold text-2xl text-gray-900 not-prose mt-10 mb-4">
+        Mit jelent a bankfüggetlen tanácsadó?
+      </h2>
+      <p class="text-gray-600 leading-relaxed mb-4">
+        A bankfüggetlen hitelközvetítő — ellentétben a banki alkalmazottakkal — egyetlen pénzintézetnek sem
+        dolgozik kizárólagosan. Ezért képes az összes piaci ajánlatot objektívan összehasonlítani az Ön
+        érdekét szem előtt tartva. Díjukat jellemzően a finanszírozó bank fizeti közvetítői jutalék formájában,
+        Önnek külön kiadása nem keletkezik.
+      </p>
+      <p class="text-gray-600 leading-relaxed mb-8">
+        Bankfüggetlen tanácsadóink korábban is segítettek már ügyfeleinken — legyen szó személyi kölcsönről,
+        jelzáloghitelről, Zöld Hitelről vagy CSOK+ konstrukcióról.
+      </p>
+
+      <!-- H2: CTA -->
+      <h2 class="font-sans font-bold text-2xl text-gray-900 not-prose mt-10 mb-4">
+        Kérjen ingyenes tanácsadást
+      </h2>
+      <div class="not-prose rounded-2xl bg-primary p-8 text-center text-white">
+        <p class="text-lg font-semibold mb-2">Kötelezettség nélkül, ingyen</p>
+        <p class="opacity-90 mb-6 max-w-lg mx-auto text-sm">
+          Bankfüggetlen tanácsadónk 1 munkanapon belül felveszi Önnel a kapcsolatot és részletesen
+          tájékoztatja a lehetőségekről.
+        </p>
+        <a
+          href="/kapcsolat?erdeklodes=hitel"
+          class="inline-block rounded-xl bg-accent px-8 py-3.5 font-sans font-bold text-white hover:bg-accent-dark transition-colors shadow"
+        >
+          Hitelezési tanácsadást kérek →
+        </a>
+        <p class="mt-4 text-xs opacity-70">
+          Vagy tekintse meg a <a href="/haz-reszletre" class="underline hover:opacity-100">részletre vásárlás lehetőségeit</a>.
+        </p>
+      </div>
+    </article>
+
+    <FaqSection faqs={faqs} title="Hitelezhetőség — leggyakoribb kérdések" />
+  </div>
+</BaseLayout>

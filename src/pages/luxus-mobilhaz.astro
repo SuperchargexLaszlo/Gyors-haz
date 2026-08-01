@@ -1,0 +1,196 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Luxus Mobilház – Prémium Modulházak Akár 122 m²-ig';
+const description =
+  'Luxus mobilház kínálatunk: prémium Ticab modulházak akár 122 m²-ig, két fürdőszobával, fedett terasszal. Modellek, méretek, és amit tudni érdemes róluk.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['modulhaz-happy-wife', 'modulhaz-alessandria', 'modulhaz-versailles'];
+
+const faqs = [
+  {
+    q: 'Mennyibe kerül egy luxus modulház?',
+    a: 'A prémium modulházak ára az egyedi konfiguráció, a méret és a felszereltség alapján alakul, ezért ajánlatkéréskor adunk pontos, személyre szabott árat.',
+  },
+  {
+    q: 'Mekkora lehet egy luxus modulház?',
+    a: 'Kínálatunkban a legnagyobb modell, a Happy Wife 122 m²-en, négy szobával és két fürdőszobával készül. A prémium modellek jellemzően 90 m² felett kezdődnek.',
+  },
+  {
+    q: 'Van két fürdőszobás modulház?',
+    a: 'Igen, több prémium modellünk (pl. Alessandria, Versailles, Happy Wife) két fürdőszobával készül.',
+  },
+  {
+    q: 'Hitelre is megvehető egy luxus modulház?',
+    a: 'Igen, bankfüggetlen tanácsadónk segítségével személyi kölcsön vagy más finanszírozási konstrukció keretében is megvásárolható. A pontos feltételekről ajánlatkéréskor adunk tájékoztatást.',
+  },
+  {
+    q: 'Mennyi idő alatt készül el egy luxus modulház?',
+    a: 'A modulházak gyárilag előre gyártott elemekből épülnek, ami gyorsabb kivitelezést tesz lehetővé, mint a hagyományos építkezés. A pontos átfutási időről a modell és a konfiguráció alapján, ajánlatkéréskor adunk tájékoztatást.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+  { label: 'Modulházak', href: '/modulhaz' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Modulházak', href: '/modulhaz' },
+  { label: 'Luxus Mobilház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="modulhaz"
+  tags={['luxus mobilház', 'modulház', 'prémium', 'Ticab']}
+  summary="A luxus mobilház kategóriában a Ticab prémium modulházai a legjobb választás: akár 122 m²-es alapterület, négy szoba, két fürdőszoba és fedett terasz. Az ár egyedi konfiguráció alapján alakul – ajánlatkéréskor adunk pontos árat."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A "luxus mobilház" kifejezés alatt nálunk a Ticab prémium modulházai értendők: nagyobb alapterület,
+    igényes belső kialakítás, két fürdőszoba és fedett terasz jellemzi ezeket a modelleket. Ebben a
+    cikkben bemutatjuk a legnagyobb és legjobban felszerelt modelljeinket.
+  </p>
+
+  <h2>Mennyibe kerül egy luxus modulház?</h2>
+
+  <p>
+    A modulházak ára az egyedi konfigurációtól (alaprajz, belső kialakítás, extrák) függ, ezért ajánlatkéréskor
+    adunk pontos árat. Az alábbi táblázat a legnagyobb, legjobban felszerelt modelljeink méretét és
+    szobaszámát mutatja:
+  </p>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Modell</th>
+          <th>Alapterület</th>
+          <th>Szobák</th>
+          <th>Fürdőszobák</th>
+          <th>Terasz</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Marseille</td><td>95 m²</td><td>4</td><td>2</td><td>20 m²</td></tr>
+        <tr><td>Versailles</td><td>91 m²</td><td>3</td><td>2</td><td>14 m²</td></tr>
+        <tr><td>Alessandria</td><td>110 m²</td><td>4</td><td>2</td><td>22 m²</td></tr>
+        <tr><td>Happy Wife</td><td>122 m²</td><td>4</td><td>2</td><td>16 m²</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <p>A három legnagyobb, legprémiumabb modellünk:</p>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mi teszi luxussá ezeket a modulházakat?</h2>
+
+  <p>
+    A prémium modulházak moduláris acélváz szerkezetre és hőszigetelt szendvicspanel falakra épülnek,
+    fedett terasszal és igényes belső burkolással. A Happy Wife – a Ticab zászlóshajója – 122 m²-en négy
+    szobát és két fürdőszobát kínál, luxus belső kialakítással. Az Alessandria és a Versailles szintén
+    négy, illetve három szobás, két fürdőszobás elrendezéssel, prémium anyaghasználattal készül.
+  </p>
+
+  <h2>Luxus modulház vagy prémium konténerház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Szempont</th>
+          <th>Luxus modulház</th>
+          <th>Prémium konténerház (Nordic Premium)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Legnagyobb elérhető méret</td>
+          <td>122 m² (Happy Wife)</td>
+          <td>68 m² + 9 m² terasz</td>
+        </tr>
+        <tr>
+          <td>Ár</td>
+          <td>Egyedi ajánlat alapján</td>
+          <td>25.500.000 Ft + ÁFA</td>
+        </tr>
+        <tr>
+          <td>Testreszabhatóság</td>
+          <td>Rugalmasabb, egyedi konfigurációval</td>
+          <td>Modellek közül választható</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Kinek ajánljuk?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>nagycsaládosként nagyobb alapterületre és két fürdőszobára van szüksége</li>
+    <li>igényes belső kialakítást és fedett teraszt szeretne</li>
+    <li>rugalmas, egyedi konfigurációt keres</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>azonnal, fix listaáron szeretne dönteni – a modulházaknál az ár ajánlatkéréskor derül ki</li>
+    <li>kisebb, kompaktabb megoldást keres – ehhez a belépő szintű modulház vagy könnyűszerkezetes modelljeink illenek jobban</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a luxus mobilházról" />
+  </div>
+
+  <h2>Teljes modulház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="modulhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Érdekli egy luxus modulház?
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek személyre szabott luxus modulház ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

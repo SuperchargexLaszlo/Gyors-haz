@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Terasz Beépítés – Lehetőségek és Méretek';
+const description =
+  'Könnyűszerkezetes ház teraszának beépítése: melyik modellnél mekkora a fedett terasz, és hogyan alakítható tovább egyedi igény szerint?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-62m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Minden modellhez jár terasz?',
+    a: 'Igen, minden könnyűszerkezetes modellünk fedett terasszal készül, 6 m²-től 21 m²-ig, mérettől függően.',
+  },
+  {
+    q: 'Beépíthető a terasz utólag?',
+    a: 'A terasz beépítése (pl. üvegezéssel zárt tér kialakítása) egyedi tervezést igényel – erről ajánlatkéréskor egyeztetünk.',
+  },
+  {
+    q: 'Melyik modellnél a legnagyobb a terasz?',
+    a: 'A 126 m²-es modellünknél 21 m²-es a fedett terasz.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+  { label: '80 m² könnyűszerkezetes ház', href: '/80-m2-konnyuszerkezetes-haz' },
+  { label: 'Kis könnyűszerkezetes házak', href: '/kis-konnyuszerkezetes-hazak' },
+  { label: 'Könnyűszerkezetes fal', href: '/konnyuszerkezetes-fal' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Terasz Beépítés' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['terasz', 'beépítés', 'könnyűszerkezetes']}
+  summary="Minden könnyűszerkezetes modellünk fedett terasszal készül, 6 m²-től 21 m²-ig, mérettől függően. A terasz utólagos beépítése (pl. üvegezéssel) egyedi tervezést igényel."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A fedett terasz a nyári hónapokban gyakorlatilag plusz szobát jelent. Ebben a cikkben bemutatjuk,
+    melyik modellnél mekkora terasz jár, és mit lehet tudni az utólagos beépítésről.
+  </p>
+
+  <h2>Terasz méretek modellenként</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Terasz</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>62 m²-es modell</td><td>62 m²</td><td>12 m²</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>14 m²</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>18 m²</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Beépíthető a terasz?</h2>
+
+  <p>
+    A terasz utólagos beépítése – például üvegezéssel zárt tér kialakítása – egyedi tervezést és
+    kivitelezést igényel, mivel ez módosítja az eredeti szerkezetet. Erről ajánlatkéréskor, a konkrét
+    modell és igény alapján tudunk tájékoztatást adni.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kérdése van a teraszról?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek egyedi ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

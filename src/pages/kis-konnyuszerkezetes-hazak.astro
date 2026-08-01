@@ -1,0 +1,135 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Kis Könnyűszerkezetes Házak – Kompakt Modellek 16.000 EUR-tól';
+const description =
+  'Kis könnyűszerkezetes házak 2026-ban: 22-35 m²-es kompakt modellek 16.000 EUR-tól. Nyaralónak, kerti vendégháznak vagy önálló első otthonnak.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'konnyuszerkezetes-haz-32m2', 'konnyuszerkezetes-haz-35m2'];
+
+const faqs = [
+  {
+    q: 'Melyik a legkisebb könnyűszerkezetes házuk?',
+    a: 'A 22 m²-es modellünk a legkompaktabb, 16.000 EUR + ÁFA áron, 1 szobával és 6 m²-es terasszal.',
+  },
+  {
+    q: 'Alkalmas állandó lakhatásra egy kis könnyűszerkezetes ház?',
+    a: 'Igen, minden modellünk gyárilag szigetelt, négy évszakos kivitelben készül, így megfelelő fűtéssel egész évben lakható.',
+  },
+  {
+    q: 'Jó választás nyaralónak egy kis könnyűszerkezetes ház?',
+    a: 'Igen, a 22-35 m²-es modellek kompakt méretük miatt kifejezetten népszerűek nyaralóként vagy kerti vendégházként.',
+  },
+  {
+    q: 'Kell-e engedély egy kis könnyűszerkezetes házhoz?',
+    a: 'A kisebb alapterületű épületeknél is szükséges lehet egyszerűsített bejelentés – ezt mindig a helyi HÉSZ alapján kell ellenőrizni.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '50 m² könnyűszerkezetes ház', href: '/50m2-konnyuszerkezetes-haz' },
+  { label: 'Olcsó könnyűszerkezetes ház', href: '/olcso-konnyuszerkezetes-haz' },
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Kis Könnyűszerkezetes Házak' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['kis ház', 'könnyűszerkezetes', 'kompakt']}
+  summary="A kis könnyűszerkezetes házaink – 22, 32 és 35 m²-es modellek – 16.000 EUR-tól kaphatók. Kompakt, gyárilag szigetelt megoldások nyaralónak, kerti vendégháznak vagy önálló első otthonnak."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A kis alapterületű könnyűszerkezetes házak egyre népszerűbbek – legyen szó önálló első otthonról,
+    nyaralóról vagy kerti vendégházról. Bemutatjuk a legkompaktabb modelljeinket.
+  </p>
+
+  <h2>Mennyibe kerül egy kis könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Szobák</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>22 m²-es modell</td><td>22 m²</td><td>1</td><td>16.000 EUR</td></tr>
+        <tr><td>32 m²-es modell</td><td>32 m²</td><td>1</td><td>18.600 EUR</td></tr>
+        <tr><td>35 m²-es modell</td><td>35 m²</td><td>1</td><td>20.300 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit tudnak a kis modellek?</h2>
+
+  <p>
+    Mindhárom modell gyárilag szigetelt (10 cm hungarocell), horganyzott acélváz szerkezetre épül,
+    háromrétegű üvegezésű nyílászárókkal és 280 cm belmagassággal. A kompakt méret nem jelent kompromisszumot
+    az építőanyag minőségében – ugyanaz a szerkezeti rendszer, csak kisebb alapterületen.
+  </p>
+
+  <h2>Kinek ajánljuk?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>egy-két fős háztartásként kompakt, önálló otthont keres</li>
+    <li>nyaralót vagy kerti vendégházat szeretne</li>
+    <li>alacsony fenntartási költséget szeretne</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>családosként nagyobb alapterületre van szüksége – ekkor az 52 m²-es vagy nagyobb modelljeink illenek jobban</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli egy kompakt könnyűszerkezetes ház?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

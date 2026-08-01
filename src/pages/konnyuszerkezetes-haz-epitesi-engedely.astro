@@ -1,0 +1,142 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Építési Engedély 2026 – Kell-e Engedély?';
+const description =
+  'Kell-e építési engedély könnyűszerkezetes házhoz 2026-ban? 300 m² határ, egyszerűsített bejelentés, HÉSZ szabályok – rövid, gyakorlati áttekintés.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Kell-e teljes építési engedély egy könnyűszerkezetes házhoz?',
+    a: 'A legtöbb, 300 m² alatti lakóépületnél elegendő az egyszerűsített bejelentési eljárás. A helyi HÉSZ előírásait mindig be kell tartani.',
+  },
+  {
+    q: 'Mennyi ideig tart az egyszerűsített bejelentési eljárás?',
+    a: 'A hatóság jellemzően 15 napon belül nyilatkozik. Ha minden rendben van, a kivitelezés ezután megkezdhető.',
+  },
+  {
+    q: 'Kell-e tervező mérnök?',
+    a: 'Igen, az egyszerűsített bejelentési eljáráshoz is szükséges tervező mérnök által aláírt dokumentáció. A teljes tervdokumentáció díja kb. 2.370.000 Ft + ÁFA.',
+  },
+  {
+    q: 'Minden méretnél elég a bejelentés?',
+    a: '300 m² feletti lakóépületnél már teljes építési engedélyezési eljárás szükséges. A modelljeink 126 m²-ig terjednek, tehát ezek a bejelentés hatálya alá esnek.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+  { label: 'Konténerház építési engedély – részletes útmutató', href: '/blog/kontenerhoz-epitesi-engedely' },
+  { label: 'Könnyűszerkezetes ház szerkezeti rajz', href: '/konnyuszerkezetes-haz-szerkezeti-rajz' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Építési Engedély' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['építési engedély', 'könnyűszerkezetes', 'HÉSZ']}
+  summary="A legtöbb, 300 m² alatti könnyűszerkezetes lakóépületnél nem szükséges teljes építési engedély, elegendő az egyszerűsített bejelentési eljárás. A helyi HÉSZ előírásait mindig be kell tartani, és tervező mérnök dokumentációja is szükséges."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Az engedélyeztetés kérdése az egyik leggyakoribb aggodalom vásárlás előtt. Ebben a cikkben röviden
+    összefoglaljuk, mire számíthat egy könnyűszerkezetes ház esetén.
+  </p>
+
+  <h2>Mennyibe kerül egy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Kell-e engedély 2026-ban?</h2>
+
+  <p>
+    A legtöbb lakócélú könnyűszerkezetes ház 300 m² alatti alapterülettel esik az egyszerűsített
+    bejelentési eljárás hatálya alá – modelljeink 126 m²-ig terjednek, tehát ide tartoznak. Ez azt
+    jelenti, hogy nem kell teljes körű építési engedélyt kérni, de tervező mérnök által készített
+    dokumentációra és a helyi HÉSZ (Helyi Építési Szabályzat) előírásainak betartására ekkor is szükség
+    van. A hatóság az egyszerűsített bejelentésre jellemzően 15 napon belül nyilatkozik.
+  </p>
+
+  <p>
+    A pontos, telket érintő szabályokat (övezetbe sorolás, beépítési százalék, épületmagasság) mindig a
+    helyi önkormányzatnál érdemes ellenőrizni. A konténerházak engedélyeztetéséről szóló részletes
+    cikkünkben (hasonló elvek mentén) még több gyakorlati lépést talál.
+  </p>
+
+  <h2>Kinek egyszerű az engedélyeztetés, és kinek nem?</h2>
+
+  <p>Egyszerűbb az engedélyeztetés, ha:</p>
+  <ul>
+    <li>a választott modell 300 m² alatti (ez minden modelljeinkre igaz)</li>
+    <li>a telek HÉSZ-besorolása megengedi az adott épülettípust</li>
+  </ul>
+
+  <p>Bonyolultabb lehet, ha:</p>
+  <ul>
+    <li>a telek HÉSZ-besorolása korlátozó, vagy bérelt telekre szeretné helyezni az épületet</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések az engedélyeztetésről" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Segítünk az engedélyeztetésben is</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek segítséget az engedélyeztetéshez és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = '70 Nm Konténerház Ára – Manhattan L és Nordic Premium';
+const description =
+  '70 m² körüli konténerház ára 2026-ban: Manhattan L (69,3 m², 13.790.000 Ft) és Nordic Premium (68 m² + terasz, 25.500.000 Ft).';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['kontenerhaz-manhattan-l', 'kontenerhaz-nordic-premium', 'kontenerhaz-beverly'];
+
+const faqs = [
+  {
+    q: 'Melyik modell van legközelebb a 70 m²-hez?',
+    a: 'A Manhattan L (69,3 m²) és a Nordic Premium (68 m² + 9 m² terasz) egyaránt nagyon közel áll ehhez a mérethez.',
+  },
+  {
+    q: 'Mi a különbség a két modell között?',
+    a: 'A Manhattan L belépő szintű, gazdaságos kivitel, míg a Nordic Premium prémium szigeteléssel, 3 rétegű ablakokkal és belső gipszkartonnal készül, terasszal kiegészítve.',
+  },
+  {
+    q: 'Hány szoba fér el 70 m²-en?',
+    a: 'A Manhattan L 2 szobás, a Nordic Premium 3 szobás, konyhával.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Konténerház méretek', href: '/kontenerhaz-meretek' },
+  { label: '100 nm konténerház árak', href: '/100-nm-kontenerhaz-arak' },
+  { label: 'Konténerház árak – korábbi cikkünk', href: '/blog/kontenerhoz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: '70 Nm Konténerház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['70 nm', 'konténerház', 'árak']}
+  summary="A 70 m² körüli igényhez a Manhattan L (69,3 m², 13.790.000 Ft) és a Nordic Premium (68 m² + 9 m² terasz, 25.500.000 Ft) áll legközelebb – az előbbi belépő szintű, az utóbbi prémium kivitelű megoldás."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A 70 m² körüli alapterület kényelmes teret ad egy 2-3 fős családnak. Két modellünk is nagyon közel
+    áll ehhez a mérethez – nézzük meg, miben különböznek.
+  </p>
+
+  <h2>Mennyibe kerül egy 70 m² körüli konténerház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Szobák</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Manhattan L</td><td>69,3 m²</td><td>2</td><td>13.790.000 Ft</td></tr>
+        <tr><td>Nordic Premium</td><td>68 m² + 9 m² terasz</td><td>3</td><td>25.500.000 Ft</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Melyiket válasszam?</h2>
+
+  <p>
+    A Manhattan L belépő szintű, gazdaságos kivitel, 2 hálószobával. A Nordic Premium prémium fa
+    burkolatú, vastagabb szigeteléssel, 3 rétegű üvegezésű ablakokkal és belső gipszkartonnal készül,
+    9 m²-es terasszal kiegészítve – ez utóbbi ajánlott, ha a legjobb hőtartás és a prémium kivitel
+    fontos szempont.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli egy 70 m² körüli konténerház?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

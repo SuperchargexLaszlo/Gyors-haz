@@ -1,0 +1,116 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getProductBySlug, formatAr } from '../../lib/products';
+
+const p35 = await getProductBySlug('konnyuszerkezetes-haz-35m2');
+const p52 = await getProductBySlug('konnyuszerkezetes-haz-52m2');
+
+const title = 'Könnyűszerkezetes Ház 40 m² Körül – Árak és Típusok | gyors-haz.hu';
+const description =
+  'Könnyűszerkezetes ház 40 nm körül: 35 m² (20.300 EUR) és 52 m² (22.000 EUR). 3 rétegű ablakok, 280 cm belmagasság, hitelezhetőek!';
+
+const faqs = [
+  {
+    q: 'Mennyi egy 40 nm-es könnyűszerkezetes ház ára?',
+    a: 'Pontosan 40 m²-es típusunk nincs, de a legközelebbi modelljeink: a 35 m²-es 20.300 EUR+ÁFA, az 52 m²-es 22.000 EUR+ÁFA áron érhető el. Mindkét modell tartalmazza a teljes szerkezetet, ablakokat, ajtókat, tetőrendszert és a szaniter felszereltséget.',
+  },
+  {
+    q: 'Mi fér el egy 40 nm-es házban?',
+    a: 'A 35 m²-es modellünkben kényelmes hálószoba, nappali-konyha (vagy külön nappali), fürdőszoba és közlekedő fér el. Az 52 m²-es változatban már két külön szoba + konyha + fürdőszoba kialakítható, ami egy kis családnak vagy párnak ideális méret.',
+  },
+  {
+    q: 'Elég-e 40 nm egy párnak?',
+    a: 'Igen, egy pár számára a 35–52 m²-es alapterület tökéletesen elegendő lehet — különösen ha a 13 m²-es teraszos (35 m²) vagy a 7 m²-es teraszos (52 m²) modellt választják. A 280 cm belmagasság és az átgondolt alaprajz tágas, levegős érzetet kelt. Sokan nyaralónak, ideiglenes lakóhelynek vagy bérbeadásra is választják ezeket a méreteket.',
+  },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes házak', href: '/konnyuszerkezetes' },
+  { label: '40 m² körül' },
+];
+
+const updatedDate = new Date('2026-01-01');
+
+const compareRows = p35 && p52 ? [
+  { label: 'Alapterület', a: `${p35.meret_m2} m²`, b: `${p52.meret_m2} m²` },
+  { label: 'Ár', a: formatAr(p35), b: formatAr(p52) },
+  { label: 'Szobák', a: `${p35.szobak}`, b: `${p52.szobak}` },
+  { label: 'Konyha', a: p35.konyha ? 'Igen' : 'Nincs', b: p52.konyha ? 'Igen' : 'Nincs' },
+  { label: 'Fürdőszoba', a: `${p35.furdo} db`, b: `${p52.furdo} db` },
+  { label: 'Terasz', a: `${p35.terasz_m2} m²`, b: `${p52.terasz_m2} m²` },
+  { label: 'Belmagasság', a: '280 cm', b: '280 cm' },
+  { label: 'Tető', a: '35°-os cserepes', b: '35°-os cserepes' },
+] : [];
+---
+
+<BaseLayout title={title} description={description} updatedDate={updatedDate}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <section class="py-8 lg:py-12">
+      <h1 class="font-sans font-extrabold text-3xl sm:text-4xl text-gray-900 leading-tight mb-4">
+        Könnyűszerkezetes ház 40 m² — modelljeink
+      </h1>
+      <p class="text-lg text-gray-600 max-w-2xl mb-10">
+        Pontosan 40 m²-es modellünk nincs, de a <strong>35 m²-es</strong> és az <strong>52 m²-es</strong> változatunk
+        tökéletesen lefedi ezt az igényt — az alábbiakban összehasonlíthatja őket.
+      </p>
+
+      <!-- Összehasonlító tábla -->
+      {compareRows.length > 0 && (
+        <section class="mb-12 overflow-x-auto">
+          <h2 class="font-sans font-bold text-xl text-gray-900 mb-4">Összehasonlítás: 35 m² vs 52 m²</h2>
+          <table class="w-full text-sm border-collapse rounded-xl overflow-hidden shadow-sm">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th class="px-5 py-3 text-left font-semibold w-1/3">Jellemző</th>
+                <th class="px-5 py-3 text-center font-semibold">{p35?.nev}</th>
+                <th class="px-5 py-3 text-center font-semibold">{p52?.nev}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {compareRows.map((row, i) => (
+                <tr class:list={[i % 2 === 0 ? 'bg-white' : 'bg-gray-50']}>
+                  <td class="px-5 py-3 font-medium text-gray-700">{row.label}</td>
+                  <td class="px-5 py-3 text-center text-gray-900">{row.a}</td>
+                  <td class="px-5 py-3 text-center text-gray-900">{row.b}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      )}
+
+      <!-- Termékek egymás mellett -->
+      <section class="mb-12">
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-6">Modellek részletesen</h2>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-2xl">
+          {p35 && <ProductCard product={p35} />}
+          {p52 && <ProductCard product={p52} />}
+        </div>
+      </section>
+
+      <!-- Belső linkek -->
+      <section class="mb-12 rounded-xl bg-gray-50 p-6">
+        <h2 class="font-sans font-bold text-lg text-gray-900 mb-3">Más méretek is érdeklik?</h2>
+        <div class="flex flex-wrap gap-3">
+          <a href="/konnyuszerkezetes" class="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors">
+            → Összes könnyűszerkezetes ház (22–126 m²)
+          </a>
+          <a href="/modulhaz" class="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors">
+            → Modulházak (27–137 m²)
+          </a>
+          <a href="/haz-reszletre" class="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors">
+            → Részletre vásárlás
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <FaqSection faqs={faqs} title="40 m² körüli könnyűszerkezetes ház — kérdések" />
+  </div>
+</BaseLayout>

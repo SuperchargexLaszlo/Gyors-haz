@@ -1,0 +1,63 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getProductsByKategoria, getProducts } from '../../lib/products';
+import type { Product } from '../../lib/products';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id } }));
+}
+
+const { slug } = Astro.params;
+const posts = await getCollection('blog');
+const post = posts.find((p) => p.id === slug);
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await render(post);
+
+const cat = post.data.category;
+const relatedProducts =
+  cat !== 'altalanos'
+    ? await getProductsByKategoria(cat as Product['kategoria'])
+    : await getProducts();
+
+const related = relatedProducts.slice(0, 3);
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Blog', href: '/blog' },
+  { label: post.data.title },
+];
+---
+
+<BlogLayout
+  title={post.data.title}
+  description={post.data.description}
+  pubDate={post.data.pubDate}
+  updatedDate={post.data.updatedDate}
+  category={post.data.category}
+  featuredImage={post.data.featuredImage}
+  tags={post.data.tags}
+  author={post.data.author}
+>
+  <Breadcrumb items={breadcrumbItems} />
+  <Content />
+
+  <!-- Kapcsolódó termékek -->
+  {related.length > 0 && (
+    <section class="not-prose mt-12 pt-8 border-t border-gray-100">
+      <h2 class="font-sans font-bold text-xl text-gray-900 mb-6">Kapcsolódó termékek</h2>
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {related.map((p) => (
+          <ProductCard product={p} />
+        ))}
+      </div>
+    </section>
+  )}
+</BlogLayout>

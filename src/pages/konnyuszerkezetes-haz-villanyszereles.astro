@@ -1,0 +1,122 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Villanyszerelése – Mit Tartalmaz az Ár?';
+const description =
+  'Könnyűszerkezetes ház villanyszerelése: mit tartalmaz gyárilag az elektromos hálózat, és mit kell külön megrendelni?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Az ár tartalmazza a villanyszerelést?',
+    a: 'Igen, az alapvető elektromos készlet – aljzatok, kapcsolók, mennyezeti csatlakozási pontok, biztosítékok – minden modellünk árában benne van.',
+  },
+  {
+    q: 'Mi nem része az alapvető villanyszerelésnek?',
+    a: 'A közműhálózatra való rákötés, illetve az extra igények (pl. napelemes rendszer, okosotthon-megoldások) egyedi tétel.',
+  },
+  {
+    q: 'Ki végzi a villanyszerelést?',
+    a: 'Az alapvető elektromos hálózat gyárilag beépített, a közműre való rákötést pedig szakképzett villanyszerelő végzi, helyi kivitelezővel koordinálva.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes fal', href: '/konnyuszerkezetes-fal' },
+  { label: 'Könnyűszerkezetes ház alapozása', href: '/konnyuszerkezetes-haz-alapozasa' },
+  { label: 'Kulcsrakész könnyűszerkezetes ház', href: '/kulcsrakesz-konnyuszerkezetes-haz' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Villanyszerelése' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['villanyszerelés', 'elektromos hálózat', 'könnyűszerkezetes']}
+  summary="Minden könnyűszerkezetes modellünk ára tartalmazza az alapvető elektromos készletet – kapcsolókat, aljzatokat, lámpatest-csatlakozási pontokat és biztosítékokat. A közműre való rákötés és az extrák (pl. napelem) külön tételek."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A villanyszerelés az egyik legfontosabb gépészeti elem egy új háznál. Ebben a cikkben bemutatjuk,
+    mi tartozik bele a gyári alapkivitelbe.
+  </p>
+
+  <h2>Mennyibe kerül egy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit tartalmaz a villanyszerelés az árban?</h2>
+
+  <p>
+    Az elektromos hálózat – kapcsolók, aljzatok, mennyezeti csatlakozási pontok, biztosítékok – minden
+    modellünk árában benne van, gyárilag beépítve. Ez azt jelenti, hogy a ház beköltözésre kész
+    elektromos rendszerrel érkezik, a helyszíni közműcsatlakozás elvégzése után.
+  </p>
+
+  <p>
+    Amit ez nem tartalmaz: a közműhálózatra való rákötést és az extra igényeket (pl. napelemes rendszer,
+    okosotthon-megoldások) – ezeket helyi kivitelezővel koordináljuk, egyedi igény szerint.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kérdése van a gépészetről?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek szakmai tájékoztatást és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

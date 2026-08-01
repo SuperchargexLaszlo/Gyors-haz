@@ -1,0 +1,424 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+import hazakData from '../data/hazak.json';
+
+const title = 'Téliesített konténerház árak 2026 – 4 évszakos modellek 12,79 millió Ft-tól';
+const description =
+  'Téliesített konténerház árak 2026: 12,79 millió Ft-tól. Mit jelent a négy évszakos kivitel, és mennyi a teljes bekerülési költség alapozással és fűtéssel?';
+const pubDate = new Date('2026-07-31');
+
+// A hazak.json 5 konténerház tétele nem tartalmaz külön "téliesített" jelzőt/mezőt –
+// mind az öt modell leírása gyári szigetelést jelez, de csak a Nordic Premiumnál van
+// részletezve extra szigetelési adat (belmagasság, ablak, gipszkarton). Dedikált szűrési
+// logika hiányában a katalógus-sorrend első 3 tételét ajánljuk (Manhattan, Manhattan L, Beverly).
+const ajanlottSlugok = ['kontenerhaz-manhattan', 'kontenerhaz-manhattan-l', 'kontenerhaz-beverly'];
+
+const faqs = [
+  {
+    q: 'Mit jelent a téliesített, négy évszakos kivitel?',
+    a: 'Azt, hogy a ház fala, teteje és padlója gyárilag hőszigetelt, ezért megfelelő fűtéssel egész évben, télen is használható. A pontos szigetelési és nyílászáró-specifikáció modellenként eltér – ezekről ajánlatkéréskor adunk részletes, modellre szabott tájékoztatást.',
+  },
+  {
+    q: 'Mennyivel drágább a téliesített kivitel egy alap konténerházhoz képest?',
+    a: 'Nálunk nincs külön "nyári" és "téli" változat – a gyárilag szigetelt kivitel minden modellnél alapfelszereltség. Az árkülönbség a modellek mérete és felszereltségi szintje alapján alakul (pl. a Nordic Premium extra szigetelése és belső burkolata miatt drágább), nem a téliesítés miatt.',
+  },
+  {
+    q: 'Mit tartalmaz a téliesítés az árban?',
+    a: 'A gyárilag szigetelt acélváz-szerkezetet (fal, tető, padló), a szállítást 100 km-en belül, az összeszerelést és a villanyszerelést. Nem tartalmazza az alapozást és a fűtési rendszert – ezek külön tételek, a helyszíni igények alapján egyedileg alakulnak.',
+  },
+  {
+    q: 'Kell-e külön fűtésrendszert vásárolni?',
+    a: 'Igen, a fűtési rendszer nem része az alapárnak, mert ennek típusa (elektromos, hőszivattyús, gázos) egyénileg, a helyszíni igények alapján kerül kiválasztásra.',
+  },
+  {
+    q: 'Fagyban is használható a konténerház?',
+    a: 'Igen, megfelelő fűtéssel és a gyári hőszigeteléssel a konténerház fagypont alatti hőmérsékleten is használható. A padlószigetelés – ami minden modellünk árában benne van – és a megfelelő fűtési rendszer kiválasztása kulcsfontosságú ehhez.',
+  },
+  {
+    q: 'Mennyi idő alatt készül el egy konténerház?',
+    a: 'A helyszíni szállítás és összeszerelés – az alapozás elkészülte után – jellemzően 1–3 napot vesz igénybe. A teljes folyamat, a megrendeléstől (gyártás, szállítás, alapozás, összeszerelés) a kulcsátadásig, jellemzően 4–6 hét, de ez egyedi igény és a telek adottságai szerint eltérhet.',
+  },
+  {
+    q: 'Kell alapozás a konténerház alá?',
+    a: 'Igen, minden konténerházunkhoz szükséges az alapozás – ez nem része az ár alapcsomagjának. A munkadíj jellemzően 1.400.000 Ft + ÁFA körül alakul, a pontos típus (pontalapos, lemezalap) a telek és a talaj adottságaitól függ.',
+  },
+  {
+    q: 'Milyen fűtés ajánlott konténerházhoz?',
+    a: 'A fűtés típusát (elektromos, hőszivattyús vagy gázos) a helyszíni igények, a rendelkezésre álló közművek és az egyéni preferenciák alapján választjuk ki – nincs egyetlen univerzálisan legjobb megoldás, ezért ezt mindig egyedileg egyeztetjük ajánlatkéréskor.',
+  },
+  {
+    q: 'Mennyi a konténerház élettartama?',
+    a: 'Az acélváz-szerkezetű konténerházak megfelelő karbantartás mellett hosszú távú, tartós használatra tervezettek. A pontos élettartam a karbantartástól, a helyi időjárási viszonyoktól és a választott kiegészítő szigeteléstől is függ – erről ajánlatkéréskor, a műszaki dokumentáció alapján adunk tájékoztatást.',
+  },
+  {
+    q: 'Engedélyköteles-e a konténerház?',
+    a: 'Ez a helyi építési szabályzattól (HÉSZ) és a ház méretétől, rendeltetésétől függ – bizonyos esetekben egyszerűsített bejelentés is elegendő lehet. A pontos szabályokról részletesen a Konténerház építési engedély cikkünkben olvashat.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Konténerház árak', href: '/blog/kontenerhoz-arak' },
+  { label: 'Konténerház alapozás', href: '/kontenerhaz-alapozas' },
+  { label: 'Konténerház építési engedély', href: '/blog/kontenerhoz-epitesi-engedely' },
+  { label: 'Konténerház vs könnyűszerkezetes ház', href: '/blog/kontenerhaz-vs-konnyuszerkezetes' },
+  { label: 'Konténerház 60 nm', href: '/kontenerhaz-60-nm' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: 'Téliesített Konténerház Árak' },
+];
+
+// Product/ItemList schema a hazak.json konténerház tételeiből – csak ebben a fájlban,
+// a HazakGrid/lib/products.ts adatstruktúra érintése nélkül.
+interface HazSchemaItem {
+  kategoria: string;
+  nev: string;
+  slug: string;
+  leiras: string;
+  kep: string;
+  ar_ft: number | null;
+  ar_eur: number;
+}
+
+const kontenerhazak = (hazakData as HazSchemaItem[]).filter((h) => h.kategoria === 'kontenerhaz');
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: kontenerhazak.map((h, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: h.nev,
+      description: h.leiras,
+      image: `https://gyors-haz.hu${h.kep}`,
+      url: `https://gyors-haz.hu/kontenerhaz/${h.slug}`,
+      offers: {
+        '@type': 'Offer',
+        price: h.ar_ft ?? h.ar_eur,
+        priceCurrency: h.ar_ft ? 'HUF' : 'EUR',
+        availability: 'https://schema.org/InStock',
+        url: `https://gyors-haz.hu/kontenerhaz/${h.slug}`,
+      },
+    },
+  })),
+};
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['konténerház', 'téliesítés', 'árak', '4 évszakos']}
+  summary="A téliesített, négy évszakos kivitelű konténerházak ára 2026-ban 12.790.000 Ft-tól (Manhattan, 55 m²) 25.500.000 Ft-ig (Nordic Premium, 68 m² + terasz) terjed. Mind az öt modell gyárilag szigetelt fal-, tető- és padlószerkezettel készül, így megfelelő fűtéssel egész évben, télen is használható."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A konténerházak jelentős része már alapkivitelben is gyárilag hőszigetelt, "négy évszakos" kivitelben
+    készül – ez nem külön extra, hanem a szerkezet része. Ebben a cikkben bemutatjuk, mennyibe kerül egy
+    ilyen konténerház 2026-ban, mit takar pontosan a téliesítés, és milyen további költségekkel érdemes
+    számolni a teljes bekerülési ár megbecsléséhez.
+  </p>
+
+  <h2>Mennyibe kerül egy téliesített konténerház?</h2>
+
+  <p>
+    A kínálatunkban szereplő öt konténerház modell ára 12.790.000 Ft-tól 25.500.000 Ft-ig terjed, a méret és
+    a felszereltségi szint függvényében:
+  </p>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Modell</th>
+          <th>Alapterület</th>
+          <th>Ár (+ ÁFA)</th>
+          <th>Szigetelés</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Manhattan</td>
+          <td>55 m² (nettó 37,6 m²)</td>
+          <td>12.790.000 Ft</td>
+          <td>Szigetelt acélváz-szerkezet, 50 mm polisztirol (fal)</td>
+        </tr>
+        <tr>
+          <td>Manhattan L</td>
+          <td>69,3 m² (nettó 37,6 m²)</td>
+          <td>13.790.000 Ft</td>
+          <td>Szigetelt acélváz-szerkezet</td>
+        </tr>
+        <tr>
+          <td>Beverly</td>
+          <td>55 m² (nettó 37,6 m²)</td>
+          <td>15.090.000 Ft</td>
+          <td>Szigetelt acélváz-szerkezet</td>
+        </tr>
+        <tr>
+          <td>Beverly L</td>
+          <td>90 m² (nettó 56,4 m²)</td>
+          <td>16.090.000 Ft</td>
+          <td>Szigetelt acélváz-szerkezet</td>
+        </tr>
+        <tr>
+          <td>Nordic Premium</td>
+          <td>68 m² + 9 m² terasz</td>
+          <td>25.500.000 Ft</td>
+          <td>Vastagabb szigetelés, 3 rétegű ablakok, belső gipszkarton</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Az árak + ÁFA értendők. Lakhatási engedéllyel rendelkező, állandó lakóingatlanként bejelentett épületek
+    esetén az általános 27% helyett 5%-os kedvezményes ÁFA-kulcs alkalmazható – a pontos feltételeket érdemes
+    könyvelővel előzetesen egyeztetni. A modellenkénti pontos szigetelési és nyílászáró-specifikációról
+    ajánlatkéréskor adunk részletes tájékoztatást.
+  </p>
+
+  <h2>Ajánlott modellek</h2>
+
+  <p>
+    Az alábbi három modellt emeljük ki belépő szintű, kedvező árú választásként azoknak, akik kompakt,
+    két-három szobás megoldást keresnek:
+  </p>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit jelent a négy évszakos kivitel?</h2>
+
+  <p>
+    A "téliesített" vagy négy évszakos kivitel az épület hőtechnikai teljesítményét jelenti – vagyis hogy a
+    szerkezet mennyire tartja bent a meleget télen. Ehhez több tényező együttes teljesülése szükséges:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Fal-, tető- és padlószigetelés:</strong> mind az öt modellünknél gyári, a szállítmány része –
+      nem utólag beépítendő extra. A Manhattan típusnál ez konkrétan 50 mm polisztirol; a többi modell azonos
+      szerkezeti családba tartozik, hasonló felépítéssel.
+    </li>
+    <li>
+      <strong>Hőhídvédelem:</strong> acélváz-szerkezetű házaknál kiemelten fontos, hogy a fém tartóelemek ne
+      vezessék át hidegben a hideget a belső térbe. A megfelelő rétegrend kialakítása kulcsfontosságú az
+      acélvázas szerkezeteknél, ezért minden modellnél a műszaki specifikáció alapján kell ellenőrizni a
+      megoldást.
+    </li>
+    <li>
+      <strong>Nyílászárók:</strong> a Nordic Premium modell dokumentáltan 3 rétegű üvegezésű ablakokkal
+      készül; a többi modell nyílászáróinak pontos specifikációjáról érdemes ajánlatkéréskor rákérdezni.
+    </li>
+    <li>
+      <strong>Párazárás:</strong> a hőszigetelt falszerkezeteknél alapvető kivitelezéstechnikai követelmény,
+      hogy a rétegrend megfelelően kezelje a páraáteresztést, elkerülve a szerkezeten belüli páralecsapódást –
+      ezt a műszaki dokumentáció tartalmazza.
+    </li>
+    <li>
+      <strong>Fűtés:</strong> egyik modell ára sem tartalmazza a fűtési rendszert – ezt a helyszíni igények
+      (elektromos, hőszivattyús, gázos) alapján egyedileg választjuk ki és ajánljuk.
+    </li>
+  </ul>
+
+  <h2>Lehet télen lakni konténerházban?</h2>
+
+  <p>
+    Igen – megfelelő hőszigeteléssel és fűtéssel a konténerház egész évben, télen is komfortosan lakható.
+    A gyári szigetelés (fal, tető, padló) megteremti ehhez az alapot, de a tényleges télen-lakhatóság több
+    tényezőn is múlik.
+  </p>
+
+  <p>
+    A fűtési rendszer megválasztása kulcskérdés: mivel egyik modellünk ára sem tartalmazza a fűtést, a
+    helyszíni igények alapján kell kiválasztani a megfelelő megoldást (elektromos, hőszivattyús vagy gázos).
+    A rosszul méretezett vagy alkalmatlan fűtési rendszer akkor is kellemetlenné teheti a telet, ha a
+    szerkezet egyébként jól szigetelt.
+  </p>
+
+  <p>
+    A padlószigetelés különösen fontos szerepet játszik, mert a hideg leginkább alulról, a talaj felől hatol
+    be az épületbe. Ezért minden konténerházunk ára tartalmazza a padlószigetelést – ez nem opcionális extra,
+    hanem a szállítmány része.
+  </p>
+
+  <p>
+    A telepítés módja, vagyis az alapozás szintén befolyásolja a téli komfortot: egy megfelelően kivitelezett,
+    szigetelt alap csökkenti a padló felőli hőveszteséget, míg egy alulméretezett vagy rosszul szigetelt
+    alapozás hidegebbé teheti a beltért akkor is, ha maga a ház szerkezete jól szigetelt.
+  </p>
+
+  <p>
+    Zárt téli használat esetén a szellőzés és a páraelvezetés is fontos szempont: fűtés mellett, rosszul
+    szellőztetett térben könnyebben kialakulhat páralecsapódás, ami hosszabb távon a szerkezetet is
+    károsíthatja. Erre a berendezés kialakításánál és a mindennapi használat során is érdemes figyelni.
+  </p>
+
+  <h2>Teljes bekerülési költség</h2>
+
+  <p>
+    A ház alapára csak az egyik tétel a teljes költségvetésben. Az alábbi példa a Manhattan modell (55 m²,
+    12.790.000 Ft + ÁFA) esetén mutatja be, milyen további tételekkel érdemes számolni:
+  </p>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Tétel</th>
+          <th>Becsült összeg</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ház alapára (Manhattan, 55 m²)</td>
+          <td>12.790.000 Ft + ÁFA</td>
+        </tr>
+        <tr>
+          <td>Alapozás (munkadíj)</td>
+          <td>kb. 1.400.000 Ft + ÁFA</td>
+        </tr>
+        <tr>
+          <td>Szállítás (100 km-en belül)</td>
+          <td>díjmentes</td>
+        </tr>
+        <tr>
+          <td>Belső gipszkartonozás / dryvit munkadíja (55 m²)</td>
+          <td>kb. 550.000 Ft + ÁFA + anyagár</td>
+        </tr>
+        <tr>
+          <td>Fűtési rendszer</td>
+          <td>egyedi ajánlat alapján</td>
+        </tr>
+        <tr>
+          <td><strong>Várható minimum bekerülési költség (fűtés és egyedi tételek nélkül)</strong></td>
+          <td><strong>kb. 14.740.000 Ft + ÁFA</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    A tényleges végösszeg a fűtési rendszer típusától, a belső burkolat anyagköltségétől és a telek
+    adottságaitól (pl. 100 km feletti szállítás, egyedi alapozási igény) függően eltérhet a fenti becsléstől.
+    Pontos árajánlatot helyszíni felmérés után tudunk adni.
+  </p>
+
+  <h2>Téliesített konténerház vagy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Szempont</th>
+          <th>Konténerház</th>
+          <th>Könnyűszerkezetes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Falszerkezet</td>
+          <td>Acél ST37 váz, szigetelt panelek</td>
+          <td>Horganyzott acélváz, 10 cm hungarocell szigetelés</td>
+        </tr>
+        <tr>
+          <td>Legnagyobb elérhető méret (kínálatunkban)</td>
+          <td>90 m² (Beverly L)</td>
+          <td>126 m²</td>
+        </tr>
+        <tr>
+          <td>Mozgathatóság</td>
+          <td>Igen, darukkal</td>
+          <td>Korlátozott</td>
+        </tr>
+        <tr>
+          <td>Testreszabhatóság</td>
+          <td>Modellek közül választható</td>
+          <td>Rugalmasabb, egyedi igény szerint alakítható</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Mindkét megoldás elérhető gyárilag szigetelt, téliesíthető kivitelben. A konténerház gyorsabb
+    kivitelezést és mozgathatóságot kínál, a könnyűszerkezetes ház pedig rugalmasabb alaprajzi
+    testreszabást tesz lehetővé.
+  </p>
+
+  <h2>Kinek ajánljuk a téliesített konténerházat?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>egész éves használatra szánt nyaralót keres</li>
+    <li>vendégházat vagy kerti lakrészt szeretne kialakítani</li>
+    <li>gyors lakhatási megoldásra van szüksége</li>
+    <li>telephelyi irodát vagy szociális helyiséget épít</li>
+    <li>fiatal párként keres megfizethető első otthont</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>
+      teljesen egyedi, szabadon tervezett családi házra van igénye – a konténerházak kész modellek közül
+      választhatók, nem egyedi tervezésűek
+    </li>
+    <li>
+      90 m²-nél nagyobb alapterületre van szüksége – kínálatunkban a Beverly L (90 m²) a legnagyobb elérhető
+      konténerház modell; ennél nagyobb igény esetén érdemes a <a href="/modulhaz">modulház kínálatunkat</a> is
+      megnézni
+    </li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a téliesítésről" />
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Érdekli egy téliesített konténerház?
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek személyre szabott konténerház ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

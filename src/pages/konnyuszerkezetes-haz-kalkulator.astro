@@ -1,0 +1,130 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Ár-Kalkulátor Helyett – Így Becsülje Meg a Költséget';
+const description =
+  'Nincs online kalkulátorunk, de bemutatjuk, hogyan becsülheti meg egy könnyűszerkezetes ház teljes bekerülési költségét: alapár, alapozás, extrák.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Van online ár-kalkulátoruk?',
+    a: 'Nincs automatikus online kalkulátorunk, de az alábbi táblázat és a személyre szabott ajánlatkérés segít pontos képet kapni a várható költségekről.',
+  },
+  {
+    q: 'Milyen tételekkel kell számolni a ház árán felül?',
+    a: 'Alapozás (kb. 1.400.000 Ft + ÁFA), szállítás (100 km felett pótdíj), és igény esetén tervdokumentáció (kb. 2.370.000 Ft + ÁFA).',
+  },
+  {
+    q: 'Hogyan kapok pontos árat?',
+    a: 'Ajánlatkéréskor, a konkrét modell és a telek adottságai alapján pontos, személyre szabott árat adunk.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Teljes bekerülési költség – konténerház', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Könnyűszerkezetes ház alapozása', href: '/konnyuszerkezetes-haz-alapozasa' },
+  { label: 'Könnyűszerkezetes ház hitel', href: '/konnyuszerkezetes-haz-hitel' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Kalkulátor' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['kalkulátor', 'árbecslés', 'könnyűszerkezetes']}
+  summary="Nincs automatikus online ár-kalkulátorunk, de a ház alapára mellett az alapozás (kb. 1.400.000 Ft), a szállítás és a tervdokumentáció (kb. 2.370.000 Ft) figyelembevételével hozzávetőleges képet kaphat a teljes bekerülési költségről."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos elöljáróban tisztázni: nincs automatikus online ár-kalkulátorunk. Ehelyett bemutatjuk, milyen
+    tételekből áll össze a teljes bekerülési költség, hogy Ön magának is meg tudja becsülni.
+  </p>
+
+  <h2>Mennyibe kerül egy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Így becsülheti meg a teljes költséget</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Tétel</th><th>Becsült összeg</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ház alapára</td><td>16.000–43.000 EUR + ÁFA (méret szerint)</td></tr>
+        <tr><td>Alapozás (munkadíj)</td><td>kb. 1.400.000 Ft + ÁFA</td></tr>
+        <tr><td>Tervdokumentáció (ha szükséges)</td><td>kb. 2.370.000 Ft + ÁFA</td></tr>
+        <tr><td>Szállítás</td><td>100 km-en belül díjmentes</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    A pontos, személyre szabott árat a modell és a telek adottságai alapján, ajánlatkéréskor tudjuk
+    megadni.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kérjen pontos, személyre szabott árat</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek pontos árajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

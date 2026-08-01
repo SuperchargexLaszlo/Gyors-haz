@@ -1,0 +1,112 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'ÁSZF' },
+];
+
+const updatedDate = new Date('2026-01-01');
+---
+
+<BaseLayout
+  title="Általános Szerződési Feltételek | gyors-haz.hu"
+  description="A gyors-haz.hu általános szerződési feltételei — árajánlat-kérési folyamat, felelősség, szerzői jogok."
+  noindex={false}
+  updatedDate={updatedDate}
+>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <h1 class="font-sans font-extrabold text-3xl text-gray-900 mb-2">
+      Általános Szerződési Feltételek
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Hatályos: 2025. január 1.</p>
+
+    <div class="prose prose-lg max-w-none text-gray-700 space-y-8">
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">1. A szolgáltató adatai</h2>
+        <p class="text-sm text-gray-600">
+          Szolgáltató neve: Instant Otthonok Kft. (placeholder)<br/>
+          Székhely: XXXX Budapest, Példa utca 1. (placeholder)<br/>
+          E-mail: <a href="mailto:info@instantotthonok.com" class="text-primary hover:underline">info@instantotthonok.com</a><br/>
+          Telefon: <a href="tel:+36707778372" class="text-primary hover:underline">+36 70 777 8372</a><br/>
+          Weboldal: <a href="https://gyors-haz.hu" class="text-primary hover:underline">https://gyors-haz.hu</a>
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">2. A weboldal jellege</h2>
+        <p class="text-sm text-gray-600">
+          A gyors-haz.hu weboldal könnyűszerkezetes ház, modulház és konténerház termékek bemutatására és
+          <strong>ajánlatkérés fogadására</strong> szolgál. A weboldalon keresztül közvetlen vásárlásra (e-kereskedelemre)
+          nincs lehetőség — az árajánlat nem minősül ajánlattételnek, és kötelezettséget nem keletkeztet.
+        </p>
+        <p class="text-sm text-gray-600 mt-2">
+          A végleges szerződés megkötése személyesen, írásban, az adásvételi szerződés aláírásával történik.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">3. Árajánlat-kérési folyamat</h2>
+        <ol class="text-sm text-gray-600 list-decimal list-inside space-y-2">
+          <li>Az érdeklő kitölti az ajánlatkérési űrlapot a weboldalon.</li>
+          <li>A szolgáltató 24 munkanapon belüli visszahívást vállal (munkanapokon).</li>
+          <li>Telefonos vagy személyes egyeztetés alapján egyedi ajánlat készül.</li>
+          <li>Az ajánlat elfogadása esetén írásos adásvételi szerződés kerül megkötésre.</li>
+          <li>A szerződéskötés után kezdődik meg a gyártás és a szállítás ütemezése.</li>
+        </ol>
+        <p class="text-sm text-gray-600 mt-3">
+          Az árajánlat-kérés benyújtása semmiféle vásárlási kötelezettséget nem keletkeztet az érdeklő részéről.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">4. Árak és termékadatok</h2>
+        <p class="text-sm text-gray-600">
+          A weboldalon feltüntetett árak tájékoztató jellegűek, EUR-ban értendők, és előzetes értesítés nélkül
+          megváltoztathatók. Az árak a termék gyári árát tartalmazzák; a szállítás, alapozás, engedélyeztetés
+          és egyéb kapcsolódó munkák költségei külön kerülnek meghatározásra az egyedi ajánlatban.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">5. Felelősség kizárása</h2>
+        <p class="text-sm text-gray-600">
+          A szolgáltató nem vállal felelősséget a weboldalon található tájékoztató jellegű adatok
+          esetleges pontatlanságáért, a weboldal átmeneti elérhetetlenségéért, illetve a weboldalon
+          elhelyezett külső hivatkozások tartalmáért.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">6. Szerzői jogok</h2>
+        <p class="text-sm text-gray-600">
+          A weboldalon megjelenő összes tartalom (szöveg, kép, grafika, logó) szerzői jogi védelem
+          alatt áll. Engedély nélküli másolása, terjesztése vagy felhasználása tilos.
+          © {new Date().getFullYear()} Gyors Ház. Minden jog fenntartva.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">7. Irányadó jog</h2>
+        <p class="text-sm text-gray-600">
+          Jelen ÁSZF-re a magyar jog, különösen a Polgári Törvénykönyvről szóló 2013. évi V. törvény
+          rendelkezései az irányadók. Jogvita esetén a felek elsősorban peren kívüli egyeztetéssel
+          törekszenek a vita rendezésére.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-sans font-bold text-xl text-gray-900 mb-3">8. Kapcsolat</h2>
+        <p class="text-sm text-gray-600">
+          ÁSZF-fel kapcsolatos kérdésekkel forduljon hozzánk:
+          <a href="mailto:info@instantotthonok.com" class="text-primary hover:underline">info@instantotthonok.com</a>
+        </p>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

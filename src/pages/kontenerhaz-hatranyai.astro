@@ -1,0 +1,124 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Konténerház Hátrányai – Őszinte Áttekintés';
+const description =
+  'Konténerház hátrányai és korlátai: mit érdemes tudni vásárlás előtt? Őszinte, kiegyensúlyozott áttekintés az előnyök mellett.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['kontenerhaz-manhattan', 'kontenerhaz-manhattan-l', 'kontenerhaz-beverly'];
+
+const faqs = [
+  {
+    q: 'Mi a konténerház legnagyobb hátránya?',
+    a: 'A belépő szintű modelleknél (Manhattan, Beverly) a belső gipszkartonozás és a külső dryvit külön tétel – ezt sokan alábecslik a teljes költségvetés tervezésekor.',
+  },
+  {
+    q: 'Nehezebb eladni egy konténerházat?',
+    a: 'A hazai ingatlanpiacon a hagyományos építésű házak piaca fejlettebb, ezért az újraértékesítésnél ez szempont lehet – ezt érdemes mérlegelni a vásárlási döntésnél.',
+  },
+  {
+    q: 'Van korlátozás a méretben?',
+    a: 'Igen, jelenlegi katalógus-modelljeink 55–90 m² közöttiek, egyszintes kivitelben. Ha ennél nagyobb vagy emeletes megoldásra van szüksége, érdemes a modulház kínálatunkat is megnézni.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Konténerház méretek', href: '/kontenerhaz-meretek' },
+  { label: 'Teljes bekerülési költség', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Emeletes konténerház', href: '/emeletes-kontenerhaz' },
+  { label: 'Konténerház árak – korábbi cikkünk', href: '/blog/kontenerhoz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: 'Konténerház Hátrányai' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['hátrányok', 'konténerház', 'tájékoztató']}
+  summary="A konténerház előnyei mellett érdemes ismerni a korlátait is: a belépő szintű modelleknél a belső gipszkartonozás külön tétel, a méretkínálat 55-90 m²-ig terjed, és a hazai ingatlanpiacon a hagyományos építés piaca fejlettebb."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Egy vásárlási döntés előtt fontos a teljes képet látni – az előnyök mellett a korlátokat is. Ebben a
+    cikkben őszintén összefoglaljuk, mire érdemes figyelni konténerház választásakor.
+  </p>
+
+  <h2>Mennyibe kerül egy konténerház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Manhattan</td><td>55 m²</td><td>12.790.000 Ft</td></tr>
+        <tr><td>Manhattan L</td><td>69,3 m²</td><td>13.790.000 Ft</td></tr>
+        <tr><td>Beverly</td><td>55 m²</td><td>15.090.000 Ft</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit érdemes tudni vásárlás előtt?</h2>
+
+  <p>
+    A belépő szintű modelleknél (Manhattan, Beverly) a belső gipszkartonozás és a külső dryvit külön
+    tétel – ezt érdemes előre betervezni a teljes költségvetésbe, ne csak az alapárral számoljon.
+    A méretkínálat jelenleg 55–90 m² közötti, egyszintes kivitelben – ha ennél nagyobb vagy emeletes
+    megoldásra van szüksége, a modulház kínálatunk (akár 122 m²-ig) alternatívát jelenthet.
+  </p>
+
+  <p>
+    A hazai ingatlanpiacon a hagyományos, tégla-beton építésű házak piaca még mindig fejlettebb és
+    elterjedtebb – ez az újraértékesítésnél szempont lehet, különösen egyes régiókban vagy vevői
+    körökben.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kérdése van a konténerházakról?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek őszinte, személyre szabott tanácsot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

@@ -1,0 +1,118 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Konténerház Szigetelés – Mit Tartalmaz Gyárilag?';
+const description =
+  'Konténerház szigetelése: polisztirol vagy vastagabb prémium szigetelés? Modellenként bemutatjuk, mit tartalmaz gyárilag az ár.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['kontenerhaz-manhattan', 'kontenerhaz-manhattan-l', 'kontenerhaz-nordic-premium'];
+
+const faqs = [
+  {
+    q: 'Milyen szigeteléssel készül a Manhattan konténerház?',
+    a: '50 mm polisztirol szigeteléssel a falban, PVC padlóburkolattal.',
+  },
+  {
+    q: 'Miben más a Nordic Premium szigetelése?',
+    a: 'Vastagabb szigeteléssel és háromrétegű üvegezésű ablakokkal készül, ami jobb hőtartást biztosít, mint a belépő szintű modellek.',
+  },
+  {
+    q: 'Elég a gyári szigetelés a téli használathoz?',
+    a: 'Igen, minden modellünk gyárilag szigetelt, négy évszakos kivitelben készül – ez alapfelszereltség, nem külön extra.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Konténerház belülről', href: '/kontenerhaz-belulrol' },
+  { label: 'Acélvázas könnyűszerkezetes ház árak', href: '/acelvazas-konnyuszerkezetes-haz-arak' },
+  { label: 'Konténerház méretek', href: '/kontenerhaz-meretek' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: 'Konténerház Szigetelés' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['szigetelés', 'konténerház', 'polisztirol']}
+  summary="A Manhattan és Beverly modellek 50 mm polisztirol szigeteléssel készülnek, a Nordic Premium ennél vastagabb szigeteléssel és háromrétegű üvegezésű ablakokkal. Minden modell gyárilag szigetelt, négy évszakos kivitelű."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A szigetelés minősége határozza meg, mennyire lakható egy konténerház télen. Ebben a cikkben
+    bemutatjuk, mit tartalmaz gyárilag az egyes modellek szigetelése.
+  </p>
+
+  <h2>Mennyibe kerül egy jól szigetelt konténerház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Ár (+ ÁFA)</th><th>Szigetelés</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Manhattan</td><td>12.790.000 Ft</td><td>50 mm polisztirol</td></tr>
+        <tr><td>Manhattan L</td><td>13.790.000 Ft</td><td>Szigetelt acélváz-szerkezet</td></tr>
+        <tr><td>Nordic Premium</td><td>25.500.000 Ft</td><td>Vastagabb szigetelés, 3 rétegű ablakok</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mi a különbség a szigetelési szintek között?</h2>
+
+  <p>
+    A Manhattan és Beverly modellek 50 mm polisztirol szigeteléssel készülnek – ez a gyári,
+    alapfelszereltség része, minden modellnél. A Nordic Premium ennél is tovább megy: vastagabb
+    szigeteléssel, háromrétegű üvegezésű ablakokkal és 280 cm belmagassággal a legjobb téli komfortot
+    nyújtja kínálatunkban.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kérdése van a szigetelésről?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek szakmai tájékoztatást és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

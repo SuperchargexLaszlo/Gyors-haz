@@ -1,0 +1,124 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Építhető Mobilház Engedély Nélkül? – Amit Tudni Érdemes';
+const description =
+  'Építhető-e mobilház engedély nélkül? Röviden összefoglaljuk a kockázatokat, és bemutatjuk, mikor elegendő az egyszerűsített bejelentés is.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'kontenerhaz-manhattan', 'modulhaz-amsterdam'];
+
+const faqs = [
+  {
+    q: 'Építhető mobilház teljesen engedély nélkül?',
+    a: 'Nem javasoljuk – az engedély nélküli építkezés jogi kockázatot jelent, akár bontási kötelezettséggel és bírsággal is járhat. Sok esetben ugyanakkor nem is szükséges teljes engedély, elég az egyszerűsített bejelentés.',
+  },
+  {
+    q: 'Mi a különbség az engedély és a bejelentés között?',
+    a: 'A legtöbb, 300 m² alatti lakóépületnél elegendő az egyszerűsített bejelentési eljárás, ami gyorsabb és kevesebb dokumentációt igényel, mint a teljes engedélyezés – de ez nem ugyanaz, mint az engedélyeztetés teljes elhagyása.',
+  },
+  {
+    q: 'Milyen kockázata van az engedély nélküli építésnek?',
+    a: 'Az illegálisan épített ingatlan bontásra kötelezhető, bírságot vonhat maga után, és nem kap lakhatási engedélyt, ami megnehezíti a jövőbeli értékesítést és a hitelfelvételt is.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+  { label: 'Konténerház építési engedély – részletes útmutató', href: '/blog/kontenerhoz-epitesi-engedely' },
+  { label: 'Zártkert mobilház', href: '/zartkert-mobilhaz' },
+  { label: 'Könnyűszerkezetes ház építési engedély', href: '/konnyuszerkezetes-haz-epitesi-engedely' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Mobilház Engedély Nélkül' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="altalanos"
+  tags={['engedély', 'kockázat', 'mobilház']}
+  summary="Az engedély nélküli építkezés jogi kockázatot jelent, akár bontási kötelezettséggel is járhat. Ugyanakkor a legtöbb, 300 m² alatti mobilháznál nem is szükséges teljes engedély – elegendő az egyszerűsített bejelentés, ami gyorsabb és egyszerűbb."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Sokan keresnek rá arra, hogy építhető-e mobilház engedély nélkül – jellemzően azért, mert az
+    engedélyeztetést bonyolultnak és időigényesnek gondolják. Fontos tisztázni: ez kockázatos út, de
+    a jó hír, hogy a legtöbb esetben nincs is szükség teljes engedélyre.
+  </p>
+
+  <h2>Mennyibe kerül egy mobilház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Típus</th><th>Mérettartomány</th><th>Kezdőár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház</td><td>22–126 m²</td><td>16.000 EUR + ÁFA</td></tr>
+        <tr><td>Modulház</td><td>15–122 m²</td><td>ár kérésre</td></tr>
+        <tr><td>Konténerház</td><td>55–90 m²</td><td>12.790.000 Ft + ÁFA</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Miért nem érdemes engedély nélkül építkezni?</h2>
+
+  <p>
+    Az engedély nélküli, illegális építkezés bontási kötelezettséghez és bírsághoz vezethet, és az
+    épület nem kap lakhatási engedélyt – ez megnehezíti a jövőbeli értékesítést és a hitelfelvételt is.
+    A jó hír ugyanakkor, hogy a legtöbb, 300 m² alatti lakóépületnél nem is szükséges teljes építési
+    engedély: elegendő az egyszerűsített bejelentési eljárás, ami jellemzően 15 napon belül lezárul, és
+    lényegesen kevesebb adminisztrációval jár, mint amitől sokan tartanak.
+  </p>
+
+  <p>
+    A pontos szabályok a telek adottságaitól (pl. zártkert vagy belterület) és a helyi HÉSZ-től függenek
+    – erről bővebben az építési engedélyről szóló cikkeinkben olvashat.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Segítünk a jogszerű engedélyeztetésben</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek segítséget az engedélyeztetéshez
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

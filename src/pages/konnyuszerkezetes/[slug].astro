@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { getProductsByKategoria, formatAr, negyzetmeterAr } from '../../lib/products';
+import type { Product } from '../../lib/products';
+
+export const getStaticPaths = async () => {
+  const products = await getProductsByKategoria('konnyuszerkezetes');
+  return products.map((p) => ({
+    params: { slug: p.slug },
+    props: { product: p },
+  }));
+};
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+const title = `${product.nev} – Ár, Jellemzők | gyors-haz.hu`;
+const description = product.leiras.slice(0, 155);
+const updatedDate = new Date('2026-01-01');
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes házak', href: '/konnyuszerkezetes' },
+  { label: product.nev },
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.nev,
+  description: product.leiras,
+  image: `https://gyors-haz.hu${product.kep}`,
+  url: `https://gyors-haz.hu/konnyuszerkezetes/${product.slug}`,
+};
+---
+
+<BaseLayout title={title} description={description} schema={productSchema} updatedDate={updatedDate}>
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <Breadcrumb items={breadcrumbItems} />
+
+    <div class="grid lg:grid-cols-2 gap-10 mb-12">
+      <!-- Kép -->
+      <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100">
+        <img
+          src={product.kep}
+          alt={`${product.nev} – ${product.meret_m2} m²`}
+          width="1200"
+          height="800"
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+      </div>
+
+      <!-- Adatok -->
+      <div>
+        <p class="text-sm font-medium text-primary uppercase tracking-wider mb-2">Könnyűszerkezetes ház</p>
+        <h1 class="font-sans font-extrabold text-3xl sm:text-4xl text-gray-900 mb-4">{product.nev}</h1>
+
+        <p class="text-3xl font-bold text-primary mb-1">{formatAr(product)}</p>
+        <p class="text-sm text-gray-500 mb-6">{negyzetmeterAr(product)}</p>
+
+        <dl class="grid grid-cols-2 gap-3 text-sm mb-6">
+          <div class="bg-gray-50 rounded-lg p-3">
+            <dt class="text-gray-500 mb-0.5">Alapterület</dt>
+            <dd class="font-semibold text-gray-900">{product.meret_m2} m²</dd>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-3">
+            <dt class="text-gray-500 mb-0.5">Hálószobák</dt>
+            <dd class="font-semibold text-gray-900">{product.szobak} db</dd>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-3">
+            <dt class="text-gray-500 mb-0.5">Fürdőszoba</dt>
+            <dd class="font-semibold text-gray-900">{product.furdo} db</dd>
+          </div>
+          {product.terasz_m2 > 0 && (
+            <div class="bg-gray-50 rounded-lg p-3">
+              <dt class="text-gray-500 mb-0.5">Terasz</dt>
+              <dd class="font-semibold text-gray-900">{product.terasz_m2} m²</dd>
+            </div>
+          )}
+        </dl>
+
+        <p class="text-gray-600 text-sm leading-relaxed mb-6">{product.leiras}</p>
+
+        <a
+          href="/ajanlatot-kerek"
+          class="block w-full rounded-xl bg-accent py-3.5 text-center font-sans font-bold text-white hover:bg-accent-dark transition-colors shadow mb-3"
+        >
+          Ajánlatot kérek
+        </a>
+        <a
+          href="/konnyuszerkezetes"
+          class="block w-full rounded-xl border-2 border-primary py-3 text-center font-sans font-semibold text-primary hover:bg-primary hover:text-white transition-colors text-sm"
+        >
+          ← Összes könnyűszerkezetes ház
+        </a>
+      </div>
+    </div>
+
+    <!-- Tartalmaz / Nem tartalmaz -->
+    <div class="grid sm:grid-cols-2 gap-6 mb-12">
+      <div class="rounded-2xl border border-green-100 bg-green-50 p-6">
+        <h2 class="font-bold text-green-900 mb-3">Az ár tartalmazza</h2>
+        <p class="text-sm text-green-800 leading-relaxed">{product.tartalmaz}</p>
+      </div>
+      <div class="rounded-2xl border border-red-100 bg-red-50 p-6">
+        <h2 class="font-bold text-red-900 mb-3">Az árban nem szerepel</h2>
+        <p class="text-sm text-red-800 leading-relaxed">{product.nem_tartalmaz}</p>
+      </div>
+    </div>
+
+    <!-- Tervezés link -->
+    <div class="rounded-2xl bg-blue-50 border border-blue-100 p-6 text-center">
+      <p class="text-blue-800 font-medium mb-3">
+        Szüksége van tervdokumentációra és engedélyeztetésre?
+      </p>
+      <a
+        href="/tervezes-engedely"
+        class="inline-block rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
+      >
+        Tervezési és engedélyezési díjak →
+      </a>
+    </div>
+  </div>
+</BaseLayout>

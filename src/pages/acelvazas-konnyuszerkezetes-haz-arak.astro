@@ -1,0 +1,164 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Acélvázas Könnyűszerkezetes Ház Árak 2026 – 16.000 EUR-tól';
+const description =
+  'Acélvázas könnyűszerkezetes ház árak 2026-ban: 16.000 EUR-tól 43.000 EUR-ig. Miért horganyzott acélváz, és mit jelent ez a tartósság szempontjából?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'konnyuszerkezetes-haz-62m2', 'konnyuszerkezetes-haz-126m2'];
+
+const faqs = [
+  {
+    q: 'Miért horganyzott acélváz és nem hagyományos faváz?',
+    a: 'A horganyzott acélváz nem korhad, nem rothad, és ellenállóbb a rovar- és rágcsálókárokkal szemben, mint a fa. A gyári, méretpontos gyártás emellett egyenletes minőséget biztosít modellenként.',
+  },
+  {
+    q: 'Rozsdásodik-e idővel az acélváz?',
+    a: 'A horganyzás (cink bevonat) jelentősen csökkenti a korrózió kockázatát. A tartósság érdekében fontos a gyártó által előírt karbantartási ajánlásokat betartani, különösen a sérült felületek utólagos kezelésénél.',
+  },
+  {
+    q: 'Mennyi az acélvázas könnyűszerkezetes ház belmagassága?',
+    a: 'Minden modellünknél 280 cm, ami az árkategóriában ritkán elérhető, tágas belső teret biztosít.',
+  },
+  {
+    q: 'Kell-e külön korrózióvédelmi kezelés a bekerülési ár felett?',
+    a: 'Az alapkivitel horganyzott acélvázzal készül, ez az alapár része. Extra bevonat vagy speciális korrózióvédelem egyedi igény esetén, ajánlatkéréskor egyeztethető.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Könnyűszerkezetes ház szerkezeti rajz', href: '/konnyuszerkezetes-haz-szerkezeti-rajz' },
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Acélvázas Könnyűszerkezetes Ház Árak' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['acélváz', 'könnyűszerkezetes', 'árak', 'horganyzott acél']}
+  summary="Az acélvázas könnyűszerkezetes házaink ára 2026-ban 16.000 EUR-tól (22 m²) 43.000 EUR-ig (126 m²) terjed. A horganyzott acélváz nem korhad, nem rothad, méretpontos gyártást tesz lehetővé, és minden modellnél 280 cm belmagasságot biztosít."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A könnyűszerkezetes házak alapja a tartószerkezet: nálunk minden modell horganyzott acélvázra épül, nem
+    hagyományos favázra. Ebben a cikkben bemutatjuk, mennyibe kerülnek ezek a házak, és miért éri meg az
+    acélváz technológia.
+  </p>
+
+  <h2>Mennyibe kerül egy acélvázas könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Modell</th>
+          <th>Alapterület</th>
+          <th>Ár (+ ÁFA)</th>
+          <th>Négyzetméterár (kb.)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház 22m²</td><td>22 m²</td><td>16.000 EUR</td><td>~727 EUR/m²</td></tr>
+        <tr><td>Könnyűszerkezetes ház 35m²</td><td>35 m²</td><td>20.300 EUR</td><td>~580 EUR/m²</td></tr>
+        <tr><td>Könnyűszerkezetes ház 52m²</td><td>52 m²</td><td>22.000 EUR</td><td>~423 EUR/m²</td></tr>
+        <tr><td>Könnyűszerkezetes ház 62m²</td><td>62 m²</td><td>23.000 EUR</td><td>~371 EUR/m²</td></tr>
+        <tr><td>Könnyűszerkezetes ház 78m²</td><td>78 m²</td><td>31.000 EUR</td><td>~397 EUR/m²</td></tr>
+        <tr><td>Könnyűszerkezetes ház 96m²</td><td>96 m²</td><td>35.000 EUR</td><td>~365 EUR/m²</td></tr>
+        <tr><td>Könnyűszerkezetes ház 126m²</td><td>126 m²</td><td>43.000 EUR</td><td>~341 EUR/m²</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Összességében megfigyelhető, hogy a nagyobb modellek négyzetméterenkénti ára alacsonyabb, bár ez nem
+    teljesen lineáris minden méretnél – a szobaszám és a felszereltségi szint is befolyásolja az árat.
+  </p>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Miért acélváz és nem hagyományos faváz?</h2>
+
+  <p>
+    A horganyzott acélváz több szempontból is előnyös a hagyományos favázas megoldásokkal szemben. Az acél
+    nem korhad és nem rothad, ellenállóbb a rovar- és rágcsálókárokkal szemben, és a gyári, méretpontos
+    gyártás egyenletes minőséget biztosít – nincs vetemedés vagy száradási zsugorodás, ami fánál előfordulhat.
+  </p>
+
+  <p>
+    A horganyzás (cink bevonat) jelentősen csökkenti a korrózió kockázatát, ami hosszú távú tartósságot
+    eredményez megfelelő karbantartás mellett. Minden modellünk 280 cm belmagassággal készül, ami az
+    árkategóriában ritkán elérhető, tágas belső teret ad.
+  </p>
+
+  <h2>Kinek ajánljuk?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>tartós, alacsony karbantartás-igényű szerkezetet keres</li>
+    <li>gyors, kiszámítható kivitelezési időt szeretne</li>
+    <li>fontos szempont a gyári méretpontosság és az egyenletes minőség</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>kifejezetten hagyományos, favázas esztétikát és anyaghasználatot részesít előnyben</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések az acélvázas házakról" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Érdekli egy acélvázas könnyűszerkezetes ház?
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek személyre szabott acélvázas ház ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

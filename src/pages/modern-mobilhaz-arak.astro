@@ -1,0 +1,192 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Modern Mobilház Árak – Design Modulházak 2026';
+const description =
+  'Modern, minimalista dizájnú mobilházak (modulházak) 2026-ban: Stockholm, Milan, Barcelona és társaik. Méretek, alaprajzok, és amit az árról tudni érdemes.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['modulhaz-stockholm', 'modulhaz-milan', 'modulhaz-barcelona'];
+
+const faqs = [
+  {
+    q: 'Mennyibe kerül egy modern modulház?',
+    a: 'A modulházak ára az egyedi konfigurációtól és felszereltségtől függ, ezért ajánlatkéréskor adunk pontos árat.',
+  },
+  {
+    q: 'Melyik modell a legkompaktabb modern kivitel?',
+    a: 'A Stockholm 42 m²-en, két hálószobával kínál skandináv stílusú, minimalista belsőt és nagy panorámaablakokat.',
+  },
+  {
+    q: 'Van nagyobb, modern stílusú modulház is?',
+    a: 'Igen, a Barcelona modell 90 m²-en, mediterrán hangulatú, nyitott nappali-konyha elrendezéssel és két fürdőszobával készül.',
+  },
+  {
+    q: 'Testreszabható a modern modulházak belső kialakítása?',
+    a: 'A modulházaknál a belső kialakítás rugalmasabban igazítható az egyedi igényekhez, mint a szabvány könnyűszerkezetes modelleknél. A pontos lehetőségekről ajánlatkéréskor adunk tájékoztatást.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Luxus mobilház', href: '/luxus-mobilhaz' },
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+  { label: 'Modulházak', href: '/modulhaz' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Modulházak', href: '/modulhaz' },
+  { label: 'Modern Mobilház Árak' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="modulhaz"
+  tags={['modern mobilház', 'modulház', 'design', 'minimalista']}
+  summary="A modern, minimalista dizájnú mobilházaink – mint a Stockholm, a Milan vagy a Barcelona – tiszta vonalvezetést, nagy panorámaablakokat és nyitott alaprajzot kínálnak 42 m²-től 90 m²-ig. Az ár egyedi konfiguráció alapján alakul, ajánlatkéréskor adunk pontos árat."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A "modern mobilház" kifejezés alatt nálunk a letisztult, minimalista dizájnú modulházakat értjük –
+    ezek jellemzően nagy üvegfelületekkel, nyitott alaprajzzal és egyszerű, tiszta vonalvezetéssel
+    készülnek. Nézzük meg a legnépszerűbb modern modelljeinket.
+  </p>
+
+  <h2>Modern modulházak méretei</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Modell</th>
+          <th>Alapterület</th>
+          <th>Szobák</th>
+          <th>Terasz</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Stockholm</td><td>42 m²</td><td>2</td><td>8 m²</td></tr>
+        <tr><td>Milan</td><td>48 m²</td><td>2</td><td>8 m²</td></tr>
+        <tr><td>Sicilia</td><td>42 m²</td><td>2</td><td>8 m²</td></tr>
+        <tr><td>Barcelona</td><td>90 m²</td><td>3</td><td>18 m²</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Az ár minden modulháznál egyedi konfiguráció (alaprajz, belső kialakítás, extrák) alapján alakul –
+    ajánlatkéréskor adunk pontos árat.
+  </p>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mi teszi modernné ezeket a modulházakat?</h2>
+
+  <p>
+    A Stockholm svéd minimalizmust képvisel: két hálószoba, letisztult Scandi belső, nagy panorámaablak
+    és fedett terasz. A Milan milánói design stílusú, modern minimalista belsővel. A Barcelona mediterrán
+    hangulatú, nyitott nappali-konyha kombinációval és két fürdőszobával – ez utóbbi azoknak ajánlott, akik
+    nagyobb alapterületen szeretnék a modern stílust.
+  </p>
+
+  <p>
+    Mindegyik modell moduláris acélváz szerkezetre és hőszigetelt szendvicspanel falakra épül, fedett
+    terasszal – a modern megjelenés tehát nem megy a tartósság rovására.
+  </p>
+
+  <h2>Modern modulház vagy hagyományos könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Szempont</th>
+          <th>Modern modulház</th>
+          <th>Könnyűszerkezetes ház</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ár</td>
+          <td>Egyedi ajánlat alapján</td>
+          <td>16.000 EUR-tól (fix listaár)</td>
+        </tr>
+        <tr>
+          <td>Testreszabhatóság</td>
+          <td>Rugalmasabb, egyedi konfigurációval</td>
+          <td>Szabvány modellek közül választható</td>
+        </tr>
+        <tr>
+          <td>Design</td>
+          <td>Letisztult, nagy üvegfelületek</td>
+          <td>Klasszikusabb, funkcionális megjelenés</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Kinek ajánljuk?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>fontos a letisztult, minimalista megjelenés</li>
+    <li>nyitott alaprajzot és nagy ablakfelületeket szeretne</li>
+    <li>rugalmas, egyedi konfigurációt keres</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>azonnal, fix listaáron szeretne dönteni – ehhez a könnyűszerkezetes modelljeink illenek jobban</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a modern mobilházról" />
+  </div>
+
+  <h2>Teljes modulház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="modulhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Érdekli egy modern stílusú modulház?
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek személyre szabott modern modulház ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

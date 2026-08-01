@@ -1,0 +1,167 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Szerkezeti Rajz – Mit Tartalmaz a Tervdokumentáció?';
+const description =
+  'Könnyűszerkezetes ház szerkezeti rajza és tervdokumentációja: mit tartalmaz, mennyibe kerül, és miért fontos az engedélyeztetéshez és a kivitelezéshez?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Mit tartalmaz egy könnyűszerkezetes ház szerkezeti rajza?',
+    a: 'A szerkezeti (tartószerkezeti) terv az acélváz elrendezését, a falak, a tető és a födém felépítését, valamint a méreteket és rétegrendeket mutatja be. Ez a dokumentáció alapja az engedélyeztetésnek és a gyártásnak is.',
+  },
+  {
+    q: 'Mennyibe kerül a tervdokumentáció?',
+    a: 'A teljes tervdokumentáció (építészeti és gépészeti tervekkel együtt) díja jellemzően kb. 2.370.000 Ft + ÁFA, a ház méretétől és az engedélyeztetési eljárás típusától függően.',
+  },
+  {
+    q: 'Kapok alaprajzot a kiválasztott modellhez?',
+    a: 'Igen, a modelljeinkhez tartozó alaprajzokat ajánlatkéréskor elküldjük, illetve a bemutatóudvarunkban élőben is megtekinthetők a kivitelezett elrendezések.',
+  },
+  {
+    q: 'Módosítható a szerkezeti rajz egyedi igény szerint?',
+    a: 'A könnyűszerkezetes technológia viszonylag rugalmas alaprajzi módosításokat tesz lehetővé (pl. válaszfalak áthelyezése), de a végleges lehetőségeket mindig a tervező és a gyártó együtt határozza meg a konkrét modell alapján.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+  { label: 'Könnyűszerkezetes ház 40 nm', href: '/konnyuszerkezetes-haz-40-nm' },
+  { label: 'Könnyűszerkezetes ház részletre', href: '/blog/konnyuszerkezetes-haz-reszletre' },
+  { label: 'Könnyűszerkezetes házak', href: '/konnyuszerkezetes' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Szerkezeti Rajz' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['könnyűszerkezetes ház', 'szerkezeti rajz', 'tervdokumentáció', 'alaprajz']}
+  summary="A könnyűszerkezetes ház szerkezeti rajza a horganyzott acélváz elrendezését, a fal-, tető- és födémrétegrendet, valamint a pontos méreteket tartalmazza. A teljes tervdokumentáció (építészeti és gépészeti tervekkel) díja kb. 2.370.000 Ft + ÁFA, és az engedélyeztetéshez, illetve a gyártáshoz egyaránt szükséges."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Mielőtt egy könnyűszerkezetes ház gyártásba kerül, szükség van egy pontos szerkezeti rajzra és a hozzá
+    tartozó tervdokumentációra. Ebben a cikkben elmagyarázzuk, mit tartalmaz ez a dokumentáció, mennyibe
+    kerül, és miért nem lehet kihagyni.
+  </p>
+
+  <h2>Mennyibe kerül a szerkezeti rajz és a tervdokumentáció?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Tétel</th>
+          <th>Jellemző összeg</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Teljes tervdokumentáció (építészeti + gépészeti)</td>
+          <td>kb. 2.370.000 Ft + ÁFA</td>
+        </tr>
+        <tr>
+          <td>Könnyűszerkezetes ház alapára (22–126 m²)</td>
+          <td>16.000–43.000 EUR + ÁFA</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    A tervdokumentáció díja a ház méretétől és az engedélyeztetési eljárás típusától (egyszerűsített
+    bejelentés vagy teljes engedélyezés) függően változhat – a pontos összeget ajánlatkéréskor adjuk meg.
+  </p>
+
+  <h2>Ajánlott modellek, amelyekhez alaprajzot adunk</h2>
+
+  <p>
+    Az alábbi három, közepes méretű modellünkhöz ajánlatkéréskor részletes alaprajzot és szerkezeti
+    tájékoztatást küldünk:
+  </p>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit tartalmaz a szerkezeti rajz?</h2>
+
+  <p>
+    A szerkezeti (tartószerkezeti) terv a horganyzott acélváz pontos elrendezését, a falak, a tető és a
+    födém rétegrendjét (10 cm hungarocell szigeteléssel), valamint a nyílászárók helyét és méretét mutatja
+    be. Ez a dokumentáció szolgál alapul mind a gyártáshoz, mind az engedélyeztetési eljáráshoz.
+  </p>
+
+  <p>
+    A teljes tervdokumentáció ennél szélesebb kört ölel fel: az építészeti tervek mellett tartalmazza a
+    gépészeti (elektromos, vízvezeték) kiviteli terveket is, amelyek a helyszíni bekötésekhez szükségesek.
+  </p>
+
+  <h2>Kinek fontos ez, és kinek kevésbé?</h2>
+
+  <p>Fontos odafigyelni a szerkezeti rajzra, ha:</p>
+  <ul>
+    <li>teljes építési engedélyezési eljárás szükséges a telkén</li>
+    <li>egyedi alaprajzi módosítást szeretne a választott modellhez képest</li>
+    <li>banki hitelt vesz igénybe, ahol a dokumentált tervek a hitelbírálat részét képezik</li>
+  </ul>
+
+  <p>Kevésbé kritikus szempont, ha:</p>
+  <ul>
+    <li>egy szabvány modellt választ módosítás nélkül – ekkor a meglévő alaprajz és tervdokumentáció közvetlenül felhasználható</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a szerkezeti rajzról" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Kér alaprajzot egy modellünkhöz?
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek alaprajzot és személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

@@ -1,0 +1,139 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Vagy Tégla? – Összehasonlítás 2026';
+const description =
+  'Könnyűszerkezetes ház vagy hagyományos téglaház? Ár, kivitelezési idő, energiahatékonyság összehasonlítása – segítünk dönteni.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Olcsóbb a könnyűszerkezetes ház, mint a téglaház?',
+    a: 'Jellemzően igen. Egy hagyományos téglaház 2026-ban négyzetméterenként 450.000–700.000 Ft-ba kerül kivitelezési munkával együtt, míg egy hasonló méretű könnyűszerkezetes ház ennél alacsonyabb fajlagos költséggel épül.',
+  },
+  {
+    q: 'Mennyivel gyorsabb a könnyűszerkezetes építkezés?',
+    a: 'Egy téglaházat legalább 12–18 hónap felépíteni, egy könnyűszerkezetes ház ezzel szemben 6–8 héten belül lakható.',
+  },
+  {
+    q: 'Energiahatékonyabb a könnyűszerkezetes ház?',
+    a: 'A gyári szigetelés (10 cm hungarocell, háromrétegű üvegezés) jellemzően alacsonyabb fűtési költséget eredményez egy azonos méretű, hagyományos falazatú háznál.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes ház hátrányai', href: '/konnyuszerkezetes-haz-hatranyai' },
+  { label: 'Könnyűszerkezetes ház élettartam', href: '/konnyuszerkezetes-haz-elettartam' },
+  { label: 'Mobilház árak', href: '/mobilhaz-arak' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Vagy Tégla' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['tégla', 'összehasonlítás', 'könnyűszerkezetes']}
+  summary="Egy hagyományos téglaház négyzetméterenként 450.000–700.000 Ft-ba kerül és 12–18 hónapig épül, míg egy könnyűszerkezetes ház ennél alacsonyabb fajlagos költséggel, 6–8 hét alatt lakható. A gyári szigetelés energiahatékonysági előnyt is jelent."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A könnyűszerkezetes és a hagyományos téglaépítés közötti választás sok szempontot érint. Ebben a
+    cikkben összehasonlítjuk az árat, a kivitelezési időt és az energiahatékonyságot.
+  </p>
+
+  <h2>Mennyibe kerül egy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Könnyűszerkezetes vagy tégla – a főbb különbségek</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Szempont</th><th>Könnyűszerkezetes</th><th>Hagyományos téglaház</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Kivitelezési idő</td><td>6–8 hét</td><td>12–18 hónap</td></tr>
+        <tr><td>Négyzetméterár</td><td>Jellemzően alacsonyabb</td><td>450.000–700.000 Ft/m²</td></tr>
+        <tr><td>Szigetelés</td><td>Gyárilag, alapfelszereltségként</td><td>Kivitelezéstől függő</td></tr>
+        <tr><td>Piaci elterjedtség Magyarországon</td><td>Növekvő</td><td>Domináns</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Kinek melyik a jobb választás?</h2>
+
+  <p>A könnyűszerkezetes ház jó választás, ha:</p>
+  <ul>
+    <li>fontos a gyors, kiszámítható kivitelezési idő</li>
+    <li>szeretné csökkenteni a kezdeti beruházási költséget</li>
+  </ul>
+
+  <p>A hagyományos téglaház lehet a jobb választás, ha:</p>
+  <ul>
+    <li>fontos a hazai ingatlanpiac megszokott, domináns építési módja</li>
+    <li>teljesen egyedi, szabadon tervezett architektúrát szeretne</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Segítünk a döntésben</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott tanácsot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

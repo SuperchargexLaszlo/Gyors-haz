@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-primary: #1A3C5E;
+  --color-primary-dark: #0F2540;
+  --color-accent: #E8960A;
+  --color-accent-dark: #C07A00;
+  --font-family-sans: 'Outfit', system-ui, sans-serif;
+  --font-family-body: 'Inter', system-ui, sans-serif;
+}

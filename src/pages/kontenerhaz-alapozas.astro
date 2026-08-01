@@ -1,0 +1,212 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Konténerház Alapozás – Típusok és Árak 2026';
+const description =
+  'Konténerház alapozása: pontalapos, talpgerendás, lemezalap vagy csavarpilóta? Rövid összefoglaló az árakról és a választás szempontjairól.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['kontenerhaz-manhattan', 'kontenerhaz-manhattan-l', 'kontenerhaz-beverly'];
+
+const faqs = [
+  {
+    q: 'Kötelező az alapozás konténerháznál?',
+    a: 'Igen, minden esetben szükséges valamilyen alap – ez biztosítja a ház szintességét, stabilitását, és véd a nedvesség és a fagyhatás ellen.',
+  },
+  {
+    q: 'Melyik alapozás típus a legolcsóbb?',
+    a: 'A pontalapos alapozás, jellemzően 300.000–600.000 Ft körül, kisebb, könnyebb (55–69 m²) konténerházaknál.',
+  },
+  {
+    q: 'Mennyibe kerül általában az alapozás?',
+    a: 'Egy átlagos, 55–70 m²-es konténerháznál, szokványos talajviszonyok mellett kb. 1.400.000 Ft + ÁFA a tájékoztató munkadíj.',
+  },
+  {
+    q: 'Milyen alapozás szükséges egy 55 m²-es konténerháznál?',
+    a: 'A Manhattan 55 m²-es modellnél elegendő lehet a talpgerendás vagy pontalapos megoldás szokványos talajviszonyok mellett. Ha a telek laza vagy vizes, lemezalapot javasolt kérni. A pontos döntéshez helyszíni felmérés szükséges.',
+  },
+  {
+    q: 'Lehet-e alapozás nélkül letenni a konténerházat?',
+    a: 'Technikailag rövid ideig igen, de hatósági eljáráshoz és lakhatási engedélyhez szükséges a megfelelő alapozás. Ráadásul alap nélkül a ház megsüllyedhet és megsérülhet – ezt senki nem ajánlja.',
+  },
+  {
+    q: 'Mennyit kell várni az alapozás után, mielőtt a ház lerakható?',
+    a: 'Beton alapnál legalább 7, ideálisan 14 napot kell várni a teljes megszilárdulásra. Csavarpilóta alap esetén a ház azonnal ráhelyezhető.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Teljes bekerülési költség', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Könnyűszerkezetes ház alapozása', href: '/konnyuszerkezetes-haz-alapozasa' },
+  { label: 'Konténerház méretek', href: '/kontenerhaz-meretek' },
+  { label: 'Konténerház építési engedély', href: '/blog/kontenerhoz-epitesi-engedely' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: 'Konténerház Alapozás' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['alapozás', 'konténerház', 'árak']}
+  summary="A konténerház alapozása kötelező – biztosítja a szintességet, a stabilitást és a nedvesség elleni védelmet. Egy átlagos, 55-70 m²-es konténerháznál a munkadíj kb. 1.400.000 Ft + ÁFA, de az alapozás típusától (pontalapos, talpgerendás, lemezalap, csavarpilóta) függően eltérhet."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A konténerház alapozása nem opcionális – minden esetben szükséges valamilyen alap, amely biztosítja
+    a ház szintességét, stabilitását és védi az aljzatot a nedvességtől. Az alapozás munkadíja kb.
+    1.400.000 Ft + ÁFA, de a típustól és a helyszíntől függően eltérhet.
+  </p>
+
+  <h2>Mennyibe kerül a konténerház alapozása?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Alapozás típusa</th><th>Jellemző ár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Pontalapos</td><td>300.000–600.000 Ft</td></tr>
+        <tr><td>Talpgerendás</td><td>500.000–900.000 Ft</td></tr>
+        <tr><td>Lemezalap</td><td>800.000–1.400.000 Ft+</td></tr>
+        <tr><td>Csavarpilóta</td><td>900.000–1.500.000 Ft</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Egy átlagos, 55–70 m²-es konténerháznál, szokványos talajviszonyok mellett kb. 1.400.000 Ft + ÁFA a
+    tájékoztató munkadíj – a pontos összeg a talaj típusától és a választott alapozási módtól függ.
+  </p>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Miért kötelező az alapozás?</h2>
+
+  <p>
+    Sokan azt gondolják, hogy egy acélszerkezetű konténerház egyszerűen "letehető" a földre. Ez a
+    szemlélet hibás, és hosszú távon komoly problémákhoz vezet. Alapozás nélkül:
+  </p>
+  <ul>
+    <li>az épület idővel megsüllyedhet és elferdülhet</li>
+    <li>a padló aljzata nedvességkárt szenvedhet</li>
+    <li>télen a fagy hatására az altalaj mozoghat, ami az épület szerkezetét károsíthatja</li>
+    <li>a hatósági eljáráshoz is szükséges a megfelelő alapozás dokumentálása</li>
+  </ul>
+  <p>
+    Az alapozás célja tehát a teherhordás (a ház súlyának stabil átadása a talajra), a vízszintesség
+    biztosítása, a nedvességvédelem és a fagyhatás elleni védelem.
+  </p>
+
+  <h2>Alapozás típusok konténerháznál</h2>
+
+  <h3>1. Pontalapos alapozás</h3>
+  <p>
+    A legegyszerűbb és legolcsóbb megoldás. Beton pontalapokat (talpköveket) helyeznek el a konténer
+    sarokpontoknál és a hosszabb oldalakon szükséges közbülső helyeken. <strong>Előnye:</strong> gyors,
+    olcsó, könnyen megvalósítható. <strong>Hátránya:</strong> kisebb teherbíró képesség, érzékenyebb a
+    fagyra – kisebb, könnyebb épületeknél (55–69 m²) általában elegendő. <strong>Ára:</strong>
+    300.000–600.000 Ft körül.
+  </p>
+
+  <h3>2. Talpgerendás alapozás</h3>
+  <p>
+    A pontalapokon fektetett talpgerendák (acél vagy beton) egyenletesebben osztják el a terhelést –
+    ez a legelterjedtebb megoldás a közepes méretű konténerházaknál. <strong>Előnye:</strong> jó
+    stabilitás, könnyen szintbe állítható, gazdaságos. <strong>Hátránya:</strong> nem alkalmas nagyon
+    laza vagy egyenetlen talajra. <strong>Ára:</strong> 500.000–900.000 Ft körül.
+  </p>
+
+  <h3>3. Lemezalap (beton aljzat)</h3>
+  <p>
+    Teljes betonlemez a ház alatt – ez a legdrágább, de a legtartósabb és legstabilabb megoldás,
+    különösen állandó lakóhelyként használt épületeknél. <strong>Előnye:</strong> maximális stabilitás,
+    párazárás, tartósság. <strong>Hátránya:</strong> drágább, hosszabb kivitelezési idő, a ház utólag
+    nehezebben mozdítható. <strong>Ára:</strong> 800.000–1.400.000 Ft+ körül (munkadíj).
+  </p>
+
+  <h3>4. Csavarpilóta alap</h3>
+  <p>
+    Acélcsavarokat fúrnak a talajba, amelyek azonnal terhelhetők – különleges talajviszonyok esetén
+    (laza, mocsaras terület) javasolt. <strong>Előnye:</strong> azonnal terhelhető, speciális talajra is
+    alkalmas, nincs betonozási várakozási idő. <strong>Hátránya:</strong> drágább a szaktudást igénylő
+    gépi munka miatt. <strong>Ára:</strong> 900.000–1.500.000 Ft körül.
+  </p>
+
+  <h2>Mit befolyásolja az alapozás árát?</h2>
+  <ul>
+    <li><strong>Talaj típusa:</strong> kemény, stabil talajra olcsóbb, laza, lágy talajra drágább</li>
+    <li><strong>Tereprendezés szükségessége:</strong> ha a terep egyenetlen vagy le kell hordani, ez plusz költség</li>
+    <li><strong>Alapozás típusa:</strong> pontalapos &lt; talpgerendás &lt; lemezalap &lt; csavarpilóta</li>
+    <li><strong>Helyszín megközelítése:</strong> szűk bejáró, nehézgép hozzáférés esetén pótdíj</li>
+  </ul>
+
+  <h2>Az alapozás folyamatának lépései</h2>
+  <ul>
+    <li><strong>1. Helyszíni felmérés:</strong> szakember megvizsgálja a telket – talaj összetétel, vízszintesség, lefolyás, közmű elhelyezkedés.</li>
+    <li><strong>2. Tervezés:</strong> az alapozás típusát és méretét a talajvizsgálat eredménye, az épület súlya és a helyi előírások határozzák meg.</li>
+    <li><strong>3. Földmunkák:</strong> szükség esetén tereprendezés, a pontalapok vagy a lemez ásása.</li>
+    <li><strong>4. Betonozás / szerelés:</strong> beton pontalapok öntése vagy betonlemez készítése. A beton kötési ideje 7–14 nap.</li>
+    <li><strong>5. Száradás és szintbeállítás:</strong> a beton megszilárdulása után be kell szintelni az alapozást, hogy a konténer tökéletesen vízszintesen álljon.</li>
+  </ul>
+
+  <p>
+    Az alapozást ideálisan a konténerház megrendelésével egyidőben kell megkezdeni, hogy a gyártással és
+    szállítással párhuzamosan haladjon, és a ház leszállításakor az alap már kész és megszilárdult
+    legyen – ha az alapozás nem készül el időben, a szállítást el kell halasztani, ami pótköltséget
+    okozhat.
+  </p>
+
+  <h2>Tippek az alapozáshoz</h2>
+  <ul>
+    <li>Mindig kérd a talajvizsgálat eredményét, mielőtt az alapozás típusáról döntesz</li>
+    <li>Ne spórolj az alapozáson: ez a tényező határozza meg legjobban a ház élettartamát</li>
+    <li>Ha a telek enyhe lejtésű, a csavarpilóta vagy a pontalap ideális, mert szintbeállítható</li>
+    <li>Ellenőrizd, hogy az alapozás megfelel-e az önkormányzat előírásainak</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Segítünk az alapozás megtervezésében is</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek helyszíni felmérést és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

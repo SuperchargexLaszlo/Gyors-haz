@@ -1,0 +1,131 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Gyártók – Kit Válasszunk?';
+const description =
+  'Könnyűszerkezetes ház gyártók összehasonlítása: mire érdemes figyelni gyártóválasztáskor? Bemutatjuk a Gyors Ház kínálatát és garanciáit.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Milyen szempontok alapján érdemes gyártót választani?',
+    a: 'Érdemes megnézni a gyártó referenciáit, a garancia hosszát, a szerkezet anyagát (pl. horganyzott acélváz), és hogy a teljes tervdokumentációt biztosítja-e.',
+  },
+  {
+    q: 'A Gyors Ház gyárt vagy közvetít?',
+    a: 'A Gyors Ház kínálatában szereplő könnyűszerkezetes házak gyárilag, kontrollált körülmények között készülnek, kulcsrakész kivitelben.',
+  },
+  {
+    q: 'Ad-e garanciát a gyártó?',
+    a: 'Az új, gyárilag gyártott házakra jellemzően 2–5 év gyártói garanciával számolhat.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Acélvázas könnyűszerkezetes ház árak', href: '/acelvazas-konnyuszerkezetes-haz-arak' },
+  { label: 'Kulcsrakész könnyűszerkezetes ház', href: '/kulcsrakesz-konnyuszerkezetes-haz' },
+  { label: 'Könnyűszerkezetes ház hátrányai', href: '/konnyuszerkezetes-haz-hatranyai' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Gyártók' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['gyártó', 'könnyűszerkezetes', 'garancia']}
+  summary="Gyártóválasztáskor érdemes figyelni a garancia hosszára, a szerkezet anyagára és arra, hogy a teljes tervdokumentációt biztosítja-e a gyártó. A Gyors Ház kínálatában szereplő könnyűszerkezetes házak gyárilag, kulcsrakész kivitelben készülnek, 2–5 év garanciával."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A gyártóválasztás meghatározza a végleges minőséget és a hosszú távú elégedettséget. Ebben a cikkben
+    összefoglaljuk, mire érdemes figyelni, és bemutatjuk, mit kínálunk mi.
+  </p>
+
+  <h2>Mennyibe kerül egy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mire figyeljünk gyártóválasztáskor?</h2>
+
+  <p>
+    Érdemes megnézni, hogy a gyártó milyen anyagból építkezik (pl. horganyzott acélváz vagy hagyományos
+    faváz), milyen hosszú gyártói garanciát vállal, és hogy a teljes tervdokumentációt (építészeti és
+    gépészeti terveket) biztosítja-e. A kulcsrakész kivitel is fontos szempont: tartalmazza-e a
+    nyílászárókat, a belső burkolatot és az alapvető gépészetet, vagy csak a nyers szerkezetet adja.
+  </p>
+
+  <p>
+    A Gyors Ház kínálatában szereplő könnyűszerkezetes házak horganyzott acélvázra épülnek, kulcsrakész
+    kivitelben, 2–5 év gyártói garanciával.
+  </p>
+
+  <h2>Kinek fontos ez a téma?</h2>
+
+  <p>Érdemes elolvasni, ha:</p>
+  <ul>
+    <li>több gyártót/kínálatot hasonlít össze vásárlás előtt</li>
+    <li>fontos szempont a garancia és a dokumentált minőség</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Ismerje meg kínálatunkat közelebbről</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

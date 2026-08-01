@@ -1,0 +1,118 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Garázs – Áraink és Lehetőségeink';
+const description =
+  'Könnyűszerkezetes garázs építése: nincs önálló garázs-termékünk, de a legkisebb lakóépület-modelljeink garázsként vagy melléképületként is szóba jöhetnek.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'konnyuszerkezetes-haz-32m2', 'konnyuszerkezetes-haz-35m2'];
+
+const faqs = [
+  {
+    q: 'Van önálló garázs-termékük?',
+    a: 'Nincs dedikált garázs-modellünk, de a legkisebb lakóépület-modelljeink (22-35 m²) átalakítással garázsként vagy tárolóként is használhatók, egyedi igény szerint.',
+  },
+  {
+    q: 'Kell-e építési engedély egy garázshoz?',
+    a: 'Ez a méret, a rendeltetés és a helyi HÉSZ függvénye – érdemes a helyi önkormányzattal előzetesen egyeztetni.',
+  },
+  {
+    q: 'Van tervrajz vagy alaprajz a kisebb modellekhez?',
+    a: 'Igen, a modelljeinkhez tartozó alaprajzokat ajánlatkéréskor elküldjük.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes melléképület', href: '/konnyuszerkezetes-mellekepulet' },
+  { label: 'Kis könnyűszerkezetes házak', href: '/kis-konnyuszerkezetes-hazak' },
+  { label: 'Könnyűszerkezetes ház szerkezeti rajz', href: '/konnyuszerkezetes-haz-szerkezeti-rajz' },
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Garázs' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['garázs', 'könnyűszerkezetes', 'melléképület']}
+  summary="Nincs önálló könnyűszerkezetes garázs-termékünk, de a legkisebb lakóépület-modelljeink (22-35 m²) egyedi igény szerint garázsként vagy tárolóként is átalakíthatók. Az ár ilyenkor az egyedi konfigurációtól függ."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos elöljáróban tisztázni: nincs dedikált garázs-termékünk – kínálatunk lakóépületekre épül. A
+    legkisebb modelljeink ugyanakkor egyedi igény szerint garázsként vagy tárolóként is szóba jöhetnek.
+  </p>
+
+  <h2>Legkisebb modelljeink méretei</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>22 m²-es modell</td><td>22 m²</td><td>16.000 EUR</td></tr>
+        <tr><td>32 m²-es modell</td><td>32 m²</td><td>18.600 EUR</td></tr>
+        <tr><td>35 m²-es modell</td><td>35 m²</td><td>20.300 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott, garázsnak is alkalmas modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mire van szükség egy egyedi garázs-konfigurációhoz?</h2>
+
+  <p>
+    A legkisebb lakóépület-modelljeink alaprajza egyedi igény szerint alakítható garázs vagy tároló
+    funkcióra – ehhez ajánlatkéréskor egyeztetünk a konkrét igényekről (pl. nagyobb bejárati nyílás
+    autó számára). Az engedélyeztetés is a méret és a rendeltetés alapján alakul – erről bővebben a
+    mobilház építési engedély cikkünkben olvashat.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Garázs vagy melléképület céljára érdeklődik?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek egyedi ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

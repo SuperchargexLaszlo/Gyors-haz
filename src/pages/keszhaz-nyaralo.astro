@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Készház Nyaralónak – Melyik Modell Illik Ehhez?';
+const description =
+  'Készházat keres nyaralónak? Bemutatjuk a legkompaktabb, nyaralóként is jól használható könnyűszerkezetes, modul- és konténerház modelljeinket.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'modulhaz-tinyhouse', 'kontenerhaz-manhattan'];
+
+const faqs = [
+  {
+    q: 'Melyik készház illik legjobban nyaralónak?',
+    a: 'A kompaktabb, 22–35 m² körüli könnyűszerkezetes modelljeink és a kisebb modulházak (Tiny House, Amsterdam) különösen népszerűek nyaralóként.',
+  },
+  {
+    q: 'Alkalmas egész éves használatra egy nyaralónak vásárolt készház?',
+    a: 'Igen, a könnyűszerkezetes és konténerház modelljeink gyárilag szigetelt, négy évszakos kivitelben készülnek, így megfelelő fűtéssel télen is használhatók.',
+  },
+  {
+    q: 'Kell-e engedély egy nyaralóként használt készházhoz?',
+    a: 'Igen, a rendeltetéstől és a méréttől függően – ezt mindig a helyi HÉSZ alapján kell tisztázni.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Kis könnyűszerkezetes házak', href: '/kis-konnyuszerkezetes-hazak' },
+  { label: 'Luxus mobilház', href: '/luxus-mobilhaz' },
+  { label: 'Zártkert mobilház', href: '/zartkert-mobilhaz' },
+  { label: 'Mobilház árak', href: '/mobilhaz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Készház Nyaralónak' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="altalanos"
+  tags={['nyaraló', 'készház', 'kompakt']}
+  summary="Nyaralónak a kompaktabb, 22-35 m² körüli könnyűszerkezetes és modulház modelljeink a legnépszerűbbek. Ezek gyárilag szigetelt, négy évszakos kivitelben készülnek, így megfelelő fűtéssel télen is használhatók."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Egyre többen keresnek kompakt készházat kifejezetten nyaralóként. Bemutatjuk, melyik modelljeink
+    illenek legjobban ehhez a célhoz.
+  </p>
+
+  <h2>Mennyibe kerül egy nyaralónak alkalmas készház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Típus</th><th>Kompakt modell</th><th>Ár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház</td><td>22 m²</td><td>16.000 EUR + ÁFA</td></tr>
+        <tr><td>Modulház</td><td>20 m² (Tiny House)</td><td>ár kérésre</td></tr>
+        <tr><td>Konténerház</td><td>55 m² (Manhattan)</td><td>12.790.000 Ft + ÁFA</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek nyaralónak</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mire érdemes figyelni nyaralóként való használatnál?</h2>
+
+  <p>
+    A kompaktabb modellek (22–35 m²) alacsonyabb fenntartási költséggel járnak, ami nyaralóként
+    kifejezetten előnyös. Ha időnként télen is használná az ingatlant, érdemes a gyárilag szigetelt,
+    négy évszakos modelljeinket választani – ezek megfelelő fűtéssel egész évben komfortosak. A telek
+    besorolása (pl. zártkert) és az engedélyeztetés kérdését mindig érdemes előzetesen tisztázni.
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Nyaralónak keres kompakt megoldást?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

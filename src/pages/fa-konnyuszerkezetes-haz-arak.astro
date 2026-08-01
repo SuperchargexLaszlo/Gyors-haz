@@ -1,0 +1,136 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Fa Könnyűszerkezetes Ház? – Nálunk Acélváz, Nem Faváz';
+const description =
+  'Fa vázas könnyűszerkezetes házat keres? Nálunk minden modell horganyzott acélvázra épül, nem favázra. Elmagyarázzuk a különbséget, és mit kínálunk helyette.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-22m2', 'konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2'];
+
+const faqs = [
+  {
+    q: 'Van favázas könnyűszerkezetes házuk?',
+    a: 'Nem, minden könnyűszerkezetes modellünk horganyzott acélvázra épül. Az acélváz nem korhad, nem rothad, és méretpontos gyártást tesz lehetővé.',
+  },
+  {
+    q: 'Miért acélváz és nem faváz?',
+    a: 'Az acélváz ellenállóbb a korhadással, rothadással és a rovar-, rágcsálókárokkal szemben, és nem vetemedik, nem zsugorodik száradás közben, ahogy a fa teheti.',
+  },
+  {
+    q: 'Mennyibe kerül egy acélvázas könnyűszerkezetes ház?',
+    a: 'Modelljeink 16.000 EUR-tól (22 m²) 43.000 EUR-ig (126 m²) terjednek, mérettől és felszereltségtől függően.',
+  },
+  {
+    q: 'Rosszabb minőségű az acélváz a favázasnál?',
+    a: 'Nem, más előnyökkel rendelkezik: tartósabb, méretpontosabb és kevesebb karbantartást igényel, mint a hagyományos faváz.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Acélvázas könnyűszerkezetes ház árak', href: '/acelvazas-konnyuszerkezetes-haz-arak' },
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+  { label: 'Könnyűszerkezetes házak', href: '/konnyuszerkezetes' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Fa Könnyűszerkezetes Ház' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['faváz', 'acélváz', 'könnyűszerkezetes', 'árak']}
+  summary="Fontos tisztázni: a Gyors Ház könnyűszerkezetes házai nem favázra, hanem horganyzott acélvázra épülnek. Ez tartósabb, méretpontosabb megoldás, amely nem korhad és nem rothad. Az árak 16.000 EUR-tól 43.000 EUR-ig terjednek."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos elöljáróban tisztázni: a Gyors Ház kínálatában nincs hagyományos favázas könnyűszerkezetes
+    ház – minden modellünk horganyzott acélvázra épül. Ebben a cikkben elmagyarázzuk a különbséget, és
+    bemutatjuk, mit kínálunk helyette.
+  </p>
+
+  <h2>Mennyibe kerül egy acélvázas könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Belépő modell</td><td>22 m²</td><td>16.000 EUR</td></tr>
+        <tr><td>Közepes modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>Nagy modell</td><td>126 m²</td><td>43.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Miért acélváz és nem faváz?</h2>
+
+  <p>
+    A horganyzott acélváz nem korhad, nem rothad, és ellenállóbb a rovar- és rágcsálókárokkal szemben,
+    mint a fa. A gyári, méretpontos gyártás emellett egyenletes minőséget biztosít – nincs vetemedés vagy
+    száradási zsugorodás, ami a favázas megoldásoknál előfordulhat. Ha kifejezetten favázas, hagyományos
+    esztétikájú megoldást keres, érdemes ezt figyelembe venni – a mi kínálatunk az acélvázas technológiára épül.
+  </p>
+
+  <h2>Kinek ajánljuk?</h2>
+
+  <p>Jó választás nálunk, ha:</p>
+  <ul>
+    <li>fontos a tartósság és az alacsony karbantartás-igény</li>
+    <li>nem ragaszkodik kifejezetten a favázas anyaghasználathoz</li>
+  </ul>
+
+  <p>Kevésbé ideális, ha:</p>
+  <ul>
+    <li>kifejezetten hagyományos favázas szerkezetet és esztétikát keres</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Nézze meg az acélvázas modelljeinket</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

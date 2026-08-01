@@ -1,0 +1,131 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Hátrányai – Őszinte Áttekintés';
+const description =
+  'Könnyűszerkezetes ház hátrányai és korlátai: mit érdemes tudni vásárlás előtt? Őszinte, kiegyensúlyozott áttekintés az előnyök mellett.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Mi a könnyűszerkezetes ház legnagyobb hátránya?',
+    a: 'Sokan a hagyományos, tömör falazatú házakhoz szokott elvárásokhoz hasonlítják – ez inkább szubjektív preferencia kérdése, nem műszaki hátrány. Fontos a megfelelő kivitelezés és karbantartás is.',
+  },
+  {
+    q: 'Nehezebb eladni egy könnyűszerkezetes házat?',
+    a: 'A hazai ingatlanpiacon a hagyományos építésű házak piaca fejlettebb, ezért az újraértékesítésnél ez szempont lehet – ezt érdemes mérlegelni a vásárlási döntésnél.',
+  },
+  {
+    q: 'Igényel-e különösebb karbantartást?',
+    a: 'A gyári szerkezet alapvetően alacsony karbantartás-igényű, de mint minden épületnél, a nyílászárók, a tető és a burkolatok időszakos ellenőrzése itt is javasolt.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Könnyűszerkezetes ház vagy tégla', href: '/konnyuszerkezetes-haz-vagy-tegla' },
+  { label: 'Könnyűszerkezetes ház élettartam', href: '/konnyuszerkezetes-haz-elettartam' },
+  { label: 'Acélvázas könnyűszerkezetes ház árak', href: '/acelvazas-konnyuszerkezetes-haz-arak' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Hátrányai' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['hátrányok', 'könnyűszerkezetes', 'tájékoztató']}
+  summary="A könnyűszerkezetes ház előnyei mellett érdemes ismerni a korlátait is: a hazai ingatlanpiacon a hagyományos építésű házak piaca fejlettebb, ami az újraértékesítésnél szempont lehet, és a megfelelő karbantartás itt is fontos. Ezek nem műszaki hibák, hanem mérlegelendő tényezők."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Egy vásárlási döntés előtt fontos a teljes képet látni – az előnyök mellett a korlátokat is. Ebben a
+    cikkben őszintén összefoglaljuk, mire érdemes figyelni könnyűszerkezetes ház választásakor.
+  </p>
+
+  <h2>Mennyibe kerül egy könnyűszerkezetes ház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>52 m²-es modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
+        <tr><td>78 m²-es modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
+        <tr><td>96 m²-es modell</td><td>96 m²</td><td>35.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit érdemes tudni vásárlás előtt?</h2>
+
+  <p>
+    A könnyűszerkezetes technológia iránti bizalom Magyarországon fokozatosan nő, de a hagyományos,
+    tégla-beton építésű házak piaca még mindig fejlettebb és elterjedtebb – ez az újraértékesítésnél
+    szempont lehet, különösen egyes régiókban vagy vevői körökben.
+  </p>
+
+  <p>
+    A gyári szerkezet alacsony karbantartás-igényű, de mint minden épületnél, itt is fontos az
+    időszakos ellenőrzés (nyílászárók, tető, burkolatok). Ezek nem a technológia hibái, hanem általános
+    épületfenntartási szempontok.
+  </p>
+
+  <h2>Kinek fontos ez a téma?</h2>
+
+  <p>Érdemes elolvasni, ha:</p>
+  <ul>
+    <li>most mérlegeli a könnyűszerkezetes és a hagyományos építés közötti választást</li>
+    <li>fontos szempont a jövőbeli továbbértékesítés</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kérdése van a technológiáról?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek őszinte, személyre szabott tanácsot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

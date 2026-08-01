@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Tervezés és Engedélyeztetés – Díjak | gyors-haz.hu';
+const description = 'Gyorsan házat tervezési és engedélyeztetési díjak. Építészet, tartószerkezet, gépészet, elektromos, geodézia, talajmechanika – teljes díjszabás.';
+
+const dijak = [
+  { nev: 'Építészeti terv',                    ar: 1_000_000 },
+  { nev: 'Tartószerkezeti terv',               ar:   320_000 },
+  { nev: 'Gépész terv (energetikával)',         ar:   150_000 },
+  { nev: 'Elektromos terv',                    ar:   150_000 },
+  { nev: 'Kert és tájépítészet',               ar:   300_000 },
+  { nev: 'Geodézia',                           ar:   150_000 },
+  { nev: 'Talajmechanika',                     ar:   300_000 },
+];
+
+const osszes = dijak.reduce((sum, d) => sum + d.ar, 0);
+
+function formatFt(n: number) {
+  return n.toLocaleString('hu-HU') + ' Ft';
+}
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl text-gray-900 mb-4">
+      Tervezés és engedélyeztetés
+    </h1>
+    <p class="text-gray-600 text-lg mb-10 leading-relaxed">
+      Az előregyártott házak telepítéséhez szükséges tervdokumentáció és hatósági engedélyezés
+      díjai az alábbi táblázatban találhatók. <strong>Saját tervező is igénybe vehető</strong> –
+      ebben az esetben csak azokat a tervfeladatokat kell megrendelni, amelyeket a saját tervező
+      nem vállal el.
+    </p>
+
+    <!-- Díjtáblázat -->
+    <div class="overflow-hidden rounded-2xl border border-gray-200 shadow-sm mb-10">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left px-5 py-3 font-semibold text-gray-700">Tervfajta</th>
+            <th class="text-right px-5 py-3 font-semibold text-gray-700">Díj (+ ÁFA)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {dijak.map((d, i) => (
+            <tr class={`border-b border-gray-100 ${i % 2 === 0 ? '' : 'bg-gray-50/50'}`}>
+              <td class="px-5 py-3.5 text-gray-800">{d.nev}</td>
+              <td class="px-5 py-3.5 text-right font-medium text-gray-900">{formatFt(d.ar)} + ÁFA</td>
+            </tr>
+          ))}
+        </tbody>
+        <tfoot>
+          <tr class="bg-primary/5 border-t-2 border-primary/20">
+            <td class="px-5 py-4 font-bold text-gray-900">Összesen</td>
+            <td class="px-5 py-4 text-right font-extrabold text-primary text-base">{formatFt(osszes)} + ÁFA</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- Info kártyák -->
+    <div class="grid sm:grid-cols-2 gap-5 mb-10">
+      <div class="rounded-xl bg-blue-50 border border-blue-100 p-5">
+        <h2 class="font-bold text-blue-900 mb-2">Saját tervező</h2>
+        <p class="text-sm text-blue-800 leading-relaxed">
+          Ha már rendelkezik megbízott tervezővel, az általunk ajánlott díjak csak azokra a
+          szakterületekre vonatkoznak, amelyeket a saját tervező nem fedez le.
+        </p>
+      </div>
+      <div class="rounded-xl bg-green-50 border border-green-100 p-5">
+        <h2 class="font-bold text-green-900 mb-2">Mi intézzük</h2>
+        <p class="text-sm text-green-800 leading-relaxed">
+          Ha minden tervfeladatot ránk bíz, mi koordináljuk a teljes engedélyezési folyamatot
+          – Ön csak aláírja a szükséges dokumentumokat.
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a
+        href="/ajanlatot-kerek"
+        class="flex-1 block rounded-xl bg-accent py-3.5 text-center font-sans font-bold text-white text-base hover:bg-accent-dark transition-colors shadow"
+      >
+        Ajánlatot kérek
+      </a>
+      <a
+        href="/kontenerhaz"
+        class="flex-1 block rounded-xl border-2 border-primary py-3.5 text-center font-sans font-semibold text-primary text-base hover:bg-primary hover:text-white transition-colors"
+      >
+        ← Konténerházak
+      </a>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,252 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Modulház Árak 2026 – Ticab Modellek Ár Kérésre';
+const description =
+  'Modulház árak 2026-ban: Ticab városnevű modellek 15 m²-től 122 m²-ig, ár kérésre. Iparági tapasztalat alapján egy 50 m² körüli modell kb. 20–35 millió Ft.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['modulhaz-amsterdam', 'modulhaz-stockholm', 'modulhaz-barcelona'];
+
+const faqs = [
+  {
+    q: 'Mennyibe kerül egy modulház?',
+    a: 'A modulházak ára egyedi konfiguráció alapján alakul, ezért nincs fix listaár. Iparági tapasztalatok alapján egy 50 m² körüli modell kb. 20–35 millió Ft körül alakulhat, de ez modelltől és felszereltségtől függően eltérhet.',
+  },
+  {
+    q: 'Miért nincs fix ár?',
+    a: 'Az árat a konfiguráció (alaprajz, belső kialakítás, extrák), a szállítási távolság és az alapozás típusa is befolyásolja, ezért ajánlatkéréskor adunk pontos árat.',
+  },
+  {
+    q: 'Mennyi idő alatt készül el egy modulház?',
+    a: 'A gyártás, szállítás és helyszíni összeszerelés jellemzően 8–16 hetet vesz igénybe.',
+  },
+  {
+    q: 'Bővíthető egy modulház?',
+    a: 'Igen, a moduláris szerkezet lehetővé teszi a bővítést egy újabb modul hozzáadásával. Ez ideális megoldás azoknak, akik fokozatosan szeretnék növelni a ház méretét.',
+  },
+  {
+    q: 'Kell-e alapozás a Ticab modulházhoz?',
+    a: 'Igen, minden modulházhoz szükséges valamilyen alap. Könnyű modulok esetén elegendő lehet a talpgerendás vagy pontalapos megoldás, míg nagyobb, nehezebb épületeknél lemezalap javasolt. Az alapozás munkadíja kb. 1.400.000 Ft + ÁFA, de a pontos összeg a típustól és a helyszíntől is függ.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Luxus mobilház', href: '/luxus-mobilhaz' },
+  { label: 'Modern mobilház árak', href: '/modern-mobilhaz-arak' },
+  { label: 'Modulház és álomterasz', href: '/modulhaz-es-alomterasz' },
+  { label: 'Mobilház árak', href: '/mobilhaz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Modulházak', href: '/modulhaz' },
+  { label: 'Modulház Árak' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="modulhaz"
+  tags={['modulház', 'árak', 'Ticab']}
+  summary="A Ticab modulházak ára egyedi konfiguráció alapján alakul, listaár nincs. Iparági tapasztalatok alapján egy 50 m² körüli modell ára kb. 20–35 millió Ft körül alakulhat. A modellsor 15 m²-től 122 m²-ig terjed."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A Ticab modulházak prémium kategóriás, gyárilag előre gyártott otthonok, amelyek ára egyedi igény
+    szerint alakul. Ebben a cikkben bemutatjuk a méretkategóriákat és azt, mi befolyásolja az árat.
+  </p>
+
+  <h2>Mi az a modulház?</h2>
+
+  <p>
+    A modulház egy gyárilag, modul egységenként előre gyártott épület, amelyet a helyszínen
+    összeszerelnek. Minden egység a gyárban kerül befejezésre: burkolatok, elektromos és vízvezeték
+    szerelés, nyílászárók – minden a gyárból érkezik, a helyszínen csak az összekötés és a
+    csatlakoztatás történik.
+  </p>
+
+  <p>A modulházak előnye a hagyományos kivitelezéssel szemben:</p>
+  <ul>
+    <li>Rövidebb kivitelezési idő (8–16 hét)</li>
+    <li>Kiszámítható költségek, nincs "meglepetés"</li>
+    <li>Gyári minőségellenőrzés</li>
+    <li>Moduláris bővíthetőség</li>
+  </ul>
+
+  <h2>Modulház méretkategóriák</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Kategória</th><th>Mérettartomány</th><th>Ár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Tiny House</td><td>15–20 m²</td><td>ár kérésre</td></tr>
+        <tr><td>Kis modellek</td><td>22–46 m²</td><td>ár kérésre</td></tr>
+        <tr><td>Közepes modellek</td><td>48–72 m²</td><td>ár kérésre</td></tr>
+        <tr><td>Nagy modellek</td><td>80–122 m²</td><td>ár kérésre</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Iparági tapasztalatok alapján egy 50 m² körüli modulház ára kb. 20–35 millió Ft körül alakulhat, a
+    kivitelezési szinttől és a választott extráktól függően. Ez tájékoztató jellegű becslés, nem
+    helyettesíti a pontos, egyedi ajánlatot.
+  </p>
+
+  <h2>Ticab típusok és méretek</h2>
+
+  <p>
+    A <a href="https://www.ticabhouse.com/" target="_blank" rel="noopener">Ticab House</a> teljes
+    kínálata négy méretkategóriára osztható:
+  </p>
+
+  <h3>Tiny House kollekció (15–20 m²)</h3>
+  <ul>
+    <li>Tiny House No. 4 – 15 m²</li>
+    <li>Tiny House No. 2 – 18 m²</li>
+    <li>Tiny House No. 3 – 18 m²</li>
+    <li>Tiny House – 20 m²</li>
+    <li>Nizza – 20 m²</li>
+  </ul>
+
+  <h3>Kis modellek (22–46 m²)</h3>
+  <ul>
+    <li>Seville – 22 m²</li>
+    <li>Tallinn – 30 m²</li>
+    <li>Amsterdam, Paris, Toscana, Atlanta, Boston – 35 m²</li>
+    <li>Monaco, Sydney, Stockholm, Sicilia, Slovakia – 42 m²</li>
+    <li>Bremen, Montana, Bonn – 45 m²</li>
+    <li>Dublin, Majorca – 46 m²</li>
+  </ul>
+
+  <h3>Közepes modellek (48–72 m²)</h3>
+  <ul>
+    <li>Ottawa, Milan – 48 m²</li>
+    <li>Capri, Palermo – 51 m²</li>
+    <li>Malta – 56 m²</li>
+    <li>Florence – 60 m²</li>
+    <li>Lyon, Montreal – 70 m²</li>
+    <li>Vienna, Washington – 72 m²</li>
+  </ul>
+
+  <h3>Nagy modellek (80–122 m²)</h3>
+  <ul>
+    <li>London – 80 m²</li>
+    <li>Barcelona – 90 m²</li>
+    <li>Versailles – 91 m²</li>
+    <li>Marseille, Natal, Reykjavik, Lisbon – 95 m²</li>
+    <li>Grindavik – 103 m²</li>
+    <li>Alessandria – 110 m²</li>
+    <li>Happy Wife – 122 m²</li>
+  </ul>
+
+  <h2>Ajánlott modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mi befolyásolja a modulház árát?</h2>
+
+  <p>
+    <strong>Konfiguráció és kiegészítők:</strong> az alapcsomag más-más tartalommal rendelkezik
+    modellenként. Prémium burkolatok, extra fürdőszoba, tetőterasz, napelem opciók mind módosítják az
+    árat.
+  </p>
+
+  <p>
+    <strong>Szállítási távolság:</strong> Magyarország különböző pontjaira eltérő szállítási díj
+    vonatkozik. Közeli helyszínekre olcsóbb, távolabbi régiókba drágább a kiszállítás.
+  </p>
+
+  <p>
+    <strong>Alapozás típusa:</strong> pontalapos, talpgerendás vagy lemezalap – mindegyik más árat
+    jelent. Az alapozás költsége kb. 1.400.000 Ft + ÁFA munkadíj.
+  </p>
+
+  <p>
+    <strong>Árfolyam és nyersanyagárak:</strong> a gyár az aktuális piaci árakon számolja ki az
+    ajánlatot, ezért az ár időszakonként változhat.
+  </p>
+
+  <p>
+    A gyártás, szállítás és összeszerelés összesen jellemzően 8–16 hetet vesz igénybe.
+  </p>
+
+  <h2>Modulház előnyei és hátrányai</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Szempont</th><th>Modulház előnye</th><th>Hátrány / megjegyzés</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Kivitelezési idő</td><td>8–16 hét</td><td>Alapozás + összeszereléssel együtt</td></tr>
+        <tr><td>Minőség</td><td>Gyári ellenőrzés</td><td>Egyedi módosítás korlátozott</td></tr>
+        <tr><td>Ár</td><td>Kiszámítható</td><td>Magasabb, mint egyszerű könnyűszerkezetes háznál</td></tr>
+        <tr><td>Design</td><td>Városnevű, modern külső</td><td>Nem hagyományos, "téglaházas" megjelenés</td></tr>
+        <tr><td>Mozgathatóság</td><td>Igen, modulok szétszedhetők</td><td>Telepítési díj ismét felmerül</td></tr>
+        <tr><td>Engedélyezés</td><td>Egyszerűsített bejelentés</td><td>A helyi HÉSZ-t be kell tartani</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Hogyan rendeld meg?</h2>
+
+  <p>A megrendelés folyamata három lépésből áll:</p>
+  <ul>
+    <li>
+      <strong>Konzultáció:</strong> válaszd ki az igényeidnek megfelelő modellt, és
+      <a href="/kapcsolat">vedd fel velünk a kapcsolatot</a>. A telekről és az igényekről egyeztetünk.
+    </li>
+    <li>
+      <strong>Ajánlatkérés:</strong> a <a href="https://www.ticabhouse.com/" target="_blank" rel="noopener">Ticab House</a>
+      weboldalán is böngészhetsz a modellek között, majd az ajánlatot nálunk kérheted.
+    </li>
+    <li>
+      <strong>Szerződés és gyártás:</strong> az aláírt szerződés után a gyártás 8–12 hetet vesz igénybe,
+      majd következik a szállítás és összeszerelés. Az alapozást a megrendeléssel párhuzamosan, a
+      szállítás előtt kell elvégeztetni, hogy az épület azonnal a helyére kerülhessen.
+    </li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a modulház árakról" />
+  </div>
+
+  <h2>Teljes modulház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="modulhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Kérjen pontos árajánlatot</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott modulház ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

@@ -1,0 +1,163 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Könnyűszerkezetes Ház Bővítés – Mikor Érdemes, Mikor Éri Meg Jobban Egy Új Ház?';
+const description =
+  'Könnyűszerkezetes ház bővítése: mikor érdemes hozzáépíteni egy meglévő házhoz, és mikor jobb választás egy nagyobb, új könnyűszerkezetes ház?';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+
+const faqs = [
+  {
+    q: 'Bővíthető egy meglévő könnyűszerkezetes ház?',
+    a: 'A könnyűszerkezetes technológia elviekben rugalmas alaprajzi módosításokat tesz lehetővé, de egy meglévő ház utólagos bővítése mindig egyedi tervezést és helyszíni felmérést igényel – ez nem szabványos katalógustétel, ezért fix árat nem tudunk előzetesen megadni.',
+  },
+  {
+    q: 'Mennyibe kerül egy könnyűszerkezetes ház bővítése?',
+    a: 'Ez teljes mértékben a meglévő szerkezettől, a bővítés méretétől és a kivitelezés összetettségétől függ, ezért nem adunk meg általános árat találgatás alapján. Helyszíni felmérés után tudunk pontos ajánlatot adni.',
+  },
+  {
+    q: 'Olcsóbb bővíteni, mint új házat venni?',
+    a: 'Ez esetfüggő: kisebb bővítéseknél gyakran igen, de egy jelentős méretű hozzáépítésnél előfordulhat, hogy egy nagyobb, új könnyűszerkezetes ház ár-érték aránya kedvezőbb. Érdemes mindkét opciót egyedileg összevetni.',
+  },
+  {
+    q: 'Kell-e engedély a bővítéshez?',
+    a: 'Igen, egy meglévő épület bővítése is engedélyköteles vagy bejelentés-köteles lehet, a méret és a helyi építési szabályzat (HÉSZ) függvényében. Ezt mindig a helyi önkormányzattal kell egyeztetni.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Mobilház építési engedély', href: '/mobilhaz-epitesi-engedely' },
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Acélvázas könnyűszerkezetes ház árak', href: '/acelvazas-konnyuszerkezetes-haz-arak' },
+  { label: 'Könnyűszerkezetes ház árak', href: '/konnyuszerkezetes-haz-arak' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Könnyűszerkezetes', href: '/konnyuszerkezetes' },
+  { label: 'Könnyűszerkezetes Ház Bővítés' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="konnyuszerkezetes"
+  tags={['könnyűszerkezetes', 'bővítés', 'hozzáépítés']}
+  summary="A könnyűszerkezetes ház bővítése – vagyis egy meglévő épülethez való hozzáépítés – mindig egyedi tervezést és helyszíni felmérést igénylő projekt, nem szabványos katalógustétel. Sok esetben megfontolandó alternatíva egy nagyobb, új könnyűszerkezetes ház is, amelynek ára már most, előre ismert."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    A "könnyűszerkezetes ház bővítés" alatt jellemzően egy meglévő épülethez való hozzáépítést értünk.
+    Ez nálunk nem szabványos, fix árú katalógustermék, hanem egyedi tervezést igénylő projekt – ebben a
+    cikkben elmagyarázzuk, mire számíthat, és mikor lehet jobb választás egy nagyobb, új ház.
+  </p>
+
+  <h2>Bővítés vagy új, nagyobb ház?</h2>
+
+  <p>
+    Mivel a bővítés ára a meglévő szerkezettől és a helyszíni adottságoktól függ, nem tudunk rá általános
+    árat megadni. Ehelyett érdemes összevetni a jelenlegi helyzetet egy nagyobb, új könnyűszerkezetes ház
+    árával – ez legalább egy előre ismert viszonyítási alap:
+  </p>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Modell</th>
+          <th>Alapterület</th>
+          <th>Szobák</th>
+          <th>Ár (+ ÁFA)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház 52m²</td><td>52 m²</td><td>2</td><td>22.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 78m²</td><td>78 m²</td><td>3</td><td>31.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 96m²</td><td>96 m²</td><td>3</td><td>35.000 EUR</td></tr>
+        <tr><td>Könnyűszerkezetes ház 126m²</td><td>126 m²</td><td>4</td><td>43.000 EUR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek, ha az új ház mellett dönt</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit lehet tudni a bővítésről?</h2>
+
+  <p>
+    A könnyűszerkezetes technológia moduláris jellege elviekben rugalmas alaprajzi módosításokat és
+    bővítéseket tesz lehetővé, de egy meglévő épülethez való hozzáépítés mindig egyedi tervezést,
+    helyszíni felmérést és statikai egyeztetést igényel. Ez alapvetően más folyamat, mint egy szabvány
+    modell megrendelése – nem tudunk rá katalógusárat adni előzetes felmérés nélkül.
+  </p>
+
+  <p>
+    A bővítés is engedély- vagy bejelentés-köteles lehet, a méret és a helyi építési szabályzat (HÉSZ)
+    függvényében – erről bővebben a mobilház építési engedélyről szóló cikkünkben olvashat.
+  </p>
+
+  <h2>Kinek ajánljuk a bővítést, és kinek az új házat?</h2>
+
+  <p>Bővítés jó választás lehet, ha:</p>
+  <ul>
+    <li>a meglévő ház szerkezete és elhelyezkedése ezt lehetővé teszi</li>
+    <li>csak kisebb, kiegészítő teret szeretne (pl. egy plusz szoba)</li>
+  </ul>
+
+  <p>Új, nagyobb ház lehet a jobb választás, ha:</p>
+  <ul>
+    <li>jelentős mértékű, komplex bővítésre lenne szükség</li>
+    <li>fontos szempont az előre ismert, fix ár és a kiszámítható átfutási idő</li>
+    <li>szeretne gyári garanciát egy teljesen új szerkezetre</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések a bővítésről" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Bővítést tervez, vagy inkább új házat nézne?
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek egyedi felmérést és ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

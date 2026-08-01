@@ -1,0 +1,123 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Mit Jelent a Készház Kifejezés?';
+const description =
+  'Mit jelent pontosan a "készház" kifejezés? Gyűjtőfogalom, amely a könnyűszerkezetes házakat, a modulházakat és a konténerházakat egyaránt takarja.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'kontenerhaz-manhattan', 'modulhaz-amsterdam'];
+
+const faqs = [
+  {
+    q: 'Mit jelent pontosan a készház szó?',
+    a: 'Olyan lakóépületet jelöl, amely gyárilag, előre gyártott elemekből készül, és a helyszínen viszonylag gyorsan összeszerelhető – szemben a hagyományos, helyszíni tégla-beton építkezéssel.',
+  },
+  {
+    q: 'A készház és a gyorsház ugyanazt jelenti?',
+    a: 'Igen, nálunk gyakorlatilag szinonimaként használjuk mindkettőt: a gyárilag előre gyártott, gyorsan telepíthető otthonok gyűjtőfogalma.',
+  },
+  {
+    q: 'Milyen típusú készházak vannak?',
+    a: 'Könnyűszerkezetes ház, modulház és konténerház – mindhárom a készház/gyorsház gyűjtőfogalom alá tartozik nálunk, eltérő szerkezeti technológiával.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Gyorsház', href: '/gyorshaz-konnyuszerkezetes-haz' },
+  { label: 'Mobilház árak', href: '/mobilhaz-arak' },
+  { label: 'Mobilház szerkezete', href: '/mobilhaz-szerkezete' },
+  { label: 'Kulcsrakész könnyűszerkezetes ház', href: '/kulcsrakesz-konnyuszerkezetes-haz' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Készház Jelentése' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="altalanos"
+  tags={['készház', 'fogalom', 'jelentés']}
+  summary="A 'készház' gyűjtőfogalom: gyárilag, előre gyártott elemekből készülő, gyorsan telepíthető lakóépületet jelöl. Nálunk ide tartozik a könnyűszerkezetes ház, a modulház és a konténerház is."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Sokan keresnek rá arra, pontosan mit takar a "készház" kifejezés. Ebben a rövid cikkben tisztázzuk
+    a fogalmat, és bemutatjuk, milyen típusok tartoznak ide nálunk.
+  </p>
+
+  <h2>Mennyibe kerül egy készház?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Típus</th><th>Mérettartomány</th><th>Kezdőár</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Könnyűszerkezetes ház</td><td>22–126 m²</td><td>16.000 EUR + ÁFA</td></tr>
+        <tr><td>Modulház</td><td>15–122 m²</td><td>ár kérésre</td></tr>
+        <tr><td>Konténerház</td><td>55–90 m²</td><td>12.790.000 Ft + ÁFA</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ajánlott modellek típusonként</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Mit jelent pontosan a "készház"?</h2>
+
+  <p>
+    A "készház" olyan lakóépületet jelöl, amelynek szerkezete gyárilag, kontrollált körülmények között
+    készül el, és a helyszínen csak az összeszerelés és a befejező munkák történnek. Ez szemben áll a
+    hagyományos, teljes egészében a helyszínen, téglából-betonból épített házakkal. Nálunk a "gyorsház"
+    kifejezéssel gyakorlatilag szinonimaként használjuk.
+  </p>
+
+  <p>
+    A készház gyűjtőfogalom alá három, szerkezetileg eltérő technológia tartozik nálunk: a
+    könnyűszerkezetes ház (horganyzott acélváz), a modulház (szendvicspanel falak) és a konténerház
+    (acél ST37 vázszerkezet).
+  </p>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes könnyűszerkezetes-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="konnyuszerkezetes" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">Érdekli egy készház?</p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a href="/kapcsolat" class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors">
+      Kérek személyre szabott ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a href={item.href} class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors">
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>

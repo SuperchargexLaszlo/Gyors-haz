@@ -1,0 +1,155 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import HazakGrid from '../components/HazakGrid.astro';
+import FaqSection from '../components/FaqSection.astro';
+
+const title = 'Téliesített Mobilház Sürgősen Kell? – Gyors, Új Megoldások Garanciával';
+const description =
+  'Sürgősen kellene egy téliesített mobilház? A Gyors Ház nem közvetít használt, magánhirdetéses eladásokat – de bemutatjuk, milyen gyorsan juthat hozzá egy új, garanciás megoldáshoz.';
+const pubDate = new Date('2026-08-01');
+
+const ajanlottSlugok = ['kontenerhaz-manhattan', 'kontenerhaz-manhattan-l', 'kontenerhaz-beverly'];
+
+const faqs = [
+  {
+    q: 'Közvetít a Gyors Ház sürgős, magánhirdetéses eladásokat?',
+    a: 'Nem, kizárólag új, gyárilag gyártott termékeket kínálunk, gyártói garanciával. Használt egységek magáneladását nem közvetítjük.',
+  },
+  {
+    q: 'Milyen gyorsan juthatok új, téliesített konténerházhoz?',
+    a: 'A helyszíni szállítás és összeszerelés – az alapozás elkészülte után – jellemzően 1–3 napot vesz igénybe. A teljes folyamat, a megrendeléstől (gyártás, szállítás, alapozás, összeszerelés) a kulcsátadásig, jellemzően 4–6 hét, de ez egyedi igény és a telek adottságai szerint eltérhet.',
+  },
+  {
+    q: 'Miért jobb egy új megoldás egy sürgősen eladó használt egységnél?',
+    a: 'Az új termékekre gyártói garanciát kap, ismert az állapotuk, és a szállítási-telepítési folyamat is kiszámítható. Egy sürgősen, ismeretlen körülmények között eladott használt egységnél ezek egyike sem garantált.',
+  },
+  {
+    q: 'Van a legyorsabb megoldás könnyűszerkezetes házból is?',
+    a: 'A könnyűszerkezetes házak telepítése jellemzően 6–8 hetet vesz igénybe – ez lassabb, mint a konténerház, de még mindig lényegesen gyorsabb, mint egy hagyományos téglaépítés.',
+  },
+];
+
+const kapcsolodoKeresesek = [
+  { label: 'Téliesített konténerház árak', href: '/teliesitett-kontenerhaz-arak' },
+  { label: 'Használt 4 évszakos mobilház árak', href: '/hasznalt-4-evszakos-mobilhaz-arak' },
+  { label: '4 évszakos mobilház árak', href: '/4-evszakos-mobilhaz-arak' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+];
+
+const breadcrumbItems = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Konténerházak', href: '/kontenerhaz' },
+  { label: 'Téliesített Mobilház Sürgősen' },
+];
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  pubDate={pubDate}
+  category="kontenerhoz"
+  tags={['téliesített mobilház', 'sürgős', 'gyors telepítés']}
+  summary="A Gyors Ház nem közvetít sürgős, magánhirdetéses használt eladásokat – kizárólag új, gyári garanciás termékeket kínálunk. Ha gyorsan kell egy téliesített otthon, a konténerházaink helyszíni összeszerelése 1–3 nap, a teljes folyamat pedig jellemzően 4–6 hét."
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <p>
+    Fontos tisztázni elöljáróban: a Gyors Ház nem közvetít magánszemélyek közötti, sürgősségi használt
+    eladásokat – kizárólag új, gyárilag gyártott, gyártói garanciás könnyűszerkezetes házakat,
+    modulházakat és konténerházakat kínálunk. Ha valóban sürgősen van szüksége egy téliesített otthonra,
+    bemutatjuk, melyik megoldásunk a leggyorsabb.
+  </p>
+
+  <h2>Milyen gyorsan juthat új, téliesített mobilházhoz?</h2>
+
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Típus</th>
+          <th>Telepítési idő</th>
+          <th>Teljes folyamat</th>
+          <th>Kezdőár</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Konténerház</td><td>1–3 nap</td><td>4–6 hét</td><td>12.790.000 Ft + ÁFA</td></tr>
+        <tr><td>Könnyűszerkezetes ház</td><td>kb. 1 hét</td><td>6–8 hét</td><td>16.000 EUR + ÁFA</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    A leggyorsabb megoldás a konténerház: az alapozás után 1–3 nap alatt telepíthető, a teljes folyamat
+    (a megrendeléstől a kulcsátadásig) jellemzően 4–6 hét, egyedi igény szerint eltérhet.
+  </p>
+
+  <h2>Ajánlott, gyorsan telepíthető modellek</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid slugok={ajanlottSlugok} columns={3} />
+  </div>
+
+  <h2>Miért nem közvetítünk sürgős, magánhirdetéses eladásokat?</h2>
+
+  <p>
+    Egy "sürgősen eladó" használt egységnél jellemzően ismeretlen az állapot, nincs gyártói garancia, és
+    a szigetelés, a szerkezet vagy a nyílászárók állapotát csak szakértői vizsgálattal lehetne
+    megbízhatóan felmérni. Ez időigényes és kockázatos lehet, pont akkor, amikor sürgős megoldásra van
+    szükség. Ezért kínálunk helyette új, dokumentált, gyorsan telepíthető alternatívát.
+  </p>
+
+  <h2>Kinek ajánljuk ezt a gyors megoldást?</h2>
+
+  <p>Jó választás, ha:</p>
+  <ul>
+    <li>valóban rövid időn belül szüksége van egy lakható, téliesített épületre</li>
+    <li>fontos a gyártói garancia és az ismert, dokumentált állapot</li>
+    <li>nem szeretne kockázatot vállalni egy ismeretlen állapotú használt egységgel</li>
+  </ul>
+
+  <p>Kevésbé sürgős esetben érdemesebb:</p>
+  <ul>
+    <li>alaposan összehasonlítani a modelleket és a méreteket, mert így jobb ár-érték arányt találhat</li>
+  </ul>
+
+  <div class="not-prose">
+    <FaqSection faqs={faqs} title="Gyakran ismételt kérdések" />
+  </div>
+
+  <h2>Teljes konténerház-kínálatunk</h2>
+
+  <div class="not-prose my-6">
+    <HazakGrid kategoria="kontenerhaz" columns={3} />
+  </div>
+
+  <div class="not-prose my-10 text-center rounded-xl bg-primary/5 border border-primary/10 p-8">
+    <p class="font-sans font-bold text-xl text-gray-900 mb-3">
+      Sürgős a helyzet? Segítünk gyorsan megoldást találni
+    </p>
+    <p class="text-gray-600 mb-5">
+      Kötelezettség nélkül, 1 munkanapon belül visszahívjuk – vagy hívjon most: <strong>+36 70 777 8372</strong>
+    </p>
+    <a
+      href="/kapcsolat"
+      class="inline-block rounded-lg bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-dark transition-colors"
+    >
+      Kérek sürgős, gyors kivitelezésű ajánlatot
+    </a>
+  </div>
+
+  <div class="not-prose mt-10 pt-6 border-t border-gray-100">
+    <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Kapcsolódó keresések</p>
+    <div class="flex flex-wrap gap-2">
+      {kapcsolodoKeresesek.map((item) => (
+        <a
+          href={item.href}
+          class="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-600 hover:bg-primary/10 hover:text-primary transition-colors"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</BlogLayout>
