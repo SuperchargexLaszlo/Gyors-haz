@@ -296,3 +296,31 @@
 /blog/modulhaz-arak                  /modulhaz-arak                 301
 /blog/kontenerhoz-60-nm              /kontenerhaz-60-nm             301
 /blog/kontenerhoz-alapozas           /kontenerhaz-alapozas          301
+
+# WordPress/WooCommerce /termek/ URL-ek migralasa (2026-08-01): "hitelezheto-kontenerhazak"
+# cikk nem letezik a projektben, ezert a konnyuszerkezetes-meret termekoldalak celja
+# a /kontenerhaz kategoriaoldal
+/termek/hitelezheto-kontenerhaz-22m2/     /kontenerhaz  301
+/termek/hitelezheto-kontenerhaz-32-m2/    /kontenerhaz  301
+/termek/hitelezheto-kontenerhaz-35-m2/    /kontenerhaz  301
+/termek/hitelezheto-kontenerhaz-52-m2/    /kontenerhaz  301
+/termek/hitelezheto-kontenerhaz-62-m2/    /kontenerhaz  301
+/termek/hitelezheto-kontenerhaz-78-m2/    /kontenerhaz  301
+/termek/hitelezheto-kontenerhaz-86-m2/    /kontenerhaz  301
+/termek/hitelezheto-kontenerhaz-87m2/     /kontenerhaz  301
+/termek/hitelezheto-kontenerhaz-96-m2/    /kontenerhaz  301
+/termek/hitelezheto-kontenerhaz-126-m2/   /kontenerhaz  301
+
+/termek/toscana/      /modulhaz   301
+/termek/sydney/       /modulhaz   301
+/termek/monaco/       /modulhaz   301
+/termek/tiny-house/   /modulhaz   301
+/termek/marseille/    /modulhaz   301
+/termek/amsterdam/    /modulhaz   301
+/termek/bremen/       /modulhaz   301
+/termek/barcelona/    /modulhaz   301
+/termek/lyon/         /modulhaz   301
+/termek/versailles/   /modulhaz   301
+/termek/london/       /modulhaz   301
+/termek/alessandria/       /modulhaz   301
+/termek/alessandri%d0%b0/  /modulhaz   301
