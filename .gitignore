@@ -13,3 +13,6 @@ dist/
 
 # Local Claude Code settings
 .claude/settings.local.json
+
+# Kép biztonsági mentés (nem kell verziókövetni/deployolni)
+_backup_images/

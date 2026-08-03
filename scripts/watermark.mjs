@@ -9,21 +9,50 @@ const OUTPUT_WIDTH = 1200;
 const OUTPUT_HEIGHT = 800;
 const OUTPUT_QUALITY = 85;
 
-const WATERMARK_SVG = `<svg width="${OUTPUT_WIDTH}" height="${OUTPUT_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
-  <text
-    x="${OUTPUT_WIDTH - 20}"
-    y="${OUTPUT_HEIGHT - 20}"
-    font-family="Arial, sans-serif"
-    font-size="28"
-    font-weight="bold"
-    text-anchor="end"
-    fill="white"
-    opacity="0.65"
-    stroke="black"
-    stroke-width="1"
-    paint-order="stroke"
-  >gyors-haz.hu</text>
-</svg>`;
+// --- Logós vízjel beállításai ---
+const LOGO_PATH = 'logo.jpeg';   // a márka logó (navy kör + fehér ház)
+const WM_SIZE = 150;             // vízjel mérete pixelben (a jobb alsó sarokban)
+const WM_OPACITY = 0.38;         // halványság (0 = láthatatlan, 1 = teljesen látszik)
+const WM_MARGIN = 28;            // távolság a jobb és alsó széltől
+
+// Kör alakú maszk SVG-ként
+function circleMask(size) {
+  return Buffer.from(
+    `<svg width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg"><circle cx="${size / 2}" cy="${size / 2}" r="${size / 2}" fill="#fff"/></svg>`
+  );
+}
+
+// Egyszer előállítjuk a halvány, kör alakú logó-vízjelet
+async function buildWatermark() {
+  let logoBuf;
+  try {
+    logoBuf = await sharp(LOGO_PATH).trim({ threshold: 12 }).toBuffer();
+  } catch {
+    logoBuf = await sharp(LOGO_PATH).toBuffer();
+  }
+
+  // Kör alakúra vágott logó
+  const circular = await sharp(logoBuf)
+    .resize(WM_SIZE, WM_SIZE, { fit: 'cover', position: 'centre' })
+    .composite([{ input: circleMask(WM_SIZE), blend: 'dest-in' }])
+    .png()
+    .toBuffer();
+
+  // Egységes áttetszőség: az alfa csatornát WM_OPACITY-vel szorozzuk
+  const faint = await sharp(circular)
+    .composite([
+      {
+        input: Buffer.from([255, 255, 255, Math.round(255 * WM_OPACITY)]),
+        raw: { width: 1, height: 1, channels: 4 },
+        tile: true,
+        blend: 'dest-in',
+      },
+    ])
+    .png()
+    .toBuffer();
+
+  return faint;
+}
 
 async function processImages() {
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
@@ -36,15 +65,14 @@ async function processImages() {
       files.push(file);
     }
   } catch {
-    // node:fs/promises glob may not be available in older Node — fallback
     const { globby } = await import('globby').catch(() => ({ globby: null }));
     if (globby) {
       files = await globby(pattern);
     } else {
       const dirFiles = await fs.readdir(INPUT_DIR).catch(() => []);
       files = dirFiles
-        .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
-        .map(f => path.join(INPUT_DIR, f));
+        .filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f))
+        .map((f) => path.join(INPUT_DIR, f));
     }
   }
 
@@ -53,27 +81,23 @@ async function processImages() {
     return;
   }
 
-  console.log(`${files.length} kép feldolgozása...`);
+  console.log(`${files.length} kép feldolgozása logós vízjellel...`);
 
-  const watermarkBuffer = Buffer.from(WATERMARK_SVG);
+  const watermark = await buildWatermark();
+  const wmTop = OUTPUT_HEIGHT - WM_SIZE - WM_MARGIN;
+  const wmLeft = OUTPUT_WIDTH - WM_SIZE - WM_MARGIN;
 
   for (const inputPath of files) {
-    const basename = path.basename(inputPath, path.extname(inputPath)).replace(/m2$/, '').replace(/\s+/g, '-');
+    const basename = path
+      .basename(inputPath, path.extname(inputPath))
+      .replace(/m2$/, '')
+      .replace(/\s+/g, '-');
     const outputPath = path.join(OUTPUT_DIR, `${basename}.webp`);
 
     try {
       await sharp(inputPath)
-        .resize(OUTPUT_WIDTH, OUTPUT_HEIGHT, {
-          fit: 'cover',
-          position: 'centre',
-        })
-        .composite([
-          {
-            input: watermarkBuffer,
-            top: 0,
-            left: 0,
-          },
-        ])
+        .resize(OUTPUT_WIDTH, OUTPUT_HEIGHT, { fit: 'cover', position: 'centre' })
+        .composite([{ input: watermark, top: wmTop, left: wmLeft }])
         .webp({ quality: OUTPUT_QUALITY })
         .toFile(outputPath);
 

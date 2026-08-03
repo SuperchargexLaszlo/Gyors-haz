@@ -51,6 +51,14 @@ const navLinks = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1A3C5E" />
 
+    <!-- Favicon / ikonok -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <title>{titleTrunc}</title>
     <meta name="description" content={descTrunc} />
 
@@ -99,9 +107,13 @@ const navLinks = [
         <div class="flex h-16 items-center justify-between">
           <!-- Logo -->
           <a href="/" class="flex items-center gap-2 shrink-0" aria-label="Gyors Ház főoldal">
-            <span
-              class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-white font-sans font-bold text-sm"
-            >GH</span>
+            <img
+              src="/logo.webp"
+              alt="Gyors Ház logó"
+              width="36"
+              height="36"
+              class="h-9 w-9 rounded-full"
+            />
             <span class="font-sans font-bold text-lg text-primary leading-none">Gyors Ház</span>
           </a>
 
@@ -174,7 +186,13 @@ const navLinks = [
           <!-- Logo + leírás -->
           <div class="lg:col-span-1">
             <div class="flex items-center gap-2 mb-3">
-              <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-white font-sans font-bold text-sm">GH</span>
+              <img
+                src="/logo.webp"
+                alt="Gyors Ház logó"
+                width="36"
+                height="36"
+                class="h-9 w-9 rounded-full ring-1 ring-white/25"
+              />
               <span class="font-sans font-bold text-lg leading-none">Gyors Ház</span>
             </div>
             <p class="text-sm text-gray-300 leading-relaxed">
