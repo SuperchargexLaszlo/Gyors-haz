@@ -11,9 +11,8 @@ const OUTPUT_QUALITY = 85;
 
 // --- Logós vízjel beállításai ---
 const LOGO_PATH = 'logo.jpeg';   // a márka logó (navy kör + fehér ház)
-const WM_SIZE = 150;             // vízjel mérete pixelben (a jobb alsó sarokban)
-const WM_OPACITY = 0.38;         // halványság (0 = láthatatlan, 1 = teljesen látszik)
-const WM_MARGIN = 28;            // távolság a jobb és alsó széltől
+const WM_SIZE = 520;             // vízjel mérete pixelben (középen, nagy méret)
+const WM_OPACITY = 0.17;         // halványság (0 = láthatatlan, 1 = teljesen látszik)
 
 // Kör alakú maszk SVG-ként
 function circleMask(size) {
@@ -84,8 +83,6 @@ async function processImages() {
   console.log(`${files.length} kép feldolgozása logós vízjellel...`);
 
   const watermark = await buildWatermark();
-  const wmTop = OUTPUT_HEIGHT - WM_SIZE - WM_MARGIN;
-  const wmLeft = OUTPUT_WIDTH - WM_SIZE - WM_MARGIN;
 
   for (const inputPath of files) {
     const basename = path
@@ -97,7 +94,7 @@ async function processImages() {
     try {
       await sharp(inputPath)
         .resize(OUTPUT_WIDTH, OUTPUT_HEIGHT, { fit: 'cover', position: 'centre' })
-        .composite([{ input: watermark, top: wmTop, left: wmLeft }])
+        .composite([{ input: watermark, gravity: 'centre' }])
         .webp({ quality: OUTPUT_QUALITY })
         .toFile(outputPath);
 
