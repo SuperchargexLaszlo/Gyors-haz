@@ -45,6 +45,13 @@ export default async (req) => {
   if (image.length > 11_000_000) {
     return json({ error: 'Az alaprajz képe túl nagy. Töltsd le közvetlenül a gombbal.' }, 413);
   }
+  /* Egy valódi alaprajz PNG-je néhány tíz kilobájt. Ha ennél sokkal kisebb,
+     akkor a vászon üresen renderelődött — inkább hibát adunk vissza, mint
+     hogy a látogató egy ÜRES CSATOLMÁNYT kapjon, és azt higgye, megvan a
+     rajza. (Pontosan ez fordult elő egyszer élesben.) */
+  if (image.length < 5000) {
+    return json({ error: 'A rajz üresen érkezett. Frissítsd az oldalt, és próbáld újra.' }, 422);
+  }
 
   const key = process.env.BREVO_API_KEY;
   if (!key) {
@@ -54,6 +61,10 @@ export default async (req) => {
   const from = process.env.MAIL_FROM || 'no-reply@gyors-haz.hu';
   const team = process.env.TEAM_EMAIL || 'info@instantotthonok.com';
   const base64 = image.split(',')[1] ?? '';
+  if (base64.length < 4000) {
+    return json({ error: 'A rajz üresen érkezett. Frissítsd az oldalt, és próbáld újra.' }, 422);
+  }
+  const kb = Math.round((base64.length * 3) / 4 / 1024);
   const hello = name ? `Szia ${escapeHtml(name)}!` : 'Szia!';
   const send = (payload) =>
     fetch('https://api.brevo.com/v3/smtp/email', {
@@ -135,7 +146,7 @@ export default async (req) => {
      E-mail: <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
   ${rooms ? `<p style="color:#4b5563;font-size:14px;margin:14px 0 0">Helyiségek: ${escapeHtml(rooms)}</p>` : ''}
   <p style="color:#9ca3af;font-size:12px;margin:20px 0 0">
-    A rajz mellékelve. Erre a levélre válaszolva közvetlenül a látogatónak írsz.
+    A rajz mellékelve (${kb} kB). Erre a levélre válaszolva közvetlenül a látogatónak írsz.
   </p>
 </div>`,
       textContent:

@@ -1895,6 +1895,17 @@
       var image = renderExport(1.4);
       var kind = pendingExport || "download";
 
+      // Egy valódi alaprajz PNG-je legalább néhány tíz kilobájt. Ha ennél
+      // sokkal kisebb, akkor a vászon valamiért üresen renderelődött —
+      // ilyenkor inkább szólunk, mint hogy a látogató egy üres csatolmányt
+      // kapjon, és azt higgye, elment neki a rajz.
+      if (!image || image.length < 5000) {
+        btn.disabled = false;
+        msg.textContent = "A rajz nem renderelődött. Frissítsd az oldalt, és próbáld újra.";
+        msg.className = "ap-msg ap-msg-err";
+        return;
+      }
+
       try { localStorage.setItem("gh_ap_mail", "1"); } catch (er) {}
 
       // 2) Alaprajz e-mailben — best effort. Ha nem megy, a látogató akkor is
