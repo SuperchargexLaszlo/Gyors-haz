@@ -16,3 +16,6 @@ dist/
 
 # Kép biztonsági mentés (nem kell verziókövetni/deployolni)
 _backup_images/
+_*.ps1
+_*.zip
+_teszt.png
