@@ -1,0 +1,138 @@
+---
+import MultilingualLayout from '../../layouts/MultilingualLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import MultilingualContactForm from '../../components/MultilingualContactForm.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('konnyuszerkezetes');
+
+const title = 'Montažne Kuće Mađarska – Cijene od 16.000 EUR';
+const description =
+  'Montažne i modularne kuće iz Mađarske: 22–126 m², od 16.000 EUR. Brza montaža. Zatražite besplatnu ponudu!';
+
+const faqs = [
+  {
+    q: 'Koliko košta montažna kuća iz Mađarske?',
+    a: 'Cijene počinju od 16.000 EUR + PDV za model od 22 m², a idu do 43.000 EUR + PDV za najveći model od 126 m² sa 4 sobe. Konačna cijena ovisi o veličini i odabranom rasporedu — rado ćemo pripremiti ponudu prilagođenu vašim potrebama.',
+  },
+  {
+    q: 'Koliko traje isporuka i montaža kuće?',
+    a: 'Proizvodnja obično traje 3–5 tjedana, a cjelokupna montaža na terenu, od narudžbe do primopredaje ključeva, traje 5–8 tjedana, ovisno o pripremljenosti temelja i vremenskim uvjetima.',
+  },
+  {
+    q: 'Je li u Hrvatskoj potrebna građevinska dozvola za kuću dopremljenu iz Mađarske?',
+    a: 'Da, montažna kuća podliježe istim propisima o gradnji kao i kuća izgrađena lokalno. Preporučujemo da zahtjeve provjerite s nadležnim uredom prije narudžbe — dostavljamo tehničku dokumentaciju potrebnu za postupak ozakonjenja odnosno prijave gradnje.',
+  },
+  {
+    q: 'Je li moguća kupnja na rate ili financiranje?',
+    a: 'Da, nudimo mogućnost financiranja. Nakon što ispunite kontaktni obrazac, naš savjetnik će vam predstaviti dostupne opcije obročne otplate ili kredita.',
+  },
+  {
+    q: 'Što je uključeno u cijenu kuće?',
+    a: 'Cijena uključuje pocinčanu čeličnu konstrukciju, 10 cm toplinske izolacije (hungarocell), prozore s trostrukim staklom, ulazna i unutarnja vrata, kompletan krov, elektroinstalacije i vodoinstalacije, tuš kadu, umivaonik i WC. Temelj, prijevoz preko 100 km i priključci na komunalne vodove nisu uključeni.',
+  },
+];
+---
+
+<MultilingualLayout title={title} description={description} lang="hr">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+      Montažne kuće iz Mađarske – kvalitetno, brzo i povoljno
+    </h1>
+
+    <div class="not-prose max-w-2xl mx-auto mb-10">
+      <ProductGallery
+        images={[
+          '/images/products/ksz-52.webp',
+          '/images/products/ksz-78.webp',
+          '/images/products/ksz-96.webp',
+          '/images/products/ksz-126.webp',
+        ]}
+        productName="Montažne Kuće Mađarska"
+      />
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <p>
+        Mađarska je dugo jedan od najpovoljnijih izvora montažnih kuća u srednjoj Europi. Zahvaljujući
+        nižim proizvodnim troškovima i prodaji izravno od proizvođača, hrvatskim kupcima nudimo
+        montažne kuće s pocinčanom čeličnom konstrukcijom, kvalitetnom toplinskom izolacijom i
+        trostrukim staklima — po cijenama znatno nižim od usporedivih kuća proizvedenih lokalno.
+      </p>
+
+      <h2>Zašto kupiti montažnu kuću iz Mađarske?</h2>
+      <p>
+        Cijena po četvornom metru u Mađarskoj je obično 20–35% niža nego u Hrvatskoj, uz usporedivu
+        kvalitetu. Razlog su niži troškovi proizvodnje i rada, a ne niža kvaliteta — naše kuće
+        izgrađene su na pocinčanoj čeličnoj konstrukciji, izolirane slojem hungarocella od 10 cm i
+        opremljene trostrukim staklima, što odgovara uobičajenom srednjoeuropskom standardu za
+        cjelogodišnje stanovanje. Dostava je osigurana u cijeloj srednjoj Europi, uključujući Hrvatsku.
+      </p>
+
+      <h2>Naši modeli i cijene</h2>
+      <p>Potpuni pregled svih modela montažnih kuća s trenutnim cijenama:</p>
+
+      <div class="not-prose overflow-x-auto my-8">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b-2 border-gray-200 text-left">
+              <th class="py-3 pr-4 font-semibold text-gray-900">Model</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">m²</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">Cijena</th>
+              <th class="py-3 font-semibold text-gray-900">EUR/m²</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-medium text-gray-900">{p.nev}</td>
+                <td class="py-3 pr-4 text-gray-600">{p.meret_m2} m²</td>
+                <td class="py-3 pr-4 text-primary font-semibold">{p.ar_eur.toLocaleString('hr-HR')} EUR + PDV</td>
+                <td class="py-3 text-gray-500">{Math.round(p.ar_eur / p.meret_m2).toLocaleString('hr-HR')} EUR/m²</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Kvaliteta i konstrukcija</h2>
+      <p>
+        Svaka kuća gradi se na pocinčanoj čeličnoj konstrukciji otpornoj na koroziju, s 10 cm toplinske
+        izolacije u zidovima, podu i krovu. Prozori i vrata opremljeni su trostrukim staklom, što
+        osigurava niske toplinske gubitke čak i u hladnijim mjesecima. Unutarnje pregrade obložene su
+        gips-kartonskim pločama, pripremljene za završno bojanje. Krov je izveden kao dvostrešni s
+        nagibom od 35°, s limenim pokrovom i kompletnim sustavom oluka.
+      </p>
+
+      <h2>Isporuka i montaža</h2>
+      <p>
+        Nakon potpisivanja ugovora proizvodnja kuće traje 3–5 tjedana u tvornici u Mađarskoj. Prijevoz
+        do Hrvatske odvija se bez poteškoća, a montaža na prethodno pripremljenom temelju traje obično
+        5–8 tjedana od narudžbe do primopredaje ključeva, ovisno o veličini kuće i vremenskim uvjetima.
+      </p>
+
+      <h2>Što je uključeno u cijenu, a što nije</h2>
+      <p>
+        Cijena uključuje: čeličnu konstrukciju, toplinsku izolaciju, trostruka stakla, ulazna i
+        unutarnja vrata, kompletan krov s pokrovom, elektroinstalacije, vodoinstalacije, tuš kadu,
+        umivaonik i WC.
+      </p>
+      <p>
+        Cijena ne uključuje: temelj, prijevoz preko 100 km, priključke na komunalne vodove (struja,
+        voda, kanalizacija) i uređenje okoliša oko kuće.
+      </p>
+    </div>
+
+    <section id="contact" class="scroll-mt-20 not-prose my-12">
+      <h2 class="font-sans font-bold text-2xl sm:text-3xl text-gray-900 mb-6 text-center">
+        Zatražite besplatnu ponudu
+      </h2>
+      <div class="max-w-xl mx-auto">
+        <MultilingualContactForm lang="hr" formName="kontakt-hrvatski" />
+      </div>
+    </section>
+
+    <FaqSection faqs={faqs} title="Često postavljana pitanja" />
+  </div>
+</MultilingualLayout>

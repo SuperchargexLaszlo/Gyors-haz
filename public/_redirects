@@ -324,3 +324,11 @@
 /termek/london/       /modulhaz   301
 /termek/alessandria/       /modulhaz   301
 /termek/alessandri%d0%b0/  /modulhaz   301
+
+# Nemzetközi (nyelvi) landing oldalak
+/de  /de/fertighaus-ungarn  301
+/en  /en/prefab-house-hungary  301
+/sk  /sk/montovane-domy-madarsko  301
+/ro  /ro/case-prefabricate-ungaria  301
+/pl  /pl/domy-prefabrykowane-wegry  301
+/hr  /hr/montazne-kuce-madjarska  301

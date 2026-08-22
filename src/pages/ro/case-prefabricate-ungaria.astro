@@ -1,0 +1,143 @@
+---
+import MultilingualLayout from '../../layouts/MultilingualLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import MultilingualContactForm from '../../components/MultilingualContactForm.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('konnyuszerkezetes');
+
+const title = 'Case Prefabricate Ungaria – Prețuri de la 16.000 EUR';
+const description =
+  'Case prefabricate și modulare din Ungaria: 22–126 m², de la 16.000 EUR. Livrare 5–8 săptămâni. Solicitați o ofertă gratuită!';
+
+const faqs = [
+  {
+    q: 'Cât costă o casă prefabricată din Ungaria?',
+    a: 'Prețurile pornesc de la 16.000 EUR + TVA pentru modelul de 22 m² și ajung până la 43.000 EUR + TVA pentru cel mai mare model, de 126 m², cu 4 camere. Prețul final depinde de suprafață și de configurația aleasă — vă putem pregăti o ofertă personalizată.',
+  },
+  {
+    q: 'Cât durează livrarea și montajul?',
+    a: 'Producția durează în general 3–5 săptămâni, iar montajul complet la fața locului, de la comandă până la predarea cheii, durează 5–8 săptămâni, în funcție de pregătirea fundației și de condițiile meteo.',
+  },
+  {
+    q: 'Este nevoie de autorizație de construire în România pentru o casă adusă din Ungaria?',
+    a: 'Da, casa prefabricată este supusă regulilor de autorizare locale, indiferent de țara de fabricație. Vă recomandăm să discutați cerințele cu primăria/administrația locală înainte de comandă — vă punem la dispoziție documentația tehnică necesară pentru dosarul de autorizare.',
+  },
+  {
+    q: 'Se poate cumpăra în rate sau prin finanțare?',
+    a: 'Da, oferim posibilitatea de finanțare. După completarea formularului de contact, un consultant vă va prezenta opțiunile disponibile de plată în rate sau credit.',
+  },
+  {
+    q: 'Ce este inclus în prețul casei?',
+    a: 'Prețul include structura din oțel zincat, izolație termică de 10 cm (hungarocell), ferestre cu triplu geam, uși de intrare și interioare, acoperiș complet, instalație electrică și instalație sanitară, cabină de duș, lavoar și WC. Fundația, transportul peste 100 km și racordurile la utilități nu sunt incluse.',
+  },
+];
+---
+
+<MultilingualLayout title={title} description={description} lang="ro">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+      Case prefabricate din Ungaria – calitate, viteză și preț avantajos
+    </h1>
+
+    <div class="not-prose max-w-2xl mx-auto mb-10">
+      <ProductGallery
+        images={[
+          '/images/products/ksz-52.webp',
+          '/images/products/ksz-78.webp',
+          '/images/products/ksz-96.webp',
+          '/images/products/ksz-126.webp',
+        ]}
+        productName="Case Prefabricate Ungaria"
+      />
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <p>
+        Ungaria este de mult timp una dintre cele mai avantajoase surse de case prefabricate din
+        Europa Centrală. Datorită costurilor de producție mai reduse și vânzării directe de la
+        producător, oferim clienților din România case prefabricate cu structură din oțel zincat,
+        izolație termică de calitate și geamuri triple — la prețuri considerabil mai mici decât cele
+        ale caselor similare fabricate local. Pe lângă casele prefabricate clasice (structură ușoară
+        din oțel), oferim și <a href="/modulhaz">case modulare</a> Ticab, care se montează și mai
+        rapid — dacă vă interesează această alternativă, consultați oferta noastră de case modulare.
+      </p>
+
+      <h2>De ce să cumpărați o casă prefabricată din Ungaria?</h2>
+      <p>
+        Prețul pe metru pătrat este în Ungaria, în general, cu 30–40% mai mic decât în România, la
+        o calitate comparabilă. Motivul este structura costurilor de producție și de manoperă, nu o
+        calitate inferioară — casele noastre sunt construite pe o structură din oțel zincat, izolate
+        cu un strat de 10 cm de hungarocell și echipate cu geamuri triple, corespunzând standardului
+        central-european obișnuit pentru locuire pe tot parcursul anului. Livrarea este asigurată în
+        toată Europa Centrală, inclusiv în România.
+      </p>
+
+      <h2>Modelele noastre și prețurile</h2>
+      <p>Prezentare completă a tuturor modelelor de case prefabricate, cu prețurile actuale:</p>
+
+      <div class="not-prose overflow-x-auto my-8">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b-2 border-gray-200 text-left">
+              <th class="py-3 pr-4 font-semibold text-gray-900">Model</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">m²</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">Preț</th>
+              <th class="py-3 font-semibold text-gray-900">EUR/m²</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-medium text-gray-900">{p.nev}</td>
+                <td class="py-3 pr-4 text-gray-600">{p.meret_m2} m²</td>
+                <td class="py-3 pr-4 text-primary font-semibold">{p.ar_eur.toLocaleString('ro-RO')} EUR + TVA</td>
+                <td class="py-3 text-gray-500">{Math.round(p.ar_eur / p.meret_m2).toLocaleString('ro-RO')} EUR/m²</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Calitate și construcție</h2>
+      <p>
+        Fiecare casă este construită pe o structură din oțel zincat, rezistentă la coroziune, cu
+        izolație termică de 10 cm în pereți, pardoseală și acoperiș. Ferestrele și ușile sunt echipate
+        cu geamuri triple, ceea ce asigură pierderi termice reduse chiar și în lunile reci. Pereții
+        interiori sunt finisați cu gips-carton, pregătiți pentru zugrăveala finală. Acoperișul este
+        de tip șarpantă cu pantă de 35°, cu învelitoare metalică și sistem complet de jgheaburi.
+      </p>
+
+      <h2>Livrare și montaj</h2>
+      <p>
+        După semnarea contractului, producția casei durează 3–5 săptămâni în fabrica din Ungaria.
+        Transportul către România se face fără dificultăți, iar montajul pe fundația pregătită în
+        prealabil durează, de regulă, 5–8 săptămâni de la comandă până la predarea cheii, în funcție
+        de dimensiunea casei și de condițiile meteo.
+      </p>
+
+      <h2>Ce este inclus în preț și ce nu</h2>
+      <p>
+        Prețul include: structura din oțel, izolația termică, geamurile triple, ușile de intrare și
+        interioare, acoperișul complet cu învelitoare, instalația electrică, instalația sanitară,
+        cabina de duș, lavoarul și WC-ul.
+      </p>
+      <p>
+        Prețul nu include: fundația, transportul peste 100 km, racordurile la utilități (electricitate,
+        apă, canalizare) și amenajările exterioare din jurul casei.
+      </p>
+    </div>
+
+    <section id="contact" class="scroll-mt-20 not-prose my-12">
+      <h2 class="font-sans font-bold text-2xl sm:text-3xl text-gray-900 mb-6 text-center">
+        Solicitați o ofertă gratuită
+      </h2>
+      <div class="max-w-xl mx-auto">
+        <MultilingualContactForm lang="ro" formName="contact-romana" />
+      </div>
+    </section>
+
+    <FaqSection faqs={faqs} title="Întrebări frecvente" />
+  </div>
+</MultilingualLayout>

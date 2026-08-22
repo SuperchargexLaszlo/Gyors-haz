@@ -1,0 +1,144 @@
+---
+import MultilingualLayout from '../../layouts/MultilingualLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import MultilingualContactForm from '../../components/MultilingualContactForm.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('konnyuszerkezetes');
+
+const title = 'Fertighaus Ungarn – Fertighäuser ab 16.000 EUR';
+const description =
+  'Fertighaus in Ungarn kaufen: 22–126 m², ab 16.000 EUR + MwSt. Schnelle Montage 5–8 Wochen. Finanzierung möglich. Kostenlos anfragen!';
+
+const faqs = [
+  {
+    q: 'Was kostet ein Fertighaus in Ungarn?',
+    a: 'Die Preise beginnen bei 16.000 EUR + MwSt für unser kompaktes 22 m²-Modell und reichen bis 43.000 EUR + MwSt für das größte Modell mit 126 m² und vier Zimmern. Der genaue Preis hängt von der gewählten Größe, dem Grundriss und eventuellen Zusatzoptionen ab. In der Tabelle oben finden Sie alle zehn Modelle mit aktuellen Preisen.',
+  },
+  {
+    q: 'Kann ich das Haus besichtigen?',
+    a: 'Ja, im Showroom in Csepel, Budapest können Sie mehrere Modelle live besichtigen, die verwendeten Materialien anfassen und sich von unserem Team persönlich beraten lassen. Vereinbaren Sie einfach über das Kontaktformular einen Besichtigungstermin.',
+  },
+  {
+    q: 'Brauche ich eine Baugenehmigung in Ungarn?',
+    a: 'Das hängt von der Nutzung und der Größe des Gebäudes ab. Für dauerhaft bewohnte Häuser ist in der Regel ein vereinfachtes Genehmigungsverfahren bei der zuständigen Gemeinde nötig. Wir beraten Sie gerne zu den konkreten Anforderungen für Ihr Grundstück und unterstützen bei der Zusammenstellung der nötigen Unterlagen.',
+  },
+  {
+    q: 'Ist Finanzierung möglich?',
+    a: 'Ja. Über unabhängige Finanzierungspartner können wir Ratenzahlungs- und Kreditlösungen vermitteln, auch für internationale Käufer. Kontaktieren Sie uns für ein unverbindliches Finanzierungsangebot, abgestimmt auf Ihr gewünschtes Modell.',
+  },
+  {
+    q: 'Wie lange dauert die Montage?',
+    a: 'Nach Fertigstellung der Fundamentarbeiten dauert die Montage vor Ort in der Regel nur 5 bis 8 Wochen, abhängig von Modellgröße und Wetterbedingungen. Die Produktion der Elemente im Werk läuft parallel zur Vorbereitung Ihres Grundstücks, sodass die Gesamtdauer bis zum Einzug deutlich kürzer ist als bei einer klassischen Massivbauweise.',
+  },
+];
+---
+
+<MultilingualLayout title={title} description={description} lang="de">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+      Fertighaus in Ungarn – günstig, schnell und qualitativ
+    </h1>
+
+    <div class="not-prose max-w-2xl mx-auto mb-10">
+      <ProductGallery
+        images={['/images/products/ksz-52.webp','/images/products/ksz-78.webp','/images/products/ksz-96.webp','/images/products/ksz-126.webp']}
+        productName="Fertighaus Ungarn"
+      />
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <p>
+        Immer mehr Bauherren aus Deutschland, Österreich und der Schweiz entdecken Ungarn als attraktiven
+        Standort für den Kauf eines Fertighauses. Werkgefertigte Qualität, ein durchdachter Stahlrahmenbau
+        und deutlich niedrigere Kosten als im DACH-Raum machen das ungarische Fertighaus zu einer
+        ernstzunehmenden Alternative für Zweitwohnsitze, Ferienhäuser und dauerhaft bewohnte Eigenheime.
+        Auf dieser Seite finden Sie alle Modelle, Preise und den kompletten Kaufprozess im Überblick.
+      </p>
+
+      <h2>Warum ein Fertighaus in Ungarn kaufen?</h2>
+      <p>
+        Der Hauptgrund ist das ausgezeichnete Preis-Leistungs-Verhältnis: Ein vergleichbares Fertighaus
+        kostet in Ungarn spürbar weniger als ein ähnliches Modell in Deutschland, Österreich oder der
+        Schweiz – bei gleichbleibend hoher Bauqualität. Möglich wird das durch niedrigere Produktions- und
+        Lohnkosten am Werksstandort, ohne dass bei Material oder Verarbeitung Abstriche gemacht werden.
+      </p>
+      <ul>
+        <li><strong>30–50 % günstiger</strong> als vergleichbare Fertighäuser im DACH-Raum, bei gleicher Bauweise und Ausstattung.</li>
+        <li><strong>ISO-Stahlrahmen, PIR-Dämmung und 3-fach Verglasung</strong> sorgen für ein energieeffizientes, langlebiges Zuhause.</li>
+        <li><strong>Lieferung nach ganz Europa möglich</strong> – wir organisieren Transport und, auf Wunsch, auch die Montage vor Ort.</li>
+      </ul>
+
+      <h2>Unsere Fertighaus-Modelle und Preise</h2>
+      <p>
+        Unser Modellsortiment reicht von kompakten 22 m²-Einheiten für Singles und Paare bis zu geräumigen
+        126 m²-Familienhäusern mit vier Zimmern. Alle Modelle basieren auf demselben bewährten
+        Stahlrahmensystem und lassen sich individuell anpassen. Die folgende Tabelle zeigt alle aktuell
+        verfügbaren Modelle mit Preis und Quadratmeterpreis.
+      </p>
+      <div class="not-prose overflow-x-auto my-8">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b-2 border-gray-200 text-left">
+              <th class="py-3 pr-4 font-semibold text-gray-900">Modell</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">m²</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">Preis</th>
+              <th class="py-3 font-semibold text-gray-900">EUR/m²</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-medium text-gray-900">{p.nev}</td>
+                <td class="py-3 pr-4 text-gray-600">{p.meret_m2} m²</td>
+                <td class="py-3 pr-4 text-primary font-semibold">{p.ar_eur.toLocaleString('de-DE')} EUR + MwSt</td>
+                <td class="py-3 text-gray-500">{Math.round(p.ar_eur / p.meret_m2).toLocaleString('de-DE')} EUR/m²</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Was ist im Preis inbegriffen?</h2>
+      <p>Jedes Modell wird komplett ausgestattet geliefert. Im Preis enthalten sind:</p>
+      <ul>
+        <li>Verzinkter Stahlrahmen als tragende Konstruktion</li>
+        <li>10 cm Hungarocell-Dämmung in Wänden, Boden und Dach</li>
+        <li>3-fach verglaste Fenster und Außentür</li>
+        <li>Innenausbau mit Gipskarton, bezugsfertig für den Anstrich</li>
+        <li>Komplettes Elektro- und Sanitärpaket (Steckdosen, Schalter, Wasserleitungen, Dusche, Waschbecken, WC)</li>
+        <li>Lieferung innerhalb von 100 km ab Werk</li>
+      </ul>
+
+      <h2>Was ist NICHT enthalten?</h2>
+      <p>Folgende Leistungen sind nicht im Grundpreis enthalten und werden separat kalkuliert:</p>
+      <ul>
+        <li>Fundamentarbeiten vor Ort (abhängig von Bodenbeschaffenheit und gewähltem Fundamenttyp)</li>
+        <li>Planung und behördliche Genehmigung, falls für Ihr Grundstück erforderlich</li>
+        <li>Anschluss an Strom-, Wasser- und Abwassernetz</li>
+        <li>Terrasse, Zaun und Außenanlagen</li>
+        <li>Transport über 100 km hinaus</li>
+      </ul>
+
+      <h2>Kaufprozess Schritt für Schritt</h2>
+      <ol>
+        <li><strong>Anfrage:</strong> Sie senden uns über das Formular unten Ihre Wunschgröße und Eckdaten.</li>
+        <li><strong>Beratung & Angebot:</strong> Unser Team erstellt ein individuelles Angebot und beantwortet offene Fragen.</li>
+        <li><strong>Vertrag & Anzahlung:</strong> Nach Vertragsabschluss beginnt die Fertigung im Werk.</li>
+        <li><strong>Produktion:</strong> Die Elemente werden in 3–5 Wochen unter kontrollierten Werksbedingungen gefertigt.</li>
+        <li><strong>Lieferung & Montage:</strong> Transport zum Grundstück und Montage vor Ort in 5–8 Wochen.</li>
+        <li><strong>Übergabe:</strong> Sie erhalten Ihr schlüsselfertiges Fertighaus zur Abnahme.</li>
+      </ol>
+    </div>
+
+    <section id="contact" class="scroll-mt-20 not-prose my-12">
+      <h2 class="font-sans font-bold text-2xl sm:text-3xl text-gray-900 mb-6 text-center">Kostenlos anfragen</h2>
+      <div class="max-w-xl mx-auto">
+        <MultilingualContactForm lang="de" formName="kontakt-deutsch" />
+      </div>
+    </section>
+
+    <FaqSection faqs={faqs} title="Häufige Fragen" />
+  </div>
+</MultilingualLayout>

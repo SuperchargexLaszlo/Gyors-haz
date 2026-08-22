@@ -6,7 +6,12 @@ export default defineConfig({
   site: 'https://gyors-haz.hu',
   trailingSlash: 'never',
   integrations: [
-    sitemap(),
+    sitemap({
+      // Az alaprajz tervező egy eszköz a házainkhoz, nem önálló termék:
+      // szándékosan nem kérünk rá keresőforgalmat, és a sitemapból is
+      // kimarad. Csak a termékoldalakról lehet eljutni hozzá.
+      filter: (page) => !page.includes('/alaprajz-rajzolo'),
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],

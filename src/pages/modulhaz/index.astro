@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import { getProductsByKategoria } from '../../lib/products';
+import PlannerCta from '../../components/PlannerCta.astro';
 
 const products = await getProductsByKategoria('modulhaz');
 
@@ -151,6 +152,8 @@ const productsWithSize = products.map((p) => ({
         </div>
       ))}
     </div>
+
+    <PlannerCta type="modulhaz" />
 
     <!-- Belső linkek -->
     <section class="mb-16 rounded-2xl bg-gray-50 p-8">

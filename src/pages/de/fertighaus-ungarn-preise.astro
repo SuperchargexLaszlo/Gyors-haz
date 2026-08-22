@@ -1,0 +1,111 @@
+---
+import MultilingualLayout from '../../layouts/MultilingualLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import MultilingualContactForm from '../../components/MultilingualContactForm.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('konnyuszerkezetes');
+const cheapest = products[0]!;
+const priciest = products[products.length - 1]!;
+const cheapestPerM2 = Math.round(cheapest.ar_eur / cheapest.meret_m2);
+const priciestPerM2 = Math.round(priciest.ar_eur / priciest.meret_m2);
+
+const title = 'Fertighaus Ungarn Preise 2026 – Alle Modelle im Überblick';
+const description =
+  'Fertighaus Preise in Ungarn 2026: von 16.000 bis 43.000 EUR. Alle Modelle von 22 bis 126 m² mit Preisen und Grundrissen. Jetzt Angebot anfordern.';
+
+const faqs = [
+  {
+    q: 'Sind die angegebenen Preise inklusive MwSt.?',
+    a: 'Nein, alle angegebenen Preise verstehen sich zuzüglich der gesetzlichen Mehrwertsteuer. Die genaue Höhe hängt vom Lieferland und der jeweiligen steuerlichen Behandlung ab – wir informieren Sie im individuellen Angebot über den Bruttopreis.',
+  },
+  {
+    q: 'Warum unterscheidet sich der Preis pro Quadratmeter zwischen den Modellen?',
+    a: 'Größere Modelle haben einen niedrigeren Quadratmeterpreis, da sich Fixkosten wie Küche, Bad und Anschlüsse auf eine größere Fläche verteilen. Kompakte Modelle sind dadurch pro m² etwas teurer, in der Gesamtsumme aber deutlich günstiger.',
+  },
+  {
+    q: 'Ist eine Finanzierung der Kaufsumme möglich?',
+    a: 'Ja, über unsere Finanzierungspartner bieten wir Ratenzahlungsmodelle an, die individuell auf das gewählte Modell und Ihr Budget abgestimmt werden. Sprechen Sie uns bei Ihrer Anfrage direkt darauf an.',
+  },
+];
+---
+
+<MultilingualLayout title={title} description={description} lang="de">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+      Fertighaus Ungarn Preise 2026 – alle Modelle im Überblick
+    </h1>
+
+    <div class="not-prose max-w-2xl mx-auto mb-10">
+      <ProductGallery
+        images={['/images/products/ksz-22.webp','/images/products/ksz-32.webp','/images/products/ksz-35.webp','/images/products/ksz-52.webp','/images/products/ksz-62.webp','/images/products/ksz-78.webp']}
+        productName="Fertighaus Ungarn Preise"
+      />
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <p>
+        Die Preise für Fertighäuser aus Ungarn bewegen sich 2026 zwischen {cheapest.ar_eur.toLocaleString('de-DE')} EUR
+        für das kompakte {cheapest.meret_m2} m²-Einstiegsmodell und {priciest.ar_eur.toLocaleString('de-DE')} EUR für
+        das große {priciest.meret_m2} m²-Familienhaus mit vier Zimmern. Unten finden Sie die vollständige
+        Preistabelle aller zehn aktuell verfügbaren Modelle inklusive Quadratmeterpreis, damit Sie die
+        Angebote direkt vergleichen können.
+      </p>
+
+      <h2>Vollständige Preistabelle</h2>
+      <div class="not-prose overflow-x-auto my-8">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b-2 border-gray-200 text-left">
+              <th class="py-3 pr-4 font-semibold text-gray-900">Modell</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">m²</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">Preis</th>
+              <th class="py-3 font-semibold text-gray-900">EUR/m²</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-medium text-gray-900">{p.nev}</td>
+                <td class="py-3 pr-4 text-gray-600">{p.meret_m2} m²</td>
+                <td class="py-3 pr-4 text-primary font-semibold">{p.ar_eur.toLocaleString('de-DE')} EUR + MwSt</td>
+                <td class="py-3 text-gray-500">{Math.round(p.ar_eur / p.meret_m2).toLocaleString('de-DE')} EUR/m²</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Quadratmeterpreis-Vergleich</h2>
+      <p>
+        Beim Quadratmeterpreis zeigt sich ein klarer Trend: Je größer das Modell, desto günstiger der Preis
+        pro m². Unser kleinstes Modell liegt bei rund {cheapestPerM2.toLocaleString('de-DE')} EUR/m², während
+        das größte Modell nur noch etwa {priciestPerM2.toLocaleString('de-DE')} EUR/m² kostet. Der Grund:
+        Küche, Bad, Anschlüsse und Grundausstattung sind bei jedem Modell notwendig und verteilen sich bei
+        größeren Häusern auf mehr Fläche.
+      </p>
+
+      <h2>Was beeinflusst den Preis?</h2>
+      <p>
+        Neben der reinen Grundfläche wirken sich Anzahl der Zimmer, Bäder und die gewählte Innenaufteilung
+        auf den Endpreis aus. Modelle mit Küche und zusätzlichem Bad liegen naturgemäß etwas höher als
+        reine Einraum- oder Zweizimmerlösungen. Optionale Extras wie eine größere Terrasse oder zusätzliche
+        Fensterflächen werden individuell im Angebot kalkuliert.
+      </p>
+      <p>
+        Alle Modelle, technischen Details und den kompletten Kaufprozess finden Sie auf unserer
+        Hauptseite: <a href="/de/fertighaus-ungarn">→ Mehr über unsere Fertighäuser erfahren</a>.
+      </p>
+    </div>
+
+    <section id="contact" class="scroll-mt-20 not-prose my-12">
+      <h2 class="font-sans font-bold text-2xl sm:text-3xl text-gray-900 mb-6 text-center">Jetzt Angebot anfordern</h2>
+      <div class="max-w-xl mx-auto">
+        <MultilingualContactForm lang="de" formName="preise-deutsch" />
+      </div>
+    </section>
+
+    <FaqSection faqs={faqs} title="Häufige Fragen zu den Preisen" />
+  </div>
+</MultilingualLayout>

@@ -1,0 +1,119 @@
+---
+import MultilingualLayout from '../../layouts/MultilingualLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import MultilingualContactForm from '../../components/MultilingualContactForm.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('modulhaz');
+
+const title = 'Modular Home Hungary – Ticab Models from 20 to 144 m²';
+const description =
+  'Modular homes in Hungary: 42 Ticab models, 20–144 m². European design, Hungarian manufacturing. Request a price list.';
+
+const faqs = [
+  {
+    q: "What's the difference between a modular home and a prefab house?",
+    a: 'A modular home is built as complete, factory-finished units — walls, roof, and interior largely done before the units ever leave the factory — then joined together on site. A prefab (light-frame) house is assembled from prefabricated panels on site, based on a custom plan. Modular homes offer faster on-site assembly and very consistent factory finish; prefab houses offer more layout flexibility.',
+  },
+  {
+    q: 'How long does assembly take?',
+    a: 'Production typically takes 3–5 weeks. On-site assembly itself is fast — often just 3–7 days — depending on how prepared the foundation and utility connections are.',
+  },
+  {
+    q: 'Can I get a full price list?',
+    a: 'Yes. Because pricing depends on the model, finish level, and any customization, we send a detailed, up-to-date price list directly after a short conversation about what you need. Use the contact form below to request it.',
+  },
+  {
+    q: 'Is financing available for modular homes?',
+    a: 'Yes, financing options are available through independent financial partners, for both Hungarian and foreign buyers. Contact us for current details.',
+  },
+];
+---
+
+<MultilingualLayout title={title} description={description} lang="en">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+      Modular Homes in Hungary – European Design, Fast Assembly
+    </h1>
+
+    <div class="not-prose max-w-2xl mx-auto mb-10">
+      <ProductGallery
+        images={[
+          '/images/products/mod-amsterdam.webp',
+          '/images/products/mod-paris.webp',
+          '/images/products/mod-monaco.webp',
+          '/images/products/mod-lyon.webp',
+          '/images/products/mod-london.webp',
+          '/images/products/mod-alessandria.webp',
+        ]}
+        productName="Modular Home Hungary"
+      />
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <p>
+        Our modular homes are manufactured by Ticab in Hungary and sold across Europe under our brand.
+        The range spans <strong>42 distinct models</strong>, from compact tiny houses to spacious
+        multi-module family homes, all built with a European, Scandinavian-influenced design language —
+        clean lines, large windows, and covered terraces are a recurring theme across the collection.
+      </p>
+      <p>
+        Every model is manufactured under factory conditions in Hungary, which keeps quality consistent
+        and on-site assembly fast. Because each unit arrives largely finished, the time between delivery
+        and move-in is measured in days, not months.
+      </p>
+      <p>
+        City-named models like Amsterdam, Paris, Monaco, Lyon, London, and Barcelona reflect a range of
+        sizes and layouts — from single-room tiny houses to four-bedroom multi-module homes with two
+        bathrooms. Whatever the size, the same steel-frame construction and factory finish quality applies
+        across the entire line.
+      </p>
+      <p>
+        Pricing varies by model, size, and finish level, so instead of publishing a single number, we send
+        a full, current price list after a short conversation about what you're looking for — use the form
+        below to request yours.
+      </p>
+
+      <h2>Our modular home models</h2>
+    </div>
+
+    <div class="not-prose max-w-6xl mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 my-8">
+      {products.map((p) => (
+        <div class="rounded-xl overflow-hidden bg-white shadow-sm border border-gray-100">
+          <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+            <img
+              src={p.kep}
+              alt={p.nev}
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="300"
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="font-sans font-bold text-base text-gray-900 mb-1">{p.nev}</h3>
+            <p class="text-sm text-gray-500 mb-2">{p.meret_m2} m² · {p.szobak} rooms</p>
+            <p class="font-sans font-bold text-primary text-sm">Price on request</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <h2>FAQ</h2>
+    </div>
+
+    <div class="not-prose max-w-3xl mx-auto">
+      <FaqSection faqs={faqs} title="Frequently Asked Questions" />
+    </div>
+
+    <section id="contact" class="scroll-mt-20 not-prose my-12">
+      <h2 class="font-sans font-bold text-2xl sm:text-3xl text-gray-900 mb-6 text-center">Request a Price List</h2>
+      <div class="max-w-xl mx-auto">
+        <MultilingualContactForm lang="en" formName="contact-modular-english" />
+      </div>
+    </section>
+  </div>
+</MultilingualLayout>

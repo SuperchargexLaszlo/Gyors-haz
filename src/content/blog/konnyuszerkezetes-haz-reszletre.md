@@ -6,6 +6,7 @@ updatedDate: 2026-03-01
 category: konnyuszerkezetes
 tags: ["részletre", "hitel", "finanszírozás", "bankfüggetlen"]
 author: "Gyors Ház csapata"
+showPlannerCta: true
 ---
 
 A **könnyűszerkezetes ház részletre** vásárlás 2026-ban már nem különlegesség — egyre több pénzintézet kínál kedvező kondíciójú hitelt könnyűszerkezetes és prefabrikált épületekre. Ez az útmutató végigvezeti Önt az egész folyamaton: az első lépéstől a kulcsátadásig.

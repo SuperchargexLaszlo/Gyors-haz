@@ -1,0 +1,127 @@
+---
+import MultilingualLayout from '../../layouts/MultilingualLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import MultilingualContactForm from '../../components/MultilingualContactForm.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('konnyuszerkezetes');
+
+const title = 'Fertighaus Ungarn Erfahrungen – Qualität, Lieferung, Montage';
+const description =
+  'Erfahrungen mit Fertighäusern aus Ungarn: PIR-Dämmung, ISO-Stahlrahmen, 3-fach Verglasung. Alles was Sie vor dem Kauf wissen müssen.';
+
+const faqs = [
+  {
+    q: 'Wie lange hält ein Fertighaus aus Ungarn?',
+    a: 'Bei fachgerechter Fundamentierung und regelmäßiger Instandhaltung ist die Lebensdauer mit einem klassischen Massivhaus vergleichbar. Der verzinkte Stahlrahmen ist korrosionsbeständig und für Jahrzehnte ausgelegt.',
+  },
+  {
+    q: 'Welche Garantie erhalte ich auf das Haus?',
+    a: 'Auf die tragende Stahlrahmenkonstruktion gewähren wir 10 Jahre Garantie. Für Fenster, Türen und die technische Gebäudeausrüstung gelten die jeweiligen Herstellergarantien.',
+  },
+  {
+    q: 'Wie ist die Bauqualität im Vergleich zu deutschen Fertighäusern?',
+    a: 'Die verwendeten Materialien – ISO-Stahlrahmen, PIR- bzw. Hungarocell-Dämmung, 3-fach verglaste Fenster – entsprechen westeuropäischem Standard. Der Unterschied liegt vor allem in den niedrigeren Werks- und Lohnkosten in Ungarn, nicht in der Qualität der Ausführung.',
+  },
+  {
+    q: 'Wie läuft die Lieferung ins Ausland konkret ab?',
+    a: 'Die vorgefertigten Elemente werden per Spezialtransport zu Ihrem Grundstück gebracht. Für Lieferungen innerhalb Europas koordinieren wir Zoll- und Transportformalitäten und stimmen einen konkreten Liefertermin mit Ihnen ab.',
+  },
+];
+---
+
+<MultilingualLayout title={title} description={description} lang="de">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+      Fertighaus Ungarn Erfahrungen – was Käufer wissen sollten
+    </h1>
+
+    <div class="not-prose max-w-2xl mx-auto mb-10">
+      <ProductGallery
+        images={['/images/products/ksz-86.webp','/images/products/ksz-96.webp','/images/products/ksz-126.webp','/images/products/ksz-52.webp']}
+        productName="Fertighaus Ungarn Erfahrungen"
+      />
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <p>
+        Wer sich erstmals mit dem Kauf eines Fertighauses aus Ungarn beschäftigt, hat naturgemäß Fragen zur
+        Bauqualität, zur Lieferung und zur Montage vor Ort. Dieser Beitrag fasst zusammen, was Käufer aus
+        Deutschland, Österreich und der Schweiz in der Praxis erwarten können – von den verwendeten
+        Materialien bis zum tatsächlichen Preisvorteil gegenüber dem DACH-Raum.
+      </p>
+
+      <h2>Baumaterial und Konstruktionsqualität</h2>
+      <p>
+        Das tragende Element jedes Hauses ist ein verzinkter <strong>ISO-Stahlrahmen</strong>, der auch bei
+        wechselnden Witterungsbedingungen formstabil bleibt und keine Setzrisse wie bei klassischem
+        Mauerwerk zeigt. Als Dämmmaterial kommt, je nach Modell, hochwertiges <strong>PIR</strong>- bzw.
+        Hungarocell-Material zum Einsatz, das einen sehr guten Dämmwert bei geringer Wandstärke erreicht.
+        Alle Fenster und die Eingangstür sind <strong>3-fach verglast</strong>, was Wärmeverlust im Winter und
+        Aufheizung im Sommer spürbar reduziert. In der Praxis bedeutet das: energieeffizientes Wohnen bei
+        überschaubaren Heizkosten, auch in Regionen mit kalten Wintern.
+      </p>
+
+      <h2>Lieferung und Transport</h2>
+      <p>
+        Die Elemente werden im Werk vorgefertigt und anschließend per Spezialtransport zum Bestimmungsort
+        gebracht. Für Kunden außerhalb Ungarns übernehmen wir die Koordination von Transport und, wo nötig,
+        Zollformalitäten. Die Lieferzeit hängt vom Modell und der Entfernung ab, liegt aber in der Regel im
+        Rahmen der Produktionszeit von 3–5 Wochen zuzüglich Transportdauer.
+      </p>
+
+      <h2>Montage vor Ort</h2>
+      <p>
+        Nach Fertigstellung des Fundaments erfolgt die Montage der vorgefertigten Elemente durch
+        erfahrene Montageteams. Je nach Modellgröße dauert dieser Schritt 5 bis 8 Wochen. Da die Elemente
+        bereits im Werk auf hohe Passgenauigkeit gefertigt wurden, verläuft die Montage deutlich planbarer
+        und wetterunabhängiger als bei einem klassischen Rohbau vor Ort.
+      </p>
+
+      <h2>Preisvergleich mit dem DACH-Raum</h2>
+      <p>
+        Der meistgenannte Vorteil in Kundenrückmeldungen ist der Preis: Ein vergleichbares Fertighaus ist
+        in Ungarn <strong>rund 30–50 % günstiger</strong> als ein Modell mit ähnlicher Ausstattung in
+        Deutschland, Österreich oder der Schweiz. Dieser Unterschied ergibt sich vor allem aus niedrigeren
+        Produktions- und Lohnkosten am Werksstandort – nicht aus geringerer Materialqualität. Zur
+        Orientierung finden Sie hier eine kompakte Preisübersicht unserer aktuellen Modelle:
+      </p>
+      <div class="not-prose overflow-x-auto my-8">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b-2 border-gray-200 text-left">
+              <th class="py-3 pr-4 font-semibold text-gray-900">Modell</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">m²</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">Preis</th>
+              <th class="py-3 font-semibold text-gray-900">EUR/m²</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-medium text-gray-900">{p.nev}</td>
+                <td class="py-3 pr-4 text-gray-600">{p.meret_m2} m²</td>
+                <td class="py-3 pr-4 text-primary font-semibold">{p.ar_eur.toLocaleString('de-DE')} EUR + MwSt</td>
+                <td class="py-3 text-gray-500">{Math.round(p.ar_eur / p.meret_m2).toLocaleString('de-DE')} EUR/m²</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Ausführliche Informationen zu allen Modellen, dem genauen Lieferumfang und dem Kaufprozess finden
+        Sie auf unserer <a href="/de/fertighaus-ungarn">Hauptseite zum Fertighaus Ungarn</a>.
+      </p>
+    </div>
+
+    <section id="contact" class="scroll-mt-20 not-prose my-12">
+      <h2 class="font-sans font-bold text-2xl sm:text-3xl text-gray-900 mb-6 text-center">Kostenlos anfragen</h2>
+      <div class="max-w-xl mx-auto">
+        <MultilingualContactForm lang="de" formName="erfahrungen-deutsch" />
+      </div>
+    </section>
+
+    <FaqSection faqs={faqs} title="Häufige Fragen aus der Praxis" />
+  </div>
+</MultilingualLayout>

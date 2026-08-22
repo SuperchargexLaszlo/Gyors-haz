@@ -1,0 +1,446 @@
+---
+import Icon from "./Icon.astro";
+import { furnitureCats, roomTypes, templates } from "../data/planner";
+
+interface Props {
+  /** Kompakt mód: kisebb vászon, a landing oldalakon beágyazva. */
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+
+// A JS csak a lapos listát használja.
+const flatFurn = furnitureCats.flatMap((c) => c.items);
+const tplData = templates.map((t) => ({ rooms: t.rooms, openings: t.openings }));
+---
+
+<div id="ap-app" class="ch-card overflow-hidden" data-compact={compact ? "1" : null}>
+  <!-- Eszköztár -->
+  <div class="flex flex-wrap items-center gap-1.5 border-b border-line bg-[#fafbfc] p-2">
+    <button id="ap-add-room" class="ap-tool ap-primary" type="button">
+      <Icon name="plus" size={16} /><span>Helyiség</span>
+    </button>
+    <button id="ap-tpl-btn" class="ap-tool" type="button" title="Kész alaprajz sablonok">
+      <Icon name="layers" size={16} /><span class="hidden sm:inline">Sablonok</span>
+    </button>
+    <span class="mx-0.5 hidden h-6 w-px bg-line sm:block"></span>
+    <button class="ap-tool" data-tool="wall" type="button" title="Fal rajzolása (F)">
+      <Icon name="wall" size={16} /><span>Fal</span>
+    </button>
+    <button class="ap-tool" data-tool="door" type="button" title="Ajtó (A)">
+      <Icon name="door" size={16} /><span>Ajtó</span>
+    </button>
+    <button class="ap-tool" data-tool="window" type="button" title="Ablak (B)">
+      <Icon name="window" size={16} /><span>Ablak</span>
+    </button>
+    <button id="ap-lib-btn" class="ap-tool lg:hidden" type="button">
+      <Icon name="sofa" size={16} /><span>Bútor</span>
+    </button>
+    <button class="ap-tool" data-tool="text" type="button" title="Felirat (T)">
+      <Icon name="text" size={16} /><span class="hidden sm:inline">Felirat</span>
+    </button>
+
+    <span class="mx-0.5 hidden h-6 w-px bg-line sm:block"></span>
+    <div class="flex gap-1">
+      <button id="ap-undo" class="ap-mini" type="button" title="Visszavonás (Ctrl+Z)"><Icon name="undo" size={15} /></button>
+      <button id="ap-redo" class="ap-mini" type="button" title="Újra (Ctrl+Shift+Z)"><Icon name="redo" size={15} /></button>
+      <button id="ap-zoomout" class="ap-mini" type="button" title="Kicsinyítés"><Icon name="zoomout" size={15} /></button>
+      <button id="ap-zoomin" class="ap-mini" type="button" title="Nagyítás"><Icon name="zoomin" size={15} /></button>
+      <button id="ap-fit" class="ap-mini" type="button" title="Teljes rajz mutatása"><Icon name="fit" size={15} /></button>
+    </div>
+
+    <div class="ml-auto flex gap-1">
+      <button id="ap-help-btn" class="ap-mini" type="button" title="Súgó és gyorsbillentyűk"><Icon name="help" size={15} /></button>
+      <button id="ap-clear" class="ap-mini ap-danger" type="button" title="Új, üres alaprajz"><Icon name="trash" size={15} /></button>
+    </div>
+  </div>
+
+  <div id="ap-grid-wrap" class="grid lg:grid-cols-[218px_1fr_248px]">
+    <!-- Bútorkönyvtár -->
+    <aside
+      id="ap-lib-panel"
+      class="hidden border-line bg-[#fafbfc] lg:block lg:border-r"
+      style={`max-height:${compact ? "520px" : "660px"};overflow-y:auto`}
+    >
+      <div class="sticky top-0 z-10 bg-[#fafbfc] px-2 pb-1 pt-2">
+        <div class="relative">
+          <span class="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-faint">
+            <Icon name="search" size={15} />
+          </span>
+          <input
+            id="ap-search"
+            type="search"
+            placeholder="Bútor keresése…"
+            class="w-full rounded-lg border border-line bg-white py-1.5 pl-8 pr-2 text-sm"
+          />
+        </div>
+        <p class="px-1 pt-1.5 text-[11px] leading-snug text-faint">
+          Húzd a vászonra, vagy kattints rá, majd a vászonra.
+        </p>
+      </div>
+      <div id="ap-lib" class="px-2 pb-4">
+        {furnitureCats.map((cat) => (
+          <div class="ap-cat">
+            <p class="mt-3 flex items-center gap-1.5 px-1 text-[11px] font-bold uppercase tracking-wide text-accent-strong">
+              <Icon name={cat.icon} size={13} stroke={2} />{cat.c}
+            </p>
+            <div class="mt-1.5 grid grid-cols-2 gap-1">
+              {cat.items.map((it) => (
+                <button class="ap-furn" type="button" draggable="true" data-furn={it.k} data-label={it.n} title={`${it.n} — ${it.w}×${it.h} m`}>
+                  <svg viewBox="0 0 40 30" width="100%" height="26" class="ap-furn-ic" data-shape={it.s}></svg>
+                  <span>{it.n}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </aside>
+
+    <!-- Vászon -->
+    <div class="relative bg-[#fbfbfc]">
+      <div
+        id="ap-help"
+        class="pointer-events-none absolute left-2 top-2 z-10 hidden max-w-[92%] rounded-lg bg-ink/85 px-2.5 py-1.5 text-[11px] leading-snug text-white"
+      >
+      </div>
+      <canvas
+        id="ap-canvas"
+        class="block w-full touch-none"
+        style={`height:${compact ? "min(58vh,460px)" : "min(70vh,660px)"}`}
+        aria-label="Alaprajz szerkesztő vászon"></canvas>
+
+      <div id="ap-empty" class="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center px-6 text-center">
+        <div class="pointer-events-auto">
+          <div class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-accent-soft text-accent-strong">
+            <Icon name="room" size={32} stroke={1.6} />
+          </div>
+          <p class="mt-4 font-display text-xl font-extrabold text-ink">Kezdjük el az alaprajzot</p>
+          <p class="mt-1.5 max-w-xs text-sm text-muted">
+            Válassz kész sablont, vagy tegyél le egy üres helyiséget és méretezd át.
+          </p>
+          <div class="mt-4 flex flex-wrap justify-center gap-2">
+            <button id="ap-tpl-btn2" class="ch-btn" type="button">
+              <Icon name="layers" size={16} />Sablon választása
+            </button>
+            <button id="ap-empty-add" class="ch-btn-ghost" type="button">
+              <Icon name="plus" size={16} />Üres helyiség
+            </button>
+          </div>
+          <button id="ap-onb-open" type="button" class="mt-3.5 text-[0.82rem] text-accent-strong underline underline-offset-2 hover:text-accent">
+            Hogyan működik? — 30 másodperces bevezető
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jobb panel: tulajdonságok + kimutatás -->
+    <aside id="ap-side" class="border-t border-line bg-[#fafbfc] p-3 text-sm lg:border-l lg:border-t-0">
+      <div id="ap-props">
+        <div class="flex items-center justify-between">
+          <p id="ap-props-title" class="font-display text-[0.95rem] font-bold text-ink">Tulajdonságok</p>
+          <button id="ap-props-close" class="ap-mini" type="button" title="Kijelölés megszüntetése"><Icon name="close" size={14} /></button>
+        </div>
+        <div id="ap-props-body" class="mt-3 space-y-2.5"></div>
+      </div>
+      <div id="ap-summary-wrap" class="mt-4 border-t border-line pt-3">
+        <p class="font-display text-[0.95rem] font-bold text-ink">Helyiségkimutatás</p>
+        <div id="ap-summary" class="mt-2"></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-2 border-t border-line bg-[#fafbfc] p-3">
+    <button id="ap-download" class="ch-btn" type="button"><Icon name="download" size={16} />Alaprajz letöltése</button>
+    <button id="ap-print" class="ch-btn-ghost" type="button"><Icon name="print" size={16} />Nyomtatás</button>
+    <span id="ap-stat" class="ml-auto text-[0.85rem] text-muted"></span>
+  </div>
+</div>
+
+<p class="mt-3 flex items-start gap-2 text-xs leading-relaxed text-faint">
+  <span class="mt-0.5 shrink-0"><Icon name="shield" size={14} /></span>
+  A rajz a saját böngésződben tárolódik, amíg dolgozol rajta — nem töltjük fel sehova.
+  Az elkészült alaprajzot e-mailben küldjük el PNG-ként, és utána azonnal le is töltheted.
+</p>
+
+<!-- ============ Sablonválasztó ============ -->
+<div id="ap-tpl-sheet" class="ap-sheet">
+  <div class="ap-sheet-box max-w-2xl">
+    <div class="flex items-center justify-between">
+      <p class="font-display text-lg font-extrabold">Kezdj egy sablonnal</p>
+      <button id="ap-tpl-close" class="ap-mini" type="button"><Icon name="close" size={14} /></button>
+    </div>
+    <p class="mt-1 text-sm text-muted">Minden méret utólag szabadon átírható.</p>
+    <div class="mt-4 grid gap-2 sm:grid-cols-2">
+      {templates.map((t, i) => (
+        <button class="ap-tpl" type="button" data-tpl={i}>
+          <span class="ap-tpl-name">{t.name}</span>
+          {t.area && <span class="ap-tpl-area">{t.area}</span>}
+          <span class="ap-tpl-desc">{t.desc}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<!-- ============ Bútor bottom sheet (mobil) ============ -->
+<div id="ap-lib-sheet" class="ap-sheet lg:!hidden">
+  <div class="ap-sheet-box max-w-lg" style="max-height:80vh;overflow-y:auto">
+    <div class="sticky top-0 flex items-center justify-between bg-white pb-2">
+      <p class="font-display text-lg font-extrabold">Bútorok</p>
+      <button id="ap-lib-close" class="ap-mini" type="button"><Icon name="close" size={14} /></button>
+    </div>
+    <div id="ap-lib-mobile" class="mt-1"></div>
+  </div>
+</div>
+
+<!-- ============ Gyorsbillentyűk ============ -->
+<div id="ap-shortcuts" class="ap-sheet">
+  <div class="ap-sheet-box max-w-md">
+    <div class="flex items-center justify-between">
+      <p class="font-display text-lg font-extrabold">Így a leggyorsabb</p>
+      <button id="ap-shortcuts-close" class="ap-mini" type="button"><Icon name="close" size={14} /></button>
+    </div>
+    <ul class="mt-4 space-y-2 text-sm">
+      <li class="flex justify-between gap-4"><span>Új helyiség</span><kbd class="ap-kbd">S</kbd></li>
+      <li class="flex justify-between gap-4"><span>Fal / Ajtó / Ablak / Felirat</span><span><kbd class="ap-kbd">F</kbd> <kbd class="ap-kbd">A</kbd> <kbd class="ap-kbd">B</kbd> <kbd class="ap-kbd">T</kbd></span></li>
+      <li class="flex justify-between gap-4"><span>Kijelölt elem forgatása</span><kbd class="ap-kbd">R</kbd></li>
+      <li class="flex justify-between gap-4"><span>Másolás</span><kbd class="ap-kbd">Ctrl + D</kbd></li>
+      <li class="flex justify-between gap-4"><span>Törlés</span><kbd class="ap-kbd">Del</kbd></li>
+      <li class="flex justify-between gap-4"><span>Visszavonás / újra</span><span><kbd class="ap-kbd">Ctrl + Z</kbd></span></li>
+      <li class="flex justify-between gap-4"><span>Finom léptetés</span><kbd class="ap-kbd">Nyilak</kbd></li>
+      <li class="flex justify-between gap-4"><span>Eszköz elengedése</span><kbd class="ap-kbd">Esc</kbd></li>
+    </ul>
+    <p class="mt-4 rounded-lg bg-accent-soft p-3 text-[0.82rem] leading-relaxed text-accent-strong">
+      <strong>Pontos méret:</strong> a helyiség mellett megjelenő kék méretszámra kattintva
+      beírhatod méterben, mekkora legyen. A rajz azonnal átáll.
+    </p>
+  </div>
+</div>
+
+<!-- ============ E-mail kapu ============ -->
+<div id="ap-modal" class="ap-sheet">
+  <div class="ap-sheet-box max-w-md">
+    <div class="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-accent/10 text-accent">
+      <Icon name="room" size={24} />
+    </div>
+    <h2 class="mt-3 text-center font-bold text-lg text-primary">
+      Elkészült az alaprajzod!
+    </h2>
+    <p class="mt-1 text-center text-sm text-neutral-500">
+      Letöltheted magadnak, vagy elküldheted nekünk
+      és ajánlatot kérünk rá.
+    </p>
+    <form id="ap-email-form" class="mt-4 space-y-3">
+      <input id="ap-email-input" type="email" required
+             autocomplete="email" placeholder="te@email.hu"
+             class="w-full rounded-xl border border-neutral-200 px-3 py-2.5 text-sm" />
+      <input id="ap-email-name" type="text"
+             autocomplete="given-name" placeholder="Neved (nem kötelező)"
+             class="w-full rounded-xl border border-neutral-200 px-3 py-2.5 text-sm" />
+
+      <!-- Ajánlatkérés checkbox -->
+      <label class="flex items-start gap-3 cursor-pointer rounded-xl
+                    border border-accent/30 bg-accent/5 p-3">
+        <input id="ap-send-to-us" type="checkbox" checked
+               class="mt-0.5 h-4 w-4 accent-accent shrink-0" />
+        <span class="text-sm text-neutral-700 leading-snug">
+          <strong class="text-primary">Ajánlatot is kérek</strong> —
+          az alaprajzomat elküldjük a Gyors Ház csapatának,
+          akik 24 órán belül visszahívnak árajánlattal.
+        </span>
+      </label>
+
+      <p class="text-[0.73rem] text-neutral-400 leading-relaxed">
+        Az e-mail cím az alaprajz kiküldésére és (ha kértél ajánlatot)
+        kapcsolatfelvételre szolgál.
+        <a href="/adatvedelmi-tajekoztato" class="underline">Adatkezelés</a>
+      </p>
+      <div class="flex gap-2 pt-1">
+        <button type="button" id="ap-email-cancel"
+                class="flex-1 border border-neutral-200 rounded-xl py-2.5
+                       text-sm font-medium text-neutral-600 hover:bg-neutral-50">
+          Mégse
+        </button>
+        <button type="submit"
+                class="flex-1 bg-accent text-white rounded-xl py-2.5
+                       text-sm font-bold hover:bg-accent-dark transition-colors">
+          Küldés →
+        </button>
+      </div>
+      <p id="ap-email-msg" class="ap-msg text-center text-sm min-h-[1.2em]"></p>
+    </form>
+  </div>
+</div>
+
+<!-- ============ Onboarding ============ -->
+<div id="ap-onb" class="ap-sheet">
+  <div class="ap-sheet-box max-w-sm text-center">
+    <p id="ap-onb-title" class="font-display text-xl font-extrabold text-ink"></p>
+    <p id="ap-onb-text" class="mt-2 text-sm leading-relaxed text-muted"></p>
+    <div id="ap-onb-dots" class="mt-5 flex justify-center gap-1.5"></div>
+    <div class="mt-5 flex items-center justify-between gap-2">
+      <button id="ap-onb-skip" type="button" class="text-sm text-faint underline">Kihagyom</button>
+      <button id="ap-onb-next" type="button" class="ch-btn"></button>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ flatFurn, roomTypes, tplData }}>
+  window.AP_FURN = {};
+  flatFurn.forEach(function (it) { window.AP_FURN[it.k] = it; });
+  window.AP_ROOMTYPES = roomTypes;
+  window.AP_TEMPLATES = tplData;
+</script>
+
+<style is:global>
+  /*
+   * CSS-shim: ez a komponens a "Csaladihaz epites" projektből lett átemelve,
+   * aminek saját design-tokenjei (--color-ink/muted/faint/line/accent-soft,
+   * ch-card/ch-btn/ch-btn-ghost/ch-chip) itt nem léteznek. Csak a Gyors Ház
+   * témája van (--color-primary/--color-accent + a Tailwind alap gray-skála),
+   * ezért itt definiáljuk a hiányzó változókat és class-okat azokra mappelve,
+   * hogy a lenti (változatlan) markup class-jai működjenek.
+   */
+  :root {
+    --color-ink: var(--color-gray-900);
+    --color-muted: var(--color-gray-500);
+    --color-faint: var(--color-gray-400);
+    --color-line: var(--color-gray-200);
+    --color-line-strong: var(--color-gray-300);
+    --color-accent-soft: color-mix(in srgb, var(--color-accent) 12%, white);
+    --color-accent-strong: var(--color-accent-dark);
+    --color-ok: var(--color-green-600);
+  }
+  .text-ink { color: var(--color-ink); }
+  .text-muted { color: var(--color-muted); }
+  .text-faint { color: var(--color-faint); }
+  .border-line { border-color: var(--color-line); }
+  .bg-ink\/85 { background-color: color-mix(in srgb, var(--color-ink) 85%, transparent); }
+  .bg-accent-soft { background-color: var(--color-accent-soft); }
+  .text-accent-strong { color: var(--color-accent-strong); }
+  .font-display { font-family: var(--font-family-sans); }
+
+  .ch-card {
+    border-radius: 1rem;
+    border: 1px solid var(--color-line);
+    background: #fff;
+    box-shadow: 0 1px 2px rgb(20 24 29 / .04);
+  }
+  .ch-btn, .ch-btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    border-radius: 0.65rem; padding: 0.6rem 1rem; font-size: 0.85rem;
+    font-weight: 700; line-height: 1; cursor: pointer;
+    transition: background .12s, border-color .12s, color .12s;
+  }
+  .ch-btn { background: var(--color-accent); color: #fff; border: 1px solid var(--color-accent); }
+  .ch-btn:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); }
+  .ch-btn-ghost { background: #fff; color: var(--color-ink); border: 1px solid var(--color-line); }
+  .ch-btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent-strong); }
+
+  .ap-tool, .ap-mini {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    border: 1px solid var(--color-line); background: #fff; border-radius: 0.6rem;
+    padding: 0.5rem 0.75rem; font-size: 0.83rem; font-weight: 600;
+    color: var(--color-ink); cursor: pointer; white-space: nowrap; line-height: 1;
+    transition: border-color .12s, background .12s, color .12s;
+  }
+  .ap-mini { padding: 0.5rem; }
+  .ap-tool:hover, .ap-mini:hover:not(:disabled) { border-color: var(--color-accent); color: var(--color-accent-strong); }
+  .ap-mini:disabled { opacity: .38; cursor: default; }
+  .ap-tool.ap-primary { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+  .ap-tool.ap-primary:hover { background: var(--color-accent-strong); border-color: var(--color-accent-strong); color: #fff; }
+  .ap-tool[aria-pressed="true"] { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+  .ap-danger:hover { border-color: #c23b2e; color: #c23b2e; }
+
+  .ap-furn {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    border: 1px solid var(--color-line); background: #fff; border-radius: 0.55rem;
+    padding: 0.4rem 0.2rem 0.35rem; cursor: grab; font-size: 0.66rem; line-height: 1.15;
+    color: var(--color-muted); text-align: center; transition: border-color .12s, background .12s;
+  }
+  .ap-furn:hover { border-color: var(--color-accent); background: var(--color-accent-soft); color: var(--color-accent-strong); }
+  .ap-furn[aria-pressed="true"] { border-color: var(--color-accent); background: var(--color-accent-soft); color: var(--color-accent-strong); }
+  .ap-furn:active { cursor: grabbing; }
+  .ap-furn-ic { color: #58616d; }
+  .ap-furn:hover .ap-furn-ic { color: var(--color-accent); }
+
+  #ap-props input, #ap-props select {
+    width: 100%; border: 1px solid var(--color-line); border-radius: 0.5rem;
+    padding: 0.45rem 0.55rem; font-size: 0.9rem; background: #fff;
+  }
+  #ap-props label {
+    display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--color-muted); margin-bottom: 0.2rem; font-weight: 700;
+  }
+  .ap-hint { font-size: 0.8rem; line-height: 1.5; color: var(--color-faint); }
+  .ap-info { font-size: 0.78rem; color: var(--color-muted); background: var(--color-accent-soft); border-radius: .5rem; padding: .45rem .6rem; }
+  .ap-actions { display: flex; flex-wrap: wrap; gap: .35rem; padding-top: .35rem; }
+  .ap-actions .ap-mini { flex: 1; justify-content: center; font-size: .76rem; padding: .45rem .3rem; }
+  .ap-wide { width: 100%; justify-content: center; font-size: .78rem; }
+
+  #ap-app:not(.ap-has-sel) #ap-props-close { display: none; }
+
+  .ap-sum { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+  .ap-sum th { text-align: left; font-weight: 700; color: var(--color-faint); text-transform: uppercase; font-size: 0.64rem; letter-spacing: .04em; padding-bottom: .25rem; }
+  .ap-sum td { padding: .22rem 0; border-top: 1px solid var(--color-line); color: #2b323b; }
+  .ap-sum tfoot td { font-weight: 700; border-top: 1.5px solid var(--color-line-strong); }
+  /* Összesítő sorok a törzsön belül — a <tfoot>-ot a böngésző a táblázat
+     végére tolná, amitől a hasznos alapterület a terasz alá csúszna. */
+  .ap-sum tr.ap-total td { font-weight: 700; border-top: 1.5px solid var(--color-line-strong); }
+  /* Fűtetlen terek: terasz, erkély, loggia, garázs — halványabban, mert
+     nem számítanak bele a hasznos alapterületbe. */
+  .ap-sum tr.ap-open td { color: var(--color-muted); }
+  .ap-sum tr.ap-open.ap-total td { font-weight: 600; border-top-width: 1px; }
+  .ap-r { text-align: right; }
+
+  .ap-sheet {
+    position: fixed; inset: 0; z-index: 60; display: none;
+    align-items: center; justify-content: center; padding: 1rem;
+    background: rgb(20 24 29 / 0.45);
+  }
+  .ap-sheet-box {
+    width: 100%; background: #fff; border-radius: 1rem; padding: 1.4rem;
+    box-shadow: 0 20px 50px rgb(20 24 29 / .25);
+  }
+
+  .ap-tpl {
+    display: grid; gap: .15rem; text-align: left; border: 1px solid var(--color-line);
+    border-radius: .75rem; padding: .8rem .9rem; background: #fff; cursor: pointer;
+    transition: border-color .12s, background .12s;
+  }
+  .ap-tpl:hover { border-color: var(--color-accent); background: var(--color-accent-soft); }
+  .ap-tpl-name { font-weight: 700; font-size: .95rem; color: var(--color-ink); }
+  .ap-tpl-area { font-size: .72rem; font-weight: 700; color: var(--color-accent-strong); }
+  .ap-tpl-desc { font-size: .78rem; color: var(--color-muted); line-height: 1.4; }
+
+  .ap-kbd {
+    display: inline-block; border: 1px solid var(--color-line-strong); border-bottom-width: 2px;
+    border-radius: .35rem; padding: .1rem .4rem; font-size: .72rem; font-weight: 700;
+    background: #fafbfc; color: var(--color-muted); font-family: inherit;
+  }
+
+  .ap-dot { width: 7px; height: 7px; border-radius: 999px; background: #e2e6ec; }
+  .ap-dot-on { background: var(--color-accent); }
+
+  .ap-msg { font-size: .84rem; min-height: 1.2em; color: var(--color-muted); }
+  .ap-msg-err { color: #c23b2e; }
+  .ap-msg-ok { color: var(--color-ok); }
+
+  @media (min-width: 1024px) {
+    #ap-app:not(.ap-has-sel) #ap-grid-wrap { grid-template-columns: 218px 1fr 248px; }
+  }
+</style>
+
+<script is:inline>
+  // A mobil bútor-sheet a desktop könyvtár másolatát kapja, hogy ne kelljen
+  // kétszer legenerálni a markupot.
+  (function () {
+    var src = document.getElementById("ap-lib");
+    var dst = document.getElementById("ap-lib-mobile");
+    if (!src || !dst) return;
+    var copy = src.cloneNode(true);
+    copy.removeAttribute("id");
+    dst.appendChild(copy);
+  })();
+</script>
+<script is:inline src="/alaprajz-tervezo.js?v=2"></script>

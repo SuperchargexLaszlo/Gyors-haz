@@ -1,0 +1,141 @@
+---
+import MultilingualLayout from '../../layouts/MultilingualLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import MultilingualContactForm from '../../components/MultilingualContactForm.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('konnyuszerkezetes');
+
+const title = 'Montované Domy Maďarsko – Ceny od 16 000 EUR';
+const description =
+  'Montované a modulárne domy z Maďarska: 22–126 m², od 16 000 EUR. Rýchla montáž, dostupné financovanie. Požiadajte o bezplatnú ponuku!';
+
+const faqs = [
+  {
+    q: 'Koľko stojí montovaný dom z Maďarska?',
+    a: 'Ceny sa pohybujú od 16 000 EUR + DPH za 22 m² model až po 43 000 EUR + DPH za najväčší 126 m² model so 4 izbami. Presná cena závisí od veľkosti a zvolenej dispozície — radi vám pripravíme konkrétnu ponuku na mieru.',
+  },
+  {
+    q: 'Ako dlho trvá dodanie a montáž domu?',
+    a: 'Výroba trvá zvyčajne 3–5 týždňov a samotná montáž na mieste 5–8 týždňov od objednávky po odovzdanie, v závislosti od pripravenosti základovej dosky a poveternostných podmienok.',
+  },
+  {
+    q: 'Je potrebné stavebné povolenie na Slovensku pri dovoze domu z Maďarska?',
+    a: 'Áno, aj montovaný dom podlieha stavebnému konaniu podľa miestnych predpisov v mieste stavby. Odporúčame konzultovať požiadavky s vaším stavebným úradom ešte pred objednávkou — radi vám poskytneme technickú dokumentáciu potrebnú na konanie.',
+  },
+  {
+    q: 'Je možné financovanie alebo splátky?',
+    a: 'Áno, financovanie je možné. Po vyplnení kontaktného formulára vám naša poradkyňa predstaví dostupné možnosti splátkového predaja a úverového financovania.',
+  },
+  {
+    q: 'Čo je zahrnuté v cene domu?',
+    a: 'Cena zahŕňa pozinkovanú oceľovú konštrukciu, 10 cm tepelnú izoláciu (hungarocell), trojsklo okná, vstupné a interiérové dvere, kompletnú strechu, elektroinštaláciu a rozvody vody, sprchový kút, umývadlo a WC. Základová doska, doprava nad 100 km a pripojenie na inžinierske siete nie sú zahrnuté.',
+  },
+];
+---
+
+<MultilingualLayout title={title} description={description} lang="sk">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+      Montované domy z Maďarska – kvalitne, rýchlo a výhodne
+    </h1>
+
+    <div class="not-prose max-w-2xl mx-auto mb-10">
+      <ProductGallery
+        images={[
+          '/images/products/ksz-52.webp',
+          '/images/products/ksz-78.webp',
+          '/images/products/ksz-96.webp',
+          '/images/products/ksz-126.webp',
+        ]}
+        productName="Montované Domy Maďarsko"
+      />
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <p>
+        Maďarsko je dlhodobo jedným z najvýhodnejších zdrojov montovaných domov v strednej Európe.
+        Vďaka nižším výrobným nákladom a priamemu predaju od výrobcu ponúkame slovenským zákazníkom
+        montované domy s galvanizovanou oceľovou konštrukciou, kvalitnou tepelnou izoláciou a
+        trojsklami — za ceny, ktoré sú výrazne nižšie než porovnateľné domy vyrábané na Slovensku
+        alebo v Rakúsku. Okrem klasických montovaných (ľahká oceľová konštrukcia) domov ponúkame aj
+        <a href="/modulhaz">modulárne domy</a> značky Ticab, ktoré sú ešte rýchlejšie na montáž —
+        ak vás táto alternatíva zaujíma, pozrite si našu ponuku modulárnych domov.
+      </p>
+
+      <h2>Prečo kúpiť montovaný dom z Maďarska?</h2>
+      <p>
+        Cena za štvorcový meter je v Maďarsku bežne o 30–40 % nižšia než na Slovensku pri porovnateľnej
+        kvalite. Dôvodom sú nižšie výrobné a mzdové náklady, nie nižšia kvalita — naše domy stoja na
+        pozinkovanej oceľovej konštrukcii, sú zateplené 10 cm vrstvou hungarocellu a osadené trojsklami,
+        čo zodpovedá bežnému stredoeurópskemu štandardu pre celoročné bývanie. Doprava je zabezpečená
+        do celej strednej Európy vrátane Slovenska.
+      </p>
+
+      <h2>Naše modely a ceny</h2>
+      <p>Kompletný prehľad všetkých modelov montovaných domov s aktuálnymi cenami:</p>
+
+      <div class="not-prose overflow-x-auto my-8">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b-2 border-gray-200 text-left">
+              <th class="py-3 pr-4 font-semibold text-gray-900">Model</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">m²</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">Cena</th>
+              <th class="py-3 font-semibold text-gray-900">EUR/m²</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-medium text-gray-900">{p.nev}</td>
+                <td class="py-3 pr-4 text-gray-600">{p.meret_m2} m²</td>
+                <td class="py-3 pr-4 text-primary font-semibold">{p.ar_eur.toLocaleString('sk-SK')} EUR + DPH</td>
+                <td class="py-3 text-gray-500">{Math.round(p.ar_eur / p.meret_m2).toLocaleString('sk-SK')} EUR/m²</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Kvalita a konštrukcia</h2>
+      <p>
+        Každý dom stavia na pozinkovanej oceľovej konštrukcii odolnej voči korózii, s 10 cm tepelnou
+        izoláciou v stenách, podlahe aj streche. Okná a dvere sú osadené trojsklom, čo zabezpečuje
+        nízke tepelné straty aj v chladnejších mesiacoch. Vnútorné priečky sú opláštené sadrokartónom,
+        pripravené na finálnu maľbu. Strecha je riešená ako sedlová s 35° sklonom, s plechovou krytinou
+        a kompletným odkvapovým systémom.
+      </p>
+
+      <h2>Doprava a montáž</h2>
+      <p>
+        Po podpise zmluvy trvá výroba domu 3–5 týždňov v závode v Maďarsku. Doprava do Bratislavy
+        a okolia je bezproblémová vzhľadom na blízkosť hraníc, samotná montáž na pripravenej základovej
+        doske trvá spravidla 5–8 týždňov od objednávky po odovzdanie kľúčov, v závislosti od veľkosti
+        domu a poveternostných podmienok.
+      </p>
+
+      <h2>Čo je zahrnuté v cene a čo nie</h2>
+      <p>
+        Cena zahŕňa: oceľovú konštrukciu, tepelnú izoláciu, trojsklá, vstupné a interiérové dvere,
+        strechu vrátane krytiny, elektroinštaláciu, rozvody vody, sprchový kút, umývadlo a WC.
+      </p>
+      <p>
+        Cena nezahŕňa: základovú dosku, dopravu nad 100 km, pripojenie na inžinierske siete
+        (elektrina, voda, kanalizácia) a terénne úpravy okolo domu.
+      </p>
+    </div>
+
+    <section id="contact" class="scroll-mt-20 not-prose my-12">
+      <h2 class="font-sans font-bold text-2xl sm:text-3xl text-gray-900 mb-6 text-center">
+        Požiadajte o bezplatnú ponuku
+      </h2>
+      <div class="max-w-xl mx-auto">
+        <MultilingualContactForm lang="sk" formName="kontakt-slovensky" />
+      </div>
+    </section>
+
+    <FaqSection faqs={faqs} title="Často kladené otázky" />
+  </div>
+</MultilingualLayout>

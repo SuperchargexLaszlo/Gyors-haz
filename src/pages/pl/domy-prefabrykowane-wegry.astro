@@ -1,0 +1,141 @@
+---
+import MultilingualLayout from '../../layouts/MultilingualLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import MultilingualContactForm from '../../components/MultilingualContactForm.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('konnyuszerkezetes');
+
+const title = 'Domy Prefabrykowane Węgry – Ceny od 16 000 EUR';
+const description =
+  'Domy prefabrykowane z Węgier: 22–126 m², od 16 000 EUR. Szybki montaż 5–8 tygodni. Zapytaj o ofertę!';
+
+const faqs = [
+  {
+    q: 'Ile kosztuje dom prefabrykowany z Węgier?',
+    a: 'Ceny zaczynają się od 16 000 EUR + VAT za model 22 m² i sięgają 43 000 EUR + VAT za największy model — 126 m², 4 pokoje. Ostateczna cena zależy od metrażu i wybranego układu — chętnie przygotujemy indywidualną wycenę.',
+  },
+  {
+    q: 'Ile trwa dostawa i montaż domu?',
+    a: 'Produkcja trwa zwykle 3–5 tygodni, a cały proces montażu na miejscu — od zamówienia do przekazania kluczy — 5–8 tygodni, w zależności od gotowości fundamentu i warunków pogodowych.',
+  },
+  {
+    q: 'Czy w Polsce potrzebne jest pozwolenie na budowę domu sprowadzonego z Węgier?',
+    a: 'Tak, dom prefabrykowany podlega tym samym przepisom budowlanym co budynek wznoszony lokalnie. Zalecamy skonsultowanie wymagań z lokalnym urzędem przed złożeniem zamówienia — udostępniamy dokumentację techniczną potrzebną do zgłoszenia.',
+  },
+  {
+    q: 'Czy możliwy jest zakup na raty lub finansowanie?',
+    a: 'Tak, oferujemy możliwość finansowania. Po wypełnieniu formularza kontaktowego nasz doradca przedstawi dostępne opcje zakupu na raty lub kredytu.',
+  },
+  {
+    q: 'Co jest wliczone w cenę domu?',
+    a: 'Cena obejmuje ocynkowaną konstrukcję stalową, 10 cm izolacji termicznej (hungarocell), okna z potrójną szybą, drzwi wejściowe i wewnętrzne, kompletny dach, instalację elektryczną i wodno-kanalizacyjną, brodzik prysznicowy, umywalkę i WC. Fundament, transport powyżej 100 km oraz przyłącza mediów nie są wliczone.',
+  },
+];
+---
+
+<MultilingualLayout title={title} description={description} lang="pl">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+      Domy prefabrykowane z Węgier – jakość, szybkość i korzystna cena
+    </h1>
+
+    <div class="not-prose max-w-2xl mx-auto mb-10">
+      <ProductGallery
+        images={[
+          '/images/products/ksz-52.webp',
+          '/images/products/ksz-78.webp',
+          '/images/products/ksz-96.webp',
+          '/images/products/ksz-126.webp',
+        ]}
+        productName="Domy Prefabrykowane Węgry"
+      />
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <p>
+        Węgry od lat są jednym z najbardziej opłacalnych źródeł domów prefabrykowanych w Europie
+        Środkowej. Dzięki niższym kosztom produkcji i sprzedaży bezpośrednio od producenta oferujemy
+        polskim klientom domy prefabrykowane na ocynkowanej konstrukcji stalowej, z solidną izolacją
+        termiczną i potrójnymi szybami — w cenach znacznie niższych niż porównywalne domy produkowane
+        lokalnie.
+      </p>
+
+      <h2>Dlaczego warto kupić dom prefabrykowany z Węgier?</h2>
+      <p>
+        Cena za metr kwadratowy jest na Węgrzech zwykle o 20–35% niższa niż w Polsce, przy
+        porównywalnej jakości. Wynika to z niższych kosztów produkcji i robocizny, a nie z niższej
+        jakości — nasze domy posiadają ocynkowaną konstrukcję stalową, są ocieplone 10-centymetrową
+        warstwą hungarocellu i wyposażone w okna z potrójną szybą, co odpowiada standardowi
+        środkowoeuropejskiemu dla całorocznego zamieszkania. Dostawa realizowana jest w całej Europie
+        Środkowej, w tym do Polski.
+      </p>
+
+      <h2>Nasze modele i ceny</h2>
+      <p>Pełny przegląd wszystkich modeli domów prefabrykowanych z aktualnymi cenami:</p>
+
+      <div class="not-prose overflow-x-auto my-8">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b-2 border-gray-200 text-left">
+              <th class="py-3 pr-4 font-semibold text-gray-900">Model</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">m²</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">Cena</th>
+              <th class="py-3 font-semibold text-gray-900">EUR/m²</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-medium text-gray-900">{p.nev}</td>
+                <td class="py-3 pr-4 text-gray-600">{p.meret_m2} m²</td>
+                <td class="py-3 pr-4 text-primary font-semibold">{p.ar_eur.toLocaleString('pl-PL')} EUR + VAT</td>
+                <td class="py-3 text-gray-500">{Math.round(p.ar_eur / p.meret_m2).toLocaleString('pl-PL')} EUR/m²</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Jakość i konstrukcja</h2>
+      <p>
+        Każdy dom powstaje na ocynkowanej konstrukcji stalowej odpornej na korozję, z 10-centymetrową
+        izolacją termiczną w ścianach, podłodze i dachu. Okna i drzwi wyposażone są w potrójne szyby,
+        co zapewnia niskie straty ciepła nawet w chłodniejszych miesiącach. Ściany wewnętrzne
+        wykończone są płytami gipsowo-kartonowymi, gotowymi do malowania. Dach ma konstrukcję
+        dwuspadową o kącie 35°, z pokryciem blachodachówką i kompletnym systemem rynnowym.
+      </p>
+
+      <h2>Dostawa i montaż</h2>
+      <p>
+        Po podpisaniu umowy produkcja domu trwa 3–5 tygodni w zakładzie na Węgrzech. Transport do
+        Polski przebiega bez problemów, a montaż na przygotowanym wcześniej fundamencie trwa zazwyczaj
+        5–8 tygodni od zamówienia do przekazania kluczy, w zależności od wielkości domu i warunków
+        pogodowych.
+      </p>
+
+      <h2>Co jest wliczone w cenę, a co nie</h2>
+      <p>
+        Cena obejmuje: konstrukcję stalową, izolację termiczną, potrójne szyby, drzwi wejściowe i
+        wewnętrzne, kompletny dach z pokryciem, instalację elektryczną, instalację wodno-kanalizacyjną,
+        brodzik prysznicowy, umywalkę i WC.
+      </p>
+      <p>
+        Cena nie obejmuje: fundamentu, transportu powyżej 100 km, przyłączy mediów (prąd, woda,
+        kanalizacja) oraz zagospodarowania terenu wokół domu.
+      </p>
+    </div>
+
+    <section id="contact" class="scroll-mt-20 not-prose my-12">
+      <h2 class="font-sans font-bold text-2xl sm:text-3xl text-gray-900 mb-6 text-center">
+        Zapytaj o bezpłatną ofertę
+      </h2>
+      <div class="max-w-xl mx-auto">
+        <MultilingualContactForm lang="pl" formName="kontakt-polski" />
+      </div>
+    </section>
+
+    <FaqSection faqs={faqs} title="Najczęściej zadawane pytania" />
+  </div>
+</MultilingualLayout>

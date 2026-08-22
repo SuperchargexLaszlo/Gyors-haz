@@ -6,6 +6,7 @@ updatedDate: 2026-03-01
 category: konnyuszerkezetes
 tags: ["4 évszakos", "mobilház", "téliesített", "szigetelés"]
 author: "Gyors Ház csapata"
+showPlannerCta: true
 ---
 
 > **Röviden:** A 4 évszakos mobilház valódi, egész évben lakható otthont jelent, nem szezonális nyaralót. A megfelelő szigetelés, fűtési rendszer és nyílászárók biztosítják, hogy télen is kényelmes legyen – és az ára 16.000 EUR-tól indul, ami töredéke egy hagyományos téglaháznál.

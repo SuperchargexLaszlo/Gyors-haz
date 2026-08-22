@@ -1,0 +1,154 @@
+---
+import MultilingualLayout from '../../layouts/MultilingualLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import MultilingualContactForm from '../../components/MultilingualContactForm.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('konnyuszerkezetes');
+
+const title = 'Prefab House Hungary – Sandwich Panel Homes from 16,000 EUR';
+const description =
+  'Prefabricated houses in Hungary: 22–126 m², from 16,000 EUR+VAT. ISO steel frame, triple glazing, fast delivery 5–8 weeks. Free quote!';
+
+const faqs = [
+  {
+    q: 'How much does a prefab house in Hungary cost?',
+    a: 'Our prefabricated houses range from 16,000 EUR + VAT for a compact 22 m² model up to 43,000 EUR + VAT for the largest 126 m² family home. The final price depends on size, room layout, and any custom options you add. All prices include the galvanized steel frame structure, insulation, windows, and a full electrical and plumbing kit.',
+  },
+  {
+    q: 'How fast can my house be delivered?',
+    a: 'Production takes 3–5 weeks once your order and deposit are confirmed. On-site assembly is fast — typically 1–2 weeks, depending on how prepared the foundation and utility connections are. In total, most buyers move from signed contract to a livable home within 5–8 weeks.',
+  },
+  {
+    q: 'Do I need a foundation and building permit?',
+    a: 'Yes, a local foundation is required and is not included in the house price — this is arranged separately with a local contractor, since ground conditions vary by site. Building permit requirements depend on the size and intended use of the house and the local municipality; we can point you toward the right process once we know your location.',
+  },
+  {
+    q: 'Is financing available?',
+    a: 'Yes. We work with independent financial advisors who can help explore personal loan and mortgage options for both Hungarian and foreign buyers. Reach out through the contact form below and we will walk you through what is currently available.',
+  },
+  {
+    q: 'What warranty do you offer?',
+    a: 'All our prefab houses come with a 10-year structural warranty on the steel frame. Windows, doors, and mechanical/electrical components carry a 2–5 year warranty depending on the manufacturer.',
+  },
+];
+---
+
+<MultilingualLayout title={title} description={description} lang="en">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+      Prefab Houses in Hungary – Factory Quality, European Prices
+    </h1>
+
+    <div class="not-prose max-w-2xl mx-auto mb-10">
+      <ProductGallery
+        images={[
+          '/images/products/ksz-52.webp',
+          '/images/products/ksz-78.webp',
+          '/images/products/ksz-96.webp',
+          '/images/products/ksz-126.webp',
+        ]}
+        productName="Prefab House Hungary"
+      />
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <p>
+        Hungary has become one of the most cost-effective places in Europe to buy a factory-built prefab
+        house. Our sandwich-panel homes are manufactured under controlled factory conditions, delivered
+        across the country — and beyond — and assembled on site in a matter of weeks, not months.
+      </p>
+
+      <h2>Why buy a prefab house in Hungary?</h2>
+      <ul>
+        <li><strong>30–50% cheaper</strong> than comparable prefab or modular homes in Germany, Austria, Switzerland, or the Nordics, for the same build quality.</li>
+        <li><strong>ISO-standard galvanized steel frame</strong> construction, engineered for durability and structural consistency.</li>
+        <li><strong>PIR and hungarocell insulation</strong> plus <strong>triple-glazed windows</strong> throughout, for genuine year-round energy efficiency.</li>
+        <li>Hungary is an <strong>EU member state</strong>, which means legal certainty, standard consumer protections, and free movement of goods for cross-border delivery.</li>
+        <li><strong>Pan-European delivery</strong> — we regularly ship completed units and kits to buyers well outside Hungary's borders.</li>
+      </ul>
+
+      <h2>Our house models and prices</h2>
+      <p>
+        Every model below is available with a galvanized steel frame, factory insulation, and triple
+        glazing as standard. Prices are shown per unit, excluding VAT.
+      </p>
+
+      <div class="not-prose overflow-x-auto my-8">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b-2 border-gray-200 text-left">
+              <th class="py-3 pr-4 font-semibold text-gray-900">Model</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">m²</th>
+              <th class="py-3 pr-4 font-semibold text-gray-900">Price</th>
+              <th class="py-3 font-semibold text-gray-900">EUR/m²</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-medium text-gray-900">{p.nev}</td>
+                <td class="py-3 pr-4 text-gray-600">{p.meret_m2} m²</td>
+                <td class="py-3 pr-4 text-primary font-semibold">{p.ar_eur.toLocaleString('en-US')} EUR + VAT</td>
+                <td class="py-3 text-gray-500">{Math.round(p.ar_eur / p.meret_m2).toLocaleString('en-US')} EUR/m²</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>What's included in the price?</h2>
+      <p>Every prefab house we build includes, as standard:</p>
+      <ul>
+        <li>Galvanized steel frame structure, engineered for the full lifespan of the building</li>
+        <li>10 cm hungarocell insulation in walls, floor, and roof, plus PIR panels where specified</li>
+        <li>Triple-glazed windows and insulated entry and interior doors</li>
+        <li>Interior drywall finish, ready for painting</li>
+        <li>Complete electrical kit — sockets, switches, breakers, lighting points</li>
+        <li>Complete plumbing kit, shower tray, sink, and toilet</li>
+        <li>Delivery within 100 km of our production facility</li>
+      </ul>
+
+      <h2>The buying process</h2>
+      <ol>
+        <li><strong>Inquiry</strong> — tell us about your project through the form below.</li>
+        <li><strong>Consultation & Quote</strong> — we discuss size, layout, and any custom requirements, and send you a written quote.</li>
+        <li><strong>Contract & Deposit</strong> — once you're ready, we sign a contract and schedule production.</li>
+        <li><strong>Production (3–5 weeks)</strong> — your house is built in our factory under controlled conditions.</li>
+        <li><strong>Delivery & Assembly (1–2 weeks)</strong> — the unit is transported and assembled on your prepared foundation.</li>
+        <li><strong>Handover</strong> — final walkthrough and keys in hand.</li>
+      </ol>
+
+      <h2>Can foreigners buy a prefab house in Hungary?</h2>
+      <p>
+        Yes. EU citizens can purchase real estate and prefabricated houses in Hungary under the same
+        conditions as Hungarian citizens. Non-EU citizens can also buy, though it typically requires a
+        permit from the local government office (járási hivatal) — a routine, well-established process
+        for foreign buyers that we can help you navigate. In either case, we recommend starting the permit
+        process early if you're planning to place a house on land you own or intend to purchase.
+      </p>
+
+      <h2>Showroom in Budapest (Csepel)</h2>
+      <p>
+        Prefer to see the build quality in person before committing? Our showroom is located in the
+        Csepel district of <a href="/helyszin/budapest">Budapest</a>, where you can walk through a real
+        finished unit, see the insulation and frame up close, and ask questions directly to our team.
+        Use the contact form below to schedule a visit.
+      </p>
+
+      <h2>FAQ</h2>
+    </div>
+
+    <div class="not-prose max-w-3xl mx-auto">
+      <FaqSection faqs={faqs} title="Frequently Asked Questions" />
+    </div>
+
+    <section id="contact" class="scroll-mt-20 not-prose my-12">
+      <h2 class="font-sans font-bold text-2xl sm:text-3xl text-gray-900 mb-6 text-center">Get a Free Quote</h2>
+      <div class="max-w-xl mx-auto">
+        <MultilingualContactForm lang="en" formName="contact-english" />
+      </div>
+    </section>
+  </div>
+</MultilingualLayout>

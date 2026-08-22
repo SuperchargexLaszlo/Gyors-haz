@@ -13,6 +13,7 @@ const blog = defineCollection({
     featuredImage: z.string().optional(),
     tags: z.array(z.string()).optional(),
     author: z.string().default('Gyors Ház csapata'),
+    showPlannerCta: z.boolean().optional(),
   }),
 });
 

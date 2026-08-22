@@ -13,6 +13,7 @@ export interface Product {
   terasz_m2: number;
   kep: string;
   kepGaleria?: string[];
+  kepek?: string[];
   leiras: string;
   tartalmaz: string;
   nem_tartalmaz: string;
@@ -48,6 +49,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 6,
     kep: '/images/products/ksz-22.webp',
+    kepek: ['/images/products/ksz-22.webp'],
     leiras: 'Kompakt, energiahatékony könnyűszerkezetes ház 22 m² alapterülettel.',
     tartalmaz: TARTALMAZ,
     nem_tartalmaz: NEM_TARTALMAZ,
@@ -66,6 +68,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 6,
     kep: '/images/products/ksz-32.webp',
+    kepek: ['/images/products/ksz-32.webp'],
     leiras: 'Könnyűszerkezetes ház 32 m² alapterülettel, fedett terasszal.',
     tartalmaz: TARTALMAZ,
     nem_tartalmaz: NEM_TARTALMAZ,
@@ -84,6 +87,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 8,
     kep: '/images/products/ksz-35.webp',
+    kepek: ['/images/products/ksz-35.webp'],
     leiras: 'Energiahatékony könnyűszerkezetes ház 35 m² alapterülettel.',
     tartalmaz: TARTALMAZ,
     nem_tartalmaz: NEM_TARTALMAZ,
@@ -102,6 +106,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 10,
     kep: '/images/products/ksz-52.webp',
+    kepek: ['/images/products/ksz-52.webp'],
     leiras: 'Kétszobás könnyűszerkezetes ház konyhával és terasszal, 52 m² alapterülettel.',
     tartalmaz: TARTALMAZ,
     nem_tartalmaz: NEM_TARTALMAZ,
@@ -120,6 +125,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 12,
     kep: '/images/products/ksz-62.webp',
+    kepek: ['/images/products/ksz-62.webp'],
     leiras: 'Tágas kétszobás könnyűszerkezetes ház 62 m² alapterülettel.',
     tartalmaz: TARTALMAZ,
     nem_tartalmaz: NEM_TARTALMAZ,
@@ -138,6 +144,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 14,
     kep: '/images/products/ksz-78.webp',
+    kepek: ['/images/products/ksz-78.webp'],
     leiras: 'Háromszobás könnyűszerkezetes ház 78 m² alapterülettel.',
     tartalmaz: TARTALMAZ,
     nem_tartalmaz: NEM_TARTALMAZ,
@@ -156,6 +163,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 16,
     kep: '/images/products/ksz-86.webp',
+    kepek: ['/images/products/ksz-86.webp'],
     leiras: 'Prémium háromszobás könnyűszerkezetes ház 86 m² alapterülettel.',
     tartalmaz: TARTALMAZ,
     nem_tartalmaz: NEM_TARTALMAZ,
@@ -174,6 +182,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 16,
     kep: '/images/products/ksz-87.webp',
+    kepek: ['/images/products/ksz-87.webp'],
     leiras: 'Háromszobás könnyűszerkezetes ház 87 m² alapterülettel, terasszal.',
     tartalmaz: TARTALMAZ,
     nem_tartalmaz: NEM_TARTALMAZ,
@@ -192,6 +201,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 2,
     terasz_m2: 18,
     kep: '/images/products/ksz-96.webp',
+    kepek: ['/images/products/ksz-96.webp'],
     leiras: 'Háromszobás, két fürdőszobás könnyűszerkezetes ház 96 m² alapterülettel.',
     tartalmaz: TARTALMAZ,
     nem_tartalmaz: NEM_TARTALMAZ,
@@ -210,6 +220,7 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 2,
     terasz_m2: 21,
     kep: '/images/products/ksz-126.webp',
+    kepek: ['/images/products/ksz-126.webp'],
     leiras: 'Nagy családi könnyűszerkezetes ház 126 m² alapterülettel, két fürdőszobával.',
     tartalmaz: TARTALMAZ,
     nem_tartalmaz: NEM_TARTALMAZ,
@@ -232,6 +243,11 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 4,
     kep: '/images/products/mod-tinyhouse.webp',
+    kepek: [
+      '/images/products/mod-tinyhouse.webp',
+      '/images/products/mod-tinyhouse-2.webp',
+      '/images/products/mod-tinyhouse-3.webp',
+    ],
     kepGaleria: [
       '/images/products/mod-tinyhouse-2.webp',
       '/images/products/mod-tinyhouse-3.webp',
@@ -254,6 +270,11 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 8,
     kep: '/images/products/mod-amsterdam.webp',
+    kepek: [
+      '/images/products/mod-amsterdam.webp',
+      '/images/products/mod-amsterdam-2.webp',
+      '/images/products/mod-amsterdam-3.webp',
+    ],
     kepGaleria: [
       '/images/products/mod-amsterdam-2.webp',
       '/images/products/mod-amsterdam-3.webp',
@@ -276,6 +297,11 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 8,
     kep: '/images/products/mod-paris.webp',
+    kepek: [
+      '/images/products/mod-paris.webp',
+      '/images/products/mod-paris-2.webp',
+      '/images/products/mod-paris-3.webp',
+    ],
     kepGaleria: [
       '/images/products/mod-paris-2.webp',
       '/images/products/mod-paris-3.webp',
@@ -298,6 +324,10 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 10,
     kep: '/images/products/mod-monaco.webp',
+    kepek: [
+      '/images/products/mod-monaco.webp',
+      '/images/products/mod-monaco-2.webp',
+    ],
     kepGaleria: [
       '/images/products/mod-monaco-2.webp',
     ],
@@ -319,6 +349,10 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 10,
     kep: '/images/products/mod-sydney.webp',
+    kepek: [
+      '/images/products/mod-sydney.webp',
+      '/images/products/mod-sydney-2.webp',
+    ],
     kepGaleria: [
       '/images/products/mod-sydney-2.webp',
     ],
@@ -340,6 +374,10 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 10,
     kep: '/images/products/mod-bremen.webp',
+    kepek: [
+      '/images/products/mod-bremen.webp',
+      '/images/products/mod-bremen-2.webp',
+    ],
     kepGaleria: [
       '/images/products/mod-bremen-2.webp',
     ],
@@ -361,6 +399,11 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 14,
     kep: '/images/products/mod-lyon.webp',
+    kepek: [
+      '/images/products/mod-lyon.webp',
+      '/images/products/mod-lyon-2.webp',
+      '/images/products/mod-lyon-alaprajz.webp',
+    ],
     kepGaleria: [
       '/images/products/mod-lyon-2.webp',
       '/images/products/mod-lyon-alaprajz.webp',
@@ -383,6 +426,11 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 2,
     terasz_m2: 16,
     kep: '/images/products/mod-london.webp',
+    kepek: [
+      '/images/products/mod-london.webp',
+      '/images/products/mod-london-2.webp',
+      '/images/products/mod-london-3.webp',
+    ],
     kepGaleria: [
       '/images/products/mod-london-2.webp',
       '/images/products/mod-london-3.webp',
@@ -405,6 +453,11 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 2,
     terasz_m2: 18,
     kep: '/images/products/mod-barcelona.webp',
+    kepek: [
+      '/images/products/mod-barcelona.webp',
+      '/images/products/mod-barcelona-2.webp',
+      '/images/products/mod-barcelona-alaprajz.webp',
+    ],
     kepGaleria: [
       '/images/products/mod-barcelona-2.webp',
       '/images/products/mod-barcelona-alaprajz.webp',
@@ -427,6 +480,11 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 2,
     terasz_m2: 20,
     kep: '/images/products/mod-marseille.webp',
+    kepek: [
+      '/images/products/mod-marseille.webp',
+      '/images/products/mod-marseille-2.webp',
+      '/images/products/mod-marseille-alaprajz.webp',
+    ],
     kepGaleria: [
       '/images/products/mod-marseille-2.webp',
       '/images/products/mod-marseille-alaprajz.webp',
@@ -449,6 +507,11 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 2,
     terasz_m2: 22,
     kep: '/images/products/mod-alessandria.webp',
+    kepek: [
+      '/images/products/mod-alessandria.webp',
+      '/images/products/mod-alessandria-2.webp',
+      '/images/products/mod-alessandria-3.webp',
+    ],
     kepGaleria: [
       '/images/products/mod-alessandria-2.webp',
       '/images/products/mod-alessandria-3.webp',
@@ -1042,6 +1105,12 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 0,
     kep: '/images/products/kont-manhattan.webp',
+    kepek: [
+      '/images/products/kont-manhattan.webp',
+      '/images/products/kont-manhattan-alap.webp',
+      '/images/products/kont-instant-1.webp',
+      '/images/products/kont-instant-2.webp',
+    ],
     leiras: 'Kompakt, 2 hálószobás konténerház. Bruttó 54,6 m², nettó 37,6 m². Acél ST37 vázszerkezet, 50 mm polisztirol szigetelés, PVC padlóburkolat.',
     tartalmaz: 'Házszerkezet (255 cm belmagasság, 35°-os tető), szállítás 100 km-en belül, összeszerlés, padlószigetelés, 2 m-es terasz, villanyszerelés (biztosítékok, dugaljak, kapcsolók), közmű kiállások, komplett fürdőszoba',
     nem_tartalmaz: 'Alapozási munkadíj (1.400.000 Ft + ÁFA), 100 km felüli szállítás, belső gipszkartonozás és dryvit (10.000 Ft/nm + anyag)',
@@ -1062,6 +1131,11 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 0,
     kep: '/images/products/kont-manhattan-l.webp',
+    kepek: [
+      '/images/products/kont-manhattan-l.webp',
+      '/images/products/kont-instant-3.webp',
+      '/images/products/kont-instant-4.webp',
+    ],
     leiras: 'L alakú, tágas konténerház. Bruttó 69,3 m², nettó 37,6 m². Két különálló szárny, rugalmas alaprajz, ideális nagyobb telekre.',
     tartalmaz: 'Házszerkezet (255 cm belmagasság, 35°-os tető), szállítás 100 km-en belül, összeszerlés, padlószigetelés, 2 m-es terasz, villanyszerelés, közmű kiállások, komplett fürdőszoba',
     nem_tartalmaz: 'Alapozási munkadíj (1.400.000 Ft + ÁFA), 100 km felüli szállítás, belső gipszkartonozás és dryvit (10.000 Ft/nm + anyag)',
@@ -1082,6 +1156,11 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 0,
     kep: '/images/products/kont-beverly.webp',
+    kepek: [
+      '/images/products/kont-beverly.webp',
+      '/images/products/kont-instant-5.webp',
+      '/images/products/kont-instant-6.webp',
+    ],
     leiras: 'Prémium, 3 hálószobás konténerház. Bruttó 54,6 m², nettó 37,6 m². Modern homlokzat, tágas belső terek, nagycsaládosoknak ideális.',
     tartalmaz: 'Házszerkezet (255 cm belmagasság, 35°-os tető), szállítás 100 km-en belül, összeszerlés, padlószigetelés, 2 m-es terasz, villanyszerelés, közmű kiállások, komplett fürdőszoba',
     nem_tartalmaz: 'Alapozási munkadíj (1.400.000 Ft + ÁFA), 100 km felüli szállítás, belső gipszkartonozás és dryvit (10.000 Ft/nm + anyag)',
@@ -1102,6 +1181,11 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 0,
     kep: '/images/products/kont-beverly-l.webp',
+    kepek: [
+      '/images/products/kont-beverly-l.webp',
+      '/images/products/kont-instant-7.webp',
+      '/images/products/kont-instant-8.webp',
+    ],
     leiras: 'Nagy, L alakú prémium konténerház. Bruttó 89,6 m², nettó 56,4 m². Három hálószoba, tágas nappali, rugalmasan variálható belső falak.',
     tartalmaz: 'Házszerkezet (255 cm belmagasság, 35°-os tető), szállítás 100 km-en belül, összeszerlés, padlószigetelés, 2 m-es terasz, villanyszerelés, közmű kiállások, komplett fürdőszoba',
     nem_tartalmaz: 'Alapozási munkadíj (1.400.000 Ft + ÁFA), 100 km felüli szállítás, belső gipszkartonozás és dryvit (10.000 Ft/nm + anyag)',
@@ -1122,6 +1206,13 @@ const FALLBACK_PRODUCTS: Product[] = [
     furdo: 1,
     terasz_m2: 9,
     kep: '/images/products/kont-nordic-1.webp',
+    kepek: [
+      '/images/products/kont-nordic-1.webp',
+      '/images/products/kont-nordic-2.webp',
+      '/images/products/kont-nordic-3.webp',
+      '/images/products/kont-nordic-4.webp',
+      '/images/products/kont-nordic-5.webp',
+    ],
     leiras: 'Prémium fa burkolatú konténerház, 68 m² lakótér + 9 m² terasz. 280 cm belmagasság, 3 rétegű ablakok, belső gipszkarton, skandináv dizájn.',
     tartalmaz: 'Házszerkezet (280 cm belmagasság, 37°-os cserepeslemez tető), szállítás 100 km-en belül, összeszerlés, bejárati és beltéri ajtók, 3 rétegű ablakok, belső gipszkartonozás (festésre előkészítve), padlószigetelés, villanyszerelés, közmű kiállások (sarok szelepig)',
     nem_tartalmaz: 'Alapozási munkadíj (1.400.000 Ft + ÁFA), 100 km felüli szállítás',

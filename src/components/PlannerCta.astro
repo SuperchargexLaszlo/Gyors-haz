@@ -1,0 +1,71 @@
+---
+/**
+ * Bekezdés a termékek alatt, ami átvisz az alaprajz tervezőre.
+ *
+ * Szándékosan visszafogott: nem egy nagy banner, hanem egy bekezdés a
+ * termékleírás végén. Az oldal házakat árul, a tervező ehhez egy eszköz —
+ * nem az oldal fő üzenete.
+ */
+interface Props {
+  /** Melyik termékcsalád alatt jelenik meg. */
+  type?: "kontenerhaz" | "modulhaz" | "konnyuszerkezetes" | "altalanos";
+  /** Konkrét termék neve, ha egy adott ház oldalán vagyunk. */
+  product?: string;
+  /** Szűkebb változat: kisebb margó, halványabb keret. */
+  compact?: boolean;
+}
+const { type = "altalanos", product, compact = false } = Astro.props;
+
+const COPY = {
+  kontenerhaz: {
+    fej: "Tervezd meg a saját konténerházad alaprajzát",
+    szoveg:
+      "A modulok mérete adott, a belső elrendezés viszont nem: hogy hova kerül a fürdő, " +
+      "elfér-e még egy háló, mekkora legyen a terasz. Rajzold meg úgy, ahogy neked jó — " +
+      "helyiség, ajtó, ablak, bútor, méterre pontosan.",
+  },
+  modulhaz: {
+    fej: "Tervezd meg a saját modulházad alaprajzát",
+    szoveg:
+      "A modulház előnye, hogy a beosztás nincs kőbe vésve. Rakd össze a saját " +
+      "elrendezésed: hány szoba, hol a konyha, mekkora terasz tartozzon hozzá. " +
+      "Az elemek maguktól a helyükre ugranak, nem kell tervezőprogramot tanulni.",
+  },
+  konnyuszerkezetes: {
+    fej: "Tervezd meg a saját könnyűszerkezetes házad alaprajzát",
+    szoveg:
+      "Könnyűszerkezetes háznál a válaszfalak szinte bárhova kerülhetnek — pont ezért " +
+      "érdemes végiggondolni, mit hova szeretnél. Rajzold meg a beosztást méterre " +
+      "pontosan, teraszostul, mielőtt megkérdezed, mennyibe kerül.",
+  },
+  altalanos: {
+    fej: "Tervezd meg a saját házad alaprajzát",
+    szoveg:
+      "Rajzold meg, hogyan képzeled a beosztást: helyiségek, ajtók, ablakok, bútorok és " +
+      "terasz, méterre pontosan. Nem kell hozzá se letöltés, se regisztráció.",
+  },
+};
+
+const c = COPY[type] ?? COPY.altalanos;
+const fej = product ? `Másképp képzeled el, mint a ${product}?` : c.fej;
+---
+
+<section
+  class={`rounded-2xl border border-neutral-200 bg-neutral-50 p-6 ${compact ? "my-6" : "my-10"}`}
+>
+  <h2 class="font-sans font-bold text-lg text-primary">{fej}</h2>
+  <p class="mt-2 text-sm leading-relaxed text-neutral-600">
+    {c.szoveg} A kész alaprajzot e-mailben elküldjük neked, és ha kéred, kollégánk
+    árajánlatot ad rá — pontosan arra, amit megrajzoltál.
+  </p>
+  <p class="mt-4">
+    <a
+      href="/alaprajz-rajzolo"
+      class="inline-flex items-center gap-1.5 font-sans font-semibold text-sm text-accent-dark underline underline-offset-4 hover:text-accent"
+    >
+      Alaprajz tervezése
+      <span aria-hidden="true">→</span>
+    </a>
+    <span class="ml-3 text-xs text-neutral-400">Ingyenes · regisztráció nélkül · mobilon is</span>
+  </p>
+</section>

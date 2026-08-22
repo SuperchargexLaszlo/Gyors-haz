@@ -1,0 +1,125 @@
+---
+import MultilingualLayout from '../../layouts/MultilingualLayout.astro';
+import ProductGallery from '../../components/ProductGallery.astro';
+import MultilingualContactForm from '../../components/MultilingualContactForm.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { getProductsByKategoria } from '../../lib/products';
+
+const products = await getProductsByKategoria('kontenerhoz');
+
+const title = 'Container House Hungary – Prices from 12,790,000 HUF';
+const description =
+  'Container homes in Hungary: Manhattan, Beverly, Nordic Premium. Factory-built, ISO standard steel frame. Request a quote for current prices.';
+
+const faqs = [
+  {
+    q: 'How long does delivery and installation take?',
+    a: 'Container houses are factory-built and typically ready for delivery within a few weeks of order confirmation. On-site assembly is fast — usually just a few days once the foundation and utility connections are prepared.',
+  },
+  {
+    q: 'Do container houses need a foundation?',
+    a: 'Yes, a proper foundation is required, same as with any permanent structure — this is arranged separately with a local contractor. Foundation work is not included in the container house price.',
+  },
+  {
+    q: 'Are they insulated well enough for year-round living?',
+    a: 'Yes. Our container homes use proper wall, floor, and roof insulation designed for four-season living, not just as temporary or seasonal units. Models like the Nordic Premium go further with a 280 cm ceiling height and triple-glazed windows.',
+  },
+  {
+    q: 'Can I customize the layout?',
+    a: 'Within each model range there is flexibility on interior wall placement and finishes. For larger custom or multi-unit projects, including commercial use, contact us directly to discuss what is possible.',
+  },
+];
+---
+
+<MultilingualLayout title={title} description={description} lang="en">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <h1 class="font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
+      Container Houses in Hungary – Factory-Built, ISO Standard Quality
+    </h1>
+
+    <div class="not-prose max-w-2xl mx-auto mb-10">
+      <ProductGallery
+        images={[
+          '/images/products/kont-nordic-1.webp',
+          '/images/products/kont-manhattan.webp',
+          '/images/products/kont-beverly.webp',
+          '/images/products/kont-beverly-l.webp',
+          '/images/products/kont-manhattan-l.webp',
+          '/images/products/kont-nordic-2.webp',
+        ]}
+        productName="Container House Hungary"
+      />
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <p>
+        Our container houses are built from ISO-standard steel frames in a factory environment, then
+        delivered ready — or nearly ready — to live in. They offer a faster, more predictable alternative
+        to traditional construction, with the same durability you'd expect from a shipping-container-based
+        structure engineered specifically for residential use.
+      </p>
+      <p>
+        The range spans compact two-bedroom units up to larger L-shaped layouts and the premium,
+        timber-clad Nordic Premium model, which adds a covered terrace and a more refined interior finish.
+      </p>
+
+      <h2>Our container house models and prices</h2>
+      <p>Prices below are shown per unit, excluding VAT.</p>
+    </div>
+
+    <div class="not-prose max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2 my-8">
+      {products.map((p) => (
+        <div class="rounded-xl overflow-hidden bg-white shadow-sm border border-gray-100">
+          <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+            <img
+              src={p.kep}
+              alt={p.nev}
+              loading="lazy"
+              decoding="async"
+              width="600"
+              height="450"
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div class="p-5">
+            <h3 class="font-sans font-bold text-lg text-gray-900 mb-1">{p.nev}</h3>
+            <p class="text-sm text-gray-500 mb-2">{p.meret_m2} m² · {p.szobak} rooms</p>
+            <p class="font-sans font-bold text-primary text-lg">
+              {p.ar_ft ? `${p.ar_ft.toLocaleString('en-US')} HUF + VAT` : 'Price on request'}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-3xl mx-auto text-gray-600">
+      <div class="not-prose rounded-2xl bg-primary/5 border border-primary/10 p-6 sm:p-8 my-10">
+        <h2 class="font-sans font-bold text-xl sm:text-2xl text-gray-900 mb-3">
+          Looking for container offices or worker accommodation for your company in Hungary?
+        </h2>
+        <p class="text-gray-600 mb-4">
+          Beyond residential container homes, we also work with businesses that need fast, factory-built
+          solutions — site offices, worker accommodation, temporary business premises, or additional space
+          for a growing team. The same steel-frame construction and delivery speed apply to commercial
+          orders, with layouts adapted to your operational needs.
+        </p>
+        <a href="/kontenerhaz" class="inline-block font-semibold text-primary hover:text-primary-dark underline underline-offset-2">
+          → View all container house options
+        </a>
+      </div>
+
+      <h2>FAQ</h2>
+    </div>
+
+    <div class="not-prose max-w-3xl mx-auto">
+      <FaqSection faqs={faqs} title="Frequently Asked Questions" />
+    </div>
+
+    <section id="contact" class="scroll-mt-20 not-prose my-12">
+      <h2 class="font-sans font-bold text-2xl sm:text-3xl text-gray-900 mb-6 text-center">Get a Free Quote</h2>
+      <div class="max-w-xl mx-auto">
+        <MultilingualContactForm lang="en" formName="contact-container-english" />
+      </div>
+    </section>
+  </div>
+</MultilingualLayout>

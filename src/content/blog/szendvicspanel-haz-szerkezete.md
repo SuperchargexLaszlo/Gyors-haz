@@ -6,6 +6,7 @@ updatedDate: 2026-03-01
 category: konnyuszerkezetes
 tags: ["szerkezet", "szigetelés", "PIR", "műszaki", "U-érték"]
 author: "Gyors Ház csapata"
+showPlannerCta: true
 ---
 
 A **szendvicspanel ház szerkezete** első ránézésre egyszerűnek tűnhet — két fémlemez közé préselt szigetelőanyag. A valóság azonban ennél jóval összetettebb: a helyes rétegrend, a csatlakozási részletek és a hőhidak kezelése határozza meg, hogy a ház valóban energiahatékony-e, és mennyi ideig tart majd.

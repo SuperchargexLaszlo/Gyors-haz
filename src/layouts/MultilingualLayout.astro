@@ -1,0 +1,177 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: string;
+  ogImage?: string;
+  schema?: object;
+}
+
+const {
+  title,
+  description,
+  lang,
+  ogImage = 'https://gyors-haz.hu/images/og-default.webp',
+  schema,
+} = Astro.props;
+
+const siteUrl = 'https://gyors-haz.hu';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const titleTrunc = title.length > 60 ? title.slice(0, 57) + '...' : title;
+const descTrunc = description.length > 160 ? description.slice(0, 157) + '...' : description;
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Gyors Ház',
+  url: siteUrl,
+  telephone: '+36 70 777 8372',
+  email: 'info@instantotthonok.com',
+};
+
+// ── Hreflang cluster: a nemzetközi landing oldalak nyelvi klasztere ──
+const hreflangs = [
+  { hreflang: 'de', href: `${siteUrl}/de/fertighaus-ungarn` },
+  { hreflang: 'en', href: `${siteUrl}/en/prefab-house-hungary` },
+  { hreflang: 'sk', href: `${siteUrl}/sk/montovane-domy-madarsko` },
+  { hreflang: 'ro', href: `${siteUrl}/ro/case-prefabricate-ungaria` },
+  { hreflang: 'pl', href: `${siteUrl}/pl/domy-prefabrykowane-wegry` },
+  { hreflang: 'hr', href: `${siteUrl}/hr/montazne-kuce-madjarska` },
+];
+
+const ogLocales: Record<string, string> = {
+  de: 'de_DE',
+  en: 'en_US',
+  sk: 'sk_SK',
+  ro: 'ro_RO',
+  pl: 'pl_PL',
+  hr: 'hr_HR',
+};
+const ogLocale = ogLocales[lang] ?? 'en_US';
+
+interface NavCopy {
+  home: string;
+  cta: string;
+  back: string;
+}
+
+const NAV: Record<string, NavCopy> = {
+  de: { home: 'Startseite', cta: 'Angebot anfordern', back: '← Zur ungarischen Hauptseite' },
+  en: { home: 'Home', cta: 'Request a Quote', back: '← Back to main site (Hungarian)' },
+  sk: { home: 'Domov', cta: 'Požiadať o ponuku', back: '← Späť na hlavnú stránku (maďarsky)' },
+  ro: { home: 'Acasă', cta: 'Solicitați ofertă', back: '← Înapoi la site-ul principal (maghiară)' },
+  pl: { home: 'Strona główna', cta: 'Zapytaj o ofertę', back: '← Powrót do strony głównej (węgierski)' },
+  hr: { home: 'Početna', cta: 'Zatražite ponudu', back: '← Natrag na glavnu stranicu (mađarski)' },
+};
+
+const nav = NAV[lang] ?? NAV.en!;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1A3C5E" />
+
+    <!-- Favicon / ikonok -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <title>{titleTrunc}</title>
+    <meta name="description" content={descTrunc} />
+    <meta name="robots" content="index,follow" />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- hreflang alternates -->
+    {hreflangs.map((h) => (
+      <link rel="alternate" hreflang={h.hreflang} href={h.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/`} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={titleTrunc} />
+    <meta property="og:description" content={descTrunc} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:site_name" content="Gyors Ház" />
+    <meta property="og:url" content={canonicalUrl} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={titleTrunc} />
+    <meta name="twitter:description" content={descTrunc} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD: Organization -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+
+    <!-- JSON-LD: Extra schema -->
+    {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />}
+  </head>
+
+  <body class="font-body bg-white text-gray-800 antialiased">
+    <!-- ── Minimál fejléc ── -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <a href="/" class="flex items-center gap-2 shrink-0" aria-label="Gyors Ház">
+            <img
+              src="/logo.webp"
+              alt="Gyors Ház logó"
+              width="36"
+              height="36"
+              class="h-9 w-9 rounded-full"
+            />
+            <span class="font-sans font-bold text-lg text-primary leading-none">Gyors Ház</span>
+          </a>
+
+          <nav class="flex items-center gap-4 sm:gap-6" aria-label="Navigation">
+            <a href="/" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">
+              {nav.home}
+            </a>
+            <a
+              href="#contact"
+              class="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-dark transition-colors"
+            >
+              {nav.cta}
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Main content ── -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- ── Minimál lábléc ── -->
+    <footer class="bg-primary-dark text-white mt-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
+        <p>&copy; {year} Gyors Ház. All rights reserved.</p>
+        <a href="/" class="text-gray-300 hover:text-accent transition-colors font-medium">
+          {nav.back}
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>

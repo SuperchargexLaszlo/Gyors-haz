@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BlogLayout from '../../layouts/BlogLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import PlannerCta from '../../components/PlannerCta.astro';
 import { getProductsByKategoria, getProducts } from '../../lib/products';
 import type { Product } from '../../lib/products';
 
@@ -48,6 +49,12 @@ const breadcrumbItems = [
 >
   <Breadcrumb items={breadcrumbItems} />
   <Content />
+
+  {post.data.showPlannerCta && (
+    <div class="not-prose">
+      <PlannerCta compact={true} />
+    </div>
+  )}
 
   <!-- Kapcsolódó termékek -->
   {related.length > 0 && (
