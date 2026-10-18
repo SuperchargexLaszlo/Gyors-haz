@@ -332,3 +332,15 @@
 /ro  /ro/case-prefabricate-ungaria  301
 /pl  /pl/domy-prefabrykowane-wegry  301
 /hr  /hr/montazne-kuce-madjarska  301
+
+# Könnyűszerkezetes házak: régi méretek -> új kínálat (2026-10)
+/konnyuszerkezetes/konnyuszerkezetes-haz-22m2  /konnyuszerkezetes/konnyuszerkezetes-haz-27m2  301
+/konnyuszerkezetes/konnyuszerkezetes-haz-32m2  /konnyuszerkezetes/konnyuszerkezetes-haz-37m2  301
+/konnyuszerkezetes/konnyuszerkezetes-haz-35m2  /konnyuszerkezetes/konnyuszerkezetes-haz-37m2  301
+/konnyuszerkezetes/konnyuszerkezetes-haz-52m2  /konnyuszerkezetes/konnyuszerkezetes-haz-47m2  301
+/konnyuszerkezetes/konnyuszerkezetes-haz-62m2  /konnyuszerkezetes/konnyuszerkezetes-haz-58m2  301
+/konnyuszerkezetes/konnyuszerkezetes-haz-78m2  /konnyuszerkezetes/konnyuszerkezetes-haz-88m2  301
+/konnyuszerkezetes/konnyuszerkezetes-haz-86m2  /konnyuszerkezetes/konnyuszerkezetes-haz-88m2  301
+/konnyuszerkezetes/konnyuszerkezetes-haz-87m2  /konnyuszerkezetes/konnyuszerkezetes-haz-88m2  301
+/konnyuszerkezetes/konnyuszerkezetes-haz-96m2  /konnyuszerkezetes/konnyuszerkezetes-haz-95m2  301
+/konnyuszerkezetes/konnyuszerkezetes-haz-126m2  /konnyuszerkezetes/konnyuszerkezetes-haz-137m2  301

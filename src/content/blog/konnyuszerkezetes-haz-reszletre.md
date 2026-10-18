@@ -1,6 +1,6 @@
 ﻿---
 title: "Könnyűszerkezetes Ház Részletre 2026 – Teljes Útmutató"
-description: "Hogyan vehető könnyűszerkezetes ház részletre? Bankfüggetlen tanácsadó, hitellehetőségek, feltételek. 16.000 EUR-tól havi törlesztővel."
+description: "Hogyan vehető könnyűszerkezetes ház részletre? Bankfüggetlen tanácsadó, hitellehetőségek, feltételek. 7,1 millió Ft-tól havi törlesztővel."
 pubDate: 2026-02-01
 updatedDate: 2026-03-01
 category: konnyuszerkezetes
@@ -13,9 +13,9 @@ A **könnyűszerkezetes ház részletre** vásárlás 2026-ban már nem különl
 
 ## Miért éri meg könnyűszerkezetes házat hitelre venni?
 
-A könnyűszerkezetes ház árszintje — **16.000 EUR-tól 43.000 EUR-ig** — jóval alacsonyabb a hagyományos téglaépítésénél. Ez azt jelenti, hogy a szükséges hitelösszeg kisebb, a törlesztőrészlet alacsonyabb, és a jóváhagyási esély nagyobb.
+A könnyűszerkezetes ház árszintje — **nettó 7 076 160 Ft-tól 35 904 960 Ft-ig** — jóval alacsonyabb a hagyományos téglaépítésénél. Ez azt jelenti, hogy a szükséges hitelösszeg kisebb, a törlesztőrészlet alacsonyabb, és a jóváhagyási esély nagyobb.
 
-Nézzük egy konkrét példán: egy 22.000 EUR-os (kb. 8,8 millió Ft-os) ksz-52 típusú ház esetén, 30%-os önerő esetén a hiteligény mindössze 15.400 EUR (kb. 6,2 millió Ft). Ez 15 éves futamidőn — jelzáloghitelnél, jelenlegi piaci kamatokkal számolva — hozzávetőleg 45.000–55.000 Ft körüli havi törlesztőt jelent. Összehasonlításképpen: egy 80 milliós téglaháznál ugyanekkora futamidőn a törlesztő 5–6-szorosa lehetne.
+Nézzük egy konkrét példán: a 47 m²-es Csillagvirág nettó alapára 12 317 760 Ft. 30%-os önerővel a hiteligény kb. 8,6 millió Ft. Ez 15 éves futamidőn, 9%-os kamattal számolva kb. 87 000 Ft havi törlesztőt jelent. Összehasonlításképpen: egy 80 milliós téglaháznál ugyanekkora önerőaránnyal és futamidővel a törlesztő ennek hat-hétszerese.
 
 | Önerő (20%) | Hitelösszeg | Futamidő | Becsült havi törlesztő |
 |---|---|---|---|

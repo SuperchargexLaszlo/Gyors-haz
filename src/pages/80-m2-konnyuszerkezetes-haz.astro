@@ -4,21 +4,21 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import HazakGrid from '../components/HazakGrid.astro';
 import FaqSection from '../components/FaqSection.astro';
 
-const title = '80 M2 Könnyűszerkezetes Ház Ára 2026 – 31.000 EUR-tól';
+const title = '80 m² Könnyűszerkezetes Ház Ára 2026 – 18,1 millió Ft-tól';
 const description =
-  '80 m² körüli könnyűszerkezetes ház ára 2026-ban: 78 m² (31.000 EUR) és 86 m² (32.000 EUR) modellek. Alaprajz, szobaszám, mit tartalmaz az ár.';
+  '80 m² körüli könnyűszerkezetes ház ára 2026-ban: 69 m² (Erika) és 88 m² (Frézia) modellek, alapár és kulcsrakész ár. Szobaszám, terasz, mit tartalmaz az ár.';
 const pubDate = new Date('2026-08-01');
 
-const ajanlottSlugok = ['konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-86m2', 'konnyuszerkezetes-haz-87m2'];
+const ajanlottSlugok = ['konnyuszerkezetes-haz-69m2', 'konnyuszerkezetes-haz-88m2', 'konnyuszerkezetes-haz-92m2'];
 
 const faqs = [
   {
     q: 'Mennyibe kerül egy 80 m²-es könnyűszerkezetes ház?',
-    a: 'A legközelebbi modelljeink a 78 m²-es (31.000 EUR + ÁFA) és a 86 m²-es (32.000 EUR + ÁFA). Mindkettő tartalmazza a teljes szerkezetet, nyílászárókat, belső burkolatot és az alapvető gépészetet.',
+    a: 'A legközelebbi modelljeink a 69 m²-es Erika (18 083 520 Ft + ÁFA) és a 88 m²-es Frézia (23 063 040 Ft + ÁFA). Kulcsrakészen 38 640 000, illetve 49 280 000 Ft + ÁFA.',
   },
   {
     q: 'Hány szoba fér el 80 m²-en?',
-    a: 'A 78 m²-es modellünkben 3 szoba, a 86 m²-esben szintén 3 szoba van, mindkettő konyhával és fürdőszobával.',
+    a: 'A 69 m²-es Erikában 2 hálószoba, a 88 m²-es Fréziában 3 hálószoba van, mindkettőben nappali, konyha és fürdőszoba.',
   },
   {
     q: 'Kell-e engedély egy 80 m² körüli könnyűszerkezetes házhoz?',
@@ -54,7 +54,7 @@ const breadcrumbItems = [
   pubDate={pubDate}
   category="konnyuszerkezetes"
   tags={['80 m2', 'könnyűszerkezetes ház', 'modellek', 'árak']}
-  summary="A 80 m² körüli könnyűszerkezetes házaink – a 78 m²-es (31.000 EUR) és a 86 m²-es (32.000 EUR) modell – mindkettő 3 szobás, konyhával és fürdőszobával, és teljes egészében gyárilag szigetelt, 4 évszakos kivitelben készül."
+  summary="A 80 m² körüli igényre a 69 m²-es Erika (2 hálószoba) és a 88 m²-es Frézia (3 hálószoba) a legközelebbi modellünk. Alapáruk 18 083 520 és 23 063 040 Ft + ÁFA, kulcsrakész áruk 38 640 000 és 49 280 000 Ft + ÁFA."
 >
   <Breadcrumb items={breadcrumbItems} />
 
@@ -79,16 +79,16 @@ const breadcrumbItems = [
         </tr>
       </thead>
       <tbody>
-        <tr><td>78 m²-es modell</td><td>78 m²</td><td>3</td><td>14 m²</td><td>31.000 EUR</td><td>~397 EUR/m²</td></tr>
-        <tr><td>86 m²-es modell</td><td>86 m²</td><td>3</td><td>16 m²</td><td>32.000 EUR</td><td>~372 EUR/m²</td></tr>
-        <tr><td>87 m²-es modell</td><td>87 m²</td><td>3</td><td>16 m²</td><td>34.000 EUR</td><td>~391 EUR/m²</td></tr>
+        <tr><td>Erika (69 m²)</td><td>69 m²</td><td>2</td><td>7 m²</td><td>18 083 520 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
+        <tr><td>Frézia (88 m²)</td><td>88 m²</td><td>3</td><td>opcionális</td><td>23 063 040 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
+        <tr><td>Gyöngyvirág (92 m²)</td><td>92 m²</td><td>2</td><td>16 m²</td><td>24 111 360 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
       </tbody>
     </table>
   </div>
 
   <p>
-    Látható, hogy a 86 m²-es modell négyzetméterára alacsonyabb a 78 m²-esnél – a nagyobb ház olcsóbb
-    egységáron jön ki, ami a legtöbb könnyűszerkezetes háznál megfigyelhető összefüggés.
+    Az alapár négyzetmétere mindhárom modellnél 262 080 Ft + ÁFA, a kulcsrakész áré 560 000 Ft + ÁFA.
+    A különbség a hálószobák számában és a terasz méretében van.
   </p>
 
   <h2>Ajánlott modellek</h2>
@@ -97,21 +97,18 @@ const breadcrumbItems = [
     <HazakGrid slugok={ajanlottSlugok} columns={3} />
   </div>
 
-  <h2>78 m²-es és 86 m²-es modellünk részletesen</h2>
+  <h2>A 69 m²-es Erika és a 88 m²-es Frézia</h2>
 
   <p>
-    A <a href="/konnyuszerkezetes/konnyuszerkezetes-haz-78m2">78 m²-es modellünk</a> kiegyensúlyozott
-    alaprajzon kínál teljes lakhatóságot: 3 szoba, nappali-étkező-konyha egység, fürdőszoba és egy 14
-    m²-es fedett terasz – ami nyáron tulajdonképpen egy plusz szobát jelent a szabadban. Ideális azok
-    számára, akik maximális alapterületet szeretnének elfogadható áron.
+    Az <a href="/konnyuszerkezetes/konnyuszerkezetes-haz-69m2">Erika</a> 69 m²-en 2 hálószobát,
+    nappalit, konyhát, fürdőszobát és 7 m²-es fedett teraszt ad. Alapára 18 083 520 Ft + ÁFA,
+    kulcsrakész ára 38 640 000 Ft + ÁFA. Két-három fős háztartásnak elég.
   </p>
 
   <p>
-    A <a href="/konnyuszerkezetes/konnyuszerkezetes-haz-86m2">86 m²-es modellünk</a> valamivel nagyobb
-    alapterületen kínál ugyanannyi, 3 szobás elrendezést, 16 m²-es terasszal – ez döntő különbség lehet,
-    ha az egyik szobát dolgozószobának szánnád, vagy ha egyszerűen több mozgásteret szeretnél ugyanannyi
-    helyiségben. A négyzetméterenkénti árkülönbség a két modell között minimális, így a 86 m²-es
-    voltaképpen az egyik legjobb ár-alapterület arányú modellünk.
+    A <a href="/konnyuszerkezetes/konnyuszerkezetes-haz-88m2">Frézia</a> 88 m²-en 3 hálószobát, nappalit,
+    konyhát és fürdőszobát ad, terasz 8 m²-től kérhető hozzá. Alapára 23 063 040 Ft + ÁFA, kulcsrakész
+    ára 49 280 000 Ft + ÁFA. Ha a harmadik szoba dolgozószoba vagy gyerekszoba lesz, ezt érdemes választani.
   </p>
 
   <h2>Miért jó méret a 80 m² egy kiscsaládnak?</h2>
@@ -125,24 +122,23 @@ const breadcrumbItems = [
   <h2>Mit tartalmaz az ár?</h2>
 
   <p>
-    Mindhárom modell ára tartalmazza a horganyzott acélváz szerkezetet, a 10 cm hungarocell szigetelést,
-    a háromrétegű üvegezésű nyílászárókat, a belső gipszkarton burkolatot, az elektromos és vízvezeték
-    rendszert, valamint a szállítást 100 km-en belül. Az alapozás és a közüzemi bekötések nem részei az
-    alapárnak.
+    Az alapár tartalmazza az acélvázat, a 10 cm vastag falakat, a 3 rétegű üvegezésű ablakokat, a belső
+    gipszkartonozást, a villanyszerelést, a vízkiállásokat, a szállítást és a szerelést. A kulcsrakész ár
+    emellett a sávalapot, az aljzatot, a homlokzati szigetelést, a burkolást és a festést is tartalmazza.
+    A közüzemi bekötések egyik árban sincsenek benne.
   </p>
 
   <h2>Hitelre is megvehető</h2>
 
   <p>
-    A 31-32 ezer eurós vételár hitelből is megvalósítható. Bankfüggetlen tanácsadónk több hitelintézet
+    A 18–23 millió forintos alapár hitelből is finanszírozható. Bankfüggetlen tanácsadónk több hitelintézet
     ajánlatát vizsgálja meg párhuzamosan, hogy a számodra legelőnyösebb konstrukciót találja meg – legyen
     szó személyi kölcsönről, CSOK-ról vagy lakáshitelről.
   </p>
 
   <p>
-    Egy hozzávetőleges kalkuláció: 31.000 EUR (~11,3M Ft) esetén 30%-os önerővel (kb. 3,4M Ft) a havi
-    törlesztő 20 éves futamidőnél nagyjából 50-60 ezer forint körül alakulhat a jelenlegi piaci
-    kamatokkal. Ez sok esetben kevesebb, mint egy bérelt lakás havi díja ugyanabban a méretkategóriában.
+    Egy hozzávetőleges kalkuláció: az Erika 18 083 520 Ft-os nettó alapáránál 30%-os önerővel (kb. 5,4 millió
+    Ft) a havi törlesztő 20 éves futamidőn, 9%-os kamattal kb. 114 000 Ft. Ez sok esetben kevesebb, mint egy bérelt lakás havi díja ugyanabban a méretkategóriában.
     Részletek a <a href="/haz-reszletre">részletre vásárlás</a> oldalon.
   </p>
 
@@ -156,7 +152,7 @@ const breadcrumbItems = [
 
   <p>Kevésbé ideális, ha:</p>
   <ul>
-    <li>ennél nagyobb, 4+ szobás elrendezésre van szüksége – ekkor a 96 m²-es vagy 126 m²-es modelljeink illenek jobban</li>
+    <li>ennél nagyobb, 4+ szobás elrendezésre van szüksége – ekkor a 106 m²-es Ibolya vagy a 4 hálószobás, 137 m²-es Jázmin illik jobban</li>
   </ul>
 
   <div class="not-prose">

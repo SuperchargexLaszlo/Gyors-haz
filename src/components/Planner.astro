@@ -1,6 +1,7 @@
 ---
 import Icon from "./Icon.astro";
 import { furnitureCats, roomTypes, templates } from "../data/planner";
+import hazak from "../data/hazak.json";
 
 interface Props {
   /** Kompakt mód: kisebb vászon, a landing oldalakon beágyazva. */
@@ -11,6 +12,18 @@ const { compact = false } = Astro.props;
 // A JS csak a lapos listát használja.
 const flatFurn = furnitureCats.flatMap((c) => c.items);
 const tplData = templates.map((t) => ({ rooms: t.rooms, openings: t.openings }));
+
+// A könnyűszerkezetes kínálat méret-lépcsői — az összesítőben ehhez
+// viszonyítjuk, melyik modellnek felel meg a megrajzolt alapterület.
+const sizeTiers = Array.from(
+  new Set(
+    (hazak as { kategoria: string; meret_m2: number }[])
+      .filter((p) => p.kategoria === "konnyuszerkezetes")
+      .map((p) => p.meret_m2)
+  )
+)
+  .sort((a, b) => a - b)
+  .map((m2) => ({ m2, label: `könnyűszerkezetes ${m2} m²-es` }));
 ---
 
 <div id="ap-app" class="ch-card overflow-hidden" data-compact={compact ? "1" : null}>
@@ -108,6 +121,19 @@ const tplData = templates.map((t) => ({ rooms: t.rooms, openings: t.openings }))
         class="block w-full touch-none"
         style={`height:${compact ? "min(58vh,460px)" : "min(70vh,660px)"}`}
         aria-label="Alaprajz szerkesztő vászon"></canvas>
+
+      <!-- Léptékarány -->
+      <div class="pointer-events-none absolute bottom-4 left-4 z-10 rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-medium text-muted shadow-sm backdrop-blur-sm">
+        1 rács = 1 m
+      </div>
+
+      <!-- Észak-nyíl -->
+      <div class="pointer-events-none absolute bottom-4 right-4 z-10 grid h-11 w-11 place-items-center rounded-full border border-line bg-white/90 shadow-sm backdrop-blur-sm">
+        <svg viewBox="0 0 40 40" width="26" height="26">
+          <path d="M20 6 L25 22 L20 18 L15 22 Z" fill="#2b323b" />
+          <text x="20" y="34" text-anchor="middle" font-size="10" font-weight="700" fill="#2b323b" font-family="Inter,sans-serif">É</text>
+        </svg>
+      </div>
 
       <div id="ap-empty" class="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center px-6 text-center">
         <div class="pointer-events-auto">
@@ -285,11 +311,12 @@ const tplData = templates.map((t) => ({ rooms: t.rooms, openings: t.openings }))
   </div>
 </div>
 
-<script is:inline define:vars={{ flatFurn, roomTypes, tplData }}>
+<script is:inline define:vars={{ flatFurn, roomTypes, tplData, sizeTiers }}>
   window.AP_FURN = {};
   flatFurn.forEach(function (it) { window.AP_FURN[it.k] = it; });
   window.AP_ROOMTYPES = roomTypes;
   window.AP_TEMPLATES = tplData;
+  window.AP_SIZE_TIERS = sizeTiers;
 </script>
 
 <style is:global>

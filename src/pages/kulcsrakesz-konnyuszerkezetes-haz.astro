@@ -9,24 +9,24 @@ const description =
   'Kulcsrakész könnyűszerkezetes ház 2026-ban: mit jelent pontosan a "kulcsrakész" kifejezés, mit tartalmaz az ár, és mit nem? Áttekintés modellekkel.';
 const pubDate = new Date('2026-08-01');
 
-const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+const ajanlottSlugok = ['konnyuszerkezetes-haz-47m2', 'konnyuszerkezetes-haz-88m2', 'konnyuszerkezetes-haz-95m2'];
 
 const faqs = [
   {
     q: 'Mit jelent a kulcsrakész kivitel?',
-    a: 'Azt, hogy a ház szerkezete, nyílászárói, belső burkolata és alapvető gépészete (elektromos, vízvezeték) készen áll a beköltözésre – nem csak a falak és a tető.',
+    a: 'Nálunk a kulcsrakész ár az alapáron felül tartalmazza a vasalt sávalapot, az aljzatszigetelést, a 15 cm-es homlokzati hőszigetelést nemesvakolattal, a meleg- és hidegburkolást, valamint a glettelést és festést.',
   },
   {
     q: 'Mit NEM tartalmaz a kulcsrakész ár?',
-    a: 'Az alapozást, a közüzemi bekötéseket és a telek előkészítését – ezeket helyi kivitelezővel koordináljuk az igény szerint.',
+    a: 'A tervezést és engedélyeztetést, a közüzemi bekötéseket, a telek előkészítését és a fűtési rendszert. A kivitelező a budapesti vagy pécsi telephelyétől kiszállási díjat számolhat fel.',
   },
   {
     q: 'Mennyibe kerül egy kulcsrakész könnyűszerkezetes ház?',
-    a: 'Modelljeink 16.000 EUR-tól (22 m²) 43.000 EUR-ig (126 m²) terjednek, mérettől és felszereltségtől függően.',
+    a: 'Kulcsrakészen nettó 15 422 400 Ft-tól (27 m²) 76 720 000 Ft-ig (137 m²), mérettől függően.',
   },
   {
     q: 'Mi a különbség a kulcsrakész és a szerkezetkész kivitel között?',
-    a: 'A szerkezetkész kivitel csak a tartószerkezetet és a külső burkolatot jelenti, a belső munkák nélkül. Nálunk minden modell kulcsrakész kivitelben készül.',
+    a: 'Nálunk az alapár a szerkezetet, a nyílászárókat, a tetőt, a belső gipszkartonozást, a villanyszerelést, a szállítást és a szerelést tartalmazza. A kulcsrakész ár ehhez adja hozzá az alapot, a burkolást, a homlokzati szigetelést és a festést.',
   },
 ];
 
@@ -50,7 +50,7 @@ const breadcrumbItems = [
   pubDate={pubDate}
   category="konnyuszerkezetes"
   tags={['kulcsrakész', 'könnyűszerkezetes', 'árak']}
-  summary="A kulcsrakész kivitel azt jelenti, hogy a ház szerkezete, nyílászárói, belső burkolata és alapvető gépészete készen áll a beköltözésre. Minden modellünk kulcsrakész kivitelben készül, 16.000 EUR-tól 43.000 EUR-ig."
+  summary="A kulcsrakész kivitel azt jelenti, hogy a ház szerkezete, nyílászárói, belső burkolata és alapvető gépészete készen áll a beköltözésre. Minden modellünk kérhető kulcsrakész kivitelben, nettó 15 422 400 Ft-tól 76 720 000 Ft-ig."
 >
   <Breadcrumb items={breadcrumbItems} />
 
@@ -64,12 +64,12 @@ const breadcrumbItems = [
   <div class="overflow-x-auto">
     <table>
       <thead>
-        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th></tr>
+        <tr><th>Modell</th><th>Alapterület</th><th>Kulcsrakész ár (+ ÁFA)</th></tr>
       </thead>
       <tbody>
-        <tr><td>Közepes modell</td><td>52 m²</td><td>22.000 EUR</td></tr>
-        <tr><td>Nagyobb modell</td><td>78 m²</td><td>31.000 EUR</td></tr>
-        <tr><td>Legnagyobb modell</td><td>126 m²</td><td>43.000 EUR</td></tr>
+        <tr><td>Csillagvirág</td><td>47 m²</td><td>27 109 600 Ft + ÁFA</td></tr>
+        <tr><td>Erika</td><td>69 m²</td><td>38 640 000 Ft + ÁFA</td></tr>
+        <tr><td>Jázmin</td><td>137 m²</td><td>76 720 000 Ft + ÁFA</td></tr>
       </tbody>
     </table>
   </div>
@@ -83,14 +83,15 @@ const breadcrumbItems = [
   <h2>Mit jelent pontosan a kulcsrakész kivitel?</h2>
 
   <p>
-    A kulcsrakész kivitel azt jelenti, hogy a ház szerkezete (horganyzott acélváz, 10 cm hungarocell
-    szigetelés), a nyílászárók, a belső gipszkarton burkolat, valamint az elektromos és vízvezeték
-    rendszer is a szállítmány része – nem csak a nyers szerkezet.
+    Az alapár a szerkezetet (acélváz, 10 cm vastag előregyártott falak), a nyílászárókat, a tetőt, a belső
+    gipszkartonozást, a villanyszerelést, a vízkiállásokat, a szállítást és a szerelést tartalmazza.
+    A kulcsrakész ár ezen felül tartalmazza a vasalt sávalapot, az aljzatszigetelést, a 15 cm-es
+    homlokzati hőszigetelést nemesvakolattal, a meleg- és hidegburkolást, a glettelést és a festést.
   </p>
 
   <p>
-    Amit ugyanakkor nem tartalmaz: az alapozás, a közüzemi hálózatra való rákötés és a telek
-    előkészítése. Ezeket helyi kivitelezővel koordináljuk, az igény szerint.
+    Amit egyik ár sem tartalmaz: a tervezés és engedélyeztetés, a közüzemi hálózatra való rákötés,
+    a telek előkészítése és a fűtési rendszer.
   </p>
 
   <h2>Kinek ajánljuk?</h2>

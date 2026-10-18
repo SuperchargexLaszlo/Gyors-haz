@@ -22,14 +22,14 @@ A konténerház és a könnyűszerkezetes ház két különböző technológia, 
 
 | Szempont | Konténerház | Könnyűszerkezetes |
 |---|---|---|
-| Legolcsóbb modell | 12.790.000 Ft (55 m², Manhattan) | 16.000 EUR (~6,4 M Ft, 22 m²) |
-| Nm-ár (olcsóbb kategória) | ~232.500 Ft/m² | ~290.000 Ft/m² (kis modell) |
-| Nm-ár (nagyobb méret) | ~178.800 Ft/m² (Beverly L, 90 m²) | ~136.000 Ft/m² (KSZ-126, 126 m²) |
+| Legolcsóbb modell | 12.790.000 Ft (55 m², Manhattan) | 7 076 160 Ft + ÁFA (27 m², Árnika) |
+| Nm-ár (olcsóbb kategória) | ~232.500 Ft/m² | 262 080 Ft/m² (alapár) |
+| Nm-ár (nagyobb méret) | ~178.800 Ft/m² (Beverly L, 90 m²) | 262 080 Ft/m² (alapár, Jázmin, 137 m²) |
 | Alapozás | ~1.400.000 Ft + ÁFA | ~1.400.000 Ft + ÁFA |
 | Szállítás (100 km-en belül) | Ingyenes | Ingyenes |
 | Tervdokumentáció | ~2.370.000 Ft + ÁFA | ~2.370.000 Ft + ÁFA |
 
-Összességében a könnyűszerkezetes ház négyzetméterára a nagyobb méretknél (78 m²+) kedvezőbb, míg a konténerháznál a kis méretkategóriában (55–70 m²) látható jobb ár-érték arány.
+A könnyűszerkezetes házak alapára minden méretnél 262 080 Ft/m² + ÁFA, ezért a konténerház négyzetmétere mindkét méretkategóriában alacsonyabb. A könnyűszerkezetes háznál viszont van kulcsrakész ár is (560 000–576 800 Ft/m² + ÁFA), amely az alapot, a burkolást, a homlokzati szigetelést és a festést is tartalmazza.
 
 ## Telepítési idő
 
@@ -104,8 +104,8 @@ Ha egyedi alaprajzra van szükséged, a könnyűszerkezetes ház rugalmasabb meg
 | Szempontt | Konténerházat válaszd | Könnyűszerkezetest válaszd |
 |---|---|---|
 | Gyorsaság | Igen (1–3 nap telepítés) | Ha van idő (6–10 hét) |
-| Budget (55–70 m²) | Jobb nm-ár | Drágább kis méretben |
-| Budget (78 m²+) | Drágább | Jobb nm-ár |
+| Budget (55–70 m²) | Jobb nm-ár | Drágább |
+| Budget (78 m²+) | Jobb nm-ár | Drágább, de van kulcsrakész ár |
 | Egyedi alaprajz | Nem | Igen |
 | Mozgathatóság | Igen | Nem igazán |
 | Modern, ipari design | Igen | Kevésbé |
@@ -117,8 +117,8 @@ Ha egyedi alaprajzra van szükséged, a könnyűszerkezetes ház rugalmasabb meg
 
 - [Manhattan 55 m² konténerház – 12.790.000 Ft](/kontenerhaz/kontenerhaz-manhattan)
 - [Beverly L 90 m² konténerház – 16.090.000 Ft](/kontenerhaz/kontenerhaz-beverly-l)
-- [KSZ-52 52 m² könnyűszerkezetes – 22.000 EUR](/konnyuszerkezetes/konnyuszerkezetes-haz-52m2)
-- [KSZ-96 96 m² könnyűszerkezetes – 35.000 EUR](/konnyuszerkezetes/konnyuszerkezetes-haz-96m2)
+- [Csillagvirág 47 m² könnyűszerkezetes – 12 317 760 Ft + ÁFA](/konnyuszerkezetes/konnyuszerkezetes-haz-47m2)
+- [Hanga 95 m² könnyűszerkezetes – 24 897 600 Ft + ÁFA](/konnyuszerkezetes/konnyuszerkezetes-haz-95m2)
 
 ## Gyakran ismételt kérdések
 
@@ -132,7 +132,7 @@ Mindkettő alkalmas állandó lakhatásra, lakhatási engedéllyel. A döntés i
 
 ### Melyik drágább összköltségben?
 
-55–70 m²-es mérettartományban a konténerház kissé olcsóbb (nm-ár és gyors telepítés miatt). 78 m² felett a könnyűszerkezetes ház négyzetméterára kedvezőbb. A különbség nem drámai, az összes tényező figyelembevételével érdemes kalkulálni.
+A listaárak alapján a konténerház négyzetméterára alacsonyabb: 178 800–232 500 Ft, szemben a könnyűszerkezetes házak 262 080 Ft-os alapárával. A két ár tartalma eltér, ezért az alapozást, a szállítást és a belső burkolást is érdemes összeadni, mielőtt döntesz.
 
 ### Melyiket könnyebb engedélyeztetni?
 

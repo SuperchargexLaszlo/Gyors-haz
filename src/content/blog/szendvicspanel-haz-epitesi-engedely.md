@@ -55,7 +55,7 @@ A munkálatok befejezésekor használatbavételi bejelentés szükséges. A kön
 
 ## 300 m² alatti épületek szabályai
 
-A 300 m²-es alapterületi határ az épület összes szintjének alapterületét jelenti — beleértve a tetőteret is, ha beépített. Ez a szendvicspanel házak esetén rendszerint nem jelent korlátozást, mivel a típusok döntő többsége 22 m²-től 137 m²-ig terjedő alapterületű.
+A 300 m²-es alapterületi határ az épület összes szintjének alapterületét jelenti — beleértve a tetőteret is, ha beépített. Ez a szendvicspanel házak esetén rendszerint nem jelent korlátozást, mivel a típusok döntő többsége 27 m²-től 137 m²-ig terjedő alapterületű.
 
 Néhány fontos kritérium, amelynek az egyszerűsített bejelentési eljárásban is meg kell felelni:
 
@@ -147,6 +147,6 @@ A könnyűszerkezetes ház előnye tehát nem az engedélyezési folyamatban ker
 
 Ha könnyűszerkezetes vagy szendvicspanel ház építésén gondolkodik, tekintse meg teljes kínálatunkat és kérjen kötelezettség nélküli ajánlatot:
 
-- [Könnyűszerkezetes házak 22–126 m² — árak és típusok](/konnyuszerkezetes)
+- [Könnyűszerkezetes házak 27–137 m² — árak és típusok](/konnyuszerkezetes)
 - [Ház részletre és hitelre — bankfüggetlen tanácsadóval](/haz-reszletre)
 

@@ -1,6 +1,6 @@
 ﻿---
 title: "Tiny House Árak 2026 – Mini Ház Magyarországon"
-description: "Tiny house árak 2026: 15–35 m²-es mini házak. Ticab modellek, engedély kérdések, telek követelmények."
+description: "Tiny house árak 2026: 15–35 m²-es Ticab mini házak 22.200 EUR-tól. Modellenkénti árak, engedély, telek követelmények."
 pubDate: 2026-02-15
 updatedDate: 2026-03-01
 category: modulhaz
@@ -8,7 +8,7 @@ tags: ["tiny house", "mini ház", "árak", "Ticab"]
 author: "Gyors Ház csapata"
 ---
 
-> **Röviden:** A tiny house mozgalom Magyarországon is egyre népszerűbb: kis alapterületű, de okosan tervezett otthonok, amelyek olcsóbbak, fenntartásuk gazdaságosabb és a beépítési feltételek is könnyebben teljesíthetők. Ticab tiny house modelljeink 15–22 m²-től indulnak, és ár kérésre elérhetők.
+> **Röviden:** A tiny house mozgalom Magyarországon is egyre népszerűbb: kis alapterületű, de okosan tervezett otthonok, amelyek olcsóbbak, fenntartásuk gazdaságosabb és a beépítési feltételek is könnyebben teljesíthetők. Ticab tiny house modelljeink 15,2–18 m²-esek, listaáruk 30.000–38.000 EUR + ÁFA.
 
 ## Mi az a Tiny House?
 
@@ -26,33 +26,36 @@ A tiny house előnyei:
 A [Ticab House](https://www.ticabhouse.com/) kínálatából az alábbi tiny house és kis modellek érhetők el:
 
 ### TinyHouse kollekció
-| Modell | Alapterület | Jellemzők |
-|---|---|---|
-| TinyHouse No.1 Premium | 18 m² | Emelt kiviteli szint |
-| TinyHouse No.2 | 18 m² | Standard kivitel |
-| TinyHouse No.3 | 18 m² | Alternatív alaprajz |
-| TinyHouse No.4 | 15 m² | Legkompaktabb modell |
-| Nizza | 20 m² | Mediterrán ihletés |
-| Seville | 22 m² | Spanyol design |
+| Modell | Alapterület | Ár (+ ÁFA) | Utánfutóval |
+|---|---|---|---|
+| Tiny House Premium No1 | 18 m² | 38.000 EUR | 45.000 EUR |
+| Tiny House No 2 | 18 m² | 31.000 EUR | 38.000 EUR |
+| Tiny House No 3 | 18 m² | 33.000 EUR | 40.000 EUR |
+| Tiny House No 4 | 15,2 m² | 30.000 EUR | 37.000 EUR |
+| Nizza | 20 m² | 22.500 EUR | – |
+| Seville | 22 m² | 22.200 EUR | – |
 
-### Kis modellek (26–32 m²)
-| Modell | Alapterület | Jellemzők |
+### Kis modellek (25,5–35 m²)
+| Modell | Alapterület | Ár (+ ÁFA) |
 |---|---|---|
-| Tallinn | 26 m² | Északi, letisztult stílus |
-| Toscana | 28 m² | Olasz vidéki hangulat |
-| Amsterdam | 30 m² | Holland funkcionalizmus |
-| Paris | 32 m² | Francia elegancia |
+| Bali | 25,5 m² | 25.500 EUR |
+| Tallinn | 30 m² | 30.000 EUR |
+| Atlanta | 35 m² | 31.500 EUR |
+| Paris | 35 m² | 31.800 EUR |
+| Toscana | 35 m² | 31.800 EUR |
+| Boston | 35 m² | 35.700 EUR |
+| Amsterdam | 35 m² | 36.300 EUR |
 
 ## Tiny house ára Magyarországon
 
-A Ticab tiny house modellek ára egyedi kalkuláció alapján adható meg, listaár nincs. Az árat befolyásoló tényezők:
+A Ticab tiny house modellek listaára 30.000–38.000 EUR + ÁFA, utánfutóval 37.000–45.000 EUR + ÁFA. A végső árat ezek befolyásolják:
 
-- Az alapterület (15–32 m²)
+- Az alapterület (15,2–35 m²)
 - A kiviteli szint (standard vs. prémium)
 - A kiegészítők (terasz, napelem, klíma)
 - A szállítási távolság
 
-Tájékozódási jellegű összehasonlításképpen: könnyűszerkezetes házaink esetén a 22 m²-es modell 16.000 EUR + ÁFA-tól indul. Tiny house esetén ezzel összevethető tartományban mozognak az árak, a prémium kivitel természetesen drágább.
+Tájékozódási jellegű összehasonlításképpen: könnyűszerkezetes házaink esetén a 27 m²-es Árnika alapára 7 076 160 Ft + ÁFA. Tiny house esetén ezzel összevethető tartományban mozognak az árak, a prémium kivitel természetesen drágább.
 
 A legtöbb magyarországi tiny house 5–12 millió Ft közötti áron érhető el, a mérettől, kivitelezési szinttől és gyártótól függően.
 
@@ -97,7 +100,7 @@ A tiny house sokféle igényt kiszolgálhat:
 
 ### Mennyibe kerül egy Ticab tiny house Magyarországon?
 
-A Ticab tiny house modellek ára egyedi kalkuláció alapján adható meg. Általánosan 5–12 millió Ft közötti áron számíthatsz a 15–22 m²-es modellekre, de ez az opcióktól és szállítástól függ. Pontos ajánlatért [vedd fel velünk a kapcsolatot](/kapcsolat).
+A Ticab tiny house modellek (15,2–18 m²) listaára 30.000–38.000 EUR + ÁFA, utánfutóval 37.000–45.000 EUR + ÁFA. A szállítás és az opciók külön tételek. Pontos ajánlatért [vedd fel velünk a kapcsolatot](/kapcsolat).
 
 ### Kell-e engedély egy tiny house-hoz?
 

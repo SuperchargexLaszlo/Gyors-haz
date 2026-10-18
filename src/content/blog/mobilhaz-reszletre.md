@@ -8,7 +8,7 @@ tags: ["részletre", "hitel", "mobilház", "finanszírozás"]
 author: "Gyors Ház csapata"
 ---
 
-> **Röviden:** Mobilházat hitelre is meg lehet venni 2026-ban – bankfüggetlen tanácsadónkon keresztül személyi kölcsön, babaváró hitel, CSOK Plusz vagy zöldhitel formájában is finanszírozható. A havi törlesztő egy 22 m²-es háznál 30% önerővel, 15 éves futamidőn akár 50.000–70.000 Ft is lehet.
+> **Röviden:** Mobilházat hitelre is meg lehet venni 2026-ban – bankfüggetlen tanácsadónkon keresztül személyi kölcsön, babaváró hitel, CSOK Plusz vagy zöldhitel formájában is finanszírozható. A havi törlesztő a 27 m²-es Árnikánál 30% önerővel, 15 éves futamidőn kb. 50 000 Ft.
 
 ## Mobilház részletre – lehetséges?
 
@@ -59,12 +59,12 @@ Becsült havi törlesztők különböző modelleknél:
 
 | Modell | Ár | 30% önerő | Hitel összeg | Havi törlesztő (15 év, ~9%) |
 |---|---|---|---|---|
-| KSZ-22 (22 m²) | 16.000 EUR (~6,4 MFt) | ~1,9 MFt | ~4,5 MFt | ~45.000 Ft |
-| KSZ-52 (52 m²) | 22.000 EUR (~8,8 MFt) | ~2,6 MFt | ~6,2 MFt | ~62.000 Ft |
-| KSZ-78 (78 m²) | 31.000 EUR (~12,4 MFt) | ~3,7 MFt | ~8,7 MFt | ~87.000 Ft |
+| Árnika (27 m²) | 7 076 160 Ft + ÁFA | ~2,1 MFt | ~5,0 MFt | ~50.000 Ft |
+| Csillagvirág (47 m²) | 12 317 760 Ft + ÁFA | ~3,7 MFt | ~8,6 MFt | ~87.000 Ft |
+| Erika (69 m²) | 18 083 520 Ft + ÁFA | ~5,4 MFt | ~12,7 MFt | ~128.000 Ft |
 | Manhattan (55 m²) | 12.790.000 Ft | ~3,8 MFt | ~9 MFt | ~90.000 Ft |
 
-*Az összegek tájékoztató jellegűek, 400 Ft/EUR árfolyamon, 9% éves kamaton számolva. A tényleges törlesztő a hitelbírálatkor derül ki.*
+*Az összegek tájékoztató jellegűek, a könnyűszerkezetes házaknál a nettó alapárral, 9% éves kamaton számolva. A tényleges törlesztő a hitelbírálatkor derül ki.*
 
 Összehasonlításképpen: egy hasonló méretű, budapesti agglomeráció szélén lévő lakás bérleti díja 100.000–180.000 Ft/hó – a mobilháznál tehát akár fele akkora havi kiadással is saját tulajdont szerezhetsz.
 

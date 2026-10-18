@@ -92,8 +92,15 @@ async function processImages() {
     const outputPath = path.join(OUTPUT_DIR, `${basename}.webp`);
 
     try {
-      await sharp(inputPath)
-        .resize(OUTPUT_WIDTH, OUTPUT_HEIGHT, { fit: 'cover', position: 'centre' })
+      // Alaprajzot nem vágunk le: fehér háttérre, teljes egészében kerül a képre
+      const isAlaprajz = /alaprajz/i.test(basename);
+      const base = isAlaprajz
+        ? sharp(inputPath).flatten({ background: '#ffffff' })
+        : sharp(inputPath);
+      await base
+        .resize(OUTPUT_WIDTH, OUTPUT_HEIGHT, isAlaprajz
+          ? { fit: 'contain', background: '#ffffff' }
+          : { fit: 'cover', position: 'centre' })
         .composite([{ input: watermark, gravity: 'centre' }])
         .webp({ quality: OUTPUT_QUALITY })
         .toFile(outputPath);

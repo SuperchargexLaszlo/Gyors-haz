@@ -9,7 +9,7 @@ const products = await getProductsByKategoria('modulhaz');
 
 const title = 'Modular Home Hungary – Ticab Models from 20 to 144 m²';
 const description =
-  'Modular homes in Hungary: 42 Ticab models, 20–144 m². European design, Hungarian manufacturing. Request a price list.';
+  'Modular homes in Hungary: 48 Ticab models from 5.6 to 144 m², from 22,200 EUR + VAT. Factory-finished modules, timber frame. Request a quote.';
 
 const faqs = [
   {
@@ -94,8 +94,8 @@ const faqs = [
           </div>
           <div class="p-4">
             <h3 class="font-sans font-bold text-base text-gray-900 mb-1">{p.nev}</h3>
-            <p class="text-sm text-gray-500 mb-2">{p.meret_m2} m² · {p.szobak} rooms</p>
-            <p class="font-sans font-bold text-primary text-sm">Price on request</p>
+            <p class="text-sm text-gray-500 mb-2">{p.meret_m2} m²{p.szobak > 0 ? ` · ${p.szobak} rooms` : ''}</p>
+            <p class="font-sans font-bold text-primary text-sm">{p.ar_eur > 0 ? `${p.valtozatok?.length ? 'from ' : ''}${p.ar_eur.toLocaleString('en-US')} EUR + VAT` : 'Price on request'}</p>
           </div>
         </div>
       ))}

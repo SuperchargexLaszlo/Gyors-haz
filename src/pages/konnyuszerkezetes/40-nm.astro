@@ -3,27 +3,27 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { getProductBySlug, formatAr } from '../../lib/products';
+import { getProductBySlug, formatAr, formatKulcsrakeszAr } from '../../lib/products';
 
-const p35 = await getProductBySlug('konnyuszerkezetes-haz-35m2');
-const p52 = await getProductBySlug('konnyuszerkezetes-haz-52m2');
+const p35 = await getProductBySlug('konnyuszerkezetes-haz-37m2');
+const p52 = await getProductBySlug('konnyuszerkezetes-haz-47m2');
 
 const title = 'Könnyűszerkezetes Ház 40 m² Körül – Árak és Típusok | gyors-haz.hu';
 const description =
-  'Könnyűszerkezetes ház 40 nm körül: 35 m² (20.300 EUR) és 52 m² (22.000 EUR). 3 rétegű ablakok, 280 cm belmagasság, hitelezhetőek!';
+  'Könnyűszerkezetes ház 40 nm körül: 37 m² (Boglárka) és 47 m² (Csillagvirág), alapár és kulcsrakész ár. 3 rétegű ablakok, 280 cm belmagasság, hitelezhetők.';
 
 const faqs = [
   {
     q: 'Mennyi egy 40 nm-es könnyűszerkezetes ház ára?',
-    a: 'Pontosan 40 m²-es típusunk nincs, de a legközelebbi modelljeink: a 35 m²-es 20.300 EUR+ÁFA, az 52 m²-es 22.000 EUR+ÁFA áron érhető el. Mindkét modell tartalmazza a teljes szerkezetet, ablakokat, ajtókat, tetőrendszert és a szaniter felszereltséget.',
+    a: 'Pontosan 40 m²-es típusunk nincs. A legközelebbi a 37 m²-es Boglárka (alapár 9 696 960 Ft + ÁFA, kulcsrakészen 21 134 400 Ft + ÁFA) és a 47 m²-es Csillagvirág (alapár 12 317 760 Ft + ÁFA, kulcsrakészen 27 109 600 Ft + ÁFA).',
   },
   {
     q: 'Mi fér el egy 40 nm-es házban?',
-    a: 'A 35 m²-es modellünkben kényelmes hálószoba, nappali-konyha (vagy külön nappali), fürdőszoba és közlekedő fér el. Az 52 m²-es változatban már két külön szoba + konyha + fürdőszoba kialakítható, ami egy kis családnak vagy párnak ideális méret.',
+    a: 'A 37 m²-es Boglárkában egy hálószoba, amerikai konyhás nappali és fürdőszoba van. A 47 m²-es Csillagvirágban két hálószoba, amerikai konyhás nappali és fürdőszoba.',
   },
   {
     q: 'Elég-e 40 nm egy párnak?',
-    a: 'Igen, egy pár számára a 35–52 m²-es alapterület tökéletesen elegendő lehet — különösen ha a 13 m²-es teraszos (35 m²) vagy a 7 m²-es teraszos (52 m²) modellt választják. A 280 cm belmagasság és az átgondolt alaprajz tágas, levegős érzetet kelt. Sokan nyaralónak, ideiglenes lakóhelynek vagy bérbeadásra is választják ezeket a méreteket.',
+    a: 'Igen, egy párnak a 37–47 m²-es alapterület elég. A Boglárkához 5 m²-es fedett terasz tartozik, a Csillagvirághoz 13 m²-es terasz kérhető. A belmagasság 280 cm. Sokan nyaralónak vagy bérbeadásra is ezeket a méreteket választják.',
   },
 ];
 
@@ -37,11 +37,12 @@ const updatedDate = new Date('2026-01-01');
 
 const compareRows = p35 && p52 ? [
   { label: 'Alapterület', a: `${p35.meret_m2} m²`, b: `${p52.meret_m2} m²` },
-  { label: 'Ár', a: formatAr(p35), b: formatAr(p52) },
-  { label: 'Szobák', a: `${p35.szobak}`, b: `${p52.szobak}` },
+  { label: 'Alapár', a: formatAr(p35), b: formatAr(p52) },
+  { label: 'Kulcsrakész ár', a: formatKulcsrakeszAr(p35), b: formatKulcsrakeszAr(p52) },
+  { label: 'Hálószobák', a: `${p35.szobak}`, b: `${p52.szobak}` },
   { label: 'Konyha', a: p35.konyha ? 'Igen' : 'Nincs', b: p52.konyha ? 'Igen' : 'Nincs' },
   { label: 'Fürdőszoba', a: `${p35.furdo} db`, b: `${p52.furdo} db` },
-  { label: 'Terasz', a: `${p35.terasz_m2} m²`, b: `${p52.terasz_m2} m²` },
+  { label: 'Terasz', a: p35.terasz_m2 > 0 ? `${p35.terasz_m2} m²` : 'külön kérhető', b: p52.terasz_m2 > 0 ? `${p52.terasz_m2} m²` : 'külön kérhető' },
   { label: 'Belmagasság', a: '280 cm', b: '280 cm' },
   { label: 'Tető', a: '35°-os cserepes', b: '35°-os cserepes' },
 ] : [];
@@ -56,14 +57,14 @@ const compareRows = p35 && p52 ? [
         Könnyűszerkezetes ház 40 m² — modelljeink
       </h1>
       <p class="text-lg text-gray-600 max-w-2xl mb-10">
-        Pontosan 40 m²-es modellünk nincs, de a <strong>35 m²-es</strong> és az <strong>52 m²-es</strong> változatunk
-        tökéletesen lefedi ezt az igényt — az alábbiakban összehasonlíthatja őket.
+        Pontosan 40 m²-es modellünk nincs. A legközelebbi a <strong>37 m²-es Boglárka</strong> és a
+        <strong>47 m²-es Csillagvirág</strong>, az alábbi táblázatban összehasonlíthatja őket.
       </p>
 
       <!-- Összehasonlító tábla -->
       {compareRows.length > 0 && (
         <section class="mb-12 overflow-x-auto">
-          <h2 class="font-sans font-bold text-xl text-gray-900 mb-4">Összehasonlítás: 35 m² vs 52 m²</h2>
+          <h2 class="font-sans font-bold text-xl text-gray-900 mb-4">Összehasonlítás: 37 m² és 47 m²</h2>
           <table class="w-full text-sm border-collapse rounded-xl overflow-hidden shadow-sm">
             <thead>
               <tr class="bg-primary text-white">
@@ -99,7 +100,7 @@ const compareRows = p35 && p52 ? [
         <h2 class="font-sans font-bold text-lg text-gray-900 mb-3">Más méretek is érdeklik?</h2>
         <div class="flex flex-wrap gap-3">
           <a href="/konnyuszerkezetes" class="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors">
-            → Összes könnyűszerkezetes ház (22–126 m²)
+            → Összes könnyűszerkezetes ház (27–137 m²)
           </a>
           <a href="/modulhaz" class="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:border-primary hover:text-primary transition-colors">
             → Modulházak (27–137 m²)

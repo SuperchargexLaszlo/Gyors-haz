@@ -4,9 +4,9 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import HazakGrid from '../components/HazakGrid.astro';
 import FaqSection from '../components/FaqSection.astro';
 
-const title = 'Modulház Árak 2026 – Ticab Modellek Ár Kérésre';
+const title = 'Modulház Árak 2026 – Ticab Modellek 22.200 EUR-tól';
 const description =
-  'Modulház árak 2026-ban: Ticab városnevű modellek 15 m²-től 122 m²-ig, ár kérésre. Iparági tapasztalat alapján egy 50 m² körüli modell kb. 20–35 millió Ft.';
+  'Modulház árak 2026-ban: Ticab modellek 15,2 m²-től 144 m²-ig, 22.200 EUR-tól 150.000 EUR-ig + ÁFA. Modellenkénti ártáblázat, változatok, mit tartalmaz az ár.';
 const pubDate = new Date('2026-08-01');
 
 const ajanlottSlugok = ['modulhaz-amsterdam', 'modulhaz-stockholm', 'modulhaz-barcelona'];
@@ -14,11 +14,11 @@ const ajanlottSlugok = ['modulhaz-amsterdam', 'modulhaz-stockholm', 'modulhaz-ba
 const faqs = [
   {
     q: 'Mennyibe kerül egy modulház?',
-    a: 'A modulházak ára egyedi konfiguráció alapján alakul, ezért nincs fix listaár. Iparági tapasztalatok alapján egy 50 m² körüli modell kb. 20–35 millió Ft körül alakulhat, de ez modelltől és felszereltségtől függően eltérhet.',
+    a: 'A Ticab modulházak listaára 22.200 EUR-tól (Seville, 22 m²) 150.000 EUR-ig (London, 144 m², Happy Wife, 122 m²) terjed, + ÁFA. Egy 50 m² körüli modell 50.000–54.000 EUR + ÁFA.',
   },
   {
-    q: 'Miért nincs fix ár?',
-    a: 'Az árat a konfiguráció (alaprajz, belső kialakítás, extrák), a szállítási távolság és az alapozás típusa is befolyásolja, ezért ajánlatkéréskor adunk pontos árat.',
+    q: 'Mit nem tartalmaz a listaár?',
+    a: 'A szállítást, az alapozást, a külső közműbekötéseket és a darus lerakodást. A legtöbb lakómodellnél a konyhabútor, a mosdószekrény és a padlófűtés is külön tétel.',
   },
   {
     q: 'Mennyi idő alatt készül el egy modulház?',
@@ -54,13 +54,13 @@ const breadcrumbItems = [
   pubDate={pubDate}
   category="modulhaz"
   tags={['modulház', 'árak', 'Ticab']}
-  summary="A Ticab modulházak ára egyedi konfiguráció alapján alakul, listaár nincs. Iparági tapasztalatok alapján egy 50 m² körüli modell ára kb. 20–35 millió Ft körül alakulhat. A modellsor 15 m²-től 122 m²-ig terjed."
+  summary="A Ticab modulházak listaára 22.200 EUR-tól 150.000 EUR-ig terjed, + ÁFA. A modellsor 15,2 m²-től 144 m²-ig tart, emellett van szauna-, iroda- és kávézómodul is."
 >
   <Breadcrumb items={breadcrumbItems} />
 
   <p>
-    A Ticab modulházak prémium kategóriás, gyárilag előre gyártott otthonok, amelyek ára egyedi igény
-    szerint alakul. Ebben a cikkben bemutatjuk a méretkategóriákat és azt, mi befolyásolja az árat.
+    A Ticab modulházak gyárilag előre gyártott otthonok, fix listaárral. Ebben a cikkben modellenként
+    megadjuk az árat, és leírjuk, mi van benne az árban.
   </p>
 
   <h2>Mi az a modulház?</h2>
@@ -80,74 +80,88 @@ const breadcrumbItems = [
     <li>Moduláris bővíthetőség</li>
   </ul>
 
-  <h2>Modulház méretkategóriák</h2>
+  <h2>Modulház árak méretkategóriánként</h2>
 
   <div class="overflow-x-auto">
     <table>
       <thead>
-        <tr><th>Kategória</th><th>Mérettartomány</th><th>Ár</th></tr>
+        <tr><th>Kategória</th><th>Mérettartomány</th><th>Ár (+ ÁFA)</th></tr>
       </thead>
       <tbody>
-        <tr><td>Tiny House</td><td>15–20 m²</td><td>ár kérésre</td></tr>
-        <tr><td>Kis modellek</td><td>22–46 m²</td><td>ár kérésre</td></tr>
-        <tr><td>Közepes modellek</td><td>48–72 m²</td><td>ár kérésre</td></tr>
-        <tr><td>Nagy modellek</td><td>80–122 m²</td><td>ár kérésre</td></tr>
+        <tr><td>Tiny House</td><td>15,2–18 m²</td><td>30.000–38.000 EUR</td></tr>
+        <tr><td>Kis modellek</td><td>20–47,5 m²</td><td>22.200–48.400 EUR</td></tr>
+        <tr><td>Közepes modellek</td><td>48–72 m²</td><td>45.000–75.350 EUR</td></tr>
+        <tr><td>Nagy modellek</td><td>88–144 m²</td><td>67.000–150.000 EUR</td></tr>
+        <tr><td>Szauna, iroda, kávézó</td><td>5,6–35 m²</td><td>14.300–47.800 EUR</td></tr>
       </tbody>
     </table>
   </div>
 
-  <p>
-    Iparági tapasztalatok alapján egy 50 m² körüli modulház ára kb. 20–35 millió Ft körül alakulhat, a
-    kivitelezési szinttől és a választott extráktól függően. Ez tájékoztató jellegű becslés, nem
-    helyettesíti a pontos, egyedi ajánlatot.
-  </p>
-
-  <h2>Ticab típusok és méretek</h2>
+  <h2>Ticab modellek és árak</h2>
 
   <p>
-    A <a href="https://www.ticabhouse.com/" target="_blank" rel="noopener">Ticab House</a> teljes
-    kínálata négy méretkategóriára osztható:
+    Az árak a <a href="https://www.ticabhouse.com/" target="_blank" rel="noopener">Ticab House</a> modelljeire
+    vonatkoznak, euróban, ÁFA nélkül. Az ár nem tartalmazza a szállítást, az alapozást, a külső
+    közműbekötéseket és a darus lerakodást.
   </p>
 
-  <h3>Tiny House kollekció (15–20 m²)</h3>
-  <ul>
-    <li>Tiny House No. 4 – 15 m²</li>
-    <li>Tiny House No. 2 – 18 m²</li>
-    <li>Tiny House No. 3 – 18 m²</li>
-    <li>Tiny House – 20 m²</li>
-    <li>Nizza – 20 m²</li>
-  </ul>
-
-  <h3>Kis modellek (22–46 m²)</h3>
-  <ul>
-    <li>Seville – 22 m²</li>
-    <li>Tallinn – 30 m²</li>
-    <li>Amsterdam, Paris, Toscana, Atlanta, Boston – 35 m²</li>
-    <li>Monaco, Sydney, Stockholm, Sicilia, Slovakia – 42 m²</li>
-    <li>Bremen, Montana, Bonn – 45 m²</li>
-    <li>Dublin, Majorca – 46 m²</li>
-  </ul>
-
-  <h3>Közepes modellek (48–72 m²)</h3>
-  <ul>
-    <li>Ottawa, Milan – 48 m²</li>
-    <li>Capri, Palermo – 51 m²</li>
-    <li>Malta – 56 m²</li>
-    <li>Florence – 60 m²</li>
-    <li>Lyon, Montreal – 70 m²</li>
-    <li>Vienna, Washington – 72 m²</li>
-  </ul>
-
-  <h3>Nagy modellek (80–122 m²)</h3>
-  <ul>
-    <li>London – 80 m²</li>
-    <li>Barcelona – 90 m²</li>
-    <li>Versailles – 91 m²</li>
-    <li>Marseille, Natal, Reykjavik, Lisbon – 95 m²</li>
-    <li>Grindavik – 103 m²</li>
-    <li>Alessandria – 110 m²</li>
-    <li>Happy Wife – 122 m²</li>
-  </ul>
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr><th>Modell</th><th>Alapterület</th><th>Ár (+ ÁFA)</th><th>Változat</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="/modulhaz/modulhaz-tiny-house-4">Tiny House No. 4</a></td><td>15,2 m²</td><td>30.000 EUR</td><td>Utánfutóval: 37.000 EUR</td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-tiny-house-2">Tiny House No. 2</a></td><td>18 m²</td><td>31.000 EUR</td><td>Utánfutóval: 38.000 EUR</td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-tiny-house-3">Tiny House No. 3</a></td><td>18 m²</td><td>33.000 EUR</td><td>Utánfutóval: 40.000 EUR</td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-tinyhouse">Tiny House Premium No1</a></td><td>18 m²</td><td>38.000 EUR</td><td>Utánfutóval: 45.000 EUR</td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-nizza">Nizza</a></td><td>20 m²</td><td>22.500 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-seville">Seville</a></td><td>22 m²</td><td>22.200 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-bali">Bali</a></td><td>25,5 m²</td><td>25.500 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-tallinn">Tallinn</a></td><td>30 m²</td><td>30.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-atlanta">Atlanta</a></td><td>35 m²</td><td>31.500 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-paris">Paris</a></td><td>35 m²</td><td>31.800 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-toscana">Toscana</a></td><td>35 m²</td><td>31.800 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-boston">Boston</a></td><td>35 m²</td><td>35.700 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-amsterdam">Amsterdam</a></td><td>35 m²</td><td>36.300 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-stockholm">Stockholm</a></td><td>42 m²</td><td>34.000 EUR</td><td>47 m²-es változat: 38.000 EUR</td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-sicilia">Sicilia</a></td><td>42 m²</td><td>36.300 EUR</td><td>47 m²-es változat: 40.500 EUR</td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-slovakia">Slovakia</a></td><td>42 m²</td><td>36.300 EUR</td><td>47 m²-es változat: 40.500 EUR</td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-sydney">Sydney</a></td><td>42 m²</td><td>37.300 EUR</td><td>47 m²-es változat: 41.500 EUR</td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-monaco">Monaco</a></td><td>42 m²</td><td>38.000 EUR</td><td>47 m²-es változat: 42.500 EUR</td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-bonn">Bonn</a></td><td>45 m²</td><td>38.400 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-montana">Montana</a></td><td>45 m²</td><td>44.900 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-bremen">Bremen</a></td><td>45 m²</td><td>45.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-majorca">Majorca</a></td><td>46 m²</td><td>38.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-dublin">Dublin</a></td><td>46 m²</td><td>42.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-ottawa">Ottawa</a></td><td>47,5 m²</td><td>48.400 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-milan">Milan</a></td><td>48 m²</td><td>52.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-palermo">Palermo</a></td><td>51 m²</td><td>53.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-capri">Capri</a></td><td>51 m²</td><td>54.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-marseille">Marseille</a></td><td>55 m²</td><td>45.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-malta">Malta</a></td><td>56 m²</td><td>50.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-florence">Florence</a></td><td>60 m²</td><td>56.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-montreal">Montreal</a></td><td>70 m²</td><td>63.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-barcelona">Barcelona</a></td><td>70 m²</td><td>75.350 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-vienna">Vienna</a></td><td>72 m²</td><td>60.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-washington">Washington</a></td><td>72 m²</td><td>64.500 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-lyon">Lyon</a></td><td>88 m²</td><td>67.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-versailles">Versailles</a></td><td>91 m²</td><td>67.500 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-reykjavik">Reykjavik</a></td><td>95 m²</td><td>80.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-natal">Natal</a></td><td>95 m²</td><td>85.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-lisbon">Lisbon</a></td><td>95 m²</td><td>87.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-grindavik">Grindavik</a></td><td>103 m²</td><td>90.700 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-happy-wife">Happy Wife</a></td><td>122 m²</td><td>150.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-alessandria">Alessandria</a></td><td>130 m²</td><td>98.700 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-london">London</a></td><td>144 m²</td><td>150.000 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-cafe">CAFE</a></td><td>5,6 m²</td><td>16.400 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-mini-office">Mini-OFFICE</a></td><td>7,5 m²</td><td>14.300 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-mini-spa-2">Mini-SPA No2</a></td><td>7,5 m²</td><td>15.400 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-mini-spa-1">Mini-SPA No1</a></td><td>7,5 m²</td><td>16.400 EUR</td><td></td></tr>
+        <tr><td><a href="/modulhaz/modulhaz-sauna-35">Sauna 35</a></td><td>35 m²</td><td>47.800 EUR</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <h2>Ajánlott modellek</h2>
 
@@ -158,9 +172,8 @@ const breadcrumbItems = [
   <h2>Mi befolyásolja a modulház árát?</h2>
 
   <p>
-    <strong>Konfiguráció és kiegészítők:</strong> az alapcsomag más-más tartalommal rendelkezik
-    modellenként. Prémium burkolatok, extra fürdőszoba, tetőterasz, napelem opciók mind módosítják az
-    árat.
+    <strong>Kiegészítők:</strong> az alapcsomag tartalma modellenként eltér. A konyhabútor, a mosdószekrény,
+    a padlófűtés, a kandalló és a klíma beszerelése a legtöbb modellnél külön tétel.
   </p>
 
   <p>
@@ -174,8 +187,8 @@ const breadcrumbItems = [
   </p>
 
   <p>
-    <strong>Árfolyam és nyersanyagárak:</strong> a gyár az aktuális piaci árakon számolja ki az
-    ajánlatot, ezért az ár időszakonként változhat.
+    <strong>Árfolyam:</strong> az árak euróban értendők, a forintban fizetendő összeg az aktuális
+    árfolyamtól függ.
   </p>
 
   <p>

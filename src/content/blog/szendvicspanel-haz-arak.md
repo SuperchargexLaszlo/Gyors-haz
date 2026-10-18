@@ -1,6 +1,6 @@
 ﻿---
 title: "Szendvicspanel Ház Árak 2026 – Mit Ér a Pénzed?"
-description: "Szendvicspanel ház árak 2026-ban: 16.000 EUR-tól. Négyzetméterár, összehasonlítás téglaházzal, mit tartalmaz az ár. Teljes útmutató."
+description: "Szendvicspanel ház árak 2026-ban: 7,1 millió Ft-tól. Négyzetméterár, összehasonlítás téglaházzal, mit tartalmaz az ár. Teljes útmutató."
 pubDate: 2026-03-05
 updatedDate: 2026-03-01
 category: konnyuszerkezetes
@@ -8,26 +8,30 @@ tags: ["szendvicspanel ház", "árak", "PIR", "szigetelés"]
 author: "Gyors Ház csapata"
 ---
 
-> **Röviden:** A szendvicspanel ház ára 2026-ban 16.000 EUR-tól (22 m²) indul, és négyzetméterenként 140.000–290.000 Ft körül alakul. Ez töredéke a hagyományos téglaház árának, miközben az energetikai teljesítmény és a tartósság nem marad el a téglaháztól.
+> **Röviden:** A szendvicspanel ház ára 2026-ban nettó 7 076 160 Ft-tól (27 m²) indul. Az alapár négyzetméterenként 262 080 Ft + ÁFA, a kulcsrakész ár 560 000–576 800 Ft + ÁFA. Ez utóbbi a téglaházak 450 000–700 000 Ft-os négyzetméterárával vethető össze, a kivitelezés viszont 6–8 hét.
 
 ## Szendvicspanel ház négyzetméterenkénti ára
 
-A szendvicspanel ház négyzetméterára az alapterülettől és a modell kivitelezési szintjétől függ. Minél nagyobb a ház, annál kedvezőbb a fajlagos ár:
+Könnyűszerkezetes házainknál az alapár minden méretnél 262 080 Ft/m² + ÁFA. A kulcsrakész ár négyzetmétere 560 000 és 576 800 Ft között van:
 
-| Modell | Alapterület | Teljes ár | Nm-ár (EUR) | Nm-ár (Ft, ~400 Ft/EUR) |
+| Modell | Alapterület | Alapár (+ ÁFA) | Kulcsrakész ár (+ ÁFA) | Kulcsrakész nm-ár |
 |---|---|---|---|---|
-| KSZ-22 | 22 m² | 16.000 EUR | 727 EUR/m² | ~290.000 Ft/m² |
-| KSZ-35 | 35 m² | 20.300 EUR | 580 EUR/m² | ~232.000 Ft/m² |
-| KSZ-52 | 52 m² | 22.000 EUR | 423 EUR/m² | ~169.000 Ft/m² |
-| KSZ-78 | 78 m² | 31.000 EUR | 397 EUR/m² | ~159.000 Ft/m² |
-| KSZ-96 | 96 m² | 35.000 EUR | 365 EUR/m² | ~146.000 Ft/m² |
-| KSZ-126 | 126 m² | 43.000 EUR | 341 EUR/m² | ~136.000 Ft/m² |
+| Árnika | 27 m² | 7 076 160 Ft | 15 422 400 Ft | 571 200 Ft/m² |
+| Boglárka | 37 m² | 9 696 960 Ft | 21 134 400 Ft | 571 200 Ft/m² |
+| Csillagvirág | 47 m² | 12 317 760 Ft | 27 109 600 Ft | 576 800 Ft/m² |
+| Dália | 58 m² | 15 200 640 Ft | 32 804 800 Ft | 565 600 Ft/m² |
+| Erika | 69 m² | 18 083 520 Ft | 38 640 000 Ft | 560 000 Ft/m² |
+| Frézia | 88 m² | 23 063 040 Ft | 49 280 000 Ft | 560 000 Ft/m² |
+| Gyöngyvirág | 92 m² | 24 111 360 Ft | 51 520 000 Ft | 560 000 Ft/m² |
+| Hanga | 95 m² | 24 897 600 Ft | 53 200 000 Ft | 560 000 Ft/m² |
+| Ibolya | 106 m² | 27 780 480 Ft | 59 360 000 Ft | 560 000 Ft/m² |
+| Jázmin | 137 m² | 35 904 960 Ft | 76 720 000 Ft | 560 000 Ft/m² |
 
-Az árak + ÁFA értendők, és a fenti összegek tartalmazzák az összes belső munkát is.
+Az árak + ÁFA értendők. Az alapár a szállítást, a szerelést és a belső gipszkartonozást tartalmazza, a kulcsrakész ár emellett az alapot, a burkolást, a homlokzati szigetelést és a festést.
 
 ## Mi befolyásolja a szendvicspanel ház árát?
 
-**Méret:** A ház alapterülete az egyik legnagyobb ártényező. Ahogy a fenti táblázatban látható, a négyzetméterár csökken a méret növekedésével.
+**Méret:** A ház alapterülete az egyik legnagyobb ártényező. Nálunk az alapár négyzetmétere minden méretnél azonos, így a teljes ár az alapterülettel arányosan nő.
 
 **Alapanyag minőség:** Az 100 mm-es standard hungarocell és a PIR szigetelőpanel eltérő árkategóriát képvisel. A PIR (Poliizocianurát) jobb hőszigeteléssel bír azonos vastagságnál, de drágább. Nálunk 100 mm-es hungarocell az alap.
 
@@ -41,8 +45,8 @@ Az árak + ÁFA értendők, és a fenti összegek tartalmazzák az összes bels�
 
 | Szempont | Szendvicspanel ház | Téglaház |
 |---|---|---|
-| Négyzetméterár | 140.000–290.000 Ft/m² | 450.000–700.000 Ft/m² |
-| 78 m²-es ház ára | ~12,4 M Ft (31.000 EUR) | ~35–55 M Ft |
+| Négyzetméterár | 262 080 Ft/m² (alapár), 560 000–576 800 Ft/m² (kulcsrakész), + ÁFA | 450.000–700.000 Ft/m² |
+| 80 m² körüli ház ára | 88 m²: 23,1 M Ft alapáron, 49,3 M Ft kulcsrakészen (+ ÁFA) | ~35–55 M Ft |
 | Kivitelezési idő | 6–8 hét | 12–24 hónap |
 | Engedélyezés | Egyszerűsített bejelentés | Teljes építési engedély |
 | Energetika | BB–AA | BB–A (tégla rosszabb alap) |
@@ -104,7 +108,7 @@ Az összes modell megtekinthető a [könnyűszerkezetes oldalunkon](/konnyuszerk
 
 ### Mennyibe kerül egy 80 nm-es szendvicspanel ház?
 
-A legközelebbi modell a KSZ-78 (78 m², 31.000 EUR + ÁFA), kb. 12,4 M Ft. Alapozással, szállítással és tervdokumentációval együtt kb. 16–17 M Ft-ra nőhet az összköltség.
+A legközelebbi modell a 88 m²-es Frézia: alapáron 23 063 040 Ft + ÁFA, kulcsrakészen 49 280 000 Ft + ÁFA. A kulcsrakész ár az alapot is tartalmazza, a tervdokumentáció külön költség.
 
 ### Milyen vastag a szendvicspanel ház fala?
 

@@ -8,9 +8,15 @@ import PlannerCta from '../../components/PlannerCta.astro';
 
 const products = await getProductsByKategoria('konnyuszerkezetes');
 
-const title = 'Könnyűszerkezetes Házak 22–126 m² | Ár és Típusok | gyors-haz.hu';
+const ft = (n: number) => n.toLocaleString('hu-HU').replace(/\s/g, ' ');
+const minM2 = Math.min(...products.map((p) => p.meret_m2));
+const maxM2 = Math.max(...products.map((p) => p.meret_m2));
+const minAlap = Math.min(...products.map((p) => p.ar_ft ?? Infinity));
+const minKulcs = Math.min(...products.map((p) => p.ar_kulcsrakesz_ft ?? Infinity));
+
+const title = `Könnyűszerkezetes házak ${minM2}–${maxM2} m² | Alapár és kulcsrakész ár | gyors-haz.hu`;
 const description =
-  'Könnyűszerkezetes házak 16.000 EUR-tól. 22–126 m², 3 rétegű ablakok, 280 cm belmagasság. Hitelezhetőek, bankfüggetlen tanácsadóval. Kérjen ajánlatot!';
+  `Könnyűszerkezetes házak ${minM2}–${maxM2} m²: alapár ${ft(minAlap)} Ft + ÁFA-tól, kulcsrakészen ${ft(minKulcs)} Ft + ÁFA-tól. Acélváz, 3 rétegű ablakok, 280 cm belmagasság.`;
 
 const itemListSchema = {
   '@context': 'https://schema.org',
@@ -36,12 +42,16 @@ const faqs = [
     a: 'Igen, bankfüggetlen tanácsadóval segítünk a finanszírozásban. Több banknál is elérhetőek személyi kölcsön és jelzáloghitel konstrukciók, amelyek fedezhetik a ház árát. Vegye fel velünk a kapcsolatot a részletekért.',
   },
   {
-    q: 'Mit tartalmaz az ár?',
-    a: 'Az ár tartalmazza: külső falak (10 cm hungarocell szigetelés), válaszfalak, horganyzott acélváz, bejárati ajtó, beltéri ajtók, 3 rétegű üveg ablakok, tető (cserepes lemez, szigetelés, 35° dőlés), eresz és csatorna, belső gipszkarton, elektromos készlet, vízvezeték készlet, zuhanytálca, mosdó, monoblokkos WC, 280 cm belmagasság.',
+    q: 'Mit tartalmaz az alapár?',
+    a: 'Az alapár tartalmazza a szállítást és a szerelést, az acél biztonsági bejárati ajtót, a beltéri ajtókat, a 3 rétegű üvegezésű ablakokat, a 10 cm vastag előregyártott falakat (két 8 mm-es betonyp lap között 8 cm hungarocell), a tetőt (vázszerkezet, cserepes lemez, szigetelés, 35°-os dőlés), az ereszt és csatornát, a belső gipszkartonozást, a villanyszerelést és a vízkiállásokat sarokszelepig. A belmagasság 280 cm.',
+  },
+  {
+    q: 'Mivel több a kulcsrakész ár?',
+    a: 'A kulcsrakész ár az alapár tételein felül tartalmazza a vasalt sávalapot, az aljzatszigetelést és aljzatkiegyenlítést, a 15 cm EPS homlokzati hőszigetelést nemesvakolattal, a meleg- és hidegburkolást (kb. 8 000 és 7 000 Ft/m² anyagárig), valamint a glettelést és festést.',
   },
   {
     q: 'Mi az, ami nem szerepel az árban?',
-    a: 'Az árban nem szerepel: tervezés és engedélyeztetés, szállítás, helyszíni alapozás, aljzatszigetelés, burkolás (padló, csempe), külső dryvit szigetelés, fűtési rendszer. Ezeket helyi kivitelezőkkel koordináljuk, vagy ajánlunk megbízható partnereket.',
+    a: 'A tervezés és engedélyeztetés, valamint a fűtési rendszer egyik árban sem szerepel. A kivitelező a budapesti vagy pécsi telephelyétől kiszállási díjat számolhat fel.',
   },
   {
     q: 'Mekkora belmagassága van a házaknak?',
@@ -76,7 +86,8 @@ const updatedDate = new Date('2026-01-01');
         <p>
           A <strong>könnyűszerkezetes ház</strong> napjaink egyik legnépszerűbb építési megoldása — alacsonyabb költséggel,
           rövidebb építési idővel és kiváló energiahatékonysággal valósítható meg, mint a hagyományos téglaépítés.
-          Kínálatunkban 22 m²-től 126 m²-ig találja meg az igényeinek megfelelő típust, <strong>16.000 EUR-tól</strong>.
+          Kínálatunkban {products.length} típus van {minM2} m²-től {maxM2} m²-ig. Az alapár <strong>{ft(minAlap)} Ft + ÁFA-tól</strong>,
+          a kulcsrakész ár <strong>{ft(minKulcs)} Ft + ÁFA-tól</strong> indul.
         </p>
         <p>
           A <strong>szendvicspanel ház</strong> szerkezete horganyzott acélvázból és 10 cm hungarocell szigetelésből áll,

@@ -1,0 +1,518 @@
+---
+interface Props {
+  width?: number;
+  depth?: number;
+  label?: string;
+  compact?: boolean;
+  wallColor?: string;
+  roofColor?: string;
+  hasTerrace?: boolean;
+  terraceDepth?: number;
+  windows?: number;
+  doors?: number;
+}
+const {
+  width = 8,
+  depth = 7,
+  label = '',
+  compact = false,
+  wallColor = '#F5F0E8',
+  roofColor = '#C62828',
+  hasTerrace = false,
+  terraceDepth = 1.5,
+  windows = 4,
+  doors = 1,
+} = Astro.props;
+const canvasId = `house3d-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class={`rounded-2xl overflow-hidden bg-gradient-to-b from-sky-100 to-sky-50 border border-neutral-200 ${compact ? 'h-64' : 'h-96'} relative`}>
+  <canvas id={canvasId} class="w-full h-full block"></canvas>
+
+  <!-- Felirat -->
+  {label && (
+    <div class="absolute bottom-3 left-3 bg-black/50 text-white text-xs
+                font-medium px-2.5 py-1 rounded-full backdrop-blur-sm">
+      {label} · 3D nézet
+    </div>
+  )}
+
+  <!-- Forgatási hint -->
+  <div class="absolute top-3 right-3 bg-black/40 text-white/80 text-xs
+              px-2 py-1 rounded-full backdrop-blur-sm pointer-events-none"
+       id={`${canvasId}-hint`}>
+    ↔ Forgasd az egérrel
+  </div>
+
+  <!-- Szín-picker -->
+  <div class="absolute top-3 left-3 z-10">
+    <button
+      id={`${canvasId}-palette-btn`}
+      type="button"
+      aria-label="Színek módosítása"
+      class="grid h-8 w-8 place-items-center rounded-full bg-black/40 text-sm
+             backdrop-blur-sm hover:bg-black/55 transition-colors"
+    >
+      🎨
+    </button>
+    <div
+      id={`${canvasId}-palette-panel`}
+      class="hidden mt-2 w-52 rounded-xl bg-white/95 backdrop-blur-sm p-3
+             shadow-lg border border-neutral-200 text-xs space-y-2"
+    >
+      <label class="flex items-center justify-between gap-2">
+        <span class="text-neutral-600">Külső falszín:</span>
+        <input type="color" id={`${canvasId}-wall-input`} value={wallColor}
+               class="h-7 w-10 rounded cursor-pointer border border-neutral-200" />
+      </label>
+      <label class="flex items-center justify-between gap-2">
+        <span class="text-neutral-600">Tető színe:</span>
+        <input type="color" id={`${canvasId}-roof-input`} value={roofColor}
+               class="h-7 w-10 rounded cursor-pointer border border-neutral-200" />
+      </label>
+      <button
+        id={`${canvasId}-palette-apply`}
+        type="button"
+        class="w-full rounded-lg bg-primary text-white text-xs font-semibold py-1.5
+               hover:bg-primary-dark transition-colors"
+      >
+        Alkalmaz
+      </button>
+    </div>
+  </div>
+</div>
+
+<script
+  define:vars={{
+    canvasId,
+    initWidth: width,
+    initDepth: depth,
+    initWallColor: wallColor,
+    initRoofColor: roofColor,
+    initHasTerrace: hasTerrace,
+    initTerraceDepth: terraceDepth,
+    initWindows: windows,
+    initDoors: doors,
+  }}
+>
+(() => {
+  // Three.js betöltése CDN-ről
+  const existing = window.THREE;
+  if (existing) {
+    initViewer();
+  } else {
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    script.onload = () => initViewer();
+    document.head.appendChild(script);
+  }
+
+  function initViewer() {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    // ─── SCENE ────────────────────────────────────────────────────────────────
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x87CEEB); // égszínkék
+    scene.fog = new THREE.Fog(0x87CEEB, 30, 80);
+
+    // Camera
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 200);
+    camera.position.set(12, 9, 14);
+    camera.lookAt(0, 2, 0);
+
+    // ─── FÉNYEK ───────────────────────────────────────────────────────────────
+    const ambientLight = new THREE.AmbientLight(0xfff4e0, 0.7);
+    scene.add(ambientLight);
+
+    const sunLight = new THREE.DirectionalLight(0xfffde7, 1.2);
+    sunLight.position.set(15, 25, 10);
+    sunLight.castShadow = true;
+    sunLight.shadow.mapSize.set(2048, 2048);
+    sunLight.shadow.camera.near = 0.1;
+    sunLight.shadow.camera.far = 100;
+    sunLight.shadow.camera.left = -20;
+    sunLight.shadow.camera.right = 20;
+    sunLight.shadow.camera.top = 20;
+    sunLight.shadow.camera.bottom = -20;
+    scene.add(sunLight);
+
+    const fillLight = new THREE.DirectionalLight(0xc8e6f9, 0.3);
+    fillLight.position.set(-10, 5, -10);
+    scene.add(fillLight);
+
+    // ─── FŰ (finom vertex-color variációval) ───────────────────────────────────
+    const grassGeo = new THREE.PlaneGeometry(60, 60, 24, 24);
+    const grassBase = new THREE.Color(0x5d9e45);
+    const grassColors = new Float32Array(grassGeo.attributes.position.count * 3);
+    for (let i = 0; i < grassGeo.attributes.position.count; i++) {
+      const c = grassBase.clone().offsetHSL(0, (Math.random() - 0.5) * 0.06, (Math.random() - 0.5) * 0.1);
+      grassColors[i * 3] = c.r;
+      grassColors[i * 3 + 1] = c.g;
+      grassColors[i * 3 + 2] = c.b;
+    }
+    grassGeo.setAttribute('color', new THREE.BufferAttribute(grassColors, 3));
+    const grassMat = new THREE.MeshLambertMaterial({ vertexColors: true });
+    const grass = new THREE.Mesh(grassGeo, grassMat);
+    grass.rotation.x = -Math.PI / 2;
+    grass.receiveShadow = true;
+    scene.add(grass);
+
+    // Járófelület a ház előtt
+    const pathGeo = new THREE.PlaneGeometry(3, 5);
+    const pathMat = new THREE.MeshLambertMaterial({ color: 0xc0a882 });
+    const path = new THREE.Mesh(pathGeo, pathMat);
+    path.rotation.x = -Math.PI / 2;
+    path.position.set(0, 0.01, initDepth / 2 + 2.5);
+    path.receiveShadow = true;
+    scene.add(path);
+
+    // ─── ANYAGOK (a fal/tető szín-pickerrel élőben módosítható) ────────────────
+    const wallMat   = new THREE.MeshLambertMaterial({ color: initWallColor });
+    const roofMat   = new THREE.MeshLambertMaterial({ color: initRoofColor });
+    const windowMat = new THREE.MeshLambertMaterial({ color: 0x90CAF9, transparent: true, opacity: 0.75 });
+    const doorMat   = new THREE.MeshLambertMaterial({ color: 0x8D6E63 });
+    const socMat    = new THREE.MeshLambertMaterial({ color: 0xD0C8C0 }); // lábazat
+    const floorMat  = new THREE.MeshLambertMaterial({ color: 0xE8E0D8 });
+    const frameMat  = new THREE.MeshLambertMaterial({ color: 0xFFFFFF });
+    const gableMat  = new THREE.MeshLambertMaterial({ color: 0xEDE8E2, side: THREE.DoubleSide });
+    const ridgeMat  = new THREE.MeshLambertMaterial({ color: 0x8B0000 });
+    const terraceMat = new THREE.MeshLambertMaterial({ color: 0xBDB5A8 });
+    const postMat    = new THREE.MeshLambertMaterial({ color: 0x9E9E9E });
+
+    function box(w, h, d, mat, x, y, z, shadow = true) {
+      const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+      m.position.set(x, y, z);
+      m.castShadow = shadow;
+      m.receiveShadow = shadow;
+      return m;
+    }
+
+    /** N nyílás egyenletes elosztása egy fal mentén, a fal középpontjától mért eltolásként. */
+    function evenSlots(length, count) {
+      if (count <= 0) return [];
+      const usable = length * 0.7;
+      if (count === 1) return [0];
+      const step = usable / (count - 1);
+      return Array.from({ length: count }, (_, i) => -usable / 2 + i * step);
+    }
+
+    // ─── HÁZ ÉPÍTÉSE ──────────────────────────────────────────────────────────
+    const houseGroup = new THREE.Group();
+    scene.add(houseGroup);
+
+    const wallH = 2.8;
+    const wallThick = 0.25;
+
+    function clearGroup(g) {
+      g.traverse((o) => { if (o.geometry) o.geometry.dispose(); });
+      g.clear();
+    }
+
+    function buildHouse(opts) {
+      clearGroup(houseGroup);
+
+      const W = Math.max(3, opts.width || initWidth);
+      const D = Math.max(3, opts.depth || initDepth);
+      const winCount = Math.max(0, opts.windows ?? initWindows);
+      const doorCount = Math.max(1, opts.doors ?? initDoors);
+      const hasTerrace = !!(opts.hasTerrace ?? initHasTerrace);
+      const terraceDepth = opts.terraceDepth || initTerraceDepth;
+
+      // Lábazat
+      houseGroup.add(box(W + 0.1, 0.35, D + 0.1, socMat, 0, 0.175, 0));
+
+      // Falak (4 db, belül üres)
+      const wallY = 0.35 + wallH / 2;
+      houseGroup.add(box(W, wallH, wallThick, wallMat, 0, wallY, D / 2));   // elülső
+      houseGroup.add(box(W, wallH, wallThick, wallMat, 0, wallY, -D / 2));  // hátsó
+      houseGroup.add(box(wallThick, wallH, D, wallMat, -W / 2, wallY, 0));  // bal
+      houseGroup.add(box(wallThick, wallH, D, wallMat, W / 2, wallY, 0));   // jobb
+
+      // Padló / mennyezet lap
+      houseGroup.add(box(W, 0.12, D, floorMat, 0, 0.35, 0));
+
+      // Ablakok — a windows prop egyenlően elosztva a 4 falon
+      const base = Math.floor(winCount / 4);
+      const rem = winCount % 4;
+      const perWall = [base + (rem > 0 ? 1 : 0), base + (rem > 1 ? 1 : 0), base + (rem > 2 ? 1 : 0), base + (rem > 3 ? 1 : 0)];
+      const [frontWin, backWin, leftWin, rightWin] = perWall;
+
+      const winW = 1.1, winH = 1.0;
+      const winY = 0.35 + 1.5;
+
+      // A fal a középvonalától ± wallThick/2-ig ér — a nyílászáróknak ezen
+      // kívül kell lenniük, különben a tömör fal eltakarja őket.
+      const wallOuter = wallThick / 2;
+      const framePaneOff = wallOuter + 0.01; // keret: majdnem a fal síkjában
+      const winPaneOff = wallOuter + 0.035;  // üveg: a keret előtt
+      const doorPaneOff = wallOuter + 0.03;
+
+      // Elülső fal: ajtó(k) középen, ablakok szimmetrikusan körülöttük
+      const frontTotal = frontWin + doorCount;
+      const frontSlots = evenSlots(W, frontTotal);
+      const doorStart = Math.floor((frontTotal - doorCount) / 2);
+      const doorW = 1.0, doorH = 2.1;
+      const doorY = 0.35 + doorH / 2;
+      frontSlots.forEach((sx, i) => {
+        const isDoor = i >= doorStart && i < doorStart + doorCount;
+        if (isDoor) {
+          houseGroup.add(box(doorW, doorH, 0.05, doorMat, sx, doorY, D / 2 + doorPaneOff));
+          houseGroup.add(box(doorW + 0.1, 0.05, 0.4, socMat, sx, 0.35, D / 2 + wallOuter + 0.2));
+        } else {
+          houseGroup.add(box(winW + 0.1, winH + 0.1, 0.03, frameMat, sx, winY, D / 2 + framePaneOff));
+          houseGroup.add(box(winW, winH, 0.04, windowMat, sx, winY, D / 2 + winPaneOff));
+        }
+      });
+
+      // Hátsó fal
+      evenSlots(W, backWin).forEach((sx) => {
+        houseGroup.add(box(winW + 0.1, winH + 0.1, 0.03, frameMat, sx, winY, -D / 2 - framePaneOff));
+        houseGroup.add(box(winW, winH, 0.04, windowMat, sx, winY, -D / 2 - winPaneOff));
+      });
+
+      // Oldalfalak
+      evenSlots(D, leftWin).forEach((sz) => {
+        houseGroup.add(box(0.03, winH + 0.1, winW + 0.1, frameMat, -W / 2 - framePaneOff, winY, sz));
+        houseGroup.add(box(0.04, winH, winW, windowMat, -W / 2 - winPaneOff, winY, sz));
+      });
+      evenSlots(D, rightWin).forEach((sz) => {
+        houseGroup.add(box(0.03, winH + 0.1, winW + 0.1, frameMat, W / 2 + framePaneOff, winY, sz));
+        houseGroup.add(box(0.04, winH, winW, windowMat, W / 2 + winPaneOff, winY, sz));
+      });
+
+      // ─── TETŐ ─────────────────────────────────────────────────────────────
+      const roofTop = 0.35 + wallH;
+      const overhang = 0.5;
+      const ridgeH = Math.min(W * 0.28, 2.2);
+      const halfW = W / 2 + overhang;
+      const halfD = D / 2 + overhang;
+
+      const leftShape = new THREE.Shape();
+      leftShape.moveTo(0, 0);
+      leftShape.lineTo(-halfW, 0);
+      leftShape.lineTo(0, ridgeH);
+      leftShape.lineTo(0, 0);
+      const leftRoof = new THREE.Mesh(
+        new THREE.ExtrudeGeometry(leftShape, { depth: D + overhang * 2, bevelEnabled: false }),
+        roofMat
+      );
+      leftRoof.position.set(0, roofTop, -halfD);
+      leftRoof.castShadow = true;
+      houseGroup.add(leftRoof);
+
+      const rightShape = new THREE.Shape();
+      rightShape.moveTo(0, 0);
+      rightShape.lineTo(halfW, 0);
+      rightShape.lineTo(0, ridgeH);
+      rightShape.lineTo(0, 0);
+      const rightRoof = new THREE.Mesh(
+        new THREE.ExtrudeGeometry(rightShape, { depth: D + overhang * 2, bevelEnabled: false }),
+        roofMat
+      );
+      rightRoof.position.set(0, roofTop, -halfD);
+      rightRoof.castShadow = true;
+      houseGroup.add(rightRoof);
+
+      // Oromzatok (háromszög falak)
+      [D / 2, -D / 2].forEach((gz, i) => {
+        const gShape = new THREE.Shape();
+        gShape.moveTo(-halfW, 0);
+        gShape.lineTo(halfW, 0);
+        gShape.lineTo(0, ridgeH);
+        gShape.lineTo(-halfW, 0);
+        const gMesh = new THREE.Mesh(new THREE.ShapeGeometry(gShape), gableMat);
+        gMesh.position.set(0, roofTop, gz);
+        gMesh.rotation.y = i === 0 ? 0 : Math.PI;
+        houseGroup.add(gMesh);
+      });
+
+      // Gerincdeszka
+      houseGroup.add(box(0.12, 0.12, D + overhang * 2 + 0.1, ridgeMat, 0, roofTop + ridgeH + 0.06, 0));
+
+      // Terasz — csak ha hasTerrace
+      if (hasTerrace) {
+        const terrW = W * 0.5;
+        const terrH = 0.35 + wallH - 0.5;
+        houseGroup.add(box(terrW, 0.08, terraceDepth, terraceMat, 0, terrH, D / 2 + terraceDepth / 2));
+        [-terrW / 2 + 0.2, terrW / 2 - 0.2].forEach((tx) => {
+          houseGroup.add(box(0.1, terrH, 0.1, postMat, tx, terrH / 2, D / 2 + terraceDepth - 0.1));
+        });
+      }
+
+      return { W, D };
+    }
+
+    buildHouse({
+      width: initWidth, depth: initDepth, windows: initWindows,
+      doors: initDoors, hasTerrace: initHasTerrace, terraceDepth: initTerraceDepth,
+    });
+
+    // Kerti növények (statikusak, nem függenek a ház méretétől)
+    function addBush(bx, bz, r, color) {
+      const b = new THREE.Mesh(new THREE.SphereGeometry(r, 8, 6), new THREE.MeshLambertMaterial({ color }));
+      b.position.set(bx, r * 0.6, bz);
+      b.castShadow = true;
+      scene.add(b);
+    }
+    addBush(initWidth / 2 + 1.2, initDepth / 2 - 1, 0.7, 0x388E3C);
+    addBush(-initWidth / 2 - 1.2, initDepth / 2 - 1, 0.6, 0x2E7D32);
+    addBush(initWidth / 2 + 2, initDepth / 2 - 3, 0.5, 0x43A047);
+    addBush(-initWidth / 2 - 1.8, initDepth / 4, 0.8, 0x1B5E20);
+
+    function addTree(tx, tz) {
+      const trunkH = 2.5;
+      const trunk = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.15, 0.2, trunkH, 8),
+        new THREE.MeshLambertMaterial({ color: 0x795548 })
+      );
+      trunk.position.set(tx, trunkH / 2, tz);
+      trunk.castShadow = true;
+      scene.add(trunk);
+      [0, 1.0, 1.8].forEach((ly, i) => {
+        const r = 1.5 - i * 0.35;
+        const leaves = new THREE.Mesh(
+          new THREE.ConeGeometry(r, 1.5, 8),
+          new THREE.MeshLambertMaterial({ color: i === 0 ? 0x2E7D32 : 0x388E3C })
+        );
+        leaves.position.set(tx, trunkH + ly, tz);
+        leaves.castShadow = true;
+        scene.add(leaves);
+      });
+    }
+    addTree(-initWidth / 2 - 4, -initDepth / 2 + 1);
+    addTree(initWidth / 2 + 5, -initDepth / 2 - 1);
+
+    // ─── EGÉR ROTÁCIÓ ─────────────────────────────────────────────────────────
+    let isDragging = false;
+    let prevX = 0, prevY = 0;
+    let autoRotate = true;
+    let autoRotateTimer = null;
+
+    let radius = Math.max(12, (initWidth + initDepth) * 1.1), theta = 0.5, phi = 0.9;
+    function updateCamera() {
+      camera.position.set(
+        radius * Math.sin(phi) * Math.sin(theta),
+        radius * Math.cos(phi) + 2,
+        radius * Math.sin(phi) * Math.cos(theta)
+      );
+      camera.lookAt(0, 2, 0);
+    }
+
+    canvas.addEventListener('mousedown', e => {
+      isDragging = true; autoRotate = false;
+      clearTimeout(autoRotateTimer);
+      prevX = e.clientX; prevY = e.clientY;
+      canvas.style.cursor = 'grabbing';
+    });
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      canvas.style.cursor = 'grab';
+      autoRotateTimer = setTimeout(() => { autoRotate = true; }, 3000);
+    });
+    canvas.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      const dx = (e.clientX - prevX) * 0.008;
+      const dy = (e.clientY - prevY) * 0.008;
+      theta -= dx;
+      phi = Math.max(0.2, Math.min(1.4, phi + dy));
+      prevX = e.clientX; prevY = e.clientY;
+      updateCamera();
+    });
+    canvas.style.cursor = 'grab';
+
+    // Touch
+    let lastTouch = null;
+    canvas.addEventListener('touchstart', e => {
+      lastTouch = e.touches[0]; autoRotate = false;
+    }, { passive: true });
+    canvas.addEventListener('touchmove', e => {
+      if (!lastTouch) return;
+      const t = e.touches[0];
+      theta -= (t.clientX - lastTouch.clientX) * 0.008;
+      phi = Math.max(0.2, Math.min(1.4, phi + (t.clientY - lastTouch.clientY) * 0.006));
+      lastTouch = t;
+      updateCamera();
+    }, { passive: true });
+    canvas.addEventListener('touchend', () => {
+      autoRotateTimer = setTimeout(() => { autoRotate = true; }, 4000);
+    });
+
+    // Scroll zoom
+    canvas.addEventListener('wheel', e => {
+      radius = Math.max(10, Math.min(35, radius + e.deltaY * 0.03));
+      updateCamera();
+    }, { passive: true });
+
+    // ─── 2D → 3D SZINKRON ───────────────────────────────────────────────────
+    function rebuildHouse(detail) {
+      if (!detail || !detail.width || !detail.depth) return;
+      buildHouse(detail);
+      radius = Math.max(12, (detail.width + detail.depth) * 1.1);
+      updateCamera();
+    }
+    window.addEventListener('plannerUpdate', (e) => rebuildHouse(e.detail));
+
+    // ─── SZÍN-VÁLTÁS (picker overlay + külső eseményforrás) ────────────────
+    window.addEventListener('house3dColorChange', (e) => {
+      const d = e.detail || {};
+      if (d.wall) wallMat.color.set(d.wall);
+      if (d.roof) roofMat.color.set(d.roof);
+    });
+
+    const paletteBtn = document.getElementById(`${canvasId}-palette-btn`);
+    const palettePanel = document.getElementById(`${canvasId}-palette-panel`);
+    const wallInput = document.getElementById(`${canvasId}-wall-input`);
+    const roofInput = document.getElementById(`${canvasId}-roof-input`);
+    const paletteApply = document.getElementById(`${canvasId}-palette-apply`);
+    if (paletteBtn && palettePanel) {
+      paletteBtn.addEventListener('click', () => {
+        palettePanel.classList.toggle('hidden');
+      });
+    }
+    if (paletteApply && wallInput && roofInput) {
+      paletteApply.addEventListener('click', () => {
+        window.dispatchEvent(new CustomEvent('house3dColorChange', {
+          detail: { wall: wallInput.value, roof: roofInput.value },
+        }));
+        palettePanel.classList.add('hidden');
+      });
+    }
+
+    updateCamera();
+
+    // ─── RENDER LOOP ──────────────────────────────────────────────────────────
+    function resize() {
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      if (w === 0 || h === 0) return;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    new ResizeObserver(resize).observe(canvas);
+
+    // Hint eltüntetése
+    const hint = document.getElementById(`${canvasId}-hint`);
+    if (hint) hint.style.transition = 'opacity 1s';
+    setTimeout(() => { if (hint) hint.style.opacity = '0'; }, 4000);
+
+    let rafId = null;
+    function animate() {
+      rafId = requestAnimationFrame(animate);
+      if (autoRotate) {
+        theta += 0.003;
+        updateCamera();
+      }
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+})();
+</script>

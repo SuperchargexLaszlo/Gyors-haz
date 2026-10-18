@@ -80,7 +80,7 @@ A vételáron felül a következő tételekkel érdemes számolni:
 
 Sokan kérdezik, hogy egy 100 nm körüli konténerház vagy egy könnyűszerkezetes ház olcsóbb-e valójában. A válasz árnyalt: a konténerház listaára jellemzően alacsonyabb, de a belső kivitelezési munkák (gipszkarton, vakolat, festés) hozzáadásával a végösszeg közelebb kerülhet egymáshoz.
 
-A könnyűszerkezetes házaknál (pl. a [86 m²-es modellünk](/konnyuszerkezetes/konnyuszerkezetes-haz-86m2) 32.000 EUR-tól) a belső gipszkarton és az összes burkolat az árban van — tehát a „kulcsrakész" összköltség könnyebben kalkulálható. A konténerháznál viszont a gyorsabb telepítés és a moduláris bővíthetőség lehet előny, ha a helyszín vagy a telek adottságai ezt kívánják.
+A könnyűszerkezetes házaknál (pl. a [88 m²-es Frézia](/konnyuszerkezetes/konnyuszerkezetes-haz-88m2), alapáron 23 063 040 Ft + ÁFA) a belső gipszkarton már az alapárban benne van, az alap, a burkolás és a festés pedig a kulcsrakész árban (49 280 000 Ft + ÁFA), így az összköltség előre látható. A konténerháznál viszont a gyorsabb telepítés és a moduláris bővíthetőség lehet előny, ha a helyszín vagy a telek adottságai ezt kívánják.
 
 ## Gyakran ismételt kérdések
 

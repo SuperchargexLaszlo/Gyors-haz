@@ -3,14 +3,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { getProductsByKategoria } from '../../lib/products';
+import { getProductsByKategoria, formatM2 } from '../../lib/products';
 import PlannerCta from '../../components/PlannerCta.astro';
 
 const products = await getProductsByKategoria('modulhaz');
 
-const title = 'Modulházak 27–137 m² Készlet | Ár és Típusok | gyors-haz.hu';
+const eur = (n: number) => n.toLocaleString('hu-HU').replace(/\s/g, '.');
+const arazott = products.filter((p) => p.ar_eur > 0);
+const minM2 = Math.min(...products.map((p) => p.meret_m2));
+const maxM2 = Math.max(...products.map((p) => p.meret_m2));
+const minEur = Math.min(...arazott.map((p) => p.ar_eur));
+
+const title = `Ticab modulházak ${formatM2(minM2)}–${maxM2} m² | Árak és típusok | gyors-haz.hu`;
 const description =
-  'Modulházkészletek 11.800 EUR-tól. 27–137 m², előre gyártott elemek, gyors összeszerlés. Hitelezhetőek. Kérjen ajánlatot!';
+  `Ticab modulházak ${formatM2(minM2)}–${maxM2} m²-ig, ${eur(minEur)} EUR + ÁFA-tól. Gyárilag kész modulok, fa vázszerkezet, ásvány- és bazaltgyapot szigetelés. Kérjen ajánlatot!`;
 
 const itemListSchema = {
   '@context': 'https://schema.org',
@@ -40,8 +46,8 @@ const faqs = [
     a: 'A gyártási idő 3–5 hét, a helyszíni összeszerlés mindössze 3–7 nap, az alap és a közművek előkészítésétől függően. Ez jóval gyorsabb a hagyományos építésnél, és az időjárástól sem függ annyira a minőség.',
   },
   {
-    q: 'Mit tartalmaz a modulházkészlet ára?',
-    a: 'Az ár tartalmazza: külső és belső falak (10 cm hungarocell szigetelés), horganyzott acélváz, bejárati és beltéri ajtók, 3 rétegű üveg ablakok, teljes tető (cserepes lemez, 35° dőlés, szigetelés), eresz és csatorna, gipszkarton, elektromos és vízvezeték-készlet, zuhanytálca, mosdó, monoblokkos WC, 280 cm belmagasság.',
+    q: 'Mit tartalmaz a modulház ára?',
+    a: 'A Ticab adatlapja szerint az ár tartalmazza a szárított, kezelt fa vázszerkezetet, a padló és a födém 200 mm-es ásványgyapot, a falak 150 mm-es bazaltgyapot szigetelését, a kétkamrás műanyag ablakokat, az ajtókat, a falban vezetett vízvezetéket, a vízmelegítőt, a zuhanykabint, a WC-t és a villanyszerelést. Az ár nem tartalmazza a szállítást, az alapozást, a külső közműbekötéseket és a darus lerakodást.',
   },
   {
     q: 'Szükséges-e alapozás a modulháznál?',
@@ -81,18 +87,18 @@ const productsWithSize = products.map((p) => ({
         <p>
           Az <strong>MD házépítő készlet</strong> alapú modulház a leggyorsabb út a saját otthon felé — a gyárilag
           előre gyártott elemeket mindössze néhány nap alatt szerelik össze a helyszínen.
-          Kínálatunkban 27 m²-től 137 m²-ig találja meg az igényeinek megfelelő típust, <strong>11.800 EUR-tól</strong>.
+          Kínálatunkban {products.length} Ticab modell van {formatM2(minM2)} m²-től {maxM2} m²-ig, <strong>{eur(minEur)} EUR + ÁFA-tól</strong>.
         </p>
         <p>
           Az <strong>előre gyártott</strong> modulházelemek gyári körülmények között készülnek, ami egyenletes minőséget
-          és pontosabb illeszkedést garantál a hagyományos helyszíni építéssel szemben. A horganyzott acélváz tartós,
-          korrózióálló vázat biztosít, amelyre a 10 cm hungarocell szigetelés réteg kerül.
+          és pontosabb illeszkedést garantál a hagyományos helyszíni építéssel szemben. A vázszerkezet szárított,
+          kezelt fa, a falakban 150 mm bazaltgyapot, a padlóban és a födémben 200 mm ásványgyapot szigetelés van (a tiny house modelleknél 80 mm polisztirol).
         </p>
         <p>
           A <strong>gyors összeszerlés</strong> révén a modulház a helyszíni munkálatok megkezdésétől számítva 1–2
           héten belül lakható állapotba kerülhet — feltéve, hogy az alapozás és a közművek előzetesen elkészültek.
-          Minden egységünk tartalmazza a teljes elektromos és vízvezeték-készletet, a 3 rétegű üveg ablakokat és a
-          280 cm-es belmagasságot biztosító szerkezetet.
+          A lakómodellek ára tartalmazza a villanyszerelést, a falban vezetett vízvezetéket és a kétkamrás műanyag
+          ablakokat.
         </p>
         <p>
           Termékeink hitelezhetőek. Bankfüggetlen tanácsadóval segítünk megtalálni a legjobb finanszírozási megoldást.
@@ -163,7 +169,7 @@ const productsWithSize = products.map((p) => ({
           href="/konnyuszerkezetes"
           class="rounded-lg border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-sm hover:border-primary hover:text-primary transition-colors"
         >
-          → Könnyűszerkezetes házak 22–126 m²
+          → Könnyűszerkezetes házak 27–137 m²
         </a>
         <a
           href="/kontenerhaz"

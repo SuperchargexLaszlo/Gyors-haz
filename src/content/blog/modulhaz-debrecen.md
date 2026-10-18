@@ -91,7 +91,7 @@ Debreceni modulház ajánlathoz [töltse ki kapcsolatfelvételi formunkat](/kapc
 
 ### Mennyibe kerül egy Ticab modulház Debrecenbe szállítva?
 
-A Ticab modellek ára egyedi kalkuláció alapján adható meg, listaár nincs. A szállítási pótdíj Debrecenbe kb. 180.000–280.000 Ft. Pontos ajánlatért [vegye fel velünk a kapcsolatot](/kapcsolat).
+A Ticab modellek listaára 22.200 EUR-tól (Seville, 22 m²) 150.000 EUR-ig terjed, + ÁFA. A szállítási pótdíj Debrecenbe kb. 180.000–280.000 Ft. Pontos ajánlatért [vegye fel velünk a kapcsolatot](/kapcsolat).
 
 ### Meddig tart a folyamat a szerződéstől a kulcsátadásig?
 

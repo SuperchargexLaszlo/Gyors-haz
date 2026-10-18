@@ -1,6 +1,6 @@
 ---
 import type { Product } from '../lib/products';
-import { formatAr, negyzetmeterAr } from '../lib/products';
+import { formatAr, formatKulcsrakeszAr, formatM2, negyzetmeterAr } from '../lib/products';
 
 interface Props {
   product: Product;
@@ -15,7 +15,7 @@ const kategoriaNev: Record<Product['kategoria'], string> = {
   kontenerhoz: 'Konténerház',
 };
 
-const altSzoveg = `${product.nev} – ${product.meret_m2} m², ${product.szobak} szoba${product.konyha ? ', konyha' : ''}, ${product.furdo} fürdő | Gyors Ház`;
+const altSzoveg = `${product.nev} – ${formatM2(product.meret_m2)} m²${product.szobak > 0 ? `, ${product.szobak} szoba` : ''}${product.konyha ? ', konyha' : ''}${product.furdo > 0 ? `, ${product.furdo} fürdő` : ''} | Gyors Ház`;
 ---
 
 <article
@@ -33,7 +33,7 @@ const altSzoveg = `${product.nev} – ${product.meret_m2} m², ${product.szobak}
 
   <!-- Méret badge -->
   <div class="absolute top-3 right-3 z-10 rounded-full bg-primary/90 px-3 py-1 text-xs font-semibold text-white shadow">
-    {product.meret_m2} m²
+    {formatM2(product.meret_m2)} m²
   </div>
 
   <!-- Kép -->
@@ -71,30 +71,37 @@ const altSzoveg = `${product.nev} – ${product.meret_m2} m², ${product.szobak}
     </h3>
 
     <!-- Ár -->
-    <p class="mb-3 font-sans font-bold text-lg text-primary">
-      {formatAr(product)}
-      <span class="ml-1 text-xs font-normal text-gray-400">{negyzetmeterAr(product)}</span>
-    </p>
+    {product.ar_kulcsrakesz_ft ? (
+      <div class="mb-3 text-sm">
+        <p class="font-sans text-gray-500">Alapár: <span class="font-bold text-lg text-primary">{formatAr(product)}</span></p>
+        <p class="font-sans text-gray-500">Kulcsrakész: <span class="font-bold text-primary">{formatKulcsrakeszAr(product)}</span></p>
+      </div>
+    ) : (
+      <p class="mb-3 font-sans font-bold text-lg text-primary">
+        {formatAr(product)}
+        <span class="ml-1 text-xs font-normal text-gray-400">{negyzetmeterAr(product)}</span>
+      </p>
+    )}
 
     <!-- Ikonok -->
     <div class="mb-4 flex flex-wrap gap-3 text-sm text-gray-600">
       <!-- Szobák -->
-      <span class="flex items-center gap-1">
+      {product.szobak > 0 && (<span class="flex items-center gap-1">
         <svg class="h-4 w-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
         </svg>
         <span>{product.szobak} szoba</span>
-      </span>
+      </span>)}
 
       <!-- Fürdő -->
-      <span class="flex items-center gap-1">
+      {product.furdo > 0 && (<span class="flex items-center gap-1">
         <svg class="h-4 w-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
         <span>{product.furdo} fürdő</span>
-      </span>
+      </span>)}
 
       <!-- Konyha -->
       {product.konyha && (
@@ -114,7 +121,7 @@ const altSzoveg = `${product.nev} – ${product.meret_m2} m², ${product.szobak}
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
           </svg>
-          <span>{product.terasz_m2} m² terasz</span>
+          <span>{formatM2(product.terasz_m2)} m² terasz</span>
         </span>
       )}
     </div>

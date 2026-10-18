@@ -4,29 +4,29 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import HazakGrid from '../components/HazakGrid.astro';
 import FaqSection from '../components/FaqSection.astro';
 
-const title = 'Könnyűszerkezetes Ház Árak 2026 – 16.000 EUR-tól 43.000 EUR-ig';
+const title = 'Könnyűszerkezetes Ház Árak 2026 – 7,1 millió Ft-tól 35,9 millió Ft-ig';
 const description =
-  'Könnyűszerkezetes ház árak 2026-ban: 16.000 EUR-tól (22 m²) 43.000 EUR-ig (126 m²). Teljes modellsor, méretek, mit tartalmaz az ár.';
+  'Könnyűszerkezetes ház árak 2026-ban: 7,1 millió Ft-tól (27 m²) 35,9 millió Ft-ig (137 m²). Teljes modellsor, méretek, mit tartalmaz az ár.';
 const pubDate = new Date('2026-08-01');
 
-const ajanlottSlugok = ['konnyuszerkezetes-haz-52m2', 'konnyuszerkezetes-haz-78m2', 'konnyuszerkezetes-haz-96m2'];
+const ajanlottSlugok = ['konnyuszerkezetes-haz-47m2', 'konnyuszerkezetes-haz-88m2', 'konnyuszerkezetes-haz-95m2'];
 
 const faqs = [
   {
     q: 'Mennyibe kerül a legolcsóbb könnyűszerkezetes ház?',
-    a: 'A 22 m²-es belépő modellünk 16.000 EUR + ÁFA áron kapható.',
+    a: 'A 27 m²-es Árnika alapára 7 076 160 Ft + ÁFA, kulcsrakész ára 15 422 400 Ft + ÁFA.',
   },
   {
     q: 'Mennyibe kerül a legnagyobb modell?',
-    a: 'A 126 m²-es, 4 szobás modellünk 43.000 EUR + ÁFA áron érhető el.',
+    a: 'A 137 m²-es, 4 hálószobás Jázmin alapára 35 904 960 Ft + ÁFA, kulcsrakész ára 76 720 000 Ft + ÁFA.',
   },
   {
     q: 'Mit tartalmaz az ár?',
-    a: 'A horganyzott acélváz szerkezetet, 10 cm hungarocell szigetelést, háromrétegű üvegezésű nyílászárókat, belső gipszkarton burkolatot, elektromos és vízvezeték rendszert, valamint a szállítást 100 km-en belül.',
+    a: 'Az alapár: acélváz, 10 cm vastag falak, 3 rétegű üvegezésű ablakok, tető, belső gipszkartonozás, villanyszerelés, vízkiállások, szállítás és szerelés. A kulcsrakész ár emellett: sávalap, aljzat, homlokzati szigetelés, burkolás és festés.',
   },
   {
     q: 'Mit nem tartalmaz az ár?',
-    a: 'Az alapozást, a telek előkészítését és a közüzemi bekötéseket – ezeket helyi kivitelezővel koordináljuk.',
+    a: 'Az alapár nem tartalmazza az alapozást, a burkolást és a festést, ezek a kulcsrakész árban vannak. A tervezés, az engedélyeztetés, a közüzemi bekötések és a fűtési rendszer egyik árban sincs benne.',
   },
   {
     q: 'Mennyi az alku lehetősége a könnyűszerkezetes ház árán?',
@@ -38,11 +38,11 @@ const faqs = [
   },
   {
     q: 'Mennyibe kerül összesen, alapozással és szállítással?',
-    a: 'Egy 52 m²-es (22.000 EUR + ÁFA) modellnél hozzáadva az alapozást (~1.400.000 Ft + ÁFA) és a szállítást (100 km-en belül ingyenes), az összköltség kb. 10,2–10,6 millió Ft + ÁFA között mozog.',
+    a: 'A kulcsrakész ár az alapot és a szállítást is tartalmazza. A 47 m²-es Csillagvirágnál ez 27 109 600 Ft + ÁFA. A kivitelező a budapesti vagy pécsi telephelyétől kiszállási díjat számolhat fel.',
   },
   {
-    q: 'Mi a különbség a 86 m²-es és a 87 m²-es modell között?',
-    a: 'A két modell közel azonos alapterületű, de az alaprajzi elrendezésük eltér. Az árkülönbség (32.000 vs. 34.000 EUR) a különböző belső elosztásból és kivitelből ered. Érdemes mindkét alaprajzot megnézni, mielőtt döntesz.',
+    q: 'Mi a különbség a 92 m²-es és a 95 m²-es modell között?',
+    a: 'A 92 m²-es Gyöngyvirágban 2 hálószoba és 16 m²-es fedett terasz van, a 95 m²-es Hangában 3 hálószoba, terasz 6 m²-től kérhető. Az alapár 24 111 360, illetve 24 897 600 Ft + ÁFA.',
   },
 ];
 
@@ -66,7 +66,7 @@ const breadcrumbItems = [
   pubDate={pubDate}
   category="konnyuszerkezetes"
   tags={['könnyűszerkezetes', 'árak', '2026']}
-  summary="A könnyűszerkezetes házaink ára 2026-ban 16.000 EUR-tól (22 m²) 43.000 EUR-ig (126 m²) terjed. Minden modell horganyzott acélvázra épül, gyárilag szigetelve, kulcsrakész kivitelben."
+  summary="A könnyűszerkezetes házaink ára 2026-ban nettó 7 076 160 Ft-tól (27 m²) 35 904 960 Ft-ig (137 m²) terjed. Kulcsrakészen nettó 15 422 400 Ft-tól 76 720 000 Ft-ig. Minden modell acélvázra épül, 10 cm vastag előregyártott falakkal."
 >
   <Breadcrumb items={breadcrumbItems} />
 
@@ -83,16 +83,16 @@ const breadcrumbItems = [
         <tr><th>Modell</th><th>Alapterület</th><th>Szobák</th><th>Ár (+ ÁFA)</th><th>Nm-ár</th></tr>
       </thead>
       <tbody>
-        <tr><td>22 m²-es modell</td><td>22 m²</td><td>1</td><td>16.000 EUR</td><td>~727 EUR/m²</td></tr>
-        <tr><td>32 m²-es modell</td><td>32 m²</td><td>1</td><td>18.600 EUR</td><td>~581 EUR/m²</td></tr>
-        <tr><td>35 m²-es modell</td><td>35 m²</td><td>1</td><td>20.300 EUR</td><td>~580 EUR/m²</td></tr>
-        <tr><td>52 m²-es modell</td><td>52 m²</td><td>2</td><td>22.000 EUR</td><td>~423 EUR/m²</td></tr>
-        <tr><td>62 m²-es modell</td><td>62 m²</td><td>2</td><td>23.000 EUR</td><td>~371 EUR/m²</td></tr>
-        <tr><td>78 m²-es modell</td><td>78 m²</td><td>3</td><td>31.000 EUR</td><td>~397 EUR/m²</td></tr>
-        <tr><td>86 m²-es modell</td><td>86 m²</td><td>3</td><td>32.000 EUR</td><td>~372 EUR/m²</td></tr>
-        <tr><td>87 m²-es modell</td><td>87 m²</td><td>3</td><td>34.000 EUR</td><td>~391 EUR/m²</td></tr>
-        <tr><td>96 m²-es modell</td><td>96 m²</td><td>3</td><td>35.000 EUR</td><td>~365 EUR/m²</td></tr>
-        <tr><td>126 m²-es modell</td><td>126 m²</td><td>4</td><td>43.000 EUR</td><td>~341 EUR/m²</td></tr>
+        <tr><td>Árnika (27 m²)</td><td>27 m²</td><td>1</td><td>7 076 160 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
+        <tr><td>Boglárka (37 m²)</td><td>37 m²</td><td>1</td><td>9 696 960 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
+        <tr><td>Csillagvirág (47 m²)</td><td>47 m²</td><td>2</td><td>12 317 760 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
+        <tr><td>Dália (58 m²)</td><td>58 m²</td><td>2</td><td>15 200 640 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
+        <tr><td>Erika (69 m²)</td><td>69 m²</td><td>2</td><td>18 083 520 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
+        <tr><td>Frézia (88 m²)</td><td>88 m²</td><td>3</td><td>23 063 040 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
+        <tr><td>Gyöngyvirág (92 m²)</td><td>92 m²</td><td>2</td><td>24 111 360 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
+        <tr><td>Hanga (95 m²)</td><td>95 m²</td><td>3</td><td>24 897 600 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
+        <tr><td>Ibolya (106 m²)</td><td>106 m²</td><td>3</td><td>27 780 480 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
+        <tr><td>Jázmin (137 m²)</td><td>137 m²</td><td>4</td><td>35 904 960 Ft + ÁFA</td><td>~262 080 Ft/m²</td></tr>
       </tbody>
     </table>
   </div>
@@ -181,9 +181,9 @@ const breadcrumbItems = [
 
   <p>Jó választás, ha:</p>
   <ul>
-    <li>egy-két fős háztartásként a 22-35 m²-es modellek illenek Önhöz</li>
-    <li>családosként az 52-96 m²-es modellek nyújtanak elegendő teret</li>
-    <li>nagycsaládosként a 126 m²-es modell a legjobb választás</li>
+    <li>egy-két fős háztartásként a 27–47 m²-es modellek illenek Önhöz</li>
+    <li>családosként az 58–106 m²-es modellek nyújtanak elegendő teret</li>
+    <li>nagycsaládosként a 137 m²-es Jázmin a legjobb választás</li>
   </ul>
 
   <div class="not-prose">

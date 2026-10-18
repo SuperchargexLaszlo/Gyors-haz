@@ -2,9 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import ProductGallery from '../../components/ProductGallery.astro';
-import { getProductsByKategoria, formatAr, negyzetmeterAr } from '../../lib/products';
+import { getProductsByKategoria, formatAr, formatEur, formatM2, negyzetmeterAr } from '../../lib/products';
 import type { Product } from '../../lib/products';
 import PlannerCta from '../../components/PlannerCta.astro';
+import House3DViewer from '../../components/House3DViewer.astro';
 
 export const getStaticPaths = async () => {
   const products = await getProductsByKategoria('modulhaz');
@@ -19,6 +20,9 @@ interface Props {
 }
 
 const { product } = Astro.props;
+
+const w3d = Math.round(Math.sqrt(product.meret_m2 * 1.3) * 10) / 10;
+const d3d = Math.round((product.meret_m2 / w3d) * 10) / 10;
 
 const title = `${product.nev} – Ár, Jellemzők | gyors-haz.hu`;
 const description = product.leiras.slice(0, 155);
@@ -61,23 +65,41 @@ const productSchema = {
         <p class="text-3xl font-bold text-primary mb-1">{formatAr(product)}</p>
         <p class="text-sm text-gray-500 mb-6">{negyzetmeterAr(product)}</p>
 
+        {product.valtozatok?.length ? (
+          <table class="w-full text-sm mb-6 border border-gray-200 rounded-lg overflow-hidden">
+            <thead class="bg-gray-50 text-gray-500">
+              <tr><th class="text-left px-3 py-2 font-medium">Változat</th><th class="text-left px-3 py-2 font-medium">Méret</th><th class="text-right px-3 py-2 font-medium">Ár</th></tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-100"><td class="px-3 py-2">Alapváltozat</td><td class="px-3 py-2">{formatM2(product.meret_m2)} m²</td><td class="px-3 py-2 text-right font-semibold">{formatEur(product.ar_eur, product.afa)}</td></tr>
+              {product.valtozatok.map((v) => (
+                <tr class="border-t border-gray-100"><td class="px-3 py-2">{v.nev}</td><td class="px-3 py-2">{formatM2(v.meret_m2)} m²</td><td class="px-3 py-2 text-right font-semibold">{formatEur(v.ar_eur, product.afa)}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        ) : null}
+
         <dl class="grid grid-cols-2 gap-3 text-sm mb-6">
           <div class="bg-gray-50 rounded-lg p-3">
             <dt class="text-gray-500 mb-0.5">Alapterület</dt>
-            <dd class="font-semibold text-gray-900">{product.meret_m2} m²</dd>
+            <dd class="font-semibold text-gray-900">{formatM2(product.meret_m2)} m²</dd>
           </div>
-          <div class="bg-gray-50 rounded-lg p-3">
-            <dt class="text-gray-500 mb-0.5">Hálószobák</dt>
-            <dd class="font-semibold text-gray-900">{product.szobak} db</dd>
-          </div>
-          <div class="bg-gray-50 rounded-lg p-3">
-            <dt class="text-gray-500 mb-0.5">Fürdőszoba</dt>
-            <dd class="font-semibold text-gray-900">{product.furdo} db</dd>
-          </div>
+          {product.szobak > 0 && (
+            <div class="bg-gray-50 rounded-lg p-3">
+              <dt class="text-gray-500 mb-0.5">Hálószobák</dt>
+              <dd class="font-semibold text-gray-900">{product.szobak} db</dd>
+            </div>
+          )}
+          {product.furdo > 0 && (
+            <div class="bg-gray-50 rounded-lg p-3">
+              <dt class="text-gray-500 mb-0.5">Fürdőszoba</dt>
+              <dd class="font-semibold text-gray-900">{product.furdo} db</dd>
+            </div>
+          )}
           {product.terasz_m2 > 0 && (
             <div class="bg-gray-50 rounded-lg p-3">
               <dt class="text-gray-500 mb-0.5">Terasz</dt>
-              <dd class="font-semibold text-gray-900">{product.terasz_m2} m²</dd>
+              <dd class="font-semibold text-gray-900">{formatM2(product.terasz_m2)} m²</dd>
             </div>
           )}
         </dl>
@@ -98,6 +120,73 @@ const productSchema = {
         </a>
       </div>
     </div>
+
+    <!-- 3D előnézet + saját tervezés -->
+    <div class="mb-12 rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 to-transparent p-6">
+      <div class="flex items-start gap-4 mb-4">
+        <span class="text-3xl">📐</span>
+        <div>
+          <h2 class="font-bold text-primary text-lg">
+            Tervezd meg a saját alaprajzodat!
+          </h2>
+          <p class="text-sm text-neutral-600 mt-1 leading-relaxed">
+            Nem kell megelégedned a standard alaprajzzal.
+            Ingyenes tervezőnkkel megrajzolhatod saját elképzelésedet —
+            szobák elrendezése, méretek, bútorok. Küldd el nekünk
+            és 24 órán belül személyre szabott ajánlatot adunk rá.
+          </p>
+        </div>
+      </div>
+
+      <House3DViewer
+        width={w3d}
+        depth={d3d}
+        label={product.nev}
+        hasTerrace={product.terasz_m2 > 0}
+        windows={Math.max(4, (product.szobak || 1) * 2)}
+        doors={1}
+      />
+
+      <!-- Szín-picker -->
+      <div class="mt-3 flex flex-wrap gap-3 items-center">
+        <label class="flex items-center gap-2 text-sm text-neutral-600">
+          <span>🎨 Külső falszín:</span>
+          <input type="color" value="#F5F0E8" id="wall-color-pick"
+                 class="w-8 h-8 rounded cursor-pointer border border-neutral-200" />
+        </label>
+        <label class="flex items-center gap-2 text-sm text-neutral-600">
+          <span>🏠 Tető:</span>
+          <input type="color" value="#C62828" id="roof-color-pick"
+                 class="w-8 h-8 rounded cursor-pointer border border-neutral-200" />
+        </label>
+        <button id="apply-colors"
+                class="text-xs bg-primary text-white px-3 py-1.5 rounded-lg
+                       hover:bg-primary-dark transition-colors">
+          Alkalmaz a 3D-n
+        </button>
+        <span class="text-xs text-neutral-400 ml-auto">Forgasd az egérrel</span>
+      </div>
+
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a href="/alaprajz-rajzolo"
+           class="inline-flex items-center gap-2 bg-accent text-white
+                  px-5 py-2.5 rounded-xl font-bold text-sm
+                  hover:bg-accent-dark transition-colors">
+          Megnyitom a tervezőt →
+        </a>
+        <span class="text-xs text-neutral-400 self-center">
+          Ingyenes · regisztráció nélkül · mobilon is
+        </span>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('apply-colors')?.addEventListener('click', () => {
+        const wall = (document.getElementById('wall-color-pick') as HTMLInputElement)?.value;
+        const roof = (document.getElementById('roof-color-pick') as HTMLInputElement)?.value;
+        window.dispatchEvent(new CustomEvent('house3dColorChange', { detail: { wall, roof } }));
+      });
+    </script>
 
     <!-- Tartalmaz / Nem tartalmaz -->
     <div class="grid sm:grid-cols-2 gap-6 mb-12">

@@ -9,7 +9,7 @@ author: "Gyors Ház csapata"
 showPlannerCta: true
 ---
 
-> **Röviden:** A 4 évszakos mobilház valódi, egész évben lakható otthont jelent, nem szezonális nyaralót. A megfelelő szigetelés, fűtési rendszer és nyílászárók biztosítják, hogy télen is kényelmes legyen – és az ára 16.000 EUR-tól indul, ami töredéke egy hagyományos téglaháznál.
+> **Röviden:** A 4 évszakos mobilház valódi, egész évben lakható otthont jelent, nem szezonális nyaralót. A megfelelő szigetelés, fűtési rendszer és nyílászárók biztosítják, hogy télen is kényelmes legyen – és az ára nettó 7 076 160 Ft-tól indul, ami töredéke egy hagyományos téglaháznál.
 
 ## Mi tesz egy mobilházat 4 évszakossá?
 
@@ -25,11 +25,11 @@ A szezonális mobilháztól a 4 évszakos változatot három tényező különb�
 
 | Típus | Méretek | Kezdőár | Megjegyzés |
 |---|---|---|---|
-| Könnyűszerkezetes ház | 22–126 m² | 16.000 EUR + ÁFA | 100 mm hungarocell, 3 rétegű üveg |
+| Könnyűszerkezetes ház | 27–137 m² | 7 076 160 Ft + ÁFA | 100 mm hungarocell, 3 rétegű üveg |
 | Konténerház | 55–90 m² | 12.790.000 Ft + ÁFA | Gyárilag téliesített |
-| Modulház (Ticab) | 15–122 m² | ár kérésre | Prémium szigetelés, egyedi design |
+| Modulház (Ticab) | 15–144 m² | 22.200 EUR + ÁFA-tól | Prémium szigetelés, egyedi design |
 
-Könnyűszerkezetes házaink közül különösen ajánlott a [35 m²-es modell](/konnyuszerkezetes/konnyuszerkezetes-haz-35m2) (18.400 EUR + ÁFA), amely ideális választás pároknak vagy kis famíliáknak, illetve a [62 m²-es modell](/konnyuszerkezetes/konnyuszerkezetes-haz-62m2) (24.500 EUR + ÁFA), amely egy átlagos méretű család számára megfelelő alapterületet kínál.
+Könnyűszerkezetes házaink közül pároknak vagy kis családnak a [37 m²-es Boglárka](/konnyuszerkezetes/konnyuszerkezetes-haz-37m2) (9 696 960 Ft + ÁFA) ajánlott, átlagos méretű családnak az [58 m²-es Dália](/konnyuszerkezetes/konnyuszerkezetes-haz-58m2) (15 200 640 Ft + ÁFA).
 
 ## Műszaki követelmények téliesített mobilháznál
 
@@ -53,10 +53,10 @@ Fontos: az OTÉK (Országos Településrendezési és Építési Követelmények
 
 Összes könnyűszerkezetes házunk alapból 4 évszakos kivitelű. A legkeresettebb állandó lakhatásra szánt modellek:
 
-- **[KSZ-35 (35 m²)](/konnyuszerkezetes/konnyuszerkezetes-haz-35m2):** 18.400 EUR + ÁFA – ideális egyszemélyes vagy páros lakhatáshoz
-- **[KSZ-52 (52 m²)](/konnyuszerkezetes/konnyuszerkezetes-haz-52m2):** 22.000 EUR + ÁFA – kis család számára tökéletes
-- **[KSZ-62 (62 m²)](/konnyuszerkezetes/konnyuszerkezetes-haz-62m2):** 24.500 EUR + ÁFA – kényelmes elrendezés 2-3 fős háztartásnak
-- **[KSZ-78 (78 m²)](/konnyuszerkezetes/konnyuszerkezetes-haz-78m2):** 28.200 EUR + ÁFA – nagyobb família vagy vendégszobával bővített otthon
+- **[Boglárka, 37 m²](/konnyuszerkezetes/konnyuszerkezetes-haz-37m2):** 9 696 960 Ft + ÁFA – 1 hálószoba, egy-két főnek
+- **[Csillagvirág, 47 m²](/konnyuszerkezetes/konnyuszerkezetes-haz-47m2):** 12 317 760 Ft + ÁFA – 2 hálószoba, kis családnak
+- **[Dália, 58 m²](/konnyuszerkezetes/konnyuszerkezetes-haz-58m2):** 15 200 640 Ft + ÁFA – 2 hálószoba, 7 m²-es fedett terasz
+- **[Frézia, 88 m²](/konnyuszerkezetes/konnyuszerkezetes-haz-88m2):** 23 063 040 Ft + ÁFA – 3 hálószoba, nagyobb családnak
 
 Mindezek acélvázas szerkezettel, 100 mm-es hungarocell szigeteléssel, 3 rétegű nyílászárókkal és 280 cm belmagassággal érkeznek. Az ár tartalmaz gipszkarton burkolatot, alapvető elektromos és vízvezeték szerelést, mosdót és WC-t is.
 

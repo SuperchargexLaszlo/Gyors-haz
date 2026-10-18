@@ -1,6 +1,6 @@
 ﻿---
 title: "Szendvicspanel Ház Eladó – Új és Típusmodellek 2026"
-description: "Szendvicspanel ház eladó: új típusmodellek 16.000 EUR-tól. Nem használt, hanem gyári minőség, garanciával. Ajánlatot kérek!"
+description: "Szendvicspanel ház eladó: új típusmodellek 7,1 millió Ft-tól. Nem használt, hanem gyári minőség, garanciával. Ajánlatot kérek!"
 pubDate: 2026-03-20
 updatedDate: 2026-03-20
 category: konnyuszerkezetes
@@ -8,7 +8,7 @@ tags: ["szendvicspanel ház", "eladó", "új", "típusmodellek"]
 author: "Gyors Ház csapata"
 ---
 
-> **Röviden:** Szendvicspanel házat keresed? Nálunk új, gyári típusmodelleket találsz 16.000 EUR-tól, garanciával — nem használt, nem felújított, hanem frissen gyártott, hitelre is megvehető otthon.
+> **Röviden:** Szendvicspanel házat keresed? Nálunk új, gyári típusmodelleket találsz nettó 7 076 160 Ft-tól, garanciával — nem használt, nem felújított, hanem frissen gyártott, hitelre is megvehető otthon.
 
 ## Új szendvicspanel ház vs. használt mobilház
 
@@ -20,20 +20,20 @@ A használt mobilház kínálat első ránézésre vonzónak tűnhet, de érdeme
 
 Kínálatunkban többféle méretben és áron érhető el új, gyári szendvicspanel ház. Az összes modell részleteit megtalálod a [könnyűszerkezetes házak](/konnyuszerkezetes) oldalunkon.
 
-| Modell mérete | Ár (EUR, + ÁFA) |
-|---|---|
-| 22 m² | 16.000 EUR |
-| 32 m² | 18.600 EUR |
-| 35 m² | 20.300 EUR |
-| 52 m² | 22.000 EUR |
-| 62 m² | 23.000 EUR |
-| 78 m² | 31.000 EUR |
-| 86 m² | 32.000 EUR |
-| 87 m² | 34.000 EUR |
-| 96 m² | 35.000 EUR |
-| 126 m² | 43.000 EUR |
+| Modell | Alapár (+ ÁFA) | Kulcsrakész ár (+ ÁFA) |
+|---|---|---|
+| Árnika, 27 m² | 7 076 160 Ft | 15 422 400 Ft |
+| Boglárka, 37 m² | 9 696 960 Ft | 21 134 400 Ft |
+| Csillagvirág, 47 m² | 12 317 760 Ft | 27 109 600 Ft |
+| Dália, 58 m² | 15 200 640 Ft | 32 804 800 Ft |
+| Erika, 69 m² | 18 083 520 Ft | 38 640 000 Ft |
+| Frézia, 88 m² | 23 063 040 Ft | 49 280 000 Ft |
+| Gyöngyvirág, 92 m² | 24 111 360 Ft | 51 520 000 Ft |
+| Hanga, 95 m² | 24 897 600 Ft | 53 200 000 Ft |
+| Ibolya, 106 m² | 27 780 480 Ft | 59 360 000 Ft |
+| Jázmin, 137 m² | 35 904 960 Ft | 76 720 000 Ft |
 
-Minden modell + ÁFA értendő. Az árban benne van a gyártás, a szállítás 100 km-en belül és a helyszíni összeszerlés is.
+Az árak + ÁFA értendők. Az alapárban benne van a gyártás, a szállítás és a helyszíni szerelés. A kulcsrakész ár emellett az alapot, a burkolást, a homlokzati szigetelést és a festést is tartalmazza.
 
 ## Mit kapsz a vételárban?
 
@@ -55,7 +55,7 @@ Ez azt jelenti, hogy a ház lényegében beköltözésre kész állapotban érke
 
 Szendvicspanel házainkat bankfüggetlen tanácsadónk segítségével hitelre is megvásárolhatod. A bankfüggetlen ügyintézés azt jelenti, hogy nem egyetlen hitelintézet ajánlatából kell választanod — hanem a piacon elérhető legjobb feltételeket keressük meg számodra. Részletek a [részletre vásárlás](/haz-reszletre) oldalunkon.
 
-A kisebb modelleknél (22-35 m²) a havi törlesztő akár 40-50 ezer forint körül is alakulhat megfelelő önerővel és futamidővel — ez sok esetben kevesebb, mint egy hasonló méretű albérlet bérleti díja.
+A legkisebb, 27 m²-es Árnikánál 30% önerővel, 15 éves futamidőn a havi törlesztő kb. 50 ezer forint — ez sok esetben kevesebb, mint egy hasonló méretű albérlet bérleti díja.
 
 ## Bemutatóterem Csepelen
 
@@ -71,7 +71,7 @@ Mi kizárólag **új, gyári szendvicspanel házakat** értékesítünk. Nem fog
 
 ### Melyik a legolcsóbb szendvicspanel ház?
 
-Kínálatunkban a legkisebb és legolcsóbb modell a **22 m²-es, 16.000 EUR + ÁFA** áron. Ez ideális irodaként, nyaralóként, vagy egyedülálló személy állandó lakhelyeként is. Az összes méret és ár elérhető a [könnyűszerkezetes házak](/konnyuszerkezetes) oldalunkon.
+Kínálatunkban a legkisebb és legolcsóbb modell a **27 m²-es Árnika, 7 076 160 Ft + ÁFA** áron. Ez ideális irodaként, nyaralóként, vagy egyedülálló személy állandó lakhelyeként is. Az összes méret és ár elérhető a [könnyűszerkezetes házak](/konnyuszerkezetes) oldalunkon.
 
 ### Van-e garancia a szendvicspanel házra?
 

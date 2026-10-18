@@ -503,12 +503,33 @@
     return !!UNHEATED[String(o && o.label || "").replace(/\s*\d+$/, "")];
   }
 
+  /* ---------------------------------------------------------------
+     Helyiség szín-kódolás típus szerint — halvány, a vonalrajzot nem
+     tompító háttérszínek, hogy a beosztás első pillantásra olvasható
+     legyen (hálószoba, konyha, fürdő, nappali, egyéb).
+     --------------------------------------------------------------- */
+  var ROOM_TYPE_FILL = {
+    "Hálószoba": "rgba(173,216,230,0.25)",
+    "Gyerekszoba": "rgba(173,216,230,0.25)",
+    "Konyha": "rgba(255,255,150,0.2)",
+    "Konyha-étkező": "rgba(255,255,150,0.2)",
+    "Fürdőszoba": "rgba(150,230,200,0.2)",
+    "WC": "rgba(150,230,200,0.2)",
+    "Nappali": "rgba(255,220,180,0.2)",
+  };
+  function roomFillFor(o) {
+    var t = String(o && o.label || "").replace(/\s*\d+$/, "");
+    return ROOM_TYPE_FILL[t] || "rgba(240,240,240,0.15)";
+  }
+
   function dRoom(o) {
     var a = w2s(o.x, o.y), b = w2s(o.x + o.w, o.y + o.h);
     var W = b.x - a.x, H = b.y - a.y;
     var open = isUnheated(o);
     ctx.save();
-    ctx.fillStyle = open ? "#f4f6f8" : ROOM_FILL;
+    ctx.fillStyle = ROOM_FILL;
+    ctx.fillRect(a.x, a.y, W, H);
+    ctx.fillStyle = open ? "#f4f6f8" : roomFillFor(o);
     ctx.fillRect(a.x, a.y, W, H);
     // falvastagság kifelé rajzolva
     var t = Math.max(3, state.wall * view.scale);
@@ -1561,6 +1582,28 @@
       zones.reduce(function (s, z) { return s + z.area; }, 0);
     var openTotal = open.reduce(function (s, r) { return s + areaOf(r); }, 0);
     var furn = state.objects.filter(function (o) { return o.type === "furniture"; }).length;
+
+    // ─── Élő szinkron a 3D nézettel (House3DViewer) ─────────────────────────
+    if (rooms.length) {
+      var bx1 = Infinity, by1 = Infinity, bx2 = -Infinity, by2 = -Infinity;
+      rooms.forEach(function (r) {
+        bx1 = Math.min(bx1, r.x); by1 = Math.min(by1, r.y);
+        bx2 = Math.max(bx2, r.x + r.w); by2 = Math.max(by2, r.y + r.h);
+      });
+      var hasTerrace = rooms.some(function (r) {
+        return String(r.label || "").replace(/\s*\d+$/, "") === "Terasz";
+      });
+      window.dispatchEvent(new CustomEvent("plannerUpdate", {
+        detail: {
+          width: r2(bx2 - bx1),
+          depth: r2(by2 - by1),
+          hasTerrace: hasTerrace,
+          windows: state.objects.filter(function (o) { return o.type === "window"; }).length,
+          doors: state.objects.filter(function (o) { return o.type === "door"; }).length,
+        },
+      }));
+    }
+
     if (statEl) {
       statEl.textContent = (heated.length + zones.length) + " helyiség · "
         + r2(total).toString().replace(".", ",") + " m²"
@@ -1588,6 +1631,11 @@
       html += row(openLabel(open) + " összesen", "", r2(openTotal), "ap-open ap-total");
     }
     html += "</tbody></table>";
+    var tiers = window.AP_SIZE_TIERS || [];
+    if (tiers.length && total > 0) {
+      var match = tiers.find(function (t) { return total <= t.m2; }) || tiers[tiers.length - 1];
+      html += '<p class="ap-info mt-2">Ez az alapterület a <strong>' + esc(match.label) + '</strong> modellnek felel meg.</p>';
+    }
     el.innerHTML = html;
   }
   /** „terasz”, vagy több fajtánál „fűtetlen tér”. */
@@ -1991,29 +2039,39 @@
 
   function libIcon(s) {
     var g = {
-      bed: '<rect x="4" y="7" width="32" height="16" rx="2"/><path d="M4 12h32"/><rect x="7" y="8.5" width="9" height="2.6" rx="1"/><rect x="24" y="8.5" width="9" height="2.6" rx="1"/>',
-      sofa: '<rect x="4" y="8" width="32" height="14" rx="3"/><rect x="7" y="12" width="26" height="9" rx="2"/><path d="M20 12v9"/>',
-      armchair: '<rect x="9" y="7" width="22" height="16" rx="3"/><rect x="13" y="11" width="14" height="11" rx="2"/>',
-      table: '<rect x="5" y="8" width="30" height="14" rx="2"/><rect x="9" y="11" width="22" height="8" rx="1"/>',
+      // Franciaágy: kettő párna + fejvég-vonal
+      bed: '<path d="M1,2 h38 v26 h-38 z M1,9 h38 M3,9 a5,5 0 0,0 10,0 M27,9 a5,5 0 0,0 10,0"/>',
+      // 3-üléses kanapé: karfák + üléspárna-osztóvonalak
+      sofa: '<path d="M2,2 h36 v20 h-36 z M2,8 h36 M2,8 v14 M38,8 v14 M5,22 v6 h30 v-6 M14.6,8 v14 M25.3,8 v14"/>',
+      // Sarokkanapé: L-alak, két szárny
+      lsofa: '<path d="M2,2 h36 v12 h-14 v14 h-22 z M2,8 h36 M2,8 v20 M22,14 v14 M38,8 v6"/>',
+      armchair: '<path d="M9,7 h22 v16 h-22 z M13,11 h14 v11 h-14 z M9,7 v16 M31,7 v16"/>',
+      table: '<path d="M5,8 h30 v14 h-30 z M9,11 h22 M9,15 h22 M9,19 h22"/>',
       roundtable: '<circle cx="20" cy="15" r="8"/><circle cx="20" cy="15" r="4"/>',
-      chair: '<rect x="12" y="9" width="16" height="13" rx="2"/><path d="M13 7h14"/>',
-      cabinet: '<rect x="6" y="8" width="28" height="14"/><path d="M20 8v14"/>',
-      wardrobe: '<rect x="6" y="6" width="28" height="18"/><path d="M20 6v18M10 10l6-4M10 18l12-12M14 22l12-12M22 22l8-8"/>',
-      counter: '<rect x="4" y="9" width="32" height="12"/><path d="M4 18h32"/>',
-      stove: '<rect x="8" y="6" width="24" height="18"/><circle cx="15" cy="12" r="2.4"/><circle cx="25" cy="12" r="2.4"/><circle cx="15" cy="19" r="2.4"/><circle cx="25" cy="19" r="2.4"/>',
-      fridge: '<rect x="11" y="4" width="18" height="22" rx="2"/><path d="M11 12h18M26 7v3"/>',
-      sink: '<rect x="6" y="8" width="28" height="14" rx="2"/><rect x="9" y="11" width="14" height="8" rx="2"/><circle cx="29" cy="15" r="2"/>',
-      washer: '<rect x="9" y="5" width="22" height="20"/><circle cx="20" cy="15" r="6"/><circle cx="20" cy="15" r="2.6"/>',
-      bath: '<rect x="4" y="9" width="32" height="12" rx="3"/><rect x="7" y="11" width="26" height="8" rx="4"/><circle cx="11" cy="15" r="1.4"/>',
-      shower: '<rect x="9" y="5" width="22" height="20"/><path d="M31 5a20 20 0 0 1-20 20"/><circle cx="14" cy="21" r="1.6"/>',
-      toilet: '<rect x="13" y="4" width="14" height="5" rx="1"/><ellipse cx="20" cy="17" rx="8" ry="7"/>',
-      bidet: '<ellipse cx="20" cy="15" rx="9" ry="7"/>',
-      desk: '<rect x="4" y="8" width="32" height="12"/><path d="M25 8v12"/><rect x="27" y="10" width="7" height="6"/>',
+      chair: '<path d="M12,9 h16 v13 h-16 z M13,7 h14 M12,7 v2 M28,7 v2"/>',
+      cabinet: '<path d="M6,8 h28 v14 h-28 z M20,8 v14 M11,15 v2 M29,15 v2"/>',
+      wardrobe: '<path d="M6,6 h28 v18 h-28 z M20,6 v18 M11,15 v2 M29,15 v2"/>',
+      counter: '<path d="M4,9 h32 v12 h-32 z M4,18 h32 M9,9 v2 M16,9 v2 M23,9 v2 M30,9 v2"/>',
+      // Tűzhely: 4 főzőzóna
+      stove: '<path d="M8,6 h24 v18 h-24 z"/><circle cx="15" cy="12" r="2.4"/><circle cx="25" cy="12" r="2.4"/><circle cx="15" cy="19" r="2.4"/><circle cx="25" cy="19" r="2.4"/>',
+      fridge: '<path d="M11,4 h18 v22 h-18 z M11,12 h18 M26,7 v3"/>',
+      // Mosdó: téglalap + belső ovális + csap
+      sink: '<path d="M3,5 h14 v20 h-14 z M5,9 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0 M10,2 v4 M8,3 h4"/>',
+      washer: '<path d="M9,5 h22 v20 h-22 z"/><circle cx="20" cy="15" r="6"/><circle cx="20" cy="15" r="2.6"/>',
+      bath: '<path d="M4,9 h32 v12 h-32 z M7,11 h26 v8 h-26 z"/><circle cx="11" cy="15" r="1.4"/>',
+      // Zuhanykabin: négyzet + átlós rácsvonalak
+      shower: '<path d="M2,2 h26 v26 h-26 z M2,2 l26,26 M2,28 l26,-26 M14,2 v4 a4,4 0 0,0 0,8"/>',
+      // WC: tartály + szűkülő kagyló-forma
+      toilet: '<path d="M8,22 h24 v6 h-24 z M10,2 a10,12 0 1,0 20,0 l0,20 h-20 z"/>',
+      bidet: '<ellipse cx="20" cy="15" rx="9" ry="7"/><circle cx="20" cy="12" r="1.4"/>',
+      desk: '<path d="M4,8 h32 v12 h-32 z M25,8 v12 M27,10 h7 v6 h-7 z"/>',
       rug: '<rect x="4" y="7" width="32" height="16" rx="2" stroke-dasharray="4 3"/>',
-      plant: '<circle cx="20" cy="15" r="8"/><path d="M20 15 14 9M20 15l6-6M20 15l-7 3M20 15l7 3M20 15v9"/>',
+      plant: '<circle cx="20" cy="15" r="8"/><path d="M20,15 14,9M20,15l6-6M20,15l-7,3M20,15l7,3M20,15v9"/>',
       tv: '<rect x="5" y="12" width="30" height="6" rx="1"/>',
-      stairs: '<rect x="8" y="5" width="24" height="20"/><path d="M8 10h24M8 15h24M8 20h24"/><path d="M20 22v-14M17 11l3-3 3 3" stroke="#0b6bcb"/>',
-      car: '<rect x="5" y="8" width="30" height="14" rx="4"/><rect x="11" y="11" width="18" height="7" rx="2"/>',
+      stairs: '<path d="M8,5 h24 v20 h-24 z M8,10 h24 M8,15 h24 M8,20 h24"/><path d="M20,22v-14M17,11l3-3 3,3" stroke="#0b6bcb"/>',
+      // Csigalépcső: körvonal + spirál
+      spiral: '<circle cx="20" cy="15" r="13"/><circle cx="20" cy="15" r="2"/><path d="M20,15 a4,4 0 1,1 -4,4 a7,7 0 1,1 7,-7 a10,10 0 1,1 -10,10" stroke="#0b6bcb"/>',
+      car: '<path d="M5,8 h30 v14 h-30 z M11,11 h18 v7 h-18 z M5,15 h30"/>',
     }[s] || '<rect x="7" y="8" width="26" height="14"/>';
     return '<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">' + g + "</g>";
   }

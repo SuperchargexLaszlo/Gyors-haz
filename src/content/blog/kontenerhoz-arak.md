@@ -50,7 +50,7 @@ Néhány tételt külön kell tervezni és finanszírozni:
 
 | Szempont | Konténerház | Könnyűszerkezetes |
 |---|---|---|
-| Kezdőár | 12.790.000 Ft (55 m²) | 16.000 EUR (22 m²) |
+| Kezdőár | 12.790.000 Ft (55 m²) | 7 076 160 Ft + ÁFA (27 m²) |
 | Leggazdaságosabb nm ár | ~232.500 Ft/m² | ~290.000 Ft/m² |
 | Átadási idő | 4–6 hét | 6–8 hét |
 | Mozgathatóság | Igen, darukkal | Korlátozott |

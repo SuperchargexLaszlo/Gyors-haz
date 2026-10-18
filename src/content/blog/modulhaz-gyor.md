@@ -86,7 +86,7 @@ Győri modulház ajánlathoz [töltse ki kapcsolatfelvételi formunkat](/kapcsol
 
 ### Mennyibe kerül egy Ticab modulház Győrbe szállítva?
 
-A Ticab modellek ára egyedi kalkuláció alapján adható meg. A szállítási pótdíj Győrbe kb. 80.000–150.000 Ft. Pontos ajánlatért [lépjen kapcsolatba velünk](/kapcsolat).
+A Ticab modellek listaára 22.200 EUR-tól (Seville, 22 m²) 150.000 EUR-ig terjed, + ÁFA. A szállítási pótdíj Győrbe kb. 80.000–150.000 Ft. Pontos ajánlatért [lépjen kapcsolatba velünk](/kapcsolat).
 
 ### Mennyi ideig tart a modulház telepítése Győrben?
 
